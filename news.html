@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSA — News & Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0f2e; --navy-mid: #111a45; --navy-light: #1a2a6c;
+    --orange: #ff6a00; --orange-hot: #ff8c00; --orange-glow: rgba(255,106,0,0.25);
+    --star-white: #e8f0ff; --cool-gray: #8899bb;
+    --card-bg: rgba(17,26,69,0.85); --border-glow: rgba(255,106,0,0.4);
+    --hazelia-red: #cc1a1a; --hazelia-accent: #ff4444;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--navy); color: var(--star-white);
+    font-family: 'Exo 2', sans-serif; font-weight: 300; overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 5% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 50%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 15%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 38%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 68%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 18% 82%, rgba(255,255,255,0.4) 0%, transparent 100%);
+    pointer-events: none; z-index: 0;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem; height: 70px;
+    background: rgba(10,15,46,0.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glow);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-emblem { width: 40px; height: 40px; }
+  .nav-emblem svg { width: 100%; height: 100%; }
+  .nav-brand {
+    font-family: 'Orbitron', monospace; font-weight: 900; font-size: 1.1rem;
+    letter-spacing: 0.2em; color: var(--orange);
+  }
+  .nav-brand span {
+    display: block; font-size: 0.5rem; color: var(--cool-gray);
+    letter-spacing: 0.35em; font-weight: 400; margin-top: -2px;
+  }
+  .nav-links { display: flex; gap: 0; list-style: none; }
+  .nav-links a {
+    display: block; padding: 0 1.5rem; height: 70px; line-height: 70px;
+    font-family: 'Orbitron', monospace; font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.2em; color: var(--cool-gray); text-decoration: none;
+    text-transform: uppercase; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+    height: 2px; background: var(--orange); transition: left 0.3s, right 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--star-white); }
+  .nav-links a:hover::after, .nav-links a.active::after { left: 1.5rem; right: 1.5rem; }
+  .nav-status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.65rem; letter-spacing: 0.15em; color: var(--cool-gray);
+    font-family: 'Orbitron', monospace;
+  }
+  .status-dot {
+    width: 7px; height: 7px; background: #00ff88; border-radius: 50%;
+    animation: pulse 2s infinite; box-shadow: 0 0 6px #00ff88;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .page-header {
+    position: relative; z-index: 1; padding: 140px 6rem 5rem;
+    background: linear-gradient(180deg, rgba(26,42,108,0.3) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(255,106,0,0.15); overflow: hidden;
+  }
+  .page-header::after {
+    content: 'NEWS'; position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Orbitron', monospace; font-size: 14rem; font-weight: 900;
+    color: rgba(255,106,0,0.04); line-height: 1; pointer-events: none;
+  }
+  .page-kicker {
+    font-family: 'Orbitron', monospace; font-size: 0.6rem;
+    letter-spacing: 0.4em; color: var(--orange); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .page-kicker::before { content: ''; display: block; width: 40px; height: 1px; background: var(--orange); }
+  h1 {
+    font-family: 'Orbitron', monospace; font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900; letter-spacing: 0.05em; color: var(--star-white); margin-bottom: 1rem;
+  }
+  .page-desc { font-size: 1rem; color: var(--cool-gray); max-width: 600px; line-height: 1.8; }
+
+  /* TICKER */
+  .ticker-band {
+    position: relative; z-index: 1;
+    background: var(--orange); overflow: hidden;
+    height: 38px; display: flex; align-items: center;
+  }
+  .ticker-label {
+    font-family: 'Orbitron', monospace; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.2em; padding: 0 1.5rem;
+    background: rgba(0,0,0,0.3); height: 100%;
+    display: flex; align-items: center; white-space: nowrap; flex-shrink: 0;
+    color: #fff; z-index: 1;
+  }
+  .ticker-scroll {
+    display: flex; gap: 4rem; animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-scroll span {
+    font-family: 'Orbitron', monospace; font-size: 0.55rem; letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.9); flex-shrink: 0;
+  }
+  .ticker-dot { color: rgba(255,255,255,0.5); }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* LAYOUT: feed + sidebar */
+  .news-layout {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 360px;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* FEED */
+  .news-feed { padding: 4rem 4rem 4rem 6rem; border-right: 1px solid rgba(255,106,0,0.1); }
+
+  .feed-section { margin-bottom: 3rem; }
+  .feed-section-header {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,106,0,0.15);
+  }
+  .feed-section-title {
+    font-family: 'Orbitron', monospace; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.3em; color: var(--orange); text-transform: uppercase;
+  }
+  .feed-count {
+    font-family: 'Orbitron', monospace; font-size: 0.55rem; letter-spacing: 0.1em;
+    color: var(--cool-gray); background: rgba(255,106,0,0.1);
+    padding: 0.15rem 0.5rem; border: 1px solid rgba(255,106,0,0.2);
+  }
+
+  /* FEATURED article */
+  .news-featured {
+    background: var(--card-bg); border: 1px solid rgba(255,106,0,0.2);
+    margin-bottom: 1.5rem; overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+    transition: border-color 0.3s;
+  }
+  .news-featured:hover { border-color: var(--border-glow); }
+  .featured-img {
+    height: 200px; width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; position: relative; overflow: hidden;
+  }
+  .fi-bg { position: absolute; inset: 0; }
+  .fi-1 { background: linear-gradient(135deg, #0a1535 0%, #1e3070 50%, #2d1f5e 100%); }
+  .fi-icon { position: relative; z-index: 1; opacity: 0.5; filter: drop-shadow(0 0 15px rgba(255,106,0,0.4)); }
+  .featured-body { padding: 2rem; }
+  .news-source {
+    font-family: 'Orbitron', monospace; font-size: 0.5rem; letter-spacing: 0.25em;
+    color: var(--cool-gray); text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .news-headline {
+    font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700;
+    color: var(--star-white); line-height: 1.4; margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+  .news-excerpt {
+    font-size: 0.88rem; line-height: 1.7; color: var(--cool-gray);
+    margin-bottom: 1rem;
+  }
+  .news-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Orbitron', monospace; font-size: 0.5rem; letter-spacing: 0.15em;
+    color: var(--cool-gray);
+  }
+  .news-tag {
+    font-family: 'Orbitron', monospace; font-size: 0.48rem; letter-spacing: 0.15em;
+    padding: 0.2rem 0.5rem; border: 1px solid var(--border-glow);
+    color: var(--orange); text-transform: uppercase;
+  }
+
+  /* STANDARD article card */
+  .news-item {
+    display: flex; gap: 1.5rem; padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255,106,0,0.08);
+    transition: padding-left 0.2s;
+    cursor: pointer;
+  }
+  .news-item:hover { padding-left: 0.5rem; }
+  .news-item-icon {
+    width: 60px; height: 60px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; background: rgba(17,26,69,0.8);
+    border: 1px solid rgba(255,106,0,0.15);
+  }
+  .news-item-content { flex: 1; }
+  .ni-source {
+    font-family: 'Orbitron', monospace; font-size: 0.48rem; letter-spacing: 0.2em;
+    color: var(--cool-gray); margin-bottom: 0.3rem; text-transform: uppercase;
+  }
+  .ni-headline {
+    font-family: 'Orbitron', monospace; font-size: 0.78rem; font-weight: 600;
+    color: var(--star-white); line-height: 1.4; margin-bottom: 0.3rem;
+  }
+  .ni-excerpt {
+    font-size: 0.82rem; color: var(--cool-gray); line-height: 1.5;
+    margin-bottom: 0.4rem;
+  }
+  .ni-date {
+    font-family: 'Orbitron', monospace; font-size: 0.47rem; letter-spacing: 0.15em;
+    color: rgba(136,153,187,0.6);
+  }
+
+  /* HAZELIA section — different treatment */
+  .hazelia-section { margin-bottom: 3rem; }
+  .hazelia-section .feed-section-header { border-bottom-color: rgba(204,26,26,0.3); }
+  .hazelia-section .feed-section-title { color: var(--hazelia-accent); }
+  .hazelia-item {
+    display: flex; gap: 1.5rem; padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(204,26,26,0.1);
+    transition: padding-left 0.2s; cursor: pointer;
+  }
+  .hazelia-item:hover { padding-left: 0.5rem; }
+  .hazelia-icon {
+    width: 60px; height: 60px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; background: rgba(40,10,10,0.8);
+    border: 1px solid rgba(204,26,26,0.2);
+  }
+  .hi-source {
+    font-family: 'Orbitron', monospace; font-size: 0.48rem; letter-spacing: 0.2em;
+    color: var(--hazelia-accent); margin-bottom: 0.3rem; text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .hi-headline {
+    font-family: 'Orbitron', monospace; font-size: 0.78rem; font-weight: 600;
+    color: var(--star-white); line-height: 1.4; margin-bottom: 0.3rem;
+  }
+  .hi-excerpt {
+    font-size: 0.82rem; color: var(--cool-gray); line-height: 1.5; margin-bottom: 0.4rem;
+  }
+  .hi-date {
+    font-family: 'Orbitron', monospace; font-size: 0.47rem; letter-spacing: 0.15em;
+    color: rgba(136,153,187,0.6);
+  }
+  .hi-label {
+    display: inline-block; font-family: 'Orbitron', monospace; font-size: 0.45rem;
+    letter-spacing: 0.15em; padding: 0.15rem 0.5rem; margin-left: 0.5rem;
+    border: 1px solid rgba(204,26,26,0.4); color: var(--hazelia-accent);
+    background: rgba(204,26,26,0.08); text-transform: uppercase; vertical-align: middle;
+  }
+
+  /* SIDEBAR */
+  .news-sidebar { padding: 4rem 3rem; background: rgba(10,15,40,0.5); }
+
+  .sidebar-widget { margin-bottom: 3rem; }
+  .sw-title {
+    font-family: 'Orbitron', monospace; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.3em; color: var(--orange); text-transform: uppercase;
+    margin-bottom: 1rem; padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255,106,0,0.2);
+  }
+
+  /* Status board */
+  .status-board { display: flex; flex-direction: column; gap: 0; }
+  .sb-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.8rem 0; border-bottom: 1px solid rgba(255,106,0,0.06);
+  }
+  .sb-label {
+    font-family: 'Orbitron', monospace; font-size: 0.55rem; letter-spacing: 0.1em;
+    color: var(--cool-gray); text-transform: uppercase;
+  }
+  .sb-value {
+    font-family: 'Orbitron', monospace; font-size: 0.6rem; letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .sv-green { color: #00ff88; }
+  .sv-orange { color: var(--orange); }
+  .sv-blue { color: #aabbff; }
+
+  /* Recent headlines */
+  .mini-news { display: flex; flex-direction: column; gap: 0; }
+  .mn-item {
+    padding: 0.85rem 0; border-bottom: 1px solid rgba(255,106,0,0.06); cursor: pointer;
+    transition: padding-left 0.2s;
+  }
+  .mn-item:hover { padding-left: 0.5rem; }
+  .mn-source {
+    font-family: 'Orbitron', monospace; font-size: 0.45rem; letter-spacing: 0.2em;
+    color: var(--cool-gray); margin-bottom: 0.3rem;
+  }
+  .mn-headline {
+    font-family: 'Orbitron', monospace; font-size: 0.62rem; font-weight: 600;
+    color: var(--star-white); line-height: 1.4;
+  }
+  .mn-date {
+    font-family: 'Orbitron', monospace; font-size: 0.45rem; color: rgba(136,153,187,0.5);
+    margin-top: 0.2rem;
+  }
+
+  /* Hazelia Watch */
+  .hazelia-watch-card {
+    background: rgba(40,10,10,0.6); border: 1px solid rgba(204,26,26,0.2);
+    padding: 1.25rem; margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .hazelia-watch-card:hover { border-color: rgba(204,26,26,0.4); }
+  .hw-label {
+    font-family: 'Orbitron', monospace; font-size: 0.45rem; letter-spacing: 0.2em;
+    color: var(--hazelia-accent); margin-bottom: 0.4rem; text-transform: uppercase;
+  }
+  .hw-text {
+    font-size: 0.78rem; color: var(--cool-gray); line-height: 1.5;
+  }
+  .hw-date {
+    font-family: 'Orbitron', monospace; font-size: 0.43rem; color: rgba(204,26,26,0.5);
+    margin-top: 0.4rem; letter-spacing: 0.1em;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 1; padding: 3rem 6rem;
+    border-top: 1px solid rgba(255,106,0,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,15,46,0.8);
+  }
+  .footer-brand {
+    font-family: 'Orbitron', monospace; font-size: 0.8rem;
+    font-weight: 700; color: var(--orange); letter-spacing: 0.2em;
+  }
+  .footer-copy { font-size: 0.75rem; color: var(--cool-gray); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a {
+    font-size: 0.65rem; letter-spacing: 0.2em; color: var(--cool-gray);
+    text-decoration: none; font-family: 'Orbitron', monospace;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-emblem">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#ff6a00" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="10" stroke="#ff6a00" stroke-width="1" stroke-dasharray="2 3"/>
+        <path d="M20 5 L23 17 L20 20 L17 17 Z" fill="#ff6a00"/>
+        <circle cx="20" cy="20" r="3" fill="#ff6a00"/>
+      </svg>
+    </div>
+    <div class="nav-brand">KSA <span>Kacentina Space Administration</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="crew.html">Crew</a></li>
+    <li><a href="missions.html">Missions</a></li>
+    <li><a href="news.html" class="active">News</a></li>
+  </ul>
+  <div class="nav-status"><div class="status-dot"></div>Mission Active</div>
+</nav>
+
+<header class="page-header">
+  <div class="page-kicker">KSA Communications — Global Press</div>
+  <h1>News & Intel</h1>
+  <p class="page-desc">Mission highlights, international coverage, and intelligence monitoring from across the spacefaring world — including our rivals in Hazelia.</p>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-band">
+  <div class="ticker-label">⚡ LIVE FEED</div>
+  <div style="overflow:hidden;flex:1">
+    <div class="ticker-scroll">
+      <span>KSS ROTATION VII — WEEK 9 — ALL SYSTEMS NOMINAL</span>
+      <span class="ticker-dot">◆</span>
+      <span>ARGENT II LUNAR LANDING — TARGET WINDOW: SPRING 2027</span>
+      <span class="ticker-dot">◆</span>
+      <span>HAZELIA ANNOUNCES "PROMETHEUS" PROGRAM — DETAILS SPARSE</span>
+      <span class="ticker-dot">◆</span>
+      <span>NEXUS-2 AGRICULTURAL DATA PREDICTS RECORD HARVEST FOR KACENTINA — MINISTRY OF AGRICULTURE CREDITS SPACE PROGRAM</span>
+      <span class="ticker-dot">◆</span>
+      <span>DR. YUNE'S MICROGRAVITY BONE PROTOCOL ADOPTED BY 3 ALLIED AGENCIES</span>
+      <span class="ticker-dot">◆</span>
+      <span>KSS ROTATION VII — WEEK 9 — ALL SYSTEMS NOMINAL</span>
+      <span class="ticker-dot">◆</span>
+      <span>ARGENT II LUNAR LANDING — TARGET WINDOW: SPRING 2027</span>
+      <span class="ticker-dot">◆</span>
+      <span>HAZELIA ANNOUNCES "PROMETHEUS" PROGRAM — DETAILS SPARSE</span>
+      <span class="ticker-dot">◆</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="news-layout">
+
+  <!-- FEED -->
+  <div class="news-feed">
+
+    <!-- FEATURED -->
+    <div class="feed-section">
+      <div class="feed-section-header">
+        <div class="feed-section-title">Featured Coverage</div>
+        <div class="feed-count">International Press</div>
+      </div>
+
+      <div class="news-featured">
+        <div class="featured-img">
+          <div class="fi-bg fi-1"></div>
+          <div class="fi-icon">🌕</div>
+        </div>
+        <div class="featured-body">
+          <div class="news-source">Orbital Tribune International — Global Desk</div>
+          <div class="news-headline">Kacentina's Moon Shot: How a Small Nation Built a Space Program Worth Watching</div>
+          <p class="news-excerpt">
+            In less than seven years, the Kacentina Space Administration has gone from concept to operating a crewed orbital station, a three-satellite observation network, and an uncrewed lunar survey — all while sharing climate and agricultural data freely with allied nations. Space analysts are calling it "the most efficiently run emerging space program on Earth." Now, with the crewed Argent II lunar landing scheduled for 2027, Kacentina is poised to make history again.
+          </p>
+          <div class="news-meta">
+            <span class="news-tag">International</span>
+            <span>May 2, 2026 · 12 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISSION HIGHLIGHTS -->
+    <div class="feed-section">
+      <div class="feed-section-header">
+        <div class="feed-section-title">Mission Highlights</div>
+        <div class="feed-count">KSA Official & Press</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-item-icon">🚀</div>
+        <div class="news-item-content">
+          <div class="ni-source">KSA Mission Control — Official Release</div>
+          <div class="ni-headline">Rotation VII Crew Reports Breakthrough in Microgravity Plant Growth Experiment</div>
+          <p class="ni-excerpt">Sr. Eng. Rael reports that the Kacentina Technical University's polymer-mesh growing substrate has sustained plant growth across 62 days — nearly double the previous duration record — with implications for long-duration deep space missions.</p>
+          <div class="ni-date">April 28, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-item-icon">🛰️</div>
+        <div class="news-item-content">
+          <div class="ni-source">Kacentina National Broadcasting Service</div>
+          <div class="ni-headline">Nexus-2 Satellite Predicts Record Harvest — Farmers Credit Space Program with Changed Lives</div>
+          <p class="ni-excerpt">Data from the Nexus-2 agricultural monitoring satellite gave Kacentinan farmers an 18-week advance forecast of soil conditions this season, enabling a planting optimization that agronomists predict will result in the highest wheat yield in national history.</p>
+          <div class="ni-date">April 21, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-item-icon">⚗️</div>
+        <div class="news-item-content">
+          <div class="ni-source">The Science Collective — Research Desk</div>
+          <div class="ni-headline">KSA's Bone Density Protocol Now Standard in Three Allied Space Programs</div>
+          <p class="ni-excerpt">Dr. Jun Yune's microgravity medicine framework, developed during KSS Rotations II through V, has been formally adopted by allied agencies after peer review in the Journal of Space Medicine — putting Kacentina at the forefront of human spaceflight physiology research.</p>
+          <div class="ni-date">April 15, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-item-icon">🌍</div>
+        <div class="news-item-content">
+          <div class="ni-source">Global Environmental Monitor</div>
+          <div class="ni-headline">Kacentina's Nexus Network Provides Unprecedented Coastal Storm Prediction Data to Neighboring Nations</div>
+          <p class="ni-excerpt">In a gesture of international goodwill, KSA has opened access to Nexus-1 storm monitoring data to seven coastal nations in the region — providing 48-hour advance warning of severe weather systems at no cost, demonstrating space as a tool of cooperation.</p>
+          <div class="ni-date">April 7, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-item-icon">🏫</div>
+        <div class="news-item-content">
+          <div class="ni-source">Kacentina Education Ministry — Press Office</div>
+          <div class="ni-headline">NextGen Explorers Program Reaches 400th Partner School, Now Serves 80,000 Students</div>
+          <p class="ni-excerpt">KSA's youth STEM outreach has grown from a pilot program of 12 schools in 2021 to a national initiative serving 80,000 students, with applications to the astronaut training pipeline from NextGen alumni expected within the decade.</p>
+          <div class="ni-date">March 30, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-item-icon">🌙</div>
+        <div class="news-item-content">
+          <div class="ni-source">SpaceWatch International</div>
+          <div class="ni-headline">Argent I Data Reveals Significant Subsurface Ice Deposits in Lunar South Polar Region</div>
+          <p class="ni-excerpt">Full analysis of Argent I's radar altimetry returns has confirmed substantial water ice deposits in three surveyed locations at the lunar south pole — validating KSA's selection of the Argent II landing zone and significantly expanding scientific interest in the site.</p>
+          <div class="ni-date">March 18, 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HAZELIA SECTION -->
+    <div class="hazelia-section">
+      <div class="feed-section-header">
+        <div class="feed-section-title" style="color:#ff4444;">Hazelia Watch</div>
+        <div class="feed-count" style="color:#ff4444;border-color:rgba(204,26,26,0.3);background:rgba(204,26,26,0.08);">Intelligence Monitoring</div>
+      </div>
+
+      <div class="hazelia-item">
+        <div class="hazelia-icon">⚠️</div>
+        <div class="news-item-content">
+          <div class="hi-source">Neutral Press Agency — Hazelia Desk <span class="hi-label">Disputed</span></div>
+          <div class="hi-headline">Hazelia Announces "Project Prometheus" — Claims Crewed Moon Mission by 2026</div>
+          <p class="hi-excerpt">The Hazelia State Space Bureau unveiled what officials called a "revolutionary" crewed lunar program in a state media broadcast this week, claiming a 2026 timeline. Independent analysts question the feasibility of the schedule given Hazelia's known infrastructure, calling it "an ambitious declaration with limited visible evidence." No orbital missions have been publicly verified to date.</p>
+          <div class="hi-date">May 3, 2026</div>
+        </div>
+      </div>
+
+      <div class="hazelia-item">
+        <div class="hazelia-icon">🔭</div>
+        <div class="news-item-content">
+          <div class="hi-source">Defense Intelligence Review <span class="hi-label">Analysis</span></div>
+          <div class="hi-headline">Hazelia Satellite Debris Field Poses Orbital Hazard — KSA Issues Advisory</div>
+          <p class="hi-excerpt">Following a reported Hazelia satellite test failure last month, KSA mission control has issued formal advisories for KSS trajectory adjustments. The debris field is being tracked by international agencies. Hazelia has not publicly acknowledged the event, which involved a mid-tier surveillance platform in a sun-synchronous orbit.</p>
+          <div class="hi-date">April 25, 2026</div>
+        </div>
+      </div>
+
+      <div class="hazelia-item">
+        <div class="hazelia-icon">🛸</div>
+        <div class="news-item-content">
+          <div class="hi-source">The Orbital Standard — Editorial</div>
+          <div class="hi-headline">As Kacentina Opens Data to Neighbors, Hazelia Restricts Satellite Access — A Tale of Two Programs</div>
+          <p class="hi-excerpt">The contrasting philosophies of regional space competitors Kacentina and Hazelia have become a defining story of 2026's space landscape. While KSA opens Nexus data to seven nations, Hazelia has reportedly revoked shared access agreements with two former partner nations, citing "national security priorities." The editorial argues that space cooperation, not rivalry, will define the next era.</p>
+          <div class="hi-date">April 10, 2026</div>
+        </div>
+      </div>
+
+      <div class="hazelia-item">
+        <div class="hazelia-icon">🔬</div>
+        <div class="news-item-content">
+          <div class="hi-source">International Observer Weekly <span class="hi-label">Investigation</span></div>
+          <div class="hi-headline">Hazelia's Claimed Space Research Budget: Experts Flag Inconsistencies in Transparency Reports</div>
+          <p class="hi-excerpt">A team of economists reviewing Hazelia's published space investment figures has identified inconsistencies between reported expenditures and visible infrastructure development. The finding raises questions about the program's actual scale — and whether Prometheus represents genuine capability or a strategic posturing campaign timed to Argent II's announcement.</p>
+          <div class="hi-date">March 28, 2026</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /feed -->
+
+  <!-- SIDEBAR -->
+  <div class="news-sidebar">
+
+    <div class="sidebar-widget">
+      <div class="sw-title">Mission Status Board</div>
+      <div class="status-board">
+        <div class="sb-item">
+          <span class="sb-label">KSS Life Support</span>
+          <span class="sb-value sv-green">NOMINAL</span>
+        </div>
+        <div class="sb-item">
+          <span class="sb-label">Rotation VII</span>
+          <span class="sb-value sv-green">Day 63</span>
+        </div>
+        <div class="sb-item">
+          <span class="sb-label">Nexus-1</span>
+          <span class="sb-value sv-green">ACTIVE</span>
+        </div>
+        <div class="sb-item">
+          <span class="sb-label">Nexus-2</span>
+          <span class="sb-value sv-green">ACTIVE</span>
+        </div>
+        <div class="sb-item">
+          <span class="sb-label">Nexus-3</span>
+          <span class="sb-value sv-green">ACTIVE</span>
+        </div>
+        <div class="sb-item">
+          <span class="sb-label">Argent II Prep</span>
+          <span class="sb-value sv-orange">Phase 3</span>
+        </div>
+        <div class="sb-item">
+          <span class="sb-label">Orbital Debris</span>
+          <span class="sb-value sv-orange">Monitored</span>
+        </div>
+        <div class="sb-item">
+          <span class="sb-label">Hazelia Activity</span>
+          <span class="sb-value" style="color:#ff4444;">Elevated</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="sw-title">Latest Headlines</div>
+      <div class="mini-news">
+        <div class="mn-item">
+          <div class="mn-source">KSA Official</div>
+          <div class="mn-headline">Commander Solaris Conducts Unplanned EVA to Inspect Station Thermal Panel</div>
+          <div class="mn-date">May 7, 2026</div>
+        </div>
+        <div class="mn-item">
+          <div class="mn-source">Space Commerce Daily</div>
+          <div class="mn-headline">KSA Partners with Meridian University on Zero-G Chemistry Study</div>
+          <div class="mn-date">May 5, 2026</div>
+        </div>
+        <div class="mn-item">
+          <div class="mn-source">Kacentina Herald</div>
+          <div class="mn-headline">Minister of Science Opens KSA Public Archive — All Mission Data Now Free</div>
+          <div class="mn-date">May 4, 2026</div>
+        </div>
+        <div class="mn-item">
+          <div class="mn-source">SpaceWatch Int'l</div>
+          <div class="mn-headline">Analysis: Argent II Could Shift Regional Space Balance</div>
+          <div class="mn-date">May 1, 2026</div>
+        </div>
+        <div class="mn-item">
+          <div class="mn-source">KSA Official</div>
+          <div class="mn-headline">Spec. Caelum Completes Final CAELUM Rover Integration Test</div>
+          <div class="mn-date">April 30, 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="sw-title" style="color:#ff4444;">Hazelia Intelligence</div>
+      <div class="hazelia-watch-card">
+        <div class="hw-label">⚠ Latest Development</div>
+        <p class="hw-text">Prometheus program announcement raised skepticism from 4 allied space agencies. No verified launch manifest or hardware sightings to date.</p>
+        <div class="hw-date">Updated: May 3, 2026</div>
+      </div>
+      <div class="hazelia-watch-card">
+        <div class="hw-label">🛸 Orbital Activity</div>
+        <p class="hw-text">Debris field from Hazelia platform failure being monitored. KSS trajectory adjusted on April 22. No threat to crew.</p>
+        <div class="hw-date">Updated: April 26, 2026</div>
+      </div>
+      <div class="hazelia-watch-card">
+        <div class="hw-label">📡 Communications</div>
+        <p class="hw-text">Hazelia restricted satellite data sharing with former partner nations. KSA expanded its open-data offerings in direct contrast.</p>
+        <div class="hw-date">Updated: April 12, 2026</div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /news-layout -->
+
+<footer>
+  <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="crew.html">Crew</a></li>
+    <li><a href="missions.html">Missions</a></li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

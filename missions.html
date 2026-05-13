@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSA — Missions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0f2e; --navy-mid: #111a45; --navy-light: #1a2a6c;
+    --orange: #ff6a00; --orange-hot: #ff8c00; --orange-glow: rgba(255,106,0,0.25);
+    --star-white: #e8f0ff; --cool-gray: #8899bb;
+    --card-bg: rgba(17,26,69,0.85); --border-glow: rgba(255,106,0,0.4);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--navy); color: var(--star-white);
+    font-family: 'Exo 2', sans-serif; font-weight: 300; overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 18%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48% 12%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 68% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 85% 75%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 12% 85%, rgba(255,255,255,0.4) 0%, transparent 100%);
+    pointer-events: none; z-index: 0;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem; height: 70px;
+    background: rgba(10,15,46,0.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glow);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-emblem { width: 40px; height: 40px; }
+  .nav-emblem svg { width: 100%; height: 100%; }
+  .nav-brand {
+    font-family: 'Orbitron', monospace; font-weight: 900; font-size: 1.1rem;
+    letter-spacing: 0.2em; color: var(--orange);
+  }
+  .nav-brand span {
+    display: block; font-size: 0.5rem; color: var(--cool-gray);
+    letter-spacing: 0.35em; font-weight: 400; margin-top: -2px;
+  }
+  .nav-links { display: flex; gap: 0; list-style: none; }
+  .nav-links a {
+    display: block; padding: 0 1.5rem; height: 70px; line-height: 70px;
+    font-family: 'Orbitron', monospace; font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.2em; color: var(--cool-gray); text-decoration: none;
+    text-transform: uppercase; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+    height: 2px; background: var(--orange); transition: left 0.3s, right 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--star-white); }
+  .nav-links a:hover::after, .nav-links a.active::after { left: 1.5rem; right: 1.5rem; }
+  .nav-status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.65rem; letter-spacing: 0.15em; color: var(--cool-gray);
+    font-family: 'Orbitron', monospace;
+  }
+  .status-dot {
+    width: 7px; height: 7px; background: #00ff88; border-radius: 50%;
+    animation: pulse 2s infinite; box-shadow: 0 0 6px #00ff88;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .page-header {
+    position: relative; z-index: 1; padding: 140px 6rem 5rem;
+    background: linear-gradient(180deg, rgba(26,42,108,0.3) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(255,106,0,0.15); overflow: hidden;
+  }
+  .page-header::after {
+    content: 'MISSIONS'; position: absolute; right: -1rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Orbitron', monospace; font-size: 9rem; font-weight: 900;
+    color: rgba(255,106,0,0.04); line-height: 1; pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+  .page-kicker {
+    font-family: 'Orbitron', monospace; font-size: 0.6rem;
+    letter-spacing: 0.4em; color: var(--orange); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .page-kicker::before { content: ''; display: block; width: 40px; height: 1px; background: var(--orange); }
+  h1 {
+    font-family: 'Orbitron', monospace; font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900; letter-spacing: 0.05em; color: var(--star-white); margin-bottom: 1rem;
+  }
+  .page-desc { font-size: 1rem; color: var(--cool-gray); max-width: 600px; line-height: 1.8; }
+
+  /* MISSION TIMELINE INDICATOR */
+  .timeline-bar {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 0;
+    background: rgba(17,26,69,0.7); border-bottom: 1px solid rgba(255,106,0,0.15);
+    overflow-x: auto; padding: 0 6rem;
+  }
+  .tl-item {
+    flex-shrink: 0; padding: 1.2rem 2rem; border-right: 1px solid rgba(255,106,0,0.1);
+    font-family: 'Orbitron', monospace; font-size: 0.55rem; letter-spacing: 0.2em;
+    color: var(--cool-gray); text-align: center; cursor: pointer;
+    transition: background 0.2s, color 0.2s; text-transform: uppercase;
+  }
+  .tl-item:hover, .tl-item.tl-active {
+    background: rgba(255,106,0,0.1); color: var(--orange);
+  }
+  .tl-year { font-size: 1rem; font-weight: 700; color: var(--star-white); display: block; margin-bottom: 2px; }
+
+  /* MISSION CARDS */
+  .missions-section {
+    position: relative; z-index: 1; padding: 5rem 6rem;
+  }
+
+  .mission-card {
+    display: grid; grid-template-columns: 340px 1fr;
+    background: var(--card-bg); border: 1px solid rgba(255,106,0,0.15);
+    margin-bottom: 2rem; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+  .mission-card:hover {
+    border-color: rgba(255,106,0,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(255,106,0,0.05);
+  }
+  .mission-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .mission-card:hover::before { transform: scaleX(1); }
+
+  .mission-img {
+    position: relative; overflow: hidden; min-height: 240px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mission-img-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.5s ease;
+  }
+  .mission-card:hover .mission-img-bg { transform: scale(1.06); }
+
+  .mi-1 { background: linear-gradient(135deg, #0a1535 0%, #1e3070 40%, #2d1f5e 100%); }
+  .mi-2 { background: linear-gradient(135deg, #1a2a0a 0%, #2a4020 40%, #1a3040 100%); }
+  .mi-3 { background: linear-gradient(135deg, #1a0a0a 0%, #3a1520 40%, #200a30 100%); }
+  .mi-4 { background: linear-gradient(135deg, #050a25 0%, #0f2050 40%, #1a1040 100%); }
+  .mi-5 { background: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 40%, #0f2030 100%); }
+  .mi-6 { background: linear-gradient(135deg, #1a1505 0%, #352a10 40%, #201a05 100%); }
+
+  .mission-icon {
+    position: relative; z-index: 1; font-size: 5rem; opacity: 0.6;
+    filter: drop-shadow(0 0 20px rgba(255,106,0,0.3));
+  }
+  .mission-status-badge {
+    position: absolute; top: 1rem; left: 1rem; z-index: 2;
+    font-family: 'Orbitron', monospace; font-size: 0.5rem; letter-spacing: 0.2em;
+    padding: 0.3rem 0.7rem; text-transform: uppercase;
+    border: 1px solid; backdrop-filter: blur(8px);
+  }
+  .status-complete { color: #00ff88; border-color: rgba(0,255,136,0.4); background: rgba(0,255,136,0.1); }
+  .status-active { color: var(--orange); border-color: var(--border-glow); background: rgba(255,106,0,0.1); }
+  .status-planned { color: #aabbff; border-color: rgba(170,187,255,0.3); background: rgba(170,187,255,0.07); }
+  .status-ongoing { color: #ffcc44; border-color: rgba(255,204,68,0.4); background: rgba(255,204,68,0.1); }
+
+  .mission-mission-num {
+    position: absolute; bottom: 1rem; right: 1rem; z-index: 2;
+    font-family: 'Orbitron', monospace; font-size: 2.5rem; font-weight: 900;
+    color: rgba(255,255,255,0.06); line-height: 1;
+  }
+
+  .mission-info { padding: 2.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .mission-meta {
+    display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;
+    font-family: 'Orbitron', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--cool-gray);
+    text-transform: uppercase;
+  }
+  .mission-meta span { color: var(--orange); }
+  .mission-name {
+    font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 2vw, 1.7rem);
+    font-weight: 700; color: var(--star-white); margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .mission-subtitle {
+    font-size: 0.8rem; color: var(--orange); letter-spacing: 0.15em;
+    font-family: 'Orbitron', monospace; margin-bottom: 1.2rem;
+  }
+  .mission-desc {
+    font-size: 0.92rem; line-height: 1.75; color: var(--cool-gray);
+    margin-bottom: 1.5rem; max-width: 600px;
+  }
+  .mission-tags {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+  .tag {
+    font-family: 'Orbitron', monospace; font-size: 0.5rem; letter-spacing: 0.15em;
+    padding: 0.25rem 0.6rem; border: 1px solid rgba(255,106,0,0.2);
+    color: var(--cool-gray); text-transform: uppercase;
+    background: rgba(255,106,0,0.04);
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 1; padding: 3rem 6rem;
+    border-top: 1px solid rgba(255,106,0,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,15,46,0.8);
+  }
+  .footer-brand {
+    font-family: 'Orbitron', monospace; font-size: 0.8rem;
+    font-weight: 700; color: var(--orange); letter-spacing: 0.2em;
+  }
+  .footer-copy { font-size: 0.75rem; color: var(--cool-gray); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a {
+    font-size: 0.65rem; letter-spacing: 0.2em; color: var(--cool-gray);
+    text-decoration: none; font-family: 'Orbitron', monospace;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-emblem">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#ff6a00" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="10" stroke="#ff6a00" stroke-width="1" stroke-dasharray="2 3"/>
+        <path d="M20 5 L23 17 L20 20 L17 17 Z" fill="#ff6a00"/>
+        <circle cx="20" cy="20" r="3" fill="#ff6a00"/>
+      </svg>
+    </div>
+    <div class="nav-brand">KSA <span>Kacentina Space Administration</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="crew.html">Crew</a></li>
+    <li><a href="missions.html" class="active">Missions</a></li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <div class="nav-status"><div class="status-dot"></div>Mission Active</div>
+</nav>
+
+<header class="page-header">
+  <div class="page-kicker">Mission Directorate — KSA</div>
+  <h1>Our Missions</h1>
+  <p class="page-desc">Every mission carries the ambition of an entire nation. From our first orbital triumph to our long horizon deep space plans, Kacentina reaches forward — for knowledge, for humanity, for the future.</p>
+</header>
+
+<div class="timeline-bar">
+  <div class="tl-item"><span class="tl-year">2020</span>Vanguard I</div>
+  <div class="tl-item"><span class="tl-year">2021</span>Horizon I</div>
+  <div class="tl-item"><span class="tl-year">2022</span>KSS Estab.</div>
+  <div class="tl-item"><span class="tl-year">2023</span>Nexus Deploy</div>
+  <div class="tl-item"><span class="tl-year">2024</span>Argent I</div>
+  <div class="tl-item  tl-active"><span class="tl-year">2026</span>KSS Mission - Upcoming</div>
+  <div class="tl-item"><span class="tl-year">2027</span>Argent II</div>
+</div>
+
+<section class="missions-section">
+
+  <!-- MISSION 1 -->
+  <div class="mission-card">
+    <div class="mission-img">
+      <div class="mission-img-bg mi-1"></div>
+      <div class="mission-icon">🚀</div>
+      <span class="mission-status-badge status-complete">Complete</span>
+      <div class="mission-mission-num">01</div>
+    </div>
+    <div class="mission-info">
+      <div class="mission-meta">
+        <span>2020 — LEO</span> · Duration: 14 Days · Crew: 2
+      </div>
+      <div class="mission-name">Vanguard I</div>
+      <div class="mission-subtitle">Kacentina's First Crewed Orbital Mission</div>
+      <p class="mission-desc">
+        The mission that made history. In September 2020, Kacentina joined the world's spacefaring nations with the successful launch of Vanguard I — a two-person orbital mission aboard the KSA-developed Solus capsule. Commander Solaris and pilot Venn orbited Earth for 14 days, conducting atmospheric measurements and demonstrating critical systems that would form the backbone of every mission to follow. Vanguard I proved that Kacentina had earned its place among the stars — and that a nation's will, focused correctly, can achieve anything.
+      </p>
+      <div class="mission-tags">
+        <span class="tag">Crewed Orbital</span>
+        <span class="tag">Atmospheric Science</span>
+        <span class="tag">Systems Test</span>
+        <span class="tag">National First</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 2 -->
+  <div class="mission-card">
+    <div class="mission-img">
+      <div class="mission-img-bg mi-2"></div>
+      <div class="mission-icon">🌍</div>
+      <span class="mission-status-badge status-complete">Complete</span>
+      <div class="mission-mission-num">02</div>
+    </div>
+    <div class="mission-info">
+      <div class="mission-meta">
+        <span>2021 — LEO / Climate Orbit</span> · Duration: 28 Days · Crew: 3
+      </div>
+      <div class="mission-name">Horizon I</div>
+      <div class="mission-subtitle">Environmental Sentinel & Extended Orbit Research</div>
+      <p class="mission-desc">
+        Horizon I expanded Kacentina's orbital ambitions with a 28-day mission focused entirely on the planet below. The crew conducted multispectral imaging of Kacentina's coastline, monitored deforestation corridors in the southern highlands, and deployed the first Sentinel-A buoy for atmospheric CO₂ tracking. The data returned directly informed Kacentina's landmark Green Covenant environmental legislation passed in 2022. Space technology in service of the people — that was Horizon I's mandate, and it delivered.
+      </p>
+      <div class="mission-tags">
+        <span class="tag">Climate Research</span>
+        <span class="tag">Remote Sensing</span>
+        <span class="tag">Extended Duration</span>
+        <span class="tag">Policy Impact</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 3 -->
+  <div class="mission-card">
+    <div class="mission-img">
+      <div class="mission-img-bg mi-3"></div>
+      <div class="mission-icon">🛸</div>
+      <span class="mission-status-badge status-complete">Complete</span>
+      <div class="mission-mission-num">03</div>
+    </div>
+    <div class="mission-info">
+      <div class="mission-meta">
+        <span>2022 — LEO Station</span> · Duration: 180 Days · Crew: 4
+      </div>
+      <div class="mission-name">Station Founding — KSS Kacentina</div>
+      <div class="mission-subtitle">Establishment of the Kacentina Space Station</div>
+      <p class="mission-desc">
+        The most complex undertaking in our nation's scientific history. Beginning in March 2022, a series of four uncrewed launches deployed the core modules of the Kacentina Space Station — habitation ring, research laboratory, and power array — before the inaugural crew of four arrived to bring it to life. KSS Kacentina is now a permanent research outpost capable of hosting six astronauts, conducting materials science experiments, growing food in microgravity, and serving as a staging hub for future deep-space missions. It is the greatest engineering achievement in Kacentinan history.
+      </p>
+      <div class="mission-tags">
+        <span class="tag">Station Construction</span>
+        <span class="tag">Habitation</span>
+        <span class="tag">Long Duration</span>
+        <span class="tag">Landmark Mission</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 4 -->
+  <div class="mission-card">
+    <div class="mission-img">
+      <div class="mission-img-bg mi-4"></div>
+      <div class="mission-icon">🛰️</div>
+      <span class="mission-status-badge status-complete">Complete</span>
+      <div class="mission-mission-num">04</div>
+    </div>
+    <div class="mission-info">
+      <div class="mission-meta">
+        <span>2023 — GEO / MEO</span> · Duration: 7 Days · Crew: Uncrewed
+      </div>
+      <div class="mission-name">Nexus Network Deploy</div>
+      <div class="mission-subtitle">Three-Satellite Climate & Communications Constellation</div>
+      <p class="mission-desc">
+        Nexus was Kacentina's most ambitious uncrewed mission — simultaneously deploying three satellites into precise orbital positions to form a complete surveillance and communications network. Nexus-1 monitors ocean temperature and storm formation. Nexus-2 provides agricultural yield prediction through multispectral soil analysis. Nexus-3 enables high-bandwidth rural communications for over 2 million Kacentinans who previously lacked reliable connectivity. The Nexus network is proof that space investment pays direct dividends to every citizen.
+      </p>
+      <div class="mission-tags">
+        <span class="tag">Satellite Network</span>
+        <span class="tag">Uncrewed</span>
+        <span class="tag">Infrastructure</span>
+        <span class="tag">Public Benefit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 5 -->
+  <div class="mission-card">
+    <div class="mission-img">
+      <div class="mission-img-bg mi-5"></div>
+      <div class="mission-icon">🌙</div>
+      <span class="mission-status-badge status-complete">Complete</span>
+      <div class="mission-mission-num">05</div>
+    </div>
+    <div class="mission-info">
+      <div class="mission-meta">
+        <span>2024 — Lunar Flyby</span> · Duration: 12 Days · Crew: Uncrewed
+      </div>
+      <div class="mission-name">Argent I</div>
+      <div class="mission-subtitle">Lunar Survey — Orbital Mapping</div>
+      <p class="mission-desc">
+        Argent I was Kacentina's first mission to leave Earth orbit — a robotic lunar survey that mapped 40% of the Moon's southern polar region with unprecedented resolution. The mission's primary objective was identifying viable landing zones and subsurface water ice deposits for the crewed Argent II mission planned for 2027. Argent I's return of over 4 terabytes of topographic data placed Kacentina among the world's leading contributors to lunar science and validated the deep-space propulsion system developed over three years of classified testing.
+      </p>
+      <div class="mission-tags">
+        <span class="tag">Lunar</span>
+        <span class="tag">Robotic Survey</span>
+        <span class="tag">Deep Space</span>
+        <span class="tag">Precursor Mission</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 6 — ACTIVE -->
+  <div class="mission-card">
+    <div class="mission-img">
+      <div class="mission-img-bg mi-1"></div>
+      <div class="mission-icon">⚗️</div>
+      <span class="mission-status-badge status-ongoing">Upcoming</span>
+      <div class="mission-mission-num">06</div>
+    </div>
+    <div class="mission-info">
+      <div class="mission-meta">
+        <span>2026 — Moon Mission</span> · Duration: 3 months · Crew: 4
+      </div>
+      <div class="mission-name">KMM Valdoria</div>
+      <div class="mission-subtitle">Moon Mission - Cheese Harvest</div>
+      <p class="mission-desc">
+        The upcoming crew of the KMM Valdoria, Commander Solaris, Lt. Cmdr. Venn, Dr. Saetang, and Sr. Eng. Rael are one week away from their launch destined for the Moon. The goal of the mission includes a 120-day moon-cheese harvest based on Dr. Saetang's groundbreaking discovery, a vast deposit of space dairy products that could potentially relieve the cheese shortage felt by the world at large. With experiments developed by the Kacentina Technical University, the crew will set up mining operations and return protocols for the largest moon harvest in history. This mission will provide enough moon-cheese to place Kacentina as the leading cheese supplier on the planet, ensuring no human being ever has to be without again. KMM Valdoria also serves as the engineering team that will establish a base of operations for return missions starting with the upcoming 2027 Argent II lunar base establishment — humanity's first interstellar occupation.
+      </p>
+      <div class="mission-tags">
+        <span class="tag">Active Mission</span>
+        <span class="tag">Station Science</span>
+        <span class="tag">Medical Research</span>
+        <span class="tag">Argent II Prep</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 7 — PLANNED -->
+  <div class="mission-card">
+    <div class="mission-img">
+      <div class="mission-img-bg mi-6"></div>
+      <div class="mission-icon">🌕</div>
+      <span class="mission-status-badge status-planned">Planned — 2027</span>
+      <div class="mission-mission-num">07</div>
+    </div>
+    <div class="mission-info">
+      <div class="mission-meta">
+        <span>2027 — Lunar Surface</span> · Duration: 21 Days · Crew: 3
+      </div>
+      <div class="mission-name">Argent II</div>
+      <div class="mission-subtitle">Kacentina's Crewed Lunar Landing — First of a New Era</div>
+      <p class="mission-desc">
+        Argent II is the defining mission of Kacentina's first space decade — after landing at the site established by the KMM Valdoria, the crew will begin collecting subsurface moon-cheese varieties and establish a sustainable research shelter for moon-occupation. If successful, Kacentina will become the first nation in history to house humans on the Moon. But the mission's purpose runs deeper than national pride: the cheese data collected could redefine our understanding of the early solar system and serve as a permanent lunar base serving all of humanity.
+      </p>
+      <div class="mission-tags">
+        <span class="tag">Crewed Lunar Landing</span>
+        <span class="tag">Rover Deployment</span>
+        <span class="tag">Ice Core Sampling</span>
+        <span class="tag">Historic Mission</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="crew.html">Crew</a></li>
+    <li><a href="missions.html">Missions</a></li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
+</footer>
+</body>
+</html>
