@@ -6,260 +6,7 @@
 <title>KSA — Crew</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0a0f2e;
-    --navy-mid: #111a45;
-    --navy-light: #1a2a6c;
-    --orange: #ff6a00;
-    --orange-hot: #ff8c00;
-    --orange-glow: rgba(255,106,0,0.25);
-    --star-white: #e8f0ff;
-    --cool-gray: #8899bb;
-    --card-bg: rgba(17,26,69,0.85);
-    --border-glow: rgba(255,106,0,0.4);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background-color: var(--navy);
-    color: var(--star-white);
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 35% 55%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 55% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
-      radial-gradient(1px 1px at 75% 35%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 90% 70%, rgba(255,255,255,0.8) 0%, transparent 100%),
-      radial-gradient(1px 1px at 8% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 62% 88%, rgba(255,255,255,0.6) 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* NAV — same as index */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 4rem; height: 70px;
-    background: rgba(10,15,46,0.92); backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-glow);
-  }
-  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .nav-emblem { width: 40px; height: 40px; }
-  .nav-emblem svg { width: 100%; height: 100%; }
-  .nav-brand {
-    font-family: 'Orbitron', monospace; font-weight: 900; font-size: 1.1rem;
-    letter-spacing: 0.2em; color: var(--orange);
-  }
-  .nav-brand span {
-    display: block; font-size: 0.5rem; color: var(--cool-gray);
-    letter-spacing: 0.35em; font-weight: 400; margin-top: -2px;
-  }
-  .nav-links { display: flex; gap: 0; list-style: none; }
-  .nav-links a {
-    display: block; padding: 0 1.5rem; height: 70px; line-height: 70px;
-    font-family: 'Orbitron', monospace; font-size: 0.65rem; font-weight: 600;
-    letter-spacing: 0.2em; color: var(--cool-gray); text-decoration: none;
-    text-transform: uppercase; transition: color 0.2s; position: relative;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
-    height: 2px; background: var(--orange); transition: left 0.3s, right 0.3s;
-  }
-  .nav-links a:hover, .nav-links a.active { color: var(--star-white); }
-  .nav-links a:hover::after, .nav-links a.active::after { left: 1.5rem; right: 1.5rem; }
-  .nav-status {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 0.65rem; letter-spacing: 0.15em; color: var(--cool-gray);
-    font-family: 'Orbitron', monospace;
-  }
-  .status-dot {
-    width: 7px; height: 7px; background: #00ff88; border-radius: 50%;
-    animation: pulse 2s infinite; box-shadow: 0 0 6px #00ff88;
-  }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-  /* PAGE HEADER */
-  .page-header {
-    position: relative; z-index: 1; padding: 140px 6rem 5rem;
-    background: linear-gradient(180deg, rgba(26,42,108,0.3) 0%, transparent 100%);
-    border-bottom: 1px solid rgba(255,106,0,0.15);
-    overflow: hidden;
-  }
-  .page-header::after {
-    content: 'CREW';
-    position: absolute; right: -2rem; top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Orbitron', monospace; font-size: 12rem; font-weight: 900;
-    color: rgba(255,106,0,0.04); line-height: 1; pointer-events: none;
-    letter-spacing: -0.05em;
-  }
-  .page-kicker {
-    font-family: 'Orbitron', monospace; font-size: 0.6rem;
-    letter-spacing: 0.4em; color: var(--orange); margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 1rem;
-  }
-  .page-kicker::before {
-    content: ''; display: block; width: 40px; height: 1px; background: var(--orange);
-  }
-  h1 {
-    font-family: 'Orbitron', monospace; font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 900; letter-spacing: 0.05em; color: var(--star-white);
-    margin-bottom: 1rem;
-  }
-  .page-desc {
-    font-size: 1rem; color: var(--cool-gray); max-width: 600px; line-height: 1.8;
-  }
-
-  /* CREW TABLE */
-  .crew-table-section {
-    position: relative; z-index: 1;
-    background: rgba(17,26,69,0.7); border-bottom: 1px solid rgba(255,106,0,0.15);
-    padding: 2.5rem 6rem;
-  }
-  .crew-table {
-    width: 100%; border-collapse: collapse;
-    font-family: 'Orbitron', monospace;
-  }
-  .crew-table th {
-    font-size: 0.6rem; letter-spacing: 0.3em; color: var(--orange);
-    text-transform: uppercase; text-align: left; padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border-glow);
-  }
-  .crew-table td {
-    padding: 0.85rem 1rem; font-size: 0.75rem; letter-spacing: 0.08em;
-    color: var(--star-white); border-bottom: 1px solid rgba(255,106,0,0.08);
-  }
-  .crew-table tr:hover td { background: rgba(255,106,0,0.05); }
-  .crew-table a {
-    color: var(--cool-gray); text-decoration: none;
-    transition: color 0.2s; display: flex; align-items: center; gap: 8px;
-  }
-  .crew-table a::before {
-    content: '→'; color: var(--orange); font-size: 0.8rem;
-    transition: transform 0.2s;
-  }
-  .crew-table a:hover { color: var(--orange); }
-  .crew-table a:hover::before { transform: translateX(4px); }
-  .crew-badge {
-    display: inline-block; padding: 0.2rem 0.6rem;
-    border: 1px solid var(--border-glow); font-size: 0.55rem;
-    letter-spacing: 0.15em; color: var(--orange);
-    background: rgba(255,106,0,0.08);
-  }
-
-  /* CREW BIOS */
-  .section { position: relative; z-index: 1; padding: 5rem 6rem; }
-  .section-header {
-    display: flex; align-items: baseline; gap: 2rem; margin-bottom: 3rem;
-  }
-  .section-label {
-    font-family: 'Orbitron', monospace; font-size: 0.6rem;
-    letter-spacing: 0.4em; color: var(--orange); text-transform: uppercase; white-space: nowrap;
-  }
-  h2 {
-    font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 2vw, 1.8rem);
-    font-weight: 700; letter-spacing: 0.08em; color: var(--star-white);
-  }
-  .section-line {
-    flex: 1; height: 1px;
-    background: linear-gradient(90deg, rgba(255,106,0,0.3), transparent);
-  }
-
-  /* CREW CARD */
-  .crew-card {
-    display: grid; grid-template-columns: 220px 1fr;
-    background: var(--card-bg); border: 1px solid rgba(255,106,0,0.15);
-    margin-bottom: 1.5rem; overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
-  }
-  .crew-card:hover {
-    border-color: rgba(255,106,0,0.4);
-    transform: translateX(6px);
-  }
-
-  .crew-avatar {
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #0d1840, #1a2a6c);
-    min-height: 200px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-  }
-  .avatar-circle {
-    width: 110px; height: 110px; border-radius: 50%;
-    border: 2px solid var(--orange);
-    background: linear-gradient(135deg, #1a2a6c, #0a0f2e);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem; margin-bottom: 1rem;
-    box-shadow: 0 0 20px var(--orange-glow);
-  }
-  .avatar-rank {
-    font-family: 'Orbitron', monospace; font-size: 0.5rem;
-    letter-spacing: 0.3em; color: var(--orange); text-transform: uppercase;
-    text-align: center;
-  }
-  .avatar-stripe {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 3px; background: linear-gradient(90deg, var(--orange), transparent);
-  }
-
-  .crew-info { padding: 2rem 2.5rem; }
-  .crew-name {
-    font-family: 'Orbitron', monospace; font-size: 1.3rem; font-weight: 700;
-    color: var(--star-white); margin-bottom: 0.3rem;
-  }
-  .crew-title {
-    font-size: 0.75rem; letter-spacing: 0.2em; color: var(--orange);
-    text-transform: uppercase; margin-bottom: 1.2rem;
-    font-family: 'Orbitron', monospace; font-weight: 600;
-  }
-  .crew-bio {
-    font-size: 0.92rem; line-height: 1.75; color: var(--cool-gray);
-    margin-bottom: 1.5rem; max-width: 650px;
-  }
-  .crew-stats {
-    display: flex; gap: 2rem; flex-wrap: wrap;
-  }
-  .crew-stat {
-    display: flex; flex-direction: column; gap: 2px;
-  }
-  .cs-value {
-    font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700;
-    color: var(--orange);
-  }
-  .cs-label {
-    font-size: 0.62rem; letter-spacing: 0.2em; color: var(--cool-gray);
-    text-transform: uppercase;
-  }
-
-  /* FOOTER */
-  footer {
-    position: relative; z-index: 1; padding: 3rem 6rem;
-    border-top: 1px solid rgba(255,106,0,0.1);
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(10,15,46,0.8);
-  }
-  .footer-brand {
-    font-family: 'Orbitron', monospace; font-size: 0.8rem;
-    font-weight: 700; color: var(--orange); letter-spacing: 0.2em;
-  }
-  .footer-copy { font-size: 0.75rem; color: var(--cool-gray); letter-spacing: 0.1em; }
-  .footer-links { display: flex; gap: 2rem; list-style: none; }
-  .footer-links a {
-    font-size: 0.65rem; letter-spacing: 0.2em; color: var(--cool-gray);
-    text-decoration: none; font-family: 'Orbitron', monospace;
-    text-transform: uppercase; transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--orange); }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -286,7 +33,7 @@
 </nav>
 
 <!-- PAGE HEADER -->
-<header class="page-header">
+<header class="page-header page-header--crew">
   <div class="page-kicker">Personnel Division — KSA</div>
   <h1>Pioneer Crew</h1>
   <p class="page-desc">The men and women who carry Kacentina's hope beyond the atmosphere. Selected from thousands, trained for years, trusted with everything.</p>
@@ -383,7 +130,6 @@
     <h2>Astronauts</h2>
     <div class="section-line"></div>
   </div>
-
   <div class="crew-card">
     <div class="crew-avatar">
       <img src="images/Chedda_McSwagga.png">
@@ -405,23 +151,67 @@
     </div>
   </div>
 
+    <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/Par_Mesan.png">
+      <div class="avatar-rank">Lead Pilot</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Par Mesan</div>
+      <div class="crew-title">Lead Pilot — KMM Valdoria</div>
+      <p class="crew-bio">
+        A decorated pilot and aerospace engineer from Veloria, Tariq Solaris has spent 22 years in service to Kacentina's defense and scientific programs. Selected as KSA's first mission commander in 2021, Cmdr. Solaris has led three orbital missions and logged over 200 days in space. His calm authority and technical brilliance are credited with saving Rotation IV's crew during a critical pressure loss event aboard the station. Off-duty, he mentors youth through the NextGen Explorers initiative and holds a doctorate in orbital mechanics from the Kacentina Institute of Technology.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">1</span><span class="cs-label">Missions</span></div>
+        <div class="crew-stat"><span class="cs-value">33</span><span class="cs-label">Days in Space</span></div>
+        <div class="crew-stat"><span class="cs-value">2023</span><span class="cs-label">KSA Class</span></div>
+        <div class="crew-stat"><span class="cs-value">1</span><span class="cs-label">EVA</span></div>
+      </div>
+    </div>
+  </div>
+
   <div class="crew-card">
     <div class="crew-avatar">
-      <div class="avatar-circle">👨‍🚀</div>
+      <img src="images/Sek_SiVaan.png">
       <div class="avatar-rank">Systems Engineer</div>
       <div class="avatar-stripe"></div>
     </div>
     <div class="crew-info">
       <div class="crew-name">Sek SivAan</div>
-      <div class="crew-title">Mission Commander — KSS Rotation VII</div>
+      <div class="crew-title">Systems Engineer — KMM Valdoria</div>
       <p class="crew-bio">
         A decorated pilot and aerospace engineer from Veloria, Tariq Solaris has spent 22 years in service to Kacentina's defense and scientific programs. Selected as KSA's first mission commander in 2021, Cmdr. Solaris has led three orbital missions and logged over 200 days in space. His calm authority and technical brilliance are credited with saving Rotation IV's crew during a critical pressure loss event aboard the station. Off-duty, he mentors youth through the NextGen Explorers initiative and holds a doctorate in orbital mechanics from the Kacentina Institute of Technology.
       </p>
       <div class="crew-stats">
-        <div class="crew-stat"><span class="cs-value">3</span><span class="cs-label">Missions</span></div>
-        <div class="crew-stat"><span class="cs-value">214</span><span class="cs-label">Days in Space</span></div>
-        <div class="crew-stat"><span class="cs-value">2021</span><span class="cs-label">KSA Class</span></div>
-        <div class="crew-stat"><span class="cs-value">6</span><span class="cs-label">EVAs</span></div>
+        <div class="crew-stat"><span class="cs-value">4</span><span class="cs-label">Missions</span></div>
+        <div class="crew-stat"><span class="cs-value">308</span><span class="cs-label">Days in Space</span></div>
+        <div class="crew-stat"><span class="cs-value">2019</span><span class="cs-label">KSA Class</span></div>
+        <div class="crew-stat"><span class="cs-value">8</span><span class="cs-label">EVAs</span></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/">
+      <div class="avatar-rank">Mission Specialist</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Colby Lore</div>
+      <div class="crew-title">Mission Specialist — KMM Valdoria</div>
+      <p class="crew-bio">
+        A decorated pilot and aerospace engineer from Veloria, Tariq Solaris has spent 22 years in service to Kacentina's defense and scientific programs. Selected as KSA's first mission commander in 2021, Cmdr. Solaris has led three orbital missions and logged over 200 days in space. His calm authority and technical brilliance are credited with saving Rotation IV's crew during a critical pressure loss event aboard the station. Off-duty, he mentors youth through the NextGen Explorers initiative and holds a doctorate in orbital mechanics from the Kacentina Institute of Technology.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">2</span><span class="cs-label">Missions</span></div>
+        <div class="crew-stat"><span class="cs-value">67</span><span class="cs-label">Days in Space</span></div>
+        <div class="crew-stat"><span class="cs-value">2022</span><span class="cs-label">KSA Class</span></div>
+        <div class="crew-stat"><span class="cs-value">3</span><span class="cs-label">EVAs</span></div>
       </div>
     </div>
   </div>
@@ -430,15 +220,15 @@
 <!-- BIOS: Mission Control -->
 <section class="section" id="mc" style="padding-top:1rem;">
   <div class="section-header">
-    <div class="section-label">// Flight Operations</div>
-    <h2>Pilots</h2>
+    <div class="section-label">// Mission Control</div>
+    <h2>Valdoria Ground Support</h2>
     <div class="section-line"></div>
   </div>
 
   <div class="crew-card">
     <div class="crew-avatar">
-      <div class="avatar-circle">👩‍✈️</div>
-      <div class="avatar-rank">Lead Pilot</div>
+      <img src="images/unc_farquaad.png">
+      <div class="avatar-rank">Guidance and Navigation</div>
       <div class="avatar-stripe"></div>
     </div>
     <div class="crew-info">
