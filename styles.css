@@ -371,7 +371,7 @@ h1 {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 6rem 4rem 4rem 2rem;
+  padding: 4rem 4rem 3rem 2rem;
 }
 
 .hero-kicker {
@@ -418,7 +418,7 @@ h1 em {
 
 .hero-image-panel {
   position: relative;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -458,8 +458,8 @@ h1 em {
 .launch-graphic { position: relative; z-index: 2; text-align: center; }
 
 .launch-graphic svg {
-  width: 280px; height: 380px;
-  filter: drop-shadow(0 0 40px rgba(255,106,0,0.4));
+  width: 420px; height: 580px;
+  filter: drop-shadow(0 0 60px rgba(255,106,0,0.55));
   animation: float 6s ease-in-out infinite;
 }
 
@@ -594,11 +594,18 @@ blockquote span { color: var(--orange); }
 .gallery-item:first-child { grid-row: span 2; }
 
 .gallery-placeholder {
+  position: relative;
   width: 100%; height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5rem;
+  overflow: hidden;
   transition: transform 0.5s ease;
+}
+
+.gallery-placeholder img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .gallery-item:hover .gallery-placeholder { transform: scale(1.04); }
@@ -610,6 +617,9 @@ blockquote span { color: var(--orange); }
 .gp-5 { background: linear-gradient(135deg, #0a1a0a 0%, #1a4a1a 50%, #0d2a1a 100%); }
 
 .gallery-label {
+  position: absolute;
+  bottom: 0; left: 0;
+  z-index: 1;
   font-family: 'Orbitron', monospace;
   font-size: 0.6rem;
   letter-spacing: 0.25em;
