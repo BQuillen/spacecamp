@@ -1346,6 +1346,13 @@ blockquote span { color: var(--orange); }
 
 .hazelia-watch-card:hover { border-color: rgba(204,26,26,0.4); }
 
+.hazelia-watch-card img {
+  display: block;
+  width: calc(100% + 2.5rem);
+  margin: 0.75rem -1.25rem -1.25rem;
+  height: auto;
+}
+
 .hw-label { font-family: 'Orbitron', monospace; font-size: 0.45rem; letter-spacing: 0.2em; color: var(--hazelia-accent); margin-bottom: 0.4rem; text-transform: uppercase; }
 .hw-text  { font-size: 0.78rem; color: var(--cool-gray); line-height: 1.5; }
 .hw-date  { font-family: 'Orbitron', monospace; font-size: 0.43rem; color: rgba(204,26,26,0.5); margin-top: 0.4rem; letter-spacing: 0.1em; }
