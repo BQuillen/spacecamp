@@ -5,7 +5,7 @@ KACENTINA STORY DETAILS
 Crew:
     1. 
     2.
-    3. Dr. Jibby Saetang 
+    3.
     4.
 
 Lunar Mission - 2026
