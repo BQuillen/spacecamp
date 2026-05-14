@@ -164,6 +164,15 @@ body.article-page nav { background: rgba(10,15,46,0.96); }
   box-shadow: 0 0 6px #00ff88;
 }
 
+.launch-countdown {
+  display: block;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.55rem;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
