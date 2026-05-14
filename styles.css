@@ -1109,7 +1109,7 @@ blockquote span { color: var(--orange); }
   grid-template-columns: 1fr 360px;
 }
 
-.news-feed { padding: 4rem 4rem 4rem 6rem; border-right: 1px solid rgba(255,106,0,0.1); }
+.news-feed { padding: 4rem 4rem 4rem 6rem; border-right: 1px solid rgba(255,106,0,0.1); min-width: 0; }
 
 .feed-section { margin-bottom: 3rem; }
 
@@ -1153,18 +1153,22 @@ blockquote span { color: var(--orange); }
 .news-featured:hover { border-color: var(--border-glow); }
 
 .featured-img {
-  height: 200px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 5rem;
   position: relative;
   overflow: hidden;
 }
 
 .fi-bg  { position: absolute; inset: 0; }
 .fi-1   { background: linear-gradient(135deg, #0a1535 0%, #1e3070 50%, #2d1f5e 100%); }
+
+.featured-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
 .fi-icon { position: relative; z-index: 1; opacity: 0.5; filter: drop-shadow(0 0 15px rgba(255,106,0,0.4)); }
 
 .featured-body { padding: 2rem; }
