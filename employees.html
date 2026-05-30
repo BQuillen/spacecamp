@@ -1,1 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSA — Employees</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-emblem">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#ff6a00" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="10" stroke="#ff6a00" stroke-width="1" stroke-dasharray="2 3"/>
+        <path d="M20 5 L23 17 L20 20 L17 17 Z" fill="#ff6a00"/>
+        <circle cx="20" cy="20" r="3" fill="#ff6a00"/>
+      </svg>
+    </div>
+    <div class="nav-brand">KSA <span>Kacentina Space Administration</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-dropdown">
+      <a href="crew.html" class="active">Kacentina Staff</a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="crew.html">Crew</a></li>
+        <li><a href="employees.html" class="active">Employees</a></li>
+      </ul>
+    </li>
+    <li><a href="missions.html">Missions</a></li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <div class="nav-status"><div class="status-dot"></div><div>Mission Upcoming<span id="launch-countdown" class="launch-countdown"></span></div></div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header page-header--employees">
+  <div class="page-kicker">Personnel Division — KSA</div>
+  <h1>KSA Employees</h1>
+  <p class="page-desc">The dedicated professionals behind every launch. Administrators, engineers, scientists, and specialists who keep Kacentina's space program running every single day.</p>
+</header>
+
+<!-- EMPLOYEE DIRECTORY TABLE -->
+<div class="crew-table-section">
+  <table class="crew-table">
+    <thead>
+      <tr>
+        <th>Employee</th>
+        <th>Title</th>
+        <th>Division</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="#admin">Lorene Shufelt</a></td>
+        <td>Administrative Assistant</td>
+        <td>Administration & Operations</td>
+        <td><span class="crew-badge">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#it">Stacey Anderson</a></td>
+        <td>Help Desk Lead</td>
+        <td>IT & Infrastructure</td>
+        <td><span class="crew-badge" style="color:#00ccff;border-color:rgba(0,204,255,0.3)">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#flight">Kenya Lewis</a></td>
+        <td>Guidance & Navigation Specialist</td>
+        <td>Navigation & Flight Operations</td>
+        <td><span class="crew-badge" style="color:#aabbff;border-color:rgba(170,187,255,0.3)">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#eng">Amanda Cronin</a></td>
+        <td>Software Engineer</td>
+        <td>Mission Software</td>
+        <td><span class="crew-badge">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#research">Oscar Spain</a></td>
+        <td>Research Scientist</td>
+        <td>Planetary Science</td>
+        <td><span class="crew-badge" style="color:#00ff88;border-color:rgba(0,255,136,0.4)">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#it">Miriam Knisley</a></td>
+        <td>IT Administrator</td>
+        <td>IT & Infrastructure</td>
+        <td><span class="crew-badge" style="color:#00ccff;border-color:rgba(0,204,255,0.3)">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#comms">Betty Schaefer</a></td>
+        <td>Communications Specialist</td>
+        <td>Public Affairs</td>
+        <td><span class="crew-badge">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#flight">Emma Rotz</a></td>
+        <td>Mission Control Specialist</td>
+        <td>Navigation & Flight Operations</td>
+        <td><span class="crew-badge" style="color:#aabbff;border-color:rgba(170,187,255,0.3)">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#research">Janeth Thompson</a></td>
+        <td>Research Scientist</td>
+        <td>Planetary Science</td>
+        <td><span class="crew-badge" style="color:#00ff88;border-color:rgba(0,255,136,0.4)">Active</span></td>
+      </tr>
+      <tr>
+        <td><a href="#it">Gerald Trotter</a></td>
+        <td>IT Administrator</td>
+        <td>IT & Infrastructure</td>
+        <td><span class="crew-badge" style="color:#00ccff;border-color:rgba(0,204,255,0.3)">Active</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- BIOS: Administration -->
+<section class="section" id="admin">
+  <div class="section-header">
+    <div class="section-label">// Administration</div>
+    <h2>Administration & Operations</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/lorene_shufelt.png">
+      <div class="avatar-rank">Administrative Assistant</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Lorene Shufelt</div>
+      <div class="crew-title">Administrative Assistant — KSA Personnel Division</div>
+      <p class="crew-bio">
+Lorene Shufelt has been the organizational backbone of the KSA Personnel Division for over a decade, coordinating schedules, managing interdepartmental communications, and somehow keeping everything running on time despite everyone around her doing their best to prevent it. Known across the agency for her encyclopedic knowledge of KSA procedures and her uncanny ability to locate any document filed in the wrong folder, Shufelt has supported six different division heads over her career and quietly outlasted most of them. Her colleagues consider her the most indispensable person in the building — a fact she accepts with calm dignity and an inbox count that would floor most people.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">11</span><span class="cs-label">Years with KSA</span></div>
+        <div class="crew-stat"><span class="cs-value">6</span><span class="cs-label">Division Heads Supported</span></div>
+        <div class="crew-stat"><span class="cs-value">3,400+</span><span class="cs-label">Schedules Coordinated</span></div>
+        <div class="crew-stat"><span class="cs-value">4</span><span class="cs-label">Perfect Attendance Awards</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOS: IT & Infrastructure -->
+<section class="section" id="it" style="padding-top:1rem;">
+  <div class="section-header">
+    <div class="section-label">// IT Division</div>
+    <h2>IT & Infrastructure</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/stacey_anderson.png">
+      <div class="avatar-rank">Help Desk Lead</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Stacey Anderson</div>
+      <div class="crew-title">Help Desk Lead — IT & Infrastructure</div>
+      <p class="crew-bio">
+Stacey Anderson runs the KSA IT Help Desk with a combination of patient efficiency and barely-contained exasperation that her team considers both inspiring and deeply relatable. Since taking over as Help Desk Lead, she has cut average ticket resolution time to under four minutes and built a team capable of handling simultaneous infrastructure crises without completely losing their minds — most of the time. Known for responding to support tickets faster than they can be submitted and for maintaining a comprehensive log of every recurring issue the agency has collectively refused to permanently fix, Anderson is the first call anyone makes when something stops working and the last call they want to make because she will ask if they tried restarting it.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">14,000+</span><span class="cs-label">Tickets Resolved</span></div>
+        <div class="crew-stat"><span class="cs-value">8</span><span class="cs-label">Years in IT Support</span></div>
+        <div class="crew-stat"><span class="cs-value">9</span><span class="cs-label">Team Members Led</span></div>
+        <div class="crew-stat"><span class="cs-value">&lt;4 min</span><span class="cs-label">Avg Response Time</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/miriam_knisley.png">
+      <div class="avatar-rank">IT Administrator</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Miriam Knisley</div>
+      <div class="crew-title">IT Administrator — IT & Infrastructure</div>
+      <p class="crew-bio">
+Miriam Knisley is an IT Administrator responsible for managing server infrastructure, endpoint security, and network monitoring across KSA's primary campus. With thirteen years of experience in enterprise IT, she has built a reputation for maintaining some of the tightest system monitoring logs in the division and catching infrastructure problems before the rest of the team knows they exist. Known for her thorough documentation, her low tolerance for deferred updates, and her legendary ability to diagnose a failing drive by the sound it makes from across the room, Knisley is the quiet, methodical force that keeps KSA's digital infrastructure humming every hour of every day.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">300+</span><span class="cs-label">Systems Managed</span></div>
+        <div class="crew-stat"><span class="cs-value">13</span><span class="cs-label">Years in IT</span></div>
+        <div class="crew-stat"><span class="cs-value">99.97%</span><span class="cs-label">Uptime Maintained</span></div>
+        <div class="crew-stat"><span class="cs-value">1,800+</span><span class="cs-label">Security Patches Deployed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/gerald_trotter.png">
+      <div class="avatar-rank">IT Administrator</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Gerald Trotter</div>
+      <div class="crew-title">IT Administrator — IT & Infrastructure</div>
+      <p class="crew-bio">
+Gerald Trotter manages network infrastructure, system reliability, and server operations for KSA's technical campus. With a decade of experience keeping mission-critical systems online under demanding conditions, Trotter has built a reputation as the person who answers the phone at 2am and sounds fully awake and already working on it. Known for his methodical troubleshooting process, his extensive after-hours availability, and his quiet pride in a network uptime record he considers deeply personal, Trotter is the unsung foundation of KSA's technical reliability — a fact he acknowledges with a shrug and an ongoing request for better monitoring software.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">250+</span><span class="cs-label">Systems Maintained</span></div>
+        <div class="crew-stat"><span class="cs-value">10</span><span class="cs-label">Years in IT</span></div>
+        <div class="crew-stat"><span class="cs-value">900+</span><span class="cs-label">Incidents Resolved</span></div>
+        <div class="crew-stat"><span class="cs-value">Too Many</span><span class="cs-label">After-Hours Callouts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOS: Navigation & Flight Operations -->
+<section class="section" id="flight" style="padding-top:1rem;">
+  <div class="section-header">
+    <div class="section-label">// Flight Operations</div>
+    <h2>Navigation & Mission Support</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/kenya_lewis.png">
+      <div class="avatar-rank">Guidance & Navigation</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Kenya Lewis</div>
+      <div class="crew-title">Guidance & Navigation Specialist — KMM Valdoria Ground Support</div>
+      <p class="crew-bio">
+Kenya Lewis is a Guidance and Navigation Specialist who works alongside the KSA navigation team to calculate and monitor mission trajectories with meticulous precision. Since joining the Ground Operations division, she has earned a reputation for staying perfectly focused through the most complex orbital adjustment windows while her colleagues are still reaching for their morning coffee. Known for producing color-coded flight charts that no one else fully understands and for a genuine, barely-containable enthusiasm for trajectory mechanics, Lewis is considered one of the sharpest technical minds in the Mission Control building — and one of the quieter ones, which somehow makes her even more intimidating.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">7</span><span class="cs-label">Launches Supported</span></div>
+        <div class="crew-stat"><span class="cs-value">5</span><span class="cs-label">Years in GNC</span></div>
+        <div class="crew-stat"><span class="cs-value">2,200+</span><span class="cs-label">Trajectory Analyses</span></div>
+        <div class="crew-stat"><span class="cs-value">12</span><span class="cs-label">Advanced Certifications</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/emma_rotz.png">
+      <div class="avatar-rank">Mission Control</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Emma Rotz</div>
+      <div class="crew-title">Mission Control Specialist — KMM Valdoria Ground Support</div>
+      <p class="crew-bio">
+Emma Rotz is a Mission Control Specialist who monitors telemetry, coordinates communications between flight teams, and manages real-time mission data during active operations. Since joining the Ground Operations team, she has supported five KSA missions and logged over four thousand hours on the control room floor, developing a reputation for calm, reliable performance during high-pressure monitoring windows. Known for her sharp eye for anomalies in live flight data and her habit of arriving fifteen minutes early to every shift with a very large thermos of tea, Rotz is one of the most dependable members of the Mission Control team and the first person everyone looks at when something unexpected shows up on the board.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">5</span><span class="cs-label">Missions Supported</span></div>
+        <div class="crew-stat"><span class="cs-value">3</span><span class="cs-label">Years at KSA</span></div>
+        <div class="crew-stat"><span class="cs-value">4,200+</span><span class="cs-label">Control Hours Logged</span></div>
+        <div class="crew-stat"><span class="cs-value">17</span><span class="cs-label">Anomalies Flagged</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOS: Software Engineering -->
+<section class="section" id="eng" style="padding-top:1rem;">
+  <div class="section-header">
+    <div class="section-label">// Software Engineering</div>
+    <h2>Engineering</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/amanda_cronin.png">
+      <div class="avatar-rank">Software Engineer</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Amanda Cronin</div>
+      <div class="crew-title">Software Engineer — Mission Software Division</div>
+      <p class="crew-bio">
+Amanda Cronin is a Software Engineer in KSA's Mission Software Division, where she designs and maintains the systems that support launch automation and real-time flight telemetry. Since joining the agency, she has contributed to eight major KSA programs and developed a reputation for writing exceptionally clean, well-documented code — something her colleagues appreciate far more than they tend to say out loud. Known for her quiet intensity during development sprints and her surprisingly strong opinions about code formatting standards, Cronin brings both technical rigor and an unexpected sense of humor to every review session, assuming anyone can get her to take the headphones off long enough to attend.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">8</span><span class="cs-label">KSA Systems Contributed</span></div>
+        <div class="crew-stat"><span class="cs-value">1.2M+</span><span class="cs-label">Lines of Code</span></div>
+        <div class="crew-stat"><span class="cs-value">4</span><span class="cs-label">Years at KSA</span></div>
+        <div class="crew-stat"><span class="cs-value">6</span><span class="cs-label">Certifications</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOS: Research & Science -->
+<section class="section" id="research" style="padding-top:1rem;">
+  <div class="section-header">
+    <div class="section-label">// Research Division</div>
+    <h2>Research & Science</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/oscar_spain.png">
+      <div class="avatar-rank">Research Scientist</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Oscar Spain</div>
+      <div class="crew-title">Research Scientist — Planetary Science Division</div>
+      <p class="crew-bio">
+Oscar Spain is a Research Scientist in KSA's Planetary Science Division, specializing in surface composition analysis and geological mapping of extraterrestrial bodies. A prolific researcher with over a dozen published studies to his name, he has been a fixture in KSA's science wing for nearly a decade and has contributed data models to multiple active lunar research programs. Known for his deep expertise in mineralogy, his extremely thorough presentations, and his unshakeable conviction that every geological formation is more interesting than whatever else is currently being discussed, Spain is a highly respected voice in the agency's science community — even when people have quietly started timing his briefings.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">14</span><span class="cs-label">Publications</span></div>
+        <div class="crew-stat"><span class="cs-value">9</span><span class="cs-label">Years at KSA</span></div>
+        <div class="crew-stat"><span class="cs-value">11</span><span class="cs-label">Research Projects</span></div>
+        <div class="crew-stat"><span class="cs-value">400+</span><span class="cs-label">Datasets Analyzed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/janeth_thompson.png">
+      <div class="avatar-rank">Research Scientist</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Janeth Thompson</div>
+      <div class="crew-title">Research Scientist — Planetary Science Division</div>
+      <p class="crew-bio">
+Janeth Thompson is a Research Scientist in KSA's Planetary Science Division, where she focuses on lunar surface analysis and regolith composition studies supporting the agency's long-term lunar exploration objectives. One of KSA's most cited internal researchers, Thompson has contributed to eighteen studies over twelve years with the agency and is known for her deeply collaborative approach and her ability to find meaningful connections across datasets that nobody else thought to compare. She runs the kind of research briefings that people actually leave feeling genuinely excited, which is either a remarkable skill or deeply suspicious, depending on which department you're from.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">18</span><span class="cs-label">Publications</span></div>
+        <div class="crew-stat"><span class="cs-value">12</span><span class="cs-label">Years at KSA</span></div>
+        <div class="crew-stat"><span class="cs-value">8</span><span class="cs-label">Research Projects</span></div>
+        <div class="crew-stat"><span class="cs-value">340+</span><span class="cs-label">Internal Citations</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOS: Communications -->
+<section class="section" id="comms" style="padding-top:1rem;">
+  <div class="section-header">
+    <div class="section-label">// Communications</div>
+    <h2>Communications</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="crew-card">
+    <div class="crew-avatar">
+      <img src="images/betty_schaefer.png">
+      <div class="avatar-rank">Communications Specialist</div>
+      <div class="avatar-stripe"></div>
+    </div>
+    <div class="crew-info">
+      <div class="crew-name">Betty Schaefer</div>
+      <div class="crew-title">Communications Specialist — Public Affairs</div>
+      <p class="crew-bio">
+Betty Schaefer is a Communications Specialist in KSA's Public Affairs office, where she manages media relations, drafts official agency statements, and handles the delicate art of translating complicated aerospace milestones into language the general public finds exciting rather than baffling. Since joining the team, she has written over two hundred press releases and developed a communication style that colleagues describe as polished, precise, and occasionally a little too good at making everything sound calm. Fluent in three languages and in possession of an almost supernatural ability to hit deadlines, Schaefer is the person the agency turns to when it needs to say something important — and say it exactly right.
+      </p>
+      <div class="crew-stats">
+        <div class="crew-stat"><span class="cs-value">200+</span><span class="cs-label">Press Releases Drafted</span></div>
+        <div class="crew-stat"><span class="cs-value">6</span><span class="cs-label">Years in Comms</span></div>
+        <div class="crew-stat"><span class="cs-value">180</span><span class="cs-label">Media Contacts</span></div>
+        <div class="crew-stat"><span class="cs-value">3</span><span class="cs-label">Languages</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="crew.html">Crew</a></li>
+    <li><a href="employees.html">Employees</a></li>
+    <li><a href="missions.html">Missions</a></li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
+</footer>
+<script src="countdown.js"></script>
+</body>
+</html>
