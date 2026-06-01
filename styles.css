@@ -83,17 +83,17 @@ nav {
   justify-content: space-between;
   padding: 0 4rem;
   height: 70px;
-  background: rgba(10,15,46,0.92);
-  backdrop-filter: blur(20px);
+  background: #060d25;
   border-bottom: 1px solid var(--border-glow);
 }
 
-body.article-page nav { background: rgba(10,15,46,0.96); }
+body.article-page nav { background: #060d25; }
 
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
-.nav-emblem { width: 40px; height: 40px; }
+.nav-emblem { width: auto; height: 58px; }
 .nav-emblem svg { width: 100%; height: 100%; }
+.nav-emblem img { width: 100%; height: 100%; object-fit: contain; }
 
 .nav-brand {
   font-family: 'Orbitron', monospace;
