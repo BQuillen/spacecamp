@@ -12,22 +12,22 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">
+  <a href="../index.html" class="nav-logo">
     <div class="nav-emblem">
       <img src="../images/KSA Logo.png" alt="KSA Logo">
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
+    <li><a href="../index.html">Home</a></li>
     <li class="nav-dropdown">
-      <a href="crew.html">Kacentina Staff</a>
+      <a href="../crew.html">Kacentina Staff</a>
       <ul class="nav-dropdown-menu">
-        <li><a href="crew.html">Crew</a></li>
-        <li><a href="employees.html">Employees</a></li>
+        <li><a href="../crew.html">Crew</a></li>
+        <li><a href="../employees.html">Employees</a></li>
       </ul>
     </li>
-    <li><a href="missions.html">Missions</a></li>
-    <li><a href="news.html" class="active">News</a></li>
+    <li><a href="../missions.html">Missions</a></li>
+    <li><a href="../news.html" class="active">News</a></li>
   </ul>
   <div class="nav-status"><div class="status-dot"></div>Mission Upcoming</div>
 </nav>
@@ -40,7 +40,27 @@
     Back to News Feed
   </a>
 
-  <img src="../images/robotpets.png" alt="Robo Pets" style="width:100%;height:calc(100vh - 70px);object-fit:cover;display:block;">
+  <img id="robopet-img" src="../images/robotpets.png" alt="Robo Pets" style="width:100%;height:calc(100vh - 70px);object-fit:contain;display:block;cursor:zoom-in;transition:opacity 0.2s;">
+
+  <!-- Lightbox -->
+  <div id="robopet-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);cursor:zoom-out;align-items:center;justify-content:center;">
+    <img src="../images/robotpets.png" alt="Robo Pets" style="max-width:95vw;max-height:95vh;object-fit:contain;box-shadow:0 0 60px rgba(255,106,0,0.3);">
+    <div style="position:absolute;top:1.2rem;right:1.5rem;color:rgba(255,255,255,0.5);font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.15em;">ESC / CLICK TO CLOSE</div>
+  </div>
+
+  <script>
+    const img = document.getElementById('robopet-img');
+    const lb  = document.getElementById('robopet-lightbox');
+    img.addEventListener('click', () => {
+      lb.style.display = 'flex';
+    });
+    lb.addEventListener('click', () => {
+      lb.style.display = 'none';
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lb.style.display = 'none';
+    });
+  </script>
 
 </div>
 
