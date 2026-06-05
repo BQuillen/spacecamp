@@ -39,6 +39,7 @@
 
 <!-- HERO -->
 <section class="hero">
+  <canvas id="starfield"></canvas>
   <div class="hero-bg"></div>
 
   <div class="hero-content">
@@ -133,7 +134,7 @@
   <blockquote>
     "We look up not because we are restless, but because we are <span>ready</span> — ready to carry the hopes of every Kacentinan into the infinite."
   </blockquote>
-  <p class="quote-attr">— Director Gregory Schloemer, KSA Inaugural Address, 2019</p>
+  <p class="quote-attr">— Director Gregory Schloemer, KSA Inaugural Address, 2012</p>
 </section>
 
 <!-- STATS -->
@@ -258,5 +259,68 @@
 </footer>
 
 <script src="countdown.js"></script>
+<script>
+// Starfield
+(function() {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  const hero = canvas.closest('.hero');
+  let stars = [];
+  function resize() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+    stars = Array.from({ length: 160 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.4 + 0.3,
+      o: Math.random() * 0.7 + 0.2,
+      speed: Math.random() * 0.015 + 0.005
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+      s.o += s.speed * (Math.random() > 0.5 ? 1 : -1);
+      s.o = Math.max(0.1, Math.min(0.9, s.o));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  new ResizeObserver(resize).observe(hero);
+  window.addEventListener('load', resize);
+  resize();
+  draw();
+})();
+
+// Stat counter
+(function() {
+  const stats = document.querySelectorAll('.stat-value');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.textContent, 10);
+      if (isNaN(target)) return;
+      observer.unobserve(el);
+      let start = 0;
+      const duration = 1200;
+      const startTime = performance.now();
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target);
+        if (progress < 1) { requestAnimationFrame(step); }
+        else { el.textContent = target; el.classList.add('counted'); }
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+  stats.forEach(s => observer.observe(s));
+})();
+</script>
 </body>
 </html>
