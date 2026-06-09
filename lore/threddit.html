@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threddit — Think It. Post It. Thread It.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#1a1a1b;--bg-card:#272729;--bg-hover:#313133;--border:#343536;
+  --orange:#ff4500;--orange2:#cc3700;--text:#d7dadc;--muted:#818384;
+  --link:#4fbdff;--upvote:#ff4500;--downvote:#9494ff;--green:#46d160;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
+.nav{position:sticky;top:0;z-index:100;background:#1a1a1b;border-bottom:1px solid var(--border);height:48px;display:flex;align-items:center;padding:0 20px;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-weight:700;font-size:1rem;white-space:nowrap}
+.nav-logo .t-icon{width:32px;height:32px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:1.1rem;flex-shrink:0}
+.nav-logo span em{color:var(--orange);font-style:normal}
+.nav-search{flex:1;max-width:480px;background:var(--bg-hover);border:1px solid var(--border);border-radius:20px;padding:6px 16px;color:var(--text);font-size:0.83rem;outline:none;font-family:'Inter',sans-serif}
+.nav-search:focus{border-color:var(--link)}
+.nav-search::placeholder{color:var(--muted)}
+.nav-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+.nav-btn{background:transparent;border:1px solid var(--border);color:var(--text);border-radius:20px;padding:5px 16px;font-size:0.8rem;cursor:pointer;font-family:'Inter',sans-serif}
+.nav-btn.filled{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
+.page-wrap{max-width:1200px;margin:0 auto;padding:20px 16px;display:grid;grid-template-columns:1fr 312px;gap:24px;align-items:start}
+.sort-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:10px 12px;display:flex;gap:8px;margin-bottom:16px}
+.sort-btn{background:transparent;border:none;color:var(--muted);font-size:0.83rem;font-weight:700;padding:6px 12px;border-radius:20px;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'Inter',sans-serif}
+.sort-btn:hover,.sort-btn.active{background:var(--bg-hover);color:var(--text)}
+.post-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:10px;display:flex}
+.post-card:hover{border-color:#818384}
+.vote-col{width:40px;min-width:40px;background:#161617;border-radius:4px 0 0 4px;display:flex;flex-direction:column;align-items:center;padding:8px 4px;gap:2px}
+.vote-btn{background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:1rem;line-height:1;padding:2px;border-radius:2px}
+.vote-btn:hover{color:var(--upvote)}
+.vote-btn.down:hover{color:var(--downvote)}
+.vote-btn.voted-up{color:var(--upvote)!important}
+.vote-btn.voted-down{color:var(--downvote)!important}
+.vote-count{font-size:0.72rem;font-weight:700;color:var(--text);text-align:center;min-width:28px}
+.post-body{flex:1;padding:8px}
+.post-meta{font-size:0.72rem;color:var(--muted);margin-bottom:6px}
+.post-meta a{color:var(--muted);text-decoration:none;font-weight:700}
+.post-meta a.board{color:var(--text)}
+.post-meta a:hover{text-decoration:underline;color:var(--link)}
+.post-title{font-size:1.05rem;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.35;cursor:pointer}
+.post-title:hover{color:var(--link)}
+.post-flair{display:inline-block;font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:12px;margin-right:6px;vertical-align:middle}
+.post-text{font-size:0.88rem;color:#c6c8cc;line-height:1.65;margin-bottom:10px;border-left:3px solid var(--border);padding-left:10px}
+.post-text p{margin-bottom:8px}
+.post-text p:last-child{margin-bottom:0}
+.post-actions{display:flex;gap:4px;flex-wrap:wrap}
+.action-btn{background:transparent;border:none;color:var(--muted);font-size:0.75rem;font-weight:700;padding:6px 8px;border-radius:2px;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:'Inter',sans-serif}
+.action-btn:hover{background:var(--bg-hover);color:var(--text)}
+.comments-wrap{max-height:0;overflow:hidden;transition:max-height 0.5s ease}
+.comments-wrap.open{max-height:8000px}
+.comments-inner{border-top:1px solid var(--border);padding:12px 0 4px 0}
+.comment-sort{font-size:0.75rem;color:var(--muted);padding:0 0 10px 0}
+.comment-sort span{font-weight:600;color:var(--text)}
+.comment{display:flex;gap:8px;margin-bottom:12px}
+.comment.reply{margin-left:20px;padding-left:8px;border-left:2px solid var(--border)}
+.comment.reply-2{margin-left:40px;padding-left:8px;border-left:2px solid #2a2a2c}
+.comment-av{width:28px;height:28px;min-width:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px}
+.comment-av.sm{width:22px;height:22px;min-width:22px;font-size:0.65rem}
+.comment-content{flex:1;min-width:0}
+.comment-meta{font-size:0.72rem;color:var(--muted);margin-bottom:4px}
+.comment-meta .cu{font-weight:700;color:var(--text);margin-right:6px}
+.comment-meta .cu.op{color:var(--orange)}
+.comment-meta .cv{margin-right:6px;color:var(--upvote)}
+.comment-text{font-size:0.88rem;color:#c6c8cc;line-height:1.6;margin-bottom:4px}
+.comment-actions{display:flex;gap:2px}
+.ca-btn{background:transparent;border:none;color:var(--muted);font-size:0.7rem;font-weight:700;padding:3px 6px;cursor:pointer;font-family:'Inter',sans-serif;border-radius:2px}
+.ca-btn:hover{background:var(--bg-hover);color:var(--text)}
+.mod-badge{background:#ff4500;color:#fff;font-size:0.6rem;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle}
+.sidebar{position:sticky;top:68px}
+.sidebar-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:16px;overflow:hidden}
+.sidebar-hero{background:linear-gradient(180deg,#ff4500 0%,#ff6534 100%);height:64px}
+.sidebar-body{padding:12px}
+.sidebar-body h3{font-size:0.88rem;font-weight:700;margin-bottom:6px}
+.sidebar-body p{font-size:0.8rem;color:var(--muted);line-height:1.5;margin-bottom:10px}
+.sidebar-stat{display:flex;justify-content:space-between;padding:4px 0;font-size:0.8rem}
+.sidebar-stat .label{color:var(--muted)}
+.sidebar-stat .val{font-weight:600}
+hr.sidebar-divider{border:none;border-top:1px solid var(--border);margin:10px 0}
+.sidebar-btn{display:block;width:100%;background:var(--orange);color:#fff;border:none;border-radius:20px;padding:7px;font-weight:700;font-size:0.83rem;cursor:pointer;font-family:'Inter',sans-serif;text-align:center;margin-top:10px}
+.board-list{list-style:none}
+.board-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:0.82rem}
+.board-item:last-child{border-bottom:none}
+.board-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0}
+.board-name{font-weight:600;color:var(--text)}
+.board-members{color:var(--muted);font-size:0.72rem}
+.rules-list{list-style:none;counter-reset:rules}
+.rules-list li{counter-increment:rules;display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:0.8rem;color:var(--muted)}
+.rules-list li::before{content:counter(rules)".";font-weight:700;color:var(--text);min-width:16px}
+.rules-list li:last-child{border-bottom:none}
+@media(max-width:960px){.page-wrap{grid-template-columns:1fr}.sidebar{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <div class="t-icon">T</div>
+    <span><em>Threddit</em></span>
+  </a>
+  <input class="nav-search" type="text" placeholder="Search Threddit">
+  <div class="nav-actions">
+    <button class="nav-btn">Log In</button>
+    <button class="nav-btn filled">Sign Up</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<div class="feed">
+
+<div class="sort-bar">
+  <button class="sort-btn active">🔥 Hot</button>
+  <button class="sort-btn">✨ New</button>
+  <button class="sort-btn">📈 Top</button>
+  <button class="sort-btn">🚀 Rising</button>
+</div>
+
+<!-- POST 1: RoboPets / Remy Welfare -->
+<div class="post-card" id="post-robopets">
+  <div class="vote-col">
+    <button class="vote-btn up" onclick="vote(this,'vc-robopets',1)">▲</button>
+    <span class="vote-count" id="vc-robopets">4.2k</span>
+    <button class="vote-btn down" onclick="vote(this,'vc-robopets',-1)">▼</button>
+  </div>
+  <div class="post-body">
+    <div class="post-meta"><a href="#" class="board">t/SpaceWatch</a> · Posted by <a href="#">u/PeteyProtects</a> · 6 hours ago</div>
+    <div class="post-title">
+      <span class="post-flair" style="background:#ff450022;color:#ff7040">Animal Welfare</span>
+      RoboPets MiniTrak 4.0 sensors on the KMM Valdoria are monitoring Remy Barnaby Bumblebottom's stress proxy, heart rate, and core temperature in real time. This is what FART has been fighting for. [Thread]
+    </div>
+    <div class="post-text">
+      <p>I've been covering the FART biosensor welfare framework since before most people knew what FART stood for (<a href="../Socials/fart.html" style="color:var(--link)">Federation for Assisting Rats and Turtles</a> — please visit). Today I want to talk about what it means that the KMM Valdoria mission is launching with RoboPets MiniTrak 4.0 biosensors that have the FART welfare protocol embedded at the firmware level.</p>
+      <p>What this means in practice: Remy Barnaby Bumblebottom's heart rate variability (HRV), core temperature, and a cortisol proxy derived from movement and HRV variance are being logged at 5-minute intervals for the duration of the mission. If any metric exceeds the welfare threshold, Mission Control gets an alert. In 90 seconds.</p>
+      <p>One year ago this did not exist. FART advocated for it. Dr. Aura Sparkleton, KSA's Senior Animal Welfare Officer, developed the protocol specifications. RoboPets implemented them. This is what successful advocacy looks like. Every rat deserves this. Remy just happens to be the first.</p>
+    </div>
+    <div class="post-actions">
+      <button class="action-btn" onclick="toggleComments('robopets')">💬 47 Comments</button>
+      <button class="action-btn">Share</button>
+      <button class="action-btn">Save</button>
+    </div>
+    <div class="comments-wrap" id="comments-robopets">
+      <div class="comments-inner">
+        <div class="comment-sort">Sort by: <span>Best</span></div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#7b2d8b">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/DR_SPARKLETON</span> <span class="cv">▲ 1.4k</span> 5h ago</div>
+            <div class="comment-text">For accuracy: the cortisol proxy is derived from HRV variance and thermoregulatory pattern deviation. It is not a direct hormonal measurement. I want that limitation stated clearly in this context. The protocol is documented in KSA Animal Welfare Protocol Revision 4, which is publicly available. The logging interval is also variable — 5-minute baseline, 90-second during any flagged event.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#ff5700">P</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/PeteyProtects</span> <span class="cv">▲ 892</span> 5h ago</div>
+            <div class="comment-text">Thank you Dr. Sparkleton. For everyone else: she literally wrote the welfare protocol. When she says "for accuracy" please treat it as the primary source.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#b00020">N</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NoRatsInSpace</span> <span class="cv">▲ 211</span> 4h ago</div>
+            <div class="comment-text">you are celebrating surveillance of a rat as an animal welfare victory. does no one else see the irony here</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#ff5700">P</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/PeteyProtects</span> <span class="cv">▲ 667</span> 4h ago</div>
+            <div class="comment-text">The alternative is Remy being in distress with no one knowing. I will take the monitoring every single time.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#7b2d8b">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/DR_SPARKLETON</span> <span class="cv">▲ 1.1k</span> 4h ago</div>
+            <div class="comment-text">The concern is addressed in Chapter 3 of the welfare report. The short version: passive monitoring exists specifically to give Remy a form of voice in an environment where he cannot otherwise communicate distress. It is not surveillance. It is advocacy infrastructure.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#1565c0">V</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/ValdoriaWatcher</span> <span class="cv">▲ 503</span> 3h ago</div>
+            <div class="comment-text">Setting welfare debate aside for a second — real-time biosensor telemetry at lunar distance is extraordinary engineering. The latency alone means the protocol makes autonomous threshold decisions on-board before transmitting. Genuinely impressive work regardless of where you land on the mission.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#c2185b">R</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/RatLover2026</span> <span class="cv">▲ 2.1k</span> 3h ago</div>
+            <div class="comment-text">I have been following Remy's 7Gram for four months and I am emotionally invested in this rat in a way I cannot fully explain. Knowing there's a sensor that tells the crew if he's scared makes me feel so much better 🐀💛</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#7b2d8b">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/DR_SPARKLETON</span> <span class="cv">▲ 889</span> 3h ago</div>
+            <div class="comment-text">Remy is not alone on the mission.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#c2185b">R</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/RatLover2026</span> <span class="cv">▲ 1.4k</span> 3h ago</div>
+            <div class="comment-text">that is the most comforting sentence I have ever read on this website</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#7b2d8b">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/DR_SPARKLETON</span> <span class="cv">▲ 772</span> 2h ago</div>
+            <div class="comment-text">He has performed well in all training simulations. He is prepared.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#b00020">N</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NoRatsInSpace</span> <span class="cv">▲ 88</span> 2h ago</div>
+            <div class="comment-text">Dr. Sparkleton — you designed the protocol that put Remy on this mission in the first place. The 40-page welfare report you keep citing: does it address that? Does it address the fact that you are both the welfare advocate and the person who signed off on using him?</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#7b2d8b">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/DR_SPARKLETON</span> <span class="cv">▲ 1.6k</span> 2h ago</div>
+            <div class="comment-text">Yes. Chapter 3, pages 14 through 22. I recommend reading it before forming conclusions. I have read it many times.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#ff5700">P</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/PeteyProtects</span> <span class="cv">▲ 903</span> 2h ago</div>
+            <div class="comment-text">She is not joking. Chapter 3 is the most honest institutional self-assessment I have ever read. It does not let itself off the hook. Read it.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#00695c">M</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/MissionNerd42</span> <span class="cv">▲ 178</span> 1h ago</div>
+            <div class="comment-text">Bookmarking this entire thread. Best KMM Valdoria discussion anywhere on this site.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POST 2: Lovey Mission Fear -->
+<div class="post-card" id="post-lovey">
+  <div class="vote-col">
+    <button class="vote-btn up" onclick="vote(this,'vc-lovey',1)">▲</button>
+    <span class="vote-count" id="vc-lovey">847</span>
+    <button class="vote-btn down" onclick="vote(this,'vc-lovey',-1)">▼</button>
+  </div>
+  <div class="post-body">
+    <div class="post-meta"><a href="#" class="board">t/ValMission</a> · Posted by <a href="#">u/LoveyMesan</a> · 2 days ago</div>
+    <div class="post-title">
+      <span class="post-flair" style="background:#4caf5018;color:#4caf50">Personal</span>
+      I have a family member on the KMM Valdoria crew and I've been reading mission failure statistics for three days straight and I am not okay
+    </div>
+    <div class="post-text">
+      <p>I'm not going to say who it is, because they would find a way to be calm and professional about me posting this, and I genuinely cannot handle that energy right now.</p>
+      <p>Someone I love is on that mission. The launch is in a few days. I have been reading everything. I found a report that says extended lunar missions have a 1.4x higher risk profile than comparable low-orbit missions. I found another that says thermal shielding anomalies account for 34% of mission aborts in the last fifteen years. I found a forum post at 2am that I should not have read.</p>
+      <p>I'm not a scientist. I'm just someone sitting at home reading numbers, trying to figure out what to do with the waiting. Has anyone else been through this?</p>
+    </div>
+    <div class="post-actions">
+      <button class="action-btn" onclick="toggleComments('lovey')">💬 31 Comments</button>
+      <button class="action-btn">Share</button>
+      <button class="action-btn">Save</button>
+    </div>
+    <div class="comments-wrap" id="comments-lovey">
+      <div class="comments-inner">
+        <div class="comment-sort">Sort by: <span>Best</span></div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#0277bd">C</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/CosmicJourneyFan</span> <span class="cv">▲ 412</span> 2d ago</div>
+            <div class="comment-text">I hear you. KSA's safety record on the KMM series is genuinely excellent — these aren't experimental launches. The waiting is the hardest part. There's no trick to it. You decide what to do with your hands while you wait.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/LoveyMesan</span> <span class="cv">▲ 203</span> 2d ago</div>
+            <div class="comment-text">I know I know. I just keep finding statistics. My brain wants to find the number that makes me feel better and instead keeps finding the ones that make it worse.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#6a1b9a">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/AnotherMissionMom</span> <span class="cv">▲ 876</span> 2d ago</div>
+            <div class="comment-text">My aunt was on a comms relay mission three years ago. The waiting doesn't get easier, but you get better at it. You find a rhythm. You do normal things. You check the updates. You eat something. You check again. You make tea you don't drink. It becomes its own routine.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/LoveyMesan</span> <span class="cv">▲ 567</span> 2d ago</div>
+            <div class="comment-text">This is the most helpful thing anyone has said to me in three days. Thank you. I mean that.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#6a1b9a">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/AnotherMissionMom</span> <span class="cv">▲ 401</span> 2d ago</div>
+            <div class="comment-text">Rooting for your person. 🚀</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#1565c0">V</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/ValdoriaWatcher</span> <span class="cv">▲ 311</span> 2d ago</div>
+            <div class="comment-text">This might be forward but — are you Lovey Mesan? Is this about Par Mesan? I follow his 7Gram.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/LoveyMesan</span> <span class="cv">▲ 504</span> 2d ago</div>
+            <div class="comment-text">I didn't say who it was.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#1565c0">V</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/ValdoriaWatcher</span> <span class="cv">▲ 287</span> 2d ago</div>
+            <div class="comment-text">Okay. Fair. Rooting for them, whoever they are.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#1b5e20">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/ThrustVector</span> <span class="cv">▲ 1.2k</span> 1d ago</div>
+            <div class="comment-text">The thermal shielding stat you found is from a 2008 aggregate study covering materials that haven't been in use for over a decade. The KMM series runs active thermal management — third generation from the systems involved in those incidents. That number does not apply to this mission. Please stop reading 2008 reports at 2am.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/LoveyMesan</span> <span class="cv">▲ 934</span> 1d ago</div>
+            <div class="comment-text">I need that comment pinned to the inside of my skull. Thank you.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#b00020">N</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NoRatsInSpace</span> <span class="cv">▲ 145</span> 1d ago</div>
+            <div class="comment-text">Genuine question — did they tell you they were okay with going, or did you find out another way?</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/LoveyMesan</span> <span class="cv">▲ 308</span> 1d ago</div>
+            <div class="comment-text">He told me. He'd clearly been thinking about it for a long time before he said anything. He was very calm. I was considerably less calm.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#b00020">N</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NoRatsInSpace</span> <span class="cv">▲ 221</span> 1d ago</div>
+            <div class="comment-text">Yeah. That tracks.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/LoveyMesan</span> <span class="cv">▲ 190</span> 1d ago</div>
+            <div class="comment-text">That's exactly what his face looked like when I said that.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POST 3: Government Keyboard Logging -->
+<div class="post-card" id="post-keyboard">
+  <div class="vote-col">
+    <button class="vote-btn up" onclick="vote(this,'vc-keyboard',1)">▲</button>
+    <span class="vote-count" id="vc-keyboard">2.3k</span>
+    <button class="vote-btn down" onclick="vote(this,'vc-keyboard',-1)">▼</button>
+  </div>
+  <div class="post-body">
+    <div class="post-meta"><a href="#" class="board">t/TruthSeekers</a> · Posted by <a href="#">u/KeyboardWatcher99</a> · 1 day ago</div>
+    <div class="post-title">
+      <span class="post-flair" style="background:#ff000018;color:#ff6060">🔴 VERIFIED</span>
+      Every keystroke you have typed in the last 5 years is stored on a government server in Hazelia. I work in municipal IT. I have seen the routing tables. [Thread]
+    </div>
+    <div class="post-text">
+      <p>I'll keep this brief because I don't know who's reading.</p>
+      <p>I work in municipal IT. I cannot be more specific. My job involves maintaining infrastructure at the regional routing level. Every packet leaving your home network passes through a hub operated by a subsidiary of the Ministry of Communications. No public audit mechanism. No oversight board. There is a logging layer. I have seen the tables.</p>
+      <p>I cannot show you this because I cannot prove I'm not already being monitored for knowing what I know. What I can tell you: they have your passwords. Your messages. Every search since the 2021 network infrastructure update. All of it. Sitting on a server in Hazelia.</p>
+      <p>I am posting this from a library computer. I will not be returning to this account.</p>
+    </div>
+    <div class="post-actions">
+      <button class="action-btn" onclick="toggleComments('keyboard')">💬 89 Comments</button>
+      <button class="action-btn">Share</button>
+      <button class="action-btn">Save</button>
+    </div>
+    <div class="comments-wrap" id="comments-keyboard">
+      <div class="comments-inner">
+        <div class="comment-sort">Sort by: <span>Best</span></div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 892</span> 1d ago</div>
+            <div class="comment-text">Consistent with what came out in the Meridian document leak. The 2021 infrastructure update was the cover story. The actual change was a passive logging layer at the tier-2 ISP level. The architecture was in the leaked documents. Nobody covered it. Nobody.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#33691e">K</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/KeyboardWatcher99</span> <span class="cv">▲ 774</span> 1d ago</div>
+            <div class="comment-text">You can see it in the latency data if you know what you're looking for. There's a 4–8ms additional delay on all outbound packets since Q3 2021 that isn't accounted for by any announced infrastructure change. The logging layer adds processing time. That time shows up in the numbers.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#4e342e">Px</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/PixelPatrol</span> <span class="cv">▲ 503</span> 1d ago</div>
+            <div class="comment-text">I switched to a physical typewriter eight months ago. I print everything and mail physical letters. I am not joking about this.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 411</span> 23h ago</div>
+            <div class="comment-text">lmao who are you mailing things to in 2026</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#4e342e">Px</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/PixelPatrol</span> <span class="cv">▲ 667</span> 23h ago</div>
+            <div class="comment-text">TO PEOPLE WHO WRITE BACK. I AM NOT JOKING. I HAVE A CORRESPONDENCE NETWORK.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#33691e">K</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/KeyboardWatcher99</span> <span class="cv">▲ 558</span> 22h ago</div>
+            <div class="comment-text">Actually smart. Paper cannot be intercepted at the routing level. Genuine respect for this approach.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#4e342e">Px</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/PixelPatrol</span> <span class="cv">▲ 489</span> 22h ago</div>
+            <div class="comment-text">Thank you. FINALLY.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 67</span> 20h ago</div>
+            <div class="comment-text">I want to gently point out that packet routing through ISP infrastructure is just how the internet works. Packets go through regional hubs. That's routing, not surveillance. It's documented, public, and has nothing to do with logging content.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#33691e">K</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/KeyboardWatcher99</span> <span class="cv">▲ 891</span> 20h ago</div>
+            <div class="comment-text">That's exactly what someone who hasn't looked into it would say.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 88</span> 20h ago</div>
+            <div class="comment-text">I have a degree in network engineering.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 704</span> 19h ago</div>
+            <div class="comment-text">From what institution. Funded by whom.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 94</span> 19h ago</div>
+            <div class="comment-text">Kacentina Technical University. Funded by tuition. I am not doing the next part of this conversation.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#ad1457">S</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/SignalTrace_7</span> <span class="cv">▲ 776</span> 18h ago</div>
+            <div class="comment-text">NormalPersonActually showed up in under an hour to discredit the original post. Classic containment pattern. They don't send the smart ones anymore.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#4e342e">Px</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/PixelPatrol</span> <span class="cv">▲ 423</span> 18h ago</div>
+            <div class="comment-text">I checked NormalPersonActually's comment history. Also appeared in the C7 broadcast thread. Same day.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 201</span> 17h ago</div>
+            <div class="comment-text">I am a person who uses this website regularly and also thinks C7 is a normal television network. These facts coexist without being suspicious.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#ad1457">S</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/SignalTrace_7</span> <span class="cv">▲ 533</span> 17h ago</div>
+            <div class="comment-text">Noted.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POST 4: C7 Network Spying -->
+<div class="post-card" id="post-c7">
+  <div class="vote-col">
+    <button class="vote-btn up" onclick="vote(this,'vc-c7',1)">▲</button>
+    <span class="vote-count" id="vc-c7">1.8k</span>
+    <button class="vote-btn down" onclick="vote(this,'vc-c7',-1)">▼</button>
+  </div>
+  <div class="post-body">
+    <div class="post-meta"><a href="#" class="board">t/TruthSeekers</a> · Posted by <a href="#">u/AntiNetworkActiVIST</a> · 3 days ago</div>
+    <div class="post-title">
+      <span class="post-flair" style="background:#ff000018;color:#ff6060">🔴 VERIFIED</span>
+      C7 is not a news network. It is a behavioral modification platform. The broadcasts contain embedded audio data in the 17–20kHz range. Six months of spectral analysis.
+    </div>
+    <div class="post-text">
+      <p>I have been running spectral analysis on C7 broadcasts for six months. The audible range sounds normal. Anchors sound like anchors. But in the 17–20kHz range — above standard speaker reproduction, below conscious human awareness — there is structured, repeating, modulating data. It is not random noise. It is not a known broadcast artifact.</p>
+      <p>This is embedded carrier signal broadcasting. It is a documented technique. Why would a news network need it? They wouldn't. Unless the broadcast isn't the product. Unless you are.</p>
+      <p>I cancelled my C7 subscription fourteen months ago. Within six weeks I was sleeping differently. Thinking more clearly. Questioning things I had previously accepted without examination. Draw your own conclusions. But draw them with the television off.</p>
+    </div>
+    <div class="post-actions">
+      <button class="action-btn" onclick="toggleComments('c7')">💬 114 Comments</button>
+      <button class="action-btn">Share</button>
+      <button class="action-btn">Save</button>
+    </div>
+    <div class="comments-wrap" id="comments-c7">
+      <div class="comments-inner">
+        <div class="comment-sort">Sort by: <span>Best</span></div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#ad1457">S</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/SignalTrace_7</span> <span class="cv">▲ 1.1k</span> 3d ago</div>
+            <div class="comment-text">Been saying this for three years. C7 launched as a "news network" in the same year the Meridian Population Survey mapped belief patterns across twelve demographic segments. You do not conduct that survey unless you are planning to deploy something against the results.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#0d47a1">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/AntiNetworkActiVIST</span> <span class="cv">▲ 887</span> 3d ago</div>
+            <div class="comment-text">The timing is what got me first. You don't build out national broadcast infrastructure and then conduct a granular demographic opinion survey unless you're planning to use one on the other. The sequence is the tell.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 659</span> 2d ago</div>
+            <div class="comment-text">Stopped watching C7 fourteen months ago. First month: irritable, couldn't focus — I believe that was withdrawal. Month two: started noticing things I'd been accepting without question. Month three: found this community. The change was not subtle.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 91</span> 2d ago</div>
+            <div class="comment-text">Quick note: 17–20kHz is ultrasonic, not infrasonic. The terms describe opposite ends of the frequency spectrum. Also, structured data in that range would be inaudible and could theoretically affect certain equipment, not human neurology. These are meaningfully different claims.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#0d47a1">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/AntiNetworkActiVIST</span> <span class="cv">▲ 772</span> 2d ago</div>
+            <div class="comment-text">Thank you for the terminology correction. The mechanism is the same regardless of which directional term I used.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 104</span> 2d ago</div>
+            <div class="comment-text">The mechanism is not the same. Infrasound and ultrasound have entirely different biological effects. The terms describe opposite ends of the spectrum. This distinction matters for the claim you're making.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#ad1457">S</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/SignalTrace_7</span> <span class="cv">▲ 845</span> 2d ago</div>
+            <div class="comment-text">Second government presence in this thread today. They're active tonight.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 97</span> 2d ago</div>
+            <div class="comment-text">I am not a government presence. I took physics.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 611</span> 2d ago</div>
+            <div class="comment-text">That's a very government plant thing to say.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#4e342e">Px</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/PixelPatrol</span> <span class="cv">▲ 501</span> 2d ago</div>
+            <div class="comment-text">Got rid of my TV entirely in 2022. Consume news exclusively through printed newspapers, which I also scrutinize. Recommend to everyone in this thread.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/LoveyMesan</span> <span class="cv">▲ 234</span> 1d ago</div>
+            <div class="comment-text">Wait I actually watch C7 specifically for the KMM Valdoria launch coverage because I have a family member on that mission. Is this real. Should I stop. I cannot tell if this is a real thread.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#0d47a1">A</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/AntiNetworkActiVIST</span> <span class="cv">▲ 456</span> 1d ago</div>
+            <div class="comment-text">Hi. Yes. Stop immediately. Use the KSA mission text updates. They are plain text and cannot embed carrier signals.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/LoveyMesan</span> <span class="cv">▲ 312</span> 1d ago</div>
+            <div class="comment-text">I am not processing this right now. I have enough going on.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 278</span> 1d ago</div>
+            <div class="comment-text">are you okay</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#2e7d32">L</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/LoveyMesan</span> <span class="cv">▲ 401</span> 1d ago</div>
+            <div class="comment-text">Family stuff. Anyway.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POST 5: Quillantis Mermaid Colony -->
+<div class="post-card" id="post-mermaids">
+  <div class="vote-col">
+    <button class="vote-btn up" onclick="vote(this,'vc-mermaids',1)">▲</button>
+    <span class="vote-count" id="vc-mermaids">8.9k</span>
+    <button class="vote-btn down" onclick="vote(this,'vc-mermaids',-1)">▼</button>
+  </div>
+  <div class="post-body">
+    <div class="post-meta"><a href="#" class="board">t/QuillantisWatch</a> · Posted by <a href="#">u/DeepWaterDave</a> · 4 days ago</div>
+    <div class="post-title">
+      <span class="post-flair" style="background:#00bcd418;color:#00bcd4">🌊 MEGATHREAD</span>
+      Quillantis has an active underwater civilization. The KMM Valdoria launch is timed to bury the disclosure. The coordinates are in this thread. [PINNED]
+    </div>
+    <div class="post-text">
+      <p>Background for newcomers: In 2019, a deep-sea survey contracted by the Quillantis Ocean Research Consortium documented bioluminescent light patterns at 4,200 meters depth off the eastern Quillantis shelf. The patterns did not correspond to any documented species. The survey was classified for three years. A redacted version released in 2022.</p>
+      <p>I cross-referenced the redacted sections with the unredacted bathymetric data. The redactions cover, precisely and exclusively, the coordinates where the light events were documented. Not surrounding areas. Not general zones. The exact coordinates.</p>
+      <p>The light event timestamps — recoverable from unredacted sections — match tidal and lunar charts with a 27.3-day cycle. That is a lunar cycle. Whatever is down there is tracking the moon. Something aware enough to track the moon.</p>
+      <p>KSA announces a lunar mission. Launch in days. Disclosure pressure in this community has been at an all-time high. And suddenly every news cycle is about a rat in a rocket. Don't look up when they want you looking up.</p>
+    </div>
+    <div class="post-actions">
+      <button class="action-btn" onclick="toggleComments('mermaids')">💬 347 Comments</button>
+      <button class="action-btn">Share</button>
+      <button class="action-btn">Save</button>
+      <button class="action-btn">Award</button>
+    </div>
+    <div class="comments-wrap" id="comments-mermaids">
+      <div class="comments-inner">
+        <div class="comment-sort">Sort by: <span>Best</span></div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 2.1k</span> 4d ago</div>
+            <div class="comment-text">Coordinates: [<span style="color:#ff4500;font-weight:600">REMOVED BY MODERATOR — Rule 7: no geolocating sovereign territory without community verification. DM mod team to submit.</span>]</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 1.3k</span> 4d ago</div>
+            <div class="comment-text">Of course they were removed. OF COURSE. This is exactly the pattern.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#e65100">M</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/Moderator_Torval <span class="mod-badge">MOD</span></span> <span class="cv">▲ 443</span> 4d ago</div>
+            <div class="comment-text">Rule 7 is Rule 7, Dave. DM me the coordinates and I'll verify before we approve the post. It's a process.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 889</span> 3d ago</div>
+            <div class="comment-text">DMed you 18 hours ago. Still waiting.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#e65100">M</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/Moderator_Torval <span class="mod-badge">MOD</span></span> <span class="cv">▲ 334</span> 3d ago</div>
+            <div class="comment-text">I'll get to it, Dave.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#01579b">Aq</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/AquaticAnonymous</span> <span class="cv">▲ 3.4k</span> 4d ago</div>
+            <div class="comment-text">I am a recreational diver. I've dived the eastern Quillantis shelf — not at 4,200m, I'm not insane, but at around 80m along the continental drop-off. My dive partner and I, on a 2022 dive, observed two formations we both independently agreed looked constructed. Not natural. Deliberate. We did not report this because we knew what would happen.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 1.8k</span> 4d ago</div>
+            <div class="comment-text">CONSTRUCTED. Consistent with what the 2019 survey team documented before the classification. Thank you for coming forward. I know this takes something.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#4527a0">Lu</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/LunarFrequency</span> <span class="cv">▲ 2.2k</span> 3d ago</div>
+            <div class="comment-text">The 27.3-day lunar cycle is the most important data point in this entire thread. Geological bioluminescence does not produce cyclical patterns. Thermochemical reactions don't either. The only processes that reliably produce a lunar-synchronized repeating pattern are biological and intentional. Something down there is doing this on purpose.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 1.6k</span> 3d ago</div>
+            <div class="comment-text">I said this two years ago and was laughed out of the discussion. I'm glad the evidence has caught up to where I was.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#01579b">Aq</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/AquaticAnonymous</span> <span class="cv">▲ 2.7k</span> 3d ago</div>
+            <div class="comment-text">I should add: my dive partner has since declined to discuss that dive with me. They received a job offer from the Quillantis Marine Institute — a government-adjacent research body — approximately three months after our dive. They accepted and relocated. I haven't had a real conversation with them since.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 1.4k</span> 3d ago</div>
+            <div class="comment-text">The job is a leash. Standard containment pattern. Sorry about your friend. This happens to people who get close.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#01579b">Aq</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/AquaticAnonymous</span> <span class="cv">▲ 1.1k</span> 3d ago</div>
+            <div class="comment-text">I've made my peace with it. I just want people to know the pattern exists.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 1.9k</span> 3d ago</div>
+            <div class="comment-text">Something I didn't put in the OP: KSA chose Hazelia as the departure site. Hazelia is coastal. The eastern Quillantis shelf — the surveyed area — is approximately 340 kilometers from the Hazelia port. I'm not saying I know what that means. I'm noting the geography.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#4527a0">Lu</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/LunarFrequency</span> <span class="cv">▲ 2.8k</span> 2d ago</div>
+            <div class="comment-text">What if this mission isn't about going TO the moon. What if it's about making contact with whoever is already there. What if the underwater civilization and a lunar presence are the same civilization — operating at both ends of a navigational axis — and the KMM launch is a diplomatic event conducted without public knowledge or consent.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 2.3k</span> 2d ago</div>
+            <div class="comment-text">I have been sitting with this exact theory for six months and not saying it out loud. I'm glad someone else got there independently.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 3.1k</span> 2d ago</div>
+            <div class="comment-text">Hold on. They chose a RAT as the mission mascot. Rats navigate using magnetoreception in total darkness. Rats are one of the only mammals with documented underground colony social structures that broadly resemble organized civic settlement. This was NOT a PR decision. Someone knew exactly what they were sending and what it would communicate to whoever is receiving.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button><button class="ca-btn">Share</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#01579b">Aq</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/AquaticAnonymous</span> <span class="cv">▲ 2.6k</span> 2d ago</div>
+            <div class="comment-text">Oh my god.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 2.4k</span> 2d ago</div>
+            <div class="comment-text">I need to sit with that.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply-2">
+          <div class="comment-av sm" style="background:#4527a0">Lu</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/LunarFrequency</span> <span class="cv">▲ 1.9k</span> 1d ago</div>
+            <div class="comment-text">We've been sitting with it for two days. It keeps getting more coherent the longer we sit.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <div class="comment-av" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 334</span> 1d ago</div>
+            <div class="comment-text">I am genuinely, sincerely asking all of you to go outside. Touch the ocean if it's nearby — it is just water. Remy is a PR mascot chosen because he is cute. The moon mission is a moon mission. I say this with no hostility. Please take a break from this website.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#4527a0">Lu</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/LunarFrequency</span> <span class="cv">▲ 2.7k</span> 1d ago</div>
+            <div class="comment-text">See you on the other side of the disclosure.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#37474f">NP</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/NormalPersonActually</span> <span class="cv">▲ 289</span> 1d ago</div>
+            <div class="comment-text">Please.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#5d4037">T</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu">u/TruthBomber2025</span> <span class="cv">▲ 1.8k</span> 23h ago</div>
+            <div class="comment-text">They broke NormalPersonActually. First time I've seen it happen in this community.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+        <div class="comment reply">
+          <div class="comment-av sm" style="background:#006064">D</div>
+          <div class="comment-content">
+            <div class="comment-meta"><span class="cu op">u/DeepWaterDave</span> <span class="cv">▲ 1.5k</span> 22h ago</div>
+            <div class="comment-text">The truth does that sometimes.</div>
+            <div class="comment-actions"><button class="ca-btn">▲ Upvote</button><button class="ca-btn">Reply</button></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /feed -->
+
+<aside class="sidebar">
+  <div class="sidebar-card">
+    <div class="sidebar-hero"></div>
+    <div class="sidebar-body">
+      <h3>Welcome to Threddit</h3>
+      <p>Think it. Post it. Thread it. The front page of everything — unfiltered, unmoderated (mostly), and not responsible for what you read here.</p>
+      <hr class="sidebar-divider">
+      <div class="sidebar-stat"><span class="label">Members</span><span class="val">4,218,091</span></div>
+      <div class="sidebar-stat"><span class="label">Online now</span><span class="val" style="color:var(--green)">● 14,832</span></div>
+      <div class="sidebar-stat"><span class="label">Posts today</span><span class="val">3,341</span></div>
+      <button class="sidebar-btn">+ Create Post</button>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <div class="sidebar-body">
+      <h3 style="margin-bottom:12px">Popular Boards</h3>
+      <ul class="board-list">
+        <li class="board-item"><div class="board-dot" style="background:#ff4500">🚀</div><div><div class="board-name">t/SpaceWatch</div><div class="board-members">892k members</div></div></li>
+        <li class="board-item"><div class="board-dot" style="background:#1565c0">🛸</div><div><div class="board-name">t/ValMission</div><div class="board-members">341k members</div></div></li>
+        <li class="board-item"><div class="board-dot" style="background:#ad1457">👁</div><div><div class="board-name">t/TruthSeekers</div><div class="board-members">2.1M members</div></div></li>
+        <li class="board-item"><div class="board-dot" style="background:#006064">🌊</div><div><div class="board-name">t/QuillantisWatch</div><div class="board-members">218k members</div></div></li>
+        <li class="board-item"><div class="board-dot" style="background:#2e7d32">🐀</div><div><div class="board-name">t/RemyFanClub</div><div class="board-members">1.4M members</div></div></li>
+        <li class="board-item"><div class="board-dot" style="background:#7b2d8b">🔬</div><div><div class="board-name">t/AnimalWelfare</div><div class="board-members">445k members</div></div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <div class="sidebar-body">
+      <h3 style="margin-bottom:12px">Threddit Rules</h3>
+      <ul class="rules-list">
+        <li>Remember the human. Mostly.</li>
+        <li>No doxxing. Coordinates require mod verification (Rule 7).</li>
+        <li>Speculation is fine. Presented as fact needs a flair.</li>
+        <li>NormalPersonActually is probably not a government plant.</li>
+        <li>Be civil. Especially in t/TruthSeekers. Especially.</li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+</div><!-- /page-wrap -->
+
+<script>
+function toggleComments(id) {
+  var wrap = document.getElementById('comments-' + id);
+  if (wrap) wrap.classList.toggle('open');
+}
+function vote(btn, countId, dir) {
+  var el = document.getElementById(countId);
+  var raw = el.textContent;
+  var isK = raw.indexOf('k') > -1;
+  var num = isK ? parseFloat(raw) * 1000 : parseInt(raw);
+  var col = btn.closest('.vote-col');
+  var upBtn = col.querySelector('.vote-btn.up');
+  var downBtn = col.querySelector('.vote-btn.down');
+  if (dir === 1) {
+    if (btn.classList.contains('voted-up')) { btn.classList.remove('voted-up'); num--; }
+    else { btn.classList.add('voted-up'); downBtn.classList.remove('voted-down'); num++; }
+  } else {
+    if (btn.classList.contains('voted-down')) { btn.classList.remove('voted-down'); num++; }
+    else { btn.classList.add('voted-down'); upBtn.classList.remove('voted-up'); num--; }
+  }
+  el.textContent = num >= 1000 ? (num/1000).toFixed(1).replace(/\.0$/,'') + 'k' : num;
+}
+document.querySelectorAll('.sort-btn').forEach(function(b) {
+  b.addEventListener('click', function() {
+    document.querySelectorAll('.sort-btn').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
