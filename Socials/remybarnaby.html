@@ -473,6 +473,62 @@
   .search-result-name { font-weight: 600; font-size: 0.83rem; color: var(--text); }
   .search-result-handle { font-size: 0.75rem; color: var(--muted); }
   @media (max-width: 700px) { .nav-search-wrap { display: none; } }
+
+  /* ── AVATAR POPUP MODAL ── */
+  .profile-avatar-wrap { cursor: pointer; }
+  .profile-avatar-wrap:hover .profile-avatar-inner { opacity: 0.85; transition: opacity 0.15s; }
+  #avatar-modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.82); z-index: 9999;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  #avatar-modal.open { display: flex; }
+  .av-card {
+    background: var(--bg-card); border-radius: 20px;
+    border: 1px solid var(--border); padding: 1.75rem 1.75rem 1.5rem;
+    text-align: center; max-width: 320px; width: 88%;
+    cursor: default; position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.9);
+    animation: avIn 0.22s cubic-bezier(0.34,1.2,0.64,1);
+  }
+  @keyframes avIn { from{opacity:0;transform:scale(0.82)} to{opacity:1;transform:scale(1)} }
+  .av-close {
+    position: absolute; top: 10px; right: 12px;
+    background: transparent; border: none; color: var(--muted);
+    font-size: 1.5rem; cursor: pointer; line-height: 1;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .av-close:hover { background: var(--bg-input); color: var(--text); }
+  .av-ring {
+    width: 180px; height: 180px; border-radius: 50%; padding: 4px;
+    background: var(--story-ring, linear-gradient(135deg, var(--orange), var(--orange2), #5b7fff));
+    box-shadow: 0 4px 32px rgba(255,106,0,0.45); margin: 0 auto 1.1rem;
+  }
+  .av-circle {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: var(--bg-card); border: 4px solid var(--bg);
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+  }
+  .av-circle img { width: 100%; height: 100%; object-fit: cover; }
+  .av-circle .av-ph { font-size: 3.2rem; line-height: 1; }
+  .av-stats {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.5rem; padding-bottom: 1rem; margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .av-stat { display: flex; align-items: center; gap: 0.45rem; font-size: 0.95rem; }
+  .av-stat-n { font-weight: 700; color: var(--text); }
+  .av-stat-sep { width: 1px; height: 18px; background: var(--border); }
+  .av-top-comment {
+    background: var(--bg-input); border-radius: 12px;
+    padding: 0.7rem 0.9rem; border: 1px solid var(--border); text-align: left;
+  }
+  .av-tc-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.3rem; }
+  .av-tc-user { font-weight: 700; font-size: 0.78rem; color: var(--orange); margin-bottom: 0.2rem; }
+  .av-tc-text { font-size: 0.83rem; color: var(--text); line-height: 1.5; }
+
 </style>
 </head>
 <body>
@@ -498,8 +554,7 @@
 
   <!-- COVER PHOTO -->
   <div class="profile-cover">
-    <img src="" alt="" onerror="this.style.display='none'">
-    <div class="cover-placeholder">Cover Photo</div>
+    <img src="../images/remybanner.png" alt="" onerror="this.style.display='none'">
   </div>
 
   <!-- PROFILE META -->
@@ -507,8 +562,7 @@
     <div class="profile-meta-top">
       <div class="profile-avatar-wrap">
         <div class="profile-avatar-inner">
-          <img src="" alt="" onerror="this.style.display='none'">
-          <div class="avatar-placeholder">Photo</div>
+          <img src="../images/remysocial.png" alt="" onerror="this.style.display='none'">
         </div>
       </div>
       <div class="profile-actions">
@@ -572,7 +626,7 @@
       <!-- Post 1 (1 day ago): Pre-launch, absolutely unhinged excitement -->
       <div class="post-card post-status">
         <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="" alt="" onerror="this.style.display='none'"></div></div>
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/remysocial.png" alt="" onerror="this.style.display='none'"></div></div>
           <div class="post-meta">
             <div class="post-name">Remy Barnaby Bumblebottom</div>
             <div class="post-time">1 day ago</div>
@@ -612,7 +666,7 @@
       <!-- Post 2 (4 days ago): Mission patch reveal — he "approved" it by running across the table -->
       <div class="post-card">
         <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="" alt="" onerror="this.style.display='none'"></div></div>
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/remysocial.png" alt="" onerror="this.style.display='none'"></div></div>
           <div class="post-meta">
             <div class="post-name">Remy Barnaby Bumblebottom</div>
             <div class="post-time">4 days ago</div>
@@ -620,11 +674,8 @@
           <button class="post-more">···</button>
         </div>
         <div class="post-image">
-          <img src="" alt="" onerror="this.style.display='none'">
-          <div class="post-img-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Image Placeholder
-          </div>
+          <img src="../images/remypic1.png" alt="" onerror="this.style.display='none'">
+    
         </div>
         <div class="post-body">
           <p class="post-caption">BREAKING NEWS: I have an OFFICIAL MISSION PATCH and it has a RAT on it and the RAT IS ME, REMY!! 🐀⭐<br><br>The design team presented three options to Dr. Sparkleton and she selected this one. I was present in the room during the review meeting and I ran across the table at high speed when they revealed it, which they have interpreted as enthusiastic approval. This interpretation is CORRECT.<br><br>I would like to personally thank everyone on the patch design team. You understood the assignment. The rat looks very determined and handsome. I know because I looked in the mirror this morning and we have the same energy. 🌕🐀<br><br><span class="hashtag">#TeamRemy</span> <span class="hashtag">#MissionPatch</span> <span class="hashtag">#RemyOfficial</span> <span class="hashtag">#KSAMoonMission</span> <span class="hashtag">#OfficiallyApproved</span></p>
@@ -653,7 +704,7 @@
       <!-- Post 3 (1 week ago): Training update + zero-g simulation personal best -->
       <div class="post-card post-status">
         <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="" alt="" onerror="this.style.display='none'"></div></div>
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/remysocial.png" alt="" onerror="this.style.display='none'"></div></div>
           <div class="post-meta">
             <div class="post-name">Remy Barnaby Bumblebottom</div>
             <div class="post-time">1 week ago</div>
@@ -689,7 +740,7 @@
       <!-- Post 4 (2 weeks ago): Fan mail response — read by Dr. Sparkleton, attended by Remy -->
       <div class="post-card">
         <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="" alt="" onerror="this.style.display='none'"></div></div>
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/remysocial.png" alt="" onerror="this.style.display='none'"></div></div>
           <div class="post-meta">
             <div class="post-name">Remy Barnaby Bumblebottom</div>
             <div class="post-time">2 weeks ago</div>
@@ -697,11 +748,8 @@
           <button class="post-more">···</button>
         </div>
         <div class="post-image">
-          <img src="" alt="" onerror="this.style.display='none'">
-          <div class="post-img-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Image Placeholder
-          </div>
+          <img src="../images/remypic2.png" alt="" onerror="this.style.display='none'">
+          
         </div>
         <div class="post-body">
           <p class="post-caption">I received SO MANY messages from young scientists this week and I want you all to know that I read every single one with my own eyes!! 🐀📬<br><br>(Dr. Sparkleton read them aloud to me while I sat on the desk. I was listening very attentively. Multiple sunflower seeds were consumed during the reading. This counts.)<br><br>To the student who asked if I get lonely in the lab: I do NOT get lonely!! I have Dr. Sparkleton and Gerald the turtle (he is not very fast but he is very wise) and Toulouse the hamster who I am not allowed near unsupervised but who I respect enormously from a distance!!<br><br>To everyone who asked if I am scared about going to the Moon: I AM NOT SCARED!! I am Remy Barnaby Bumblebottom and I completed the orientation maze in 47 seconds on my FIRST TRY and I will complete the Moon mission the same way!! FAST AND WITH CONFIDENCE!! 🌕🐀💪<br><br><span class="hashtag">#TeamRemy</span> <span class="hashtag">#ForTheKids</span> <span class="hashtag">#FutureScientists</span> <span class="hashtag">#AskRemy</span></p>
@@ -730,7 +778,7 @@
       <!-- Post 5 (1 month ago): Addressing welfare concerns — KSA PR working overtime -->
       <div class="post-card post-status">
         <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="" alt="" onerror="this.style.display='none'"></div></div>
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/remysocial.png" alt="" onerror="this.style.display='none'"></div></div>
           <div class="post-meta">
             <div class="post-name">Remy Barnaby Bumblebottom</div>
             <div class="post-time">1 month ago</div>
@@ -762,7 +810,7 @@
       <!-- Post 6 (3 months ago): Hello World — first post, went absolutely viral -->
       <div class="post-card post-status">
         <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="" alt="" onerror="this.style.display='none'"></div></div>
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/remysocial.png" alt="" onerror="this.style.display='none'"></div></div>
           <div class="post-meta">
             <div class="post-name">Remy Barnaby Bumblebottom</div>
             <div class="post-time">3 months ago</div>
@@ -916,5 +964,58 @@ var PROFILES=[
   document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
 })();
 </script>
+<!-- AVATAR POPUP MODAL -->
+<div id="avatar-modal" onclick="if(event.target===this)avClose()">
+  <div class="av-card">
+    <button class="av-close" onclick="avClose()">&#x2715;</button>
+    <div class="av-ring"><div class="av-circle">
+      <img id="av-img" src="" alt="" style="display:none">
+      <span class="av-ph" id="av-ph"></span>
+    </div></div>
+    <div class="av-stats">
+      <div class="av-stat">❤️ <span class="av-stat-n" id="av-hearts">—</span></div>
+      <div class="av-stat-sep"></div>
+      <div class="av-stat">💬 <span class="av-stat-n" id="av-cmts">—</span></div>
+    </div>
+    <div class="av-top-comment">
+      <div class="av-tc-label">Top Comment</div>
+      <div class="av-tc-user" id="av-tc-user">@user</div>
+      <div class="av-tc-text" id="av-tc-text">...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+var _AV={
+  src:'',
+  hearts:'284k',
+  comments:'47k',
+  user:'@auntmargaret_hz',
+  comment:'I showed this to my cat and she was personally offended',
+  ph:'🐀'
+};
+function avOpen(){
+  var img=document.getElementById('av-img');
+  var ph=document.getElementById('av-ph');
+  document.getElementById('av-hearts').textContent=_AV.hearts;
+  document.getElementById('av-cmts').textContent=_AV.comments;
+  document.getElementById('av-tc-user').textContent=_AV.user;
+  document.getElementById('av-tc-text').textContent=_AV.comment;
+  if(_AV.src){img.src=_AV.src;img.style.display='block';ph.style.display='none';}
+  else{img.style.display='none';ph.textContent=_AV.ph;ph.style.display='block';}
+  document.getElementById('avatar-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function avClose(){
+  document.getElementById('avatar-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')avClose();});
+document.addEventListener('DOMContentLoaded',function(){
+  var w=document.querySelector('.profile-avatar-wrap');
+  if(w)w.addEventListener('click',avOpen);
+});
+</script>
+
 </body>
 </html>

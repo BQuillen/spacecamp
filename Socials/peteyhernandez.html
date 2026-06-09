@@ -474,6 +474,62 @@
   .search-result-name { font-weight: 600; font-size: 0.83rem; color: var(--text); }
   .search-result-handle { font-size: 0.75rem; color: var(--muted); }
   @media (max-width: 700px) { .nav-search-wrap { display: none; } }
+
+  /* ── AVATAR POPUP MODAL ── */
+  .profile-avatar-wrap { cursor: pointer; }
+  .profile-avatar-wrap:hover .profile-avatar-inner { opacity: 0.85; transition: opacity 0.15s; }
+  #avatar-modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.82); z-index: 9999;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  #avatar-modal.open { display: flex; }
+  .av-card {
+    background: var(--bg-card); border-radius: 20px;
+    border: 1px solid var(--border); padding: 1.75rem 1.75rem 1.5rem;
+    text-align: center; max-width: 320px; width: 88%;
+    cursor: default; position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.9);
+    animation: avIn 0.22s cubic-bezier(0.34,1.2,0.64,1);
+  }
+  @keyframes avIn { from{opacity:0;transform:scale(0.82)} to{opacity:1;transform:scale(1)} }
+  .av-close {
+    position: absolute; top: 10px; right: 12px;
+    background: transparent; border: none; color: var(--muted);
+    font-size: 1.5rem; cursor: pointer; line-height: 1;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .av-close:hover { background: var(--bg-input); color: var(--text); }
+  .av-ring {
+    width: 180px; height: 180px; border-radius: 50%; padding: 4px;
+    background: var(--story-ring, linear-gradient(135deg, var(--orange), var(--orange2), #5b7fff));
+    box-shadow: 0 4px 32px rgba(255,106,0,0.45); margin: 0 auto 1.1rem;
+  }
+  .av-circle {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: var(--bg-card); border: 4px solid var(--bg);
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+  }
+  .av-circle img { width: 100%; height: 100%; object-fit: cover; }
+  .av-circle .av-ph { font-size: 3.2rem; line-height: 1; }
+  .av-stats {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.5rem; padding-bottom: 1rem; margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .av-stat { display: flex; align-items: center; gap: 0.45rem; font-size: 0.95rem; }
+  .av-stat-n { font-weight: 700; color: var(--text); }
+  .av-stat-sep { width: 1px; height: 18px; background: var(--border); }
+  .av-top-comment {
+    background: var(--bg-input); border-radius: 12px;
+    padding: 0.7rem 0.9rem; border: 1px solid var(--border); text-align: left;
+  }
+  .av-tc-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.3rem; }
+  .av-tc-user { font-weight: 700; font-size: 0.78rem; color: var(--orange); margin-bottom: 0.2rem; }
+  .av-tc-text { font-size: 0.83rem; color: var(--text); line-height: 1.5; }
+
 </style>
 </head>
 <body>
@@ -887,5 +943,58 @@ var PROFILES=[
   document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
 })();
 </script>
+<!-- AVATAR POPUP MODAL -->
+<div id="avatar-modal" onclick="if(event.target===this)avClose()">
+  <div class="av-card">
+    <button class="av-close" onclick="avClose()">&#x2715;</button>
+    <div class="av-ring"><div class="av-circle">
+      <img id="av-img" src="" alt="" style="display:none">
+      <span class="av-ph" id="av-ph"></span>
+    </div></div>
+    <div class="av-stats">
+      <div class="av-stat">❤️ <span class="av-stat-n" id="av-hearts">—</span></div>
+      <div class="av-stat-sep"></div>
+      <div class="av-stat">💬 <span class="av-stat-n" id="av-cmts">—</span></div>
+    </div>
+    <div class="av-top-comment">
+      <div class="av-tc-label">Top Comment</div>
+      <div class="av-tc-user" id="av-tc-user">@user</div>
+      <div class="av-tc-text" id="av-tc-text">...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+var _AV={
+  src:'../images/peteysocial.png',
+  hearts:'18.4k',
+  comments:'2.3k',
+  user:'@RatLover2026',
+  comment:'this man genuinely believes every single word he posts and honestly it shows',
+  ph:'🌿'
+};
+function avOpen(){
+  var img=document.getElementById('av-img');
+  var ph=document.getElementById('av-ph');
+  document.getElementById('av-hearts').textContent=_AV.hearts;
+  document.getElementById('av-cmts').textContent=_AV.comments;
+  document.getElementById('av-tc-user').textContent=_AV.user;
+  document.getElementById('av-tc-text').textContent=_AV.comment;
+  if(_AV.src){img.src=_AV.src;img.style.display='block';ph.style.display='none';}
+  else{img.style.display='none';ph.textContent=_AV.ph;ph.style.display='block';}
+  document.getElementById('avatar-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function avClose(){
+  document.getElementById('avatar-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')avClose();});
+document.addEventListener('DOMContentLoaded',function(){
+  var w=document.querySelector('.profile-avatar-wrap');
+  if(w)w.addEventListener('click',avOpen);
+});
+</script>
+
 </body>
 </html>
