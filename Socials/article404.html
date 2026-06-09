@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Article Not Found | Hazelia Morning Post</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f3ee; color: #1a1a1a; font-family: 'Inter', sans-serif; }
+
+  .masthead {
+    background: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 0.75rem 2rem;
+    border-bottom: 3px solid #c8a84b;
+  }
+  .masthead-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+  .masthead-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-top: 0.2rem;
+  }
+
+  .nav-bar {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0 2rem;
+    display: flex; align-items: center; gap: 2rem;
+    height: 44px;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: #555; font-weight: 500;
+    overflow: hidden;
+  }
+  .nav-bar span { cursor: default; }
+  .nav-bar span:hover { color: #1a1a1a; }
+
+  .main {
+    max-width: 680px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .error-code {
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    font-weight: 700;
+    color: #e8e4dc;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
+  }
+
+  .error-rule {
+    width: 60px; height: 3px;
+    background: #c8a84b;
+    margin: 0 auto 2rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .error-body {
+    font-size: 0.92rem;
+    color: #666;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .error-body a { color: #9a6010; text-decoration: underline; }
+
+  .search-box {
+    display: flex; gap: 0;
+    max-width: 420px; margin: 0 auto 3rem;
+    border: 1px solid #ccc; border-radius: 4px; overflow: hidden;
+    background: #fff;
+  }
+  .search-box input {
+    flex: 1; padding: 0.65rem 1rem;
+    border: none; outline: none;
+    font-family: 'Inter', sans-serif; font-size: 0.85rem;
+    color: #333;
+  }
+  .search-box button {
+    background: #1a1a1a; color: #fff;
+    border: none; padding: 0.65rem 1.25rem;
+    font-size: 0.8rem; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  .suggestions {
+    border-top: 1px solid #ddd;
+    padding-top: 2rem;
+    text-align: left;
+  }
+  .suggestions h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #1a1a1a;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .suggestion-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  .suggestion-item:hover .suggestion-headline { color: #9a6010; }
+  .suggestion-tag {
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: #c8a84b; font-weight: 600; white-space: nowrap; padding-top: 3px;
+    min-width: 80px;
+  }
+  .suggestion-headline { font-size: 0.88rem; color: #333; line-height: 1.4; transition: color 0.15s; }
+  .suggestion-date { font-size: 0.72rem; color: #aaa; margin-top: 3px; }
+
+  .footer-rule {
+    max-width: 680px; margin: 4rem auto 0;
+    border-top: 1px solid #ddd;
+    padding: 1.5rem 2rem 3rem;
+    text-align: center;
+    font-size: 0.7rem; color: #aaa; line-height: 1.7;
+  }
+  .footer-rule strong { color: #888; }
+
+  /* ── DIAGNOSTIC CONSOLE ── */
+  #diag-console {
+    position: fixed;
+    bottom: 18px; right: 18px;
+    width: 340px;
+    background: #090e09;
+    border: 1px solid #1f4a1f;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(0,255,80,0.08), 0 8px 32px rgba(0,0,0,0.6);
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    overflow: hidden;
+  }
+  #diag-console.visible { opacity: 1; transform: translateY(0); }
+  #diag-header {
+    background: #0f1e0f;
+    border-bottom: 1px solid #1f4a1f;
+    padding: 0.4rem 0.75rem;
+    display: flex; justify-content: space-between; align-items: center;
+    color: #4caf4c;
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  #diag-timer {
+    color: #2e7d32;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.65rem;
+  }
+  #diag-output {
+    padding: 0.6rem 0.75rem;
+    max-height: 148px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex; flex-direction: column; gap: 0.15rem;
+  }
+  #diag-output::-webkit-scrollbar { display: none; }
+  .diag-line {
+    color: #2e7d32;
+    line-height: 1.55;
+    white-space: pre;
+  }
+  .diag-line.warn { color: #66bb6a; }
+  .diag-line.alert {
+    color: #a5d6a7;
+    font-weight: bold;
+    animation: diag-flash 0.6s ease-in-out 2;
+  }
+  .diag-line.result { color: #1b5e20; }
+  .diag-cursor {
+    display: inline-block;
+    width: 7px; height: 0.85em;
+    background: #4caf4c;
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @keyframes diag-flash { 0%,100%{opacity:1} 50%{opacity:0.2} }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-name">Hazelia Morning Post</div>
+  <div class="masthead-sub">Established 1948 &nbsp;•&nbsp; Independent &nbsp;•&nbsp; Trusted</div>
+</div>
+
+<div class="nav-bar">
+  <span>Home</span>
+  <span>News</span>
+  <span>Politics</span>
+  <span>Science &amp; Technology</span>
+  <span>Business</span>
+  <span>Culture</span>
+  <span>Opinion</span>
+  <span>Archive</span>
+</div>
+
+<div class="main">
+
+  <div class="error-code">404</div>
+  <div class="error-rule"></div>
+
+  <h1>This article could not be found.</h1>
+
+  <p class="error-body">
+    The article you are looking for has been removed, relocated to our archive, or may never have existed at this address.<br><br>
+    If you arrived here from an external link, the source may be referencing outdated or incorrect content. Our editorial archive is updated regularly and some older articles require a subscriber account to access.<br><br>
+    We apologize for the inconvenience. <a href="#">Contact our web team</a> if you believe this is an error.
+  </p>
+
+  <div class="search-box">
+    <input type="text" placeholder="Search the archive..." />
+    <button>Search</button>
+  </div>
+
+  <div class="suggestions">
+    <h2>You might also be interested in:</h2>
+
+    <div class="suggestion-item">
+      <div>
+        <div class="suggestion-tag">Science</div>
+      </div>
+      <div>
+        <div class="suggestion-headline">KSA Confirms Lunar Mission Timeline Amid Growing Public Interest</div>
+        <div class="suggestion-date">5 days ago</div>
+      </div>
+    </div>
+
+    <div class="suggestion-item">
+      <div>
+        <div class="suggestion-tag">Politics</div>
+      </div>
+      <div>
+        <div class="suggestion-headline">Hazelian Council Passes Rat Welfare Protection Act with 74% Approval</div>
+        <div class="suggestion-date">3 weeks ago</div>
+      </div>
+    </div>
+
+    <div class="suggestion-item">
+      <div>
+        <div class="suggestion-tag">Technology</div>
+      </div>
+      <div>
+        <div class="suggestion-headline">RoboPets Announces Partnership with Animal Welfare Nonprofit for Lunar Monitoring</div>
+        <div class="suggestion-date">2 months ago</div>
+      </div>
+    </div>
+
+    <div class="suggestion-item">
+      <div>
+        <div class="suggestion-tag">Opinion</div>
+      </div>
+      <div>
+        <div class="suggestion-headline">Who Speaks for the Animals? A Question the Space Race Has Not Answered</div>
+        <div class="suggestion-date">4 months ago</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer-rule">
+  <strong>Hazelia Morning Post</strong><br>
+  © 2026 Hazelia Morning Post Group. All rights reserved. Reproduction without permission is prohibited.<br>
+  Hazelia, HZ &nbsp;|&nbsp; news@hazeliamorningpost.hz &nbsp;|&nbsp; Subscriber Services &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Corrections
+</div>
+
+<!-- DIAGNOSTIC CONSOLE -->
+<div id="diag-console">
+  <div id="diag-header">
+    <span>▶ VISITOR DIAGNOSTICS</span>
+    <span id="diag-timer">00:00</span>
+  </div>
+  <div id="diag-output">
+    <span class="diag-cursor"></span>
+  </div>
+</div>
+
+<script>
+(function() {
+  var output = document.getElementById('diag-output');
+  var console_ = document.getElementById('diag-console');
+  var timerEl = document.getElementById('diag-timer');
+  var startTime = Date.now();
+  var cursor = output.querySelector('.diag-cursor');
+
+  // Timer
+  setInterval(function() {
+    var elapsed = Math.floor((Date.now() - startTime) / 1000);
+    var m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+    var s = String(elapsed % 60).padStart(2, '0');
+    timerEl.textContent = m + ':' + s;
+  }, 1000);
+
+  function appendLine(text, cls) {
+    var line = document.createElement('span');
+    line.className = 'diag-line' + (cls ? ' ' + cls : '');
+    line.textContent = text;
+    output.insertBefore(line, cursor);
+    output.scrollTop = output.scrollHeight;
+  }
+
+  var seq = [
+    { delay: 900,  text: 'Initializing visitor diagnostics...',     cls: '' },
+    { delay: 700,  text: 'Loading...',                               cls: 'result' },
+    { delay: 1600, text: 'Tracing IP address...',                    cls: 'alert' },
+    { delay: 750,  text: 'IP located: 203.0.113.' + (Math.floor(Math.random()*220)+2), cls: 'warn' },
+    { delay: 500,  text: 'Loading...',                               cls: 'result' },
+    { delay: 2100, text: 'Logging user credentials...',              cls: 'alert' },
+    { delay: 680,  text: 'Credential cache: 1 entry found.',         cls: 'warn' },
+    { delay: 500,  text: 'Loading...',                               cls: 'result' },
+    { delay: 1900, text: 'Installing spyware package v2.1...',       cls: 'alert' },
+    { delay: 820,  text: 'Package installed. Upload pending.',       cls: 'warn' },
+    { delay: 500,  text: 'Loading...',                               cls: 'result' },
+    { delay: 2300, text: 'Uploading data... 4.2MB',                  cls: 'alert' },
+    { delay: 900,  text: 'Upload complete.',                         cls: 'warn' },
+    { delay: 500,  text: 'Loading...',                               cls: 'result' },
+    { delay: 1400, text: '3 vulnerabilities logged.',                cls: 'warn' },
+    { delay: 500,  text: 'Loading...',                               cls: 'result' },
+    { delay: 2600, text: 'Process complete. Returning to normal.',   cls: '' },
+  ];
+
+  var total = 1000; // initial delay before console appears
+  setTimeout(function() { console_.classList.add('visible'); }, total);
+
+  seq.forEach(function(item) {
+    total += item.delay;
+    setTimeout(function() {
+      appendLine(item.text, item.cls);
+    }, total);
+  });
+})();
+</script>
+
+</body>
+</html>
