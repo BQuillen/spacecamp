@@ -750,6 +750,9 @@ function toggleCard(id) {
   var el = document.getElementById(id);
   if (el) el.classList.toggle('open');
 }
+
+// ── PLACEHOLDER IMAGES — strip empty src so CSS :not([src]) fallback renders ──
+document.querySelectorAll('img[src=""]').forEach(function(img){img.removeAttribute('src');});
 </script>
 
 </body>
