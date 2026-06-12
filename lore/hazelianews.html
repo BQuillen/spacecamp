@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazelia Morning Post — The Nation's Newspaper of Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e0e13;
+  --bg-card:#15151e;
+  --bg-raised:#1c1c28;
+  --red:#cc1028;
+  --red2:#e8142e;
+  --red-dark:#8c0118;
+  --text:#dcdce8;
+  --muted:#7a7a98;
+  --border:rgba(204,16,40,0.2);
+  --gold:#d4a832;
+  --sup:#22cc66;
+  --sdown:#ff4848;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+
+/* ── TICKER ── */
+.ticker-bar{
+  background:#06060a;
+  border-bottom:2px solid var(--red);
+  height:36px;overflow:hidden;display:flex;align-items:center;
+  position:sticky;top:0;z-index:200;
+}
+.ticker-label{
+  background:var(--red);color:#fff;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  padding:0 12px;height:100%;display:flex;align-items:center;flex-shrink:0;white-space:nowrap;
+}
+.ticker-scroll-wrap{flex:1;overflow:hidden;position:relative}
+.ticker-track{
+  display:inline-flex;align-items:center;gap:0;
+  white-space:nowrap;
+  animation:ticker 50s linear infinite;
+}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0 18px;border-right:1px solid #222;
+  font-size:0.75rem;font-family:'Inter',monospace;
+}
+.tick-sym{font-weight:700;color:#ccc;letter-spacing:0.04em}
+.tick-val{font-size:0.72rem}
+.up{color:var(--sup)}
+.dn{color:var(--sdown)}
+
+/* ── MASTHEAD ── */
+.masthead{
+  background:linear-gradient(135deg,#0a0003 0%,#1a000d 40%,var(--red-dark) 100%);
+  border-bottom:3px solid var(--red);
+  padding:1rem 2rem 0.85rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;
+}
+.mast-left{display:flex;flex-direction:column;}
+.mast-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,4vw,2.6rem);
+  font-weight:700;color:#fff;
+  letter-spacing:0.02em;line-height:1;
+}
+.mast-title em{color:var(--red2);font-style:normal}
+.mast-sub{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:4px}
+.mast-date{font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:2px}
+.mast-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.mast-sub-btn{
+  background:var(--red);color:#fff;border:none;
+  padding:6px 16px;border-radius:4px;font-size:0.75rem;font-weight:600;
+  cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.04em;
+}
+.mast-tag{font-size:0.65rem;color:rgba(255,255,255,0.35);text-align:right}
+
+/* ── BREAKING BAR ── */
+.breaking-bar{
+  background:var(--red);
+  overflow:hidden;height:30px;display:flex;align-items:center;
+}
+.breaking-lbl{
+  background:#fff;color:var(--red);
+  font-size:0.62rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;
+  padding:0 10px;height:100%;display:flex;align-items:center;flex-shrink:0;
+}
+.breaking-scroll{flex:1;overflow:hidden}
+.breaking-track{
+  display:inline-flex;white-space:nowrap;
+  animation:ticker 35s linear infinite;
+  font-size:0.73rem;font-weight:600;color:#fff;letter-spacing:0.03em;gap:0;
+}
+.break-item{padding:0 24px;border-right:1px solid rgba(255,255,255,0.3)}
+
+/* ── NAV ── */
+.site-nav{
+  background:#100c16;
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;display:flex;align-items:center;gap:0;
+  overflow-x:auto;scrollbar-width:none;
+}
+.site-nav::-webkit-scrollbar{display:none}
+.nav-link{
+  color:var(--muted);text-decoration:none;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
+  padding:12px 16px;border-bottom:2px solid transparent;
+  white-space:nowrap;transition:color 0.15s,border-color 0.15s;
+}
+.nav-link:hover,.nav-link.active{color:var(--text);border-bottom-color:var(--red)}
+.nav-search{margin-left:auto;background:var(--bg-raised);border:1px solid var(--border);
+  border-radius:4px;padding:5px 12px;color:var(--text);font-size:0.75rem;
+  outline:none;font-family:'Inter',sans-serif;min-width:0;width:140px}
+.nav-search::placeholder{color:var(--muted)}
+
+/* ── PAGE LAYOUT ── */
+.page-body{max-width:1200px;margin:0 auto;padding:28px 20px;display:grid;grid-template-columns:1fr 280px;gap:28px}
+
+/* ── SECTION LABEL ── */
+.section-label{
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-label span{
+  font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--red);white-space:nowrap;
+}
+
+/* ── STORY CARD ── */
+.story-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:6px;
+  margin-bottom:16px;
+  overflow:hidden;
+}
+.story-card:hover{border-color:rgba(204,16,40,0.4)}
+.story-cat{
+  display:inline-block;font-size:0.62rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.65rem;
+  border-radius:2px;margin:14px 14px 0;
+}
+.cat-space{background:rgba(50,100,220,0.18);color:#7aabff}
+.cat-hazelia{background:rgba(204,16,40,0.18);color:#ff7a8a}
+.cat-economy{background:rgba(212,168,50,0.15);color:#d4a832}
+.cat-science{background:rgba(50,220,100,0.12);color:#4cef90}
+.cat-world{background:rgba(180,100,220,0.15);color:#d090ff}
+.cat-odd{background:rgba(255,160,0,0.1);color:#ffb040}
+
+.story-img-wrap{margin:10px 14px 0;border-radius:4px;overflow:hidden;background:var(--bg-raised)}
+.story-img-wrap img{
+  width:100%;display:block;
+  background:var(--bg-raised);
+  min-height:180px;
+  object-fit:cover;
+}
+.story-img-wrap img:not([src]),
+.story-img-wrap img[src=""]{
+  min-height:180px;
+  background:linear-gradient(135deg,#1a1520 0%,#20101a 100%);
+  display:block;
+}
+.story-figcap{font-size:0.65rem;color:var(--muted);padding:4px 0 0;font-style:italic}
+
+.story-head{
+  padding:12px 14px 10px;cursor:pointer;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+}
+.story-head:hover h2{color:var(--red2)}
+.story-head h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1rem,2.2vw,1.25rem);
+  font-weight:700;color:var(--text);
+  line-height:1.3;flex:1;
+}
+.story-toggle{
+  flex-shrink:0;font-size:0.8rem;color:var(--red);margin-top:4px;
+  transition:transform 0.3s;display:block;
+}
+.story-card.open .story-toggle{transform:rotate(180deg)}
+
+.story-byline{
+  font-size:0.72rem;color:var(--muted);
+  padding:0 14px 8px;
+  display:flex;gap:12px;align-items:center;
+}
+.byline-dot{color:var(--border);font-size:1rem}
+
+.story-preview{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.42s ease, padding 0.3s ease;
+}
+.story-card.open .story-preview{max-height:1200px}
+.preview-inner{padding:0 14px 14px;border-top:1px solid var(--border)}
+.preview-inner p{color:var(--muted);font-size:0.88rem;line-height:1.72;margin-bottom:10px}
+.preview-inner p:last-child{margin-bottom:0}
+.read-more{
+  display:inline-block;margin-top:10px;
+  font-size:0.75rem;font-weight:700;color:var(--red);
+  text-decoration:none;letter-spacing:0.04em;
+}
+.read-more:hover{color:var(--red2);text-decoration:underline}
+
+/* ── HERO STORY ── */
+.hero-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:6px;
+  margin-bottom:20px;overflow:hidden;
+}
+.hero-img-wrap{background:var(--bg-raised)}
+.hero-img-wrap img{
+  width:100%;display:block;min-height:280px;object-fit:cover;
+  background:linear-gradient(135deg,#0f0a18 0%,#1a0a10 100%);
+}
+.hero-img-wrap img:not([src]),
+.hero-img-wrap img[src=""]{min-height:280px;display:block;
+  background:linear-gradient(135deg,#0f0a18 0%,#1a0a10 100%);}
+.hero-body{padding:18px 20px 16px}
+.hero-cat{font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.hero-title{
+  font-family:'Playfair Display',serif;font-size:clamp(1.2rem,3vw,2rem);
+  font-weight:700;color:var(--text);line-height:1.25;cursor:pointer;margin-bottom:8px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+}
+.hero-title:hover span.ht{color:var(--red2)}
+.hero-byline{font-size:0.72rem;color:var(--muted);margin-bottom:0}
+.hero-preview{max-height:0;overflow:hidden;transition:max-height 0.42s ease}
+.hero-card.open .hero-preview{max-height:1200px}
+.hero-preview .preview-inner{border-top:1px solid var(--border);margin-top:10px}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:16px}
+.sb-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.sb-head{
+  background:var(--red-dark);padding:8px 14px;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#fff;
+}
+.sb-body{padding:12px 14px}
+.sb-item{
+  padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;
+}
+.sb-item:last-child{border-bottom:none;padding-bottom:0}
+.sb-item-title{font-size:0.82rem;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:2px}
+.sb-item-title:hover{color:var(--red2)}
+.sb-item-meta{font-size:0.68rem;color:var(--muted)}
+.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.wx-day{background:var(--bg-raised);border-radius:4px;padding:8px;text-align:center;font-size:0.75rem}
+.wx-icon{font-size:1.4rem;display:block;margin-bottom:2px}
+.wx-label{color:var(--muted);font-size:0.65rem}
+.wx-temp{font-weight:700;font-size:0.85rem}
+.sb-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.sb-stat{background:var(--bg-raised);border-radius:4px;padding:8px;text-align:center}
+.sb-stat-n{font-weight:700;font-size:1.05rem;color:var(--text);display:block}
+.sb-stat-l{font-size:0.63rem;color:var(--muted);letter-spacing:0.04em}
+.opinion-card{padding:10px 0;border-bottom:1px solid var(--border)}
+.opinion-card:last-child{border-bottom:none}
+.opinion-author{font-size:0.7rem;font-weight:700;color:var(--gold);margin-bottom:2px}
+.opinion-title{font-size:0.82rem;color:var(--text);line-height:1.35}
+.opinion-title:hover{color:var(--red2);cursor:pointer}
+
+/* ── FOOTER ── */
+.site-footer{
+  background:#06060a;border-top:2px solid var(--red);
+  padding:2rem;text-align:center;
+  margin-top:2rem;font-size:0.72rem;color:var(--muted);line-height:1.8;
+}
+.footer-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:rgba(255,255,255,0.6);margin-bottom:6px}
+.footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:0.7rem}
+.footer-links a:hover{color:var(--text)}
+
+@media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{display:none}}
+</style>
+</head>
+<body>
+
+<!-- LIVE TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">MARKETS</div>
+  <div class="ticker-scroll-wrap">
+    <div class="ticker-track" id="ticker-track">
+      <!-- Set A -->
+      <span class="tick-item"><span class="tick-sym">HSA</span><span class="tick-val dn" id="hsa-a">▼ 42.18 (-3.42%)</span></span>
+      <span class="tick-item"><span class="tick-sym">RBP</span><span class="tick-val up" id="rbp-a">▲ 118.74 (+7.21%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HDef</span><span class="tick-val up" id="hdef-a">▲ 203.11 (+4.88%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HGP</span><span class="tick-val up" id="hgp-a">▲ 67.54 (+0.23%)</span></span>
+      <span class="tick-item"><span class="tick-sym">QMR</span><span class="tick-val dn" id="qmr-a">▼ 89.40 (-1.15%)</span></span>
+      <span class="tick-item"><span class="tick-sym">OJX</span><span class="tick-val up" id="ojx-a">▲ 155.22 (+2.10%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HAE</span><span class="tick-val dn" id="hae-a">▼ 55.90 (-2.07%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HBT</span><span class="tick-val dn" id="hbt-a">▼ 31.88 (-0.44%)</span></span>
+      <span class="tick-item"><span class="tick-sym">MRC</span><span class="tick-val up" id="mrc-a">▲ 78.65 (+1.33%)</span></span>
+      <span class="tick-item"><span class="tick-sym">NTR</span><span class="tick-val up" id="ntr-a">▲ 24.40 (+0.88%)</span></span>
+      <span class="tick-item"><span class="tick-sym">FRT</span><span class="tick-val dn" id="frt-a">▼ 44.12 (-0.55%)</span></span>
+      <!-- Set B (duplicate for seamless loop) -->
+      <span class="tick-item"><span class="tick-sym">HSA</span><span class="tick-val dn" id="hsa-b">▼ 42.18 (-3.42%)</span></span>
+      <span class="tick-item"><span class="tick-sym">RBP</span><span class="tick-val up" id="rbp-b">▲ 118.74 (+7.21%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HDef</span><span class="tick-val up" id="hdef-b">▲ 203.11 (+4.88%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HGP</span><span class="tick-val up" id="hgp-b">▲ 67.54 (+0.23%)</span></span>
+      <span class="tick-item"><span class="tick-sym">QMR</span><span class="tick-val dn" id="qmr-b">▼ 89.40 (-1.15%)</span></span>
+      <span class="tick-item"><span class="tick-sym">OJX</span><span class="tick-val up" id="ojx-b">▲ 155.22 (+2.10%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HAE</span><span class="tick-val dn" id="hae-b">▼ 55.90 (-2.07%)</span></span>
+      <span class="tick-item"><span class="tick-sym">HBT</span><span class="tick-val dn" id="hbt-b">▼ 31.88 (-0.44%)</span></span>
+      <span class="tick-item"><span class="tick-sym">MRC</span><span class="tick-val up" id="mrc-b">▲ 78.65 (+1.33%)</span></span>
+      <span class="tick-item"><span class="tick-sym">NTR</span><span class="tick-val up" id="ntr-b">▲ 24.40 (+0.88%)</span></span>
+      <span class="tick-item"><span class="tick-sym">FRT</span><span class="tick-val dn" id="frt-b">▼ 44.12 (-0.55%)</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="mast-left">
+    <div class="mast-title">The <em>Hazelia</em> Morning Post</div>
+    <div class="mast-sub">The Nation's Newspaper of Record · Est. 1948</div>
+    <div class="mast-date" id="mast-date">Loading date...</div>
+  </div>
+  <div class="mast-right">
+    <button class="mast-sub-btn">Subscribe</button>
+    <div class="mast-tag">Print + Digital from ₭4.99/mo</div>
+  </div>
+</header>
+
+<!-- BREAKING NEWS -->
+<div class="breaking-bar">
+  <div class="breaking-lbl">BREAKING</div>
+  <div class="breaking-scroll">
+    <div class="breaking-track">
+      <span class="break-item">KSA CONFIRMS LAUNCH DATE FOR KMM VALDORIA MISSION — LIVE COVERAGE BEGINS AT 0600</span>
+      <span class="break-item">HSA ANNOUNCES 90-DAY EXPANSION PLAN — PRESIDENT JIBBERSON TO ADDRESS NATION THURSDAY</span>
+      <span class="break-item">OLLIEJAM TRADE DELEGATION ARRIVES IN HAZELIA — TALKS TO INCLUDE RESOURCE AGREEMENTS</span>
+      <span class="break-item">NATIONAL TURTLE COUNT BREAKS RECORDS FOR THIRD YEAR RUNNING</span>
+      <span class="break-item">INTERIOR MINISTRY DECLINES TO COMMENT ON WATCH LIST REPORT</span>
+      <span class="break-item">KSA CONFIRMS LAUNCH DATE FOR KMM VALDORIA MISSION — LIVE COVERAGE BEGINS AT 0600</span>
+      <span class="break-item">HSA ANNOUNCES 90-DAY EXPANSION PLAN — PRESIDENT JIBBERSON TO ADDRESS NATION THURSDAY</span>
+      <span class="break-item">OLLIEJAM TRADE DELEGATION ARRIVES IN HAZELIA — TALKS TO INCLUDE RESOURCE AGREEMENTS</span>
+      <span class="break-item">NATIONAL TURTLE COUNT BREAKS RECORDS FOR THIRD YEAR RUNNING</span>
+      <span class="break-item">INTERIOR MINISTRY DECLINES TO COMMENT ON WATCH LIST REPORT</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a class="nav-link active" href="#">Home</a>
+  <a class="nav-link" href="#">Hazelia</a>
+  <a class="nav-link" href="#">Space</a>
+  <a class="nav-link" href="#">Economy</a>
+  <a class="nav-link" href="#">World</a>
+  <a class="nav-link" href="#">Science</a>
+  <a class="nav-link" href="#">Opinion</a>
+  <a class="nav-link" href="#">Odd &amp; Ends</a>
+  <input class="nav-search" type="text" placeholder="Search the Post...">
+</nav>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+<main>
+
+  <!-- ══════════════════════════════════════════
+       HERO — KSA Space Race
+  ═══════════════════════════════════════════ -->
+  <div class="hero-card" id="hero-spacerrace">
+    <div class="hero-img-wrap">
+      <img src="" alt="Hazelia Space Administration launch facility at dusk">
+    </div>
+    <div class="hero-body">
+      <div class="hero-cat">Space &amp; Science · Top Story</div>
+      <div class="hero-title" onclick="toggleCard('hero-spacerrace')">
+        <span class="ht">Hazelia Falling Behind in the Space Race, New Reports Show</span>
+        <span class="story-toggle">▼</span>
+      </div>
+      <div class="hero-byline">By Staff Reporter · Science Desk · June 10, 2026</div>
+      <div class="hero-preview">
+        <div class="preview-inner">
+          <p>Hazelia has always been proud of its place in space. But a new report says the country is falling behind — and fast. Experts say that a neighboring country has quietly become the world leader in space technology, and the gap between them and Hazelia is getting bigger every year.</p>
+          <p>The rival nation's rockets fly farther, their satellites last longer, and their space research teams have been growing while Hazelia's budget stayed flat for four straight years. Some scientists say the difference is now impossible to ignore.</p>
+          <p>President Jibberson addressed the nation on Tuesday. "We will not be left behind," he said at a press conference. "I am calling for a more aggressive push in our space program, starting now." He did not give exact numbers but promised a full plan within 90 days. Critics say Hazelia needs more than a plan — it needs real money, talented people, and time it may not have.</p>
+          <p>Officials at the Hazelia Space Administration did not comment directly on how far behind the agency has fallen, saying only that they were "reviewing the report and preparing a response."</p>
+          <a href="#" class="read-more">Continue Reading →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION: KEY STORIES
+  ═══════════════════════════════════════════ -->
+  <div class="section-label"><span>Key Stories</span></div>
+
+  <!-- Story: Moon Resources -->
+  <div class="story-card" id="card-moon">
+    <span class="story-cat cat-economy">Economy</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Illustration of lunar surface with Hazelian flag concept art">
+      <div class="story-figcap">Photo: Hazelia Morning Post / Graphics Desk</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-moon')">
+      <h2>The Moon Could Make Hazelia Rich Again — If We Can Get There First</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Amara Brielle, Economic Correspondent</span>
+      <span class="byline-dot">·</span>
+      <span>June 9, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>Scientists say the moon is full of rare minerals that could be worth trillions of dollars. The countries that figure out how to collect and sell those resources first could become some of the most powerful nations in the world. Hazelia, some experts say, is in the perfect position to lead — if it can get its space program moving.</p>
+        <p>Hazelia already has strong trade agreements with Olliejam and Quillantis, two of the biggest buyers of rare materials in the world. If Hazelia can bring moon resources home, it would have customers ready and waiting.</p>
+        <p>"The relationships are already there," said Dr. Amara Brielle, an economist at Hazelia University. "What Hazelia needs now is a reliable way to get to the moon and back — and it needs to get there before someone else does." Experts say the country that claims the first large-scale collection rights will have a huge advantage for decades to come.</p>
+        <p>Trade officials from Olliejam and Quillantis were both in Hazelia this week for separate meetings. Neither delegation commented on lunar resources specifically, but both meetings were described as "productive" by government spokespeople.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story: FART -->
+  <div class="story-card" id="card-fart">
+    <span class="story-cat cat-hazelia">Hazelia</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Peter Hernandez at FART founding event, Hazelia, 2025">
+      <div class="story-figcap">Photo: Courtesy of the Federation for Assisting Rats and Turtles</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-fart')">
+      <h2>From Small Town to Big Mission: The Man Behind FART</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Delia Strand, Feature Writer</span>
+      <span class="byline-dot">·</span>
+      <span>June 7, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>Not many people in Hazelia had heard of Peter Hernandez in 2024. A year later, he was running one of the fastest-growing animal rights groups in the country. His organization — the Federation for Assisting Rats and Turtles, known as FART — was founded in 2025 and has grown at a speed that has surprised even its own members.</p>
+        <p>FART says it helped more animals in its first year than most groups do in ten. The organization now has active chapters in 47 countries and recently announced a partnership with technology company RoboPets to place welfare sensors on research animals during the Kacentina Space Administration's upcoming moon mission. Hernandez said the idea came after he attended a university lecture about animals used in scientific testing.</p>
+        <p>"Nobody was asking the right questions," Hernandez told the Post last spring. "So I started asking them." Animal welfare experts have praised FART's rapid impact. A few have quietly noted that the organization appears "unusually well-funded" for its age, though no formal concerns have been raised.</p>
+        <p>Hernandez, who grew up in the small town of Rendavas, says he never expected the group to grow this fast. "I just wanted to help a few animals," he said. "It turned into something bigger than I planned."</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story: Watch List -->
+  <div class="story-card" id="card-watchlist">
+    <span class="story-cat cat-hazelia">Hazelia</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Hazelia Interior Ministry building, Hazelia Capital">
+      <div class="story-figcap">Photo: Hazelia Morning Post Archive</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-watchlist')">
+      <h2>Government Places Multiple Space Program Workers on National Watch List Over "Suspicious Connections"</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Investigative Desk</span>
+      <span class="byline-dot">·</span>
+      <span>June 8, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>Hazelia's Interior Ministry confirmed this week that several people connected to space program operations have been placed on an official government watch list. Officials said the individuals were flagged during what they called a "routine review," but they did not share names, exact numbers, or specific reasons for the decision.</p>
+        <p>A government watch list is used to track people believed to be a possible risk to national security. Being placed on the list is not a criminal charge. Importantly, people added to the list are not required to be told that they are on it.</p>
+        <p>"We do not comment on ongoing matters of this nature," said a spokesperson for the Interior Ministry. The agency did not confirm whether the review was connected to any specific country, incident, or organization. Several sources familiar with the situation told the Post that the review had been quietly underway for several months before this week's confirmation.</p>
+        <p>No further details have been made available to the public. The Post will continue to follow this story.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story: Scientists Leaving -->
+  <div class="story-card" id="card-scientists">
+    <span class="story-cat cat-space">Space &amp; Science</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Empty research lab at Hazelia Space Administration campus">
+      <div class="story-figcap">Photo: Hazelia Morning Post / R. Fontaine</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-scientists')">
+      <h2>HSA Loses Several Top Scientists; Agency Says It Is "Actively Recruiting"</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Fen Okafor, Science Correspondent</span>
+      <span class="byline-dot">·</span>
+      <span>June 5, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>The Hazelia Space Administration has had a difficult few months. A number of its most experienced scientists and researchers chose not to renew their contracts and have left to take positions elsewhere — including, multiple sources say, at institutions in other countries.</p>
+        <p>HSA officials called the departures "not unexpected" and said the agency is "actively working to fill those roles." Industry insiders, however, say the situation is more serious than the agency is letting on. One anonymous source told the Post that at least one major research program has already been pushed back as a result of the departures.</p>
+        <p>"Losing your best people is never a small thing," said the source, who was not authorized to speak publicly. "The equipment stays. The knowledge walks out the door." HSA did not respond to follow-up questions about which programs might be affected, or about where specifically the researchers had gone. The Post was unable to reach former staff members for comment.</p>
+        <p>The timing has raised eyebrows among some observers, who noted that the departures came shortly after several of Hazelia's neighbor countries expanded their own space research budgets significantly.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION: ODD & ENDS
+  ═══════════════════════════════════════════ -->
+  <div class="section-label" style="margin-top:8px"><span>Odd &amp; Ends</span></div>
+
+  <!-- Filler: Turtles -->
+  <div class="story-card" id="card-turtles">
+    <span class="story-cat cat-odd">Wildlife</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Hazelian freshwater turtle basking, photographed near Lake Vrendal">
+      <div class="story-figcap">Photo: Hazelia Dept. of Wildlife</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-turtles')">
+      <h2>National Turtle Population Hits All-Time High; Ecologists Pleased, Somewhat Surprised</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Priya Olsen, Environment Reporter</span>
+      <span class="byline-dot">·</span>
+      <span>June 6, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>The Hazelia Department of Wildlife released its annual turtle count last Thursday, and the numbers are up — way up. The national turtle population has reached its highest recorded level since formal counting began in 1991, rising 18% in just the past two years.</p>
+        <p>Ecologists say the jump is good news for Hazelia's freshwater ecosystems. However, they admit they are not entirely sure what is driving it. "We're looking into it," said Dr. Priya Olsen, lead turtle researcher at Hazelia University. "Turtles are doing very well right now. That's genuinely great. We'll figure out the rest later."</p>
+        <p>Some wildlife officials have suggested that increased public awareness around turtle conservation — partly driven by nonprofit groups — may be a contributing factor. Others say the data may simply reflect better counting methods. Either way, officials describe the results as a "welcome surprise."</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filler: Jibberson Astronomy -->
+  <div class="story-card" id="card-jib">
+    <span class="story-cat cat-odd">Nation</span>
+    <div class="story-img-wrap">
+      <img src="" alt="President Jibberson holding his personal telescope at the Hazelia Capital Astronomy Club">
+      <div class="story-figcap">Photo: Office of the President</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-jib')">
+      <h2>President Jibberson Joins Hazelia Astronomy Club, Named "Honorary Stargazer"</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Wren Dacosta, Capital Correspondent</span>
+      <span class="byline-dot">·</span>
+      <span>June 4, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>President Jibberson made a surprise appearance at the Hazelia Capital City Astronomy Club's monthly meeting last Thursday evening. He brought his own telescope. It was a good one, club members noted.</p>
+        <p>Club president Gerald Winch called the visit "completely unexpected but very welcome." Jibberson reportedly stayed for just over two hours, asked several detailed questions about Jupiter's moons, and correctly identified three constellations without help. He accepted an honorary membership certificate and a laminated star chart.</p>
+        <p>"I've always been a space guy," Jibberson told reporters afterward. "Personally and professionally." A spokesperson for the president later confirmed this was true. The club has 34 members and meets on the first Thursday of each month. Membership is open to the public.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filler: Cheese/Olliejam -->
+  <div class="story-card" id="card-cheese">
+    <span class="story-cat cat-world">World</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Hazelia-Olliejam trade delegation signing ceremony, Ministry of Trade">
+      <div class="story-figcap">Photo: Ministry of Trade and Commerce</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-cheese')">
+      <h2>Olliejam and Hazelia Extend Trade Partnership for Third Year; Cheese Involved Again, Sources Say</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Staff Reporter · Trade Desk</span>
+      <span class="byline-dot">·</span>
+      <span>June 3, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>Hazelia and Olliejam have officially renewed their trade partnership for a third consecutive year in a ceremony held at the Hazelia Ministry of Trade on Tuesday. Officials on both sides called the agreement "mutually beneficial" and praised the "strong foundation of trust" between the two nations.</p>
+        <p>Trade representatives from Olliejam mentioned Hazelian artisanal cheese by name four times during the signing ceremony. The Hazelia delegation did not comment on the cheese specifically. The new agreement covers rare earth materials, agricultural goods, and — according to an annex that was not included in the public release — "specialty dairy products."</p>
+        <p>Hazelian cheese exports to Olliejam increased 34% last year, according to trade ministry figures. Officials expect that number to grow. "We have a very good relationship with Olliejam," Hazelia's Minister of Trade said at the podium. "A warm and productive relationship." He did not elaborate.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filler: Weatherman -->
+  <div class="story-card" id="card-weather">
+    <span class="story-cat cat-odd">Odd &amp; Ends</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Bren Tackett at the Channel 4 weather desk with a sunny forecast graphic behind him">
+      <div class="story-figcap">Photo: HBC Channel 4 Archives</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-weather')">
+      <h2>Local Weatherman Wrong for Ninth Week in a Row; Station Renews His Contract</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Staff Reporter</span>
+      <span class="byline-dot">·</span>
+      <span>June 2, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>Bren Tackett, the evening weather anchor for Hazelia Public Broadcast Channel 4, has now predicted clear skies incorrectly for nine weeks in a row. His forecast this past week called for sunshine and light winds. It rained on six of seven days. On Thursday, it hailed.</p>
+        <p>When reached for comment, Tackett said he was "recalibrating his models" and remained "confident in the process." Channel 4 announced on Tuesday that they had renewed his contract through the end of the calendar year. "Bren is a beloved part of our team," a station spokesperson said. "Our viewers trust him."</p>
+        <p>A viewer survey conducted by the Post found that 61% of Channel 4 weather viewers now check a second source before making plans. Tackett called this "very normal behavior" and said he personally does the same.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filler: Lunar Economics Degree -->
+  <div class="story-card" id="card-degree">
+    <span class="story-cat cat-science">Science &amp; Education</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Hazelia University campus, main hall">
+      <div class="story-figcap">Photo: Hazelia University Communications Office</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-degree')">
+      <h2>Hazelia University Opens New Program in Applied Lunar Economics — "First of Its Kind in the Country"</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Fen Okafor, Science Correspondent</span>
+      <span class="byline-dot">·</span>
+      <span>May 30, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>Starting this fall, students at Hazelia University will be able to major in Applied Lunar Economics — a new four-year program designed to prepare graduates for what officials are calling "the coming age of off-world trade." The program is believed to be the first of its kind offered by any university in the country.</p>
+        <p>Coursework will cover topics including rare resource valuation, off-world supply chains, interplanetary trade law, and what the course catalog calls "Moon-Based Market Theory." A guest lecturer series will feature speakers from the government, the space industry, and the private sector.</p>
+        <p>The first class is capped at 24 students. As of this week, over 400 people had submitted applications. University officials said they were "pleased by the enthusiasm" and were "exploring options for expansion." Tuition for the program is the same as any other Hazelia University major.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filler: Ham Radio -->
+  <div class="story-card" id="card-radio">
+    <span class="story-cat cat-odd">Odd &amp; Ends</span>
+    <div class="story-img-wrap">
+      <img src="" alt="Ham radio equipment in a coastal Vrendal home">
+      <div class="story-figcap">Photo: Supplied (name withheld on request)</div>
+    </div>
+    <div class="story-head" onclick="toggleCard('card-radio')">
+      <h2>Vrendal Man Claims He Received Strange Signal on Ham Radio; Authorities Say It Was Probably the Ocean</h2>
+      <span class="story-toggle">▼</span>
+    </div>
+    <div class="story-byline">
+      <span>By Staff Reporter</span>
+      <span class="byline-dot">·</span>
+      <span>May 28, 2026</span>
+    </div>
+    <div class="story-preview">
+      <div class="preview-inner">
+        <p>A retired electrician in the coastal town of Vrendal says he picked up an unusual signal on his personal ham radio last Tuesday night. The man, who asked not to be named, said the transmission did not match any frequency he recognized and contained what he described as "repeating patterns that felt intentional."</p>
+        <p>He filed a report with the Hazelia Communications Authority the following morning. A spokesperson for the agency said the office receives several similar reports each year and that "the ocean produces many unusual and complex signals, particularly at night." No further investigation was announced.</p>
+        <p>The man told the Post he is not satisfied with that explanation. "I've been listening to ocean signals for thirty years," he said. "This was different." He says he is still listening every night and has begun keeping a written log. The log currently has 14 entries.</p>
+        <a href="#" class="read-more">Continue Reading →</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <div class="sb-card">
+    <div class="sb-head">Quick Reads</div>
+    <div class="sb-body">
+      <div class="sb-item">
+        <div class="sb-item-title">Hazelia Port Authority Reports Spike in Shipping Activity Near Southern Shelf</div>
+        <div class="sb-item-meta">June 10 · Economy</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-title">Quillantis Tourism Board Issues Statement: "The Ocean Is Perfectly Normal"</div>
+        <div class="sb-item-meta">June 9 · World</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-title">Hazelia Defense Budget Approved — Third Increase in Four Years</div>
+        <div class="sb-item-meta">June 8 · Hazelia</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-title">Annual Cheese Festival Sets Attendance Record; Organizers Overwhelmed</div>
+        <div class="sb-item-meta">June 7 · Culture</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-title">HSA Spokesperson Confirms "Positive Progress" on 90-Day Plan Without Providing Details</div>
+        <div class="sb-item-meta">June 6 · Space</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">HSA At A Glance</div>
+    <div class="sb-body">
+      <div class="sb-stat-grid">
+        <div class="sb-stat"><span class="sb-stat-n">14</span><span class="sb-stat-l">Active Missions</span></div>
+        <div class="sb-stat"><span class="sb-stat-n" style="color:var(--sdown)">↓ 6</span><span class="sb-stat-l">Open Positions</span></div>
+        <div class="sb-stat"><span class="sb-stat-n">₭2.1B</span><span class="sb-stat-l">Annual Budget</span></div>
+        <div class="sb-stat"><span class="sb-stat-n" style="color:var(--sdown)">↓ 4yr</span><span class="sb-stat-l">Budget Growth</span></div>
+      </div>
+      <p style="font-size:0.7rem;color:var(--muted);margin-top:10px;line-height:1.5">Source: HSA Annual Report, 2025. Budget growth figure reflects flat allocation since 2022.</p>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">Hazelia Weather</div>
+    <div class="sb-body">
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:8px">Capital City · Forecast by B. Tackett, HBC-4</p>
+      <div class="weather-grid">
+        <div class="wx-day"><span class="wx-icon">☀️</span><span class="wx-label">Today</span><span class="wx-temp">18°C</span></div>
+        <div class="wx-day"><span class="wx-icon">⛅</span><span class="wx-label">Tomorrow</span><span class="wx-temp">15°C</span></div>
+        <div class="wx-day"><span class="wx-icon">☀️</span><span class="wx-label">Thursday</span><span class="wx-temp">19°C</span></div>
+        <div class="wx-day"><span class="wx-icon">🌧️</span><span class="wx-label">Friday</span><span class="wx-temp">11°C</span></div>
+      </div>
+      <p style="font-size:0.65rem;color:var(--muted);margin-top:8px;font-style:italic">*Forecast accuracy not guaranteed. See hazelianews.html/weather for disclaimer.</p>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">Opinion</div>
+    <div class="sb-body">
+      <div class="opinion-card">
+        <div class="opinion-author">Editorial Board</div>
+        <div class="opinion-title">Hazelia Needs a Space Plan, Not a Space Speech</div>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-author">Gwen Farthwell</div>
+        <div class="opinion-title">Animal Welfare Is Not a Political Issue. Why Are We Treating It Like One?</div>
+      </div>
+      <div class="opinion-card">
+        <div class="opinion-author">Reader Letters</div>
+        <div class="opinion-title">"The Weatherman Knows What He's Doing": Letters in Support of Bren Tackett, Sorted by Passion</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-card">
+    <div class="sb-head">In Other News</div>
+    <div class="sb-body">
+      <div class="sb-item">
+        <div class="sb-item-title">FART Membership Up 340% Since KSA Announcement, Group Says</div>
+        <div class="sb-item-meta">June 9 · Hazelia</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-title">Hazelia University Turtle Research Lab Gets New Funding — Source Undisclosed</div>
+        <div class="sb-item-meta">June 8 · Science</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-title">RBP Stock at Five-Year High Amid Space Mission Coverage</div>
+        <div class="sb-item-meta">June 7 · Economy</div>
+      </div>
+    </div>
+  </div>
+
+</aside>
+</div><!-- /page-body -->
+
+<footer class="site-footer">
+  <div class="footer-title">The Hazelia Morning Post</div>
+  <div class="footer-links">
+    <a href="#">Home</a><a href="#">About Us</a><a href="#">Advertise</a>
+    <a href="#">Subscribe</a><a href="#">Archives</a><a href="#">Contact</a>
+    <a href="#">Privacy Policy</a><a href="#">Corrections</a>
+  </div>
+  <div>© 2026 Hazelia Morning Post Group. All rights reserved. Hazelia, HZ · news@hazeliamorningpost.hz</div>
+  <div style="margin-top:4px;font-size:0.65rem;color:#444">Market data delayed 15 minutes. Weather forecast by Bren Tackett. The Post accepts no responsibility for umbrella-related decisions made based on HBC-4 forecasts.</div>
+</footer>
+
+<script>
+// ── DATE ──
+(function(){
+  var d = new Date();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('mast-date').textContent =
+    days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+})();
+
+// ── ACCORDION ──
+function toggleCard(id) {
+  var card = document.getElementById(id);
+  if (!card) return;
+  card.classList.toggle('open');
+}
+
+// ── LIVE TICKER ──
+var STOCKS = [
+  { key:'hsa',  val:42.18,  pct:-3.42, trend:-0.08 },
+  { key:'rbp',  val:118.74, pct:7.21,  trend:0.12  },
+  { key:'hdef', val:203.11, pct:4.88,  trend:0.08  },
+  { key:'hgp',  val:67.54,  pct:0.23,  trend:0.01  },
+  { key:'qmr',  val:89.40,  pct:-1.15, trend:-0.04 },
+  { key:'ojx',  val:155.22, pct:2.10,  trend:0.05  },
+  { key:'hae',  val:55.90,  pct:-2.07, trend:-0.06 },
+  { key:'hbt',  val:31.88,  pct:-0.44, trend:-0.02 },
+  { key:'mrc',  val:78.65,  pct:1.33,  trend:0.03  },
+  { key:'ntr',  val:24.40,  pct:0.88,  trend:0.02  },
+  { key:'frt',  val:44.12,  pct:-0.55, trend:-0.02 },
+];
+
+function updateTicker() {
+  STOCKS.forEach(function(s) {
+    var delta = (Math.random() * 0.5 - 0.22) + s.trend;
+    s.val = Math.max(0.5, s.val + delta);
+    s.pct += (Math.random() * 0.06 - 0.03) + s.trend * 0.02;
+
+    var up = s.pct >= 0;
+    var arrow = up ? '▲' : '▼';
+    var cls = up ? 'up' : 'dn';
+    var txt = arrow + ' ' + s.val.toFixed(2) + ' (' + (up?'+':'') + s.pct.toFixed(2) + '%)';
+
+    ['a','b'].forEach(function(suffix) {
+      var el = document.getElementById(s.key + '-' + suffix);
+      if (el) { el.textContent = txt; el.className = 'tick-val ' + cls; }
+    });
+  });
+}
+
+setInterval(updateTicker, 2200);
+</script>
+
+</body>
+</html>
