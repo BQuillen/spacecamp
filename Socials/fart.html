@@ -1,745 +1,1260 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Federation for Assisting Rats and Turtles — FART</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Federation for Assisting Rats and Turtles — FART</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
 
-  :root {
-    --green:       #2a7d46;
-    --green2:      #1a5c32;
-    --green-light: #e6f4ec;
-    --green-mid:   #a8d5b8;
-    --amber:       #e09020;
-    --amber-light: #fef4e0;
-    --bg:          #f8f6f1;
-    --bg-card:     #ffffff;
-    --text:        #1c2b1c;
-    --muted:       #5c6e5c;
-    --border:      rgba(42,125,70,0.15);
-    --shadow:      0 2px 16px rgba(42,125,70,0.1);
-  }
+            :root {
+                --green: #2a7d46;
+                --green2: #1a5c32;
+                --green-light: #e6f4ec;
+                --green-mid: #a8d5b8;
+                --amber: #e09020;
+                --amber-light: #fef4e0;
+                --bg: #f8f6f1;
+                --bg-card: #ffffff;
+                --text: #1c2b1c;
+                --muted: #5c6e5c;
+                --border: rgba(42, 125, 70, 0.15);
+                --shadow: 0 2px 16px rgba(42, 125, 70, 0.1);
+            }
 
-  html { scroll-behavior: smooth; }
+            html {
+                scroll-behavior: smooth;
+            }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-  }
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 15px;
+                line-height: 1.6;
+            }
 
-  h1, h2, h3 { font-family: 'Lora', serif; }
+            h1,
+            h2,
+            h3 {
+                font-family: 'Lora', serif;
+            }
 
-  /* ── NAV ── */
-  .nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(248,246,241,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 2rem;
-  }
-  .nav-logo {
-    display: flex; align-items: center; gap: 0.6rem;
-    font-family: 'Lora', serif; font-weight: 600;
-    font-size: 1.1rem; color: var(--green2);
-    text-decoration: none; white-space: nowrap;
-  }
-  .nav-logo .logo-emoji { font-size: 1.3rem; }
-  .nav-logo span { color: var(--green); }
-  .nav-links { display: flex; align-items: center; gap: 1.8rem; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 0.88rem; font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--green); }
-  .nav-donate {
-    background: var(--green);
-    color: #fff; border: none; border-radius: 8px;
-    padding: 0.5rem 1.3rem; font-weight: 600;
-    font-size: 0.88rem; cursor: pointer;
-    transition: background 0.2s; text-decoration: none;
-  }
-  .nav-donate:hover { background: var(--green2); }
+            /* ── NAV ── */
+            .nav {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background: rgba(248, 246, 241, 0.95);
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--border);
+                padding: 0 2rem;
+                height: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2rem;
+            }
+            .nav-logo {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-family: 'Lora', serif;
+                font-weight: 600;
+                font-size: 1.1rem;
+                color: var(--green2);
+                text-decoration: none;
+                white-space: nowrap;
+            }
+            .nav-logo .logo-emoji {
+                font-size: 1.3rem;
+            }
+            .nav-logo span {
+                color: var(--green);
+            }
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 1.8rem;
+            }
+            .nav-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 0.88rem;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+            .nav-links a:hover {
+                color: var(--green);
+            }
+            .nav-donate {
+                background: var(--green);
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 0.5rem 1.3rem;
+                font-weight: 600;
+                font-size: 0.88rem;
+                cursor: pointer;
+                transition: background 0.2s;
+                text-decoration: none;
+            }
+            .nav-donate:hover {
+                background: var(--green2);
+            }
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, #1a3d24 0%, #2a7d46 50%, #1c4a2c 100%);
-    color: #fff;
-    padding: 5rem 2rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .hero-emoji { font-size: 3.5rem; margin-bottom: 1.25rem; display: block; }
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-  .hero h1 em { color: #a8d5b8; font-style: italic; }
-  .hero-sub {
-    font-size: 1.05rem; color: rgba(255,255,255,0.8);
-    max-width: 580px; margin: 0 auto 2rem;
-    line-height: 1.65;
-  }
-  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--amber); color: #1a2a0a;
-    border: none; border-radius: 10px;
-    padding: 0.8rem 2rem; font-weight: 700;
-    font-size: 0.95rem; cursor: pointer;
-    text-decoration: none; transition: opacity 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover { opacity: 0.88; }
-  .btn-outline {
-    background: transparent;
-    color: #fff; border: 2px solid rgba(255,255,255,0.4);
-    border-radius: 10px; padding: 0.8rem 2rem;
-    font-weight: 600; font-size: 0.95rem;
-    cursor: pointer; text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-    display: inline-block;
-  }
-  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+            /* ── HERO ── */
+            .hero {
+                background: linear-gradient(135deg, #1a3d24 0%, #2a7d46 50%, #1c4a2c 100%);
+                color: #fff;
+                padding: 5rem 2rem;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+            .hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            }
+            .hero-emoji {
+                font-size: 3.5rem;
+                margin-bottom: 1.25rem;
+                display: block;
+            }
+            .hero h1 {
+                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-weight: 600;
+                color: #fff;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+            .hero h1 em {
+                color: #a8d5b8;
+                font-style: italic;
+            }
+            .hero-sub {
+                font-size: 1.05rem;
+                color: rgba(255, 255, 255, 0.8);
+                max-width: 580px;
+                margin: 0 auto 2rem;
+                line-height: 1.65;
+            }
+            .hero-actions {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .btn-primary {
+                background: var(--amber);
+                color: #1a2a0a;
+                border: none;
+                border-radius: 10px;
+                padding: 0.8rem 2rem;
+                font-weight: 700;
+                font-size: 0.95rem;
+                cursor: pointer;
+                text-decoration: none;
+                transition: opacity 0.2s;
+                display: inline-block;
+            }
+            .btn-primary:hover {
+                opacity: 0.88;
+            }
+            .btn-outline {
+                background: transparent;
+                color: #fff;
+                border: 2px solid rgba(255, 255, 255, 0.4);
+                border-radius: 10px;
+                padding: 0.8rem 2rem;
+                font-weight: 600;
+                font-size: 0.95rem;
+                cursor: pointer;
+                text-decoration: none;
+                transition:
+                    border-color 0.2s,
+                    background 0.2s;
+                display: inline-block;
+            }
+            .btn-outline:hover {
+                border-color: #fff;
+                background: rgba(255, 255, 255, 0.08);
+            }
 
-  /* ── STATS BAR ── */
-  .stats-bar {
-    background: var(--green2);
-    color: #fff;
-    display: flex; justify-content: center;
-    gap: 0; flex-wrap: wrap;
-  }
-  .stat-item {
-    padding: 1.25rem 2.5rem;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.1);
-    min-width: 160px;
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-num { font-size: 1.6rem; font-weight: 700; font-family: 'Lora', serif; display: block; }
-  .stat-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; }
-  .stat-note { font-size: 0.65rem; color: rgba(255,255,255,0.35); font-style: italic; margin-top: 2px; display: block; }
+            /* ── STATS BAR ── */
+            .stats-bar {
+                background: var(--green2);
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                gap: 0;
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                padding: 1.25rem 2.5rem;
+                text-align: center;
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+                min-width: 160px;
+            }
+            .stat-item:last-child {
+                border-right: none;
+            }
+            .stat-num {
+                font-size: 1.6rem;
+                font-weight: 700;
+                font-family: 'Lora', serif;
+                display: block;
+            }
+            .stat-lbl {
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.65);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .stat-note {
+                font-size: 0.65rem;
+                color: rgba(255, 255, 255, 0.35);
+                font-style: italic;
+                margin-top: 2px;
+                display: block;
+            }
 
-  /* ── SECTIONS ── */
-  .section { padding: 5rem 2rem; }
-  .section-inner { max-width: 1000px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--green); font-weight: 600; margin-bottom: 0.5rem;
-  }
-  .section-title {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    color: var(--text); margin-bottom: 1rem; line-height: 1.25;
-  }
-  .section-sub { color: var(--muted); font-size: 0.95rem; max-width: 560px; line-height: 1.65; }
+            /* ── SECTIONS ── */
+            .section {
+                padding: 5rem 2rem;
+            }
+            .section-inner {
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            .section-label {
+                font-size: 0.72rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--green);
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+            .section-title {
+                font-size: clamp(1.6rem, 3vw, 2.2rem);
+                color: var(--text);
+                margin-bottom: 1rem;
+                line-height: 1.25;
+            }
+            .section-sub {
+                color: var(--muted);
+                font-size: 0.95rem;
+                max-width: 560px;
+                line-height: 1.65;
+            }
 
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-    align-items: center; margin-top: 3rem;
-  }
-  .about-text p { color: var(--muted); line-height: 1.75; margin-bottom: 1rem; font-size: 0.95rem; }
-  .about-text p strong { color: var(--text); }
-  .about-text .fine-print {
-    font-size: 0.72rem; color: #aaa; margin-top: 1.5rem;
-    border-top: 1px solid var(--border); padding-top: 1rem;
-    line-height: 1.5;
-  }
-  .about-img {
-    background: var(--green-light);
-    border-radius: 16px; border: 1px solid var(--border);
-    height: 320px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 0.75rem;
-    color: var(--green); font-size: 0.8rem; letter-spacing: 0.1em;
-  }
-  .about-img .big-emoji { font-size: 5rem; }
+            /* ── ABOUT ── */
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+                margin-top: 3rem;
+            }
+            .about-text p {
+                color: var(--muted);
+                line-height: 1.75;
+                margin-bottom: 1rem;
+                font-size: 0.95rem;
+            }
+            .about-text p strong {
+                color: var(--text);
+            }
+            .about-text .fine-print {
+                font-size: 0.72rem;
+                color: #aaa;
+                margin-top: 1.5rem;
+                border-top: 1px solid var(--border);
+                padding-top: 1rem;
+                line-height: 1.5;
+            }
+            .about-img {
+                background: var(--green-light);
+                border-radius: 16px;
+                border: 1px solid var(--border);
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75rem;
+                color: var(--green);
+                font-size: 0.8rem;
+                letter-spacing: 0.1em;
+            }
+            .about-img .big-emoji {
+                font-size: 5rem;
+            }
 
-  /* ── OUR WORK ── */
-  .work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
-  .work-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 2rem;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .work-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(42,125,70,0.14); }
-  .work-card-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
-  .work-card h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.5rem; }
-  .work-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-  .work-card .tag {
-    display: inline-block; margin-top: 1rem;
-    background: var(--green-light); color: var(--green);
-    font-size: 0.72rem; font-weight: 600; padding: 0.25rem 0.6rem;
-    border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;
-  }
-  .work-card .tag.amber { background: var(--amber-light); color: #9a6010; }
-  .work-card .tag.grey { background: #f0f0f0; color: #666; }
+            /* ── OUR WORK ── */
+            .work-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+            .work-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s;
+            }
+            .work-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 24px rgba(42, 125, 70, 0.14);
+            }
+            .work-card-icon {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+                display: block;
+            }
+            .work-card h3 {
+                font-size: 1.05rem;
+                color: var(--text);
+                margin-bottom: 0.5rem;
+            }
+            .work-card p {
+                font-size: 0.88rem;
+                color: var(--muted);
+                line-height: 1.6;
+            }
+            .work-card .tag {
+                display: inline-block;
+                margin-top: 1rem;
+                background: var(--green-light);
+                color: var(--green);
+                font-size: 0.72rem;
+                font-weight: 600;
+                padding: 0.25rem 0.6rem;
+                border-radius: 20px;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+            .work-card .tag.amber {
+                background: var(--amber-light);
+                color: #9a6010;
+            }
+            .work-card .tag.grey {
+                background: #f0f0f0;
+                color: #666;
+            }
 
-  /* ── EVENTS ── */
-  .events-bg { background: var(--green-light); }
-  .events-note {
-    background: var(--amber-light);
-    border: 1px solid rgba(224,144,32,0.3);
-    border-radius: 10px; padding: 0.85rem 1.25rem;
-    font-size: 0.83rem; color: #7a5010; margin-bottom: 2.5rem;
-    display: flex; align-items: flex-start; gap: 0.6rem;
-  }
-  .events-list { display: flex; flex-direction: column; gap: 0; }
-  .event-row {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-bottom: none;
-    padding: 1.25rem 1.5rem;
-    display: grid; grid-template-columns: 140px 1fr auto;
-    align-items: center; gap: 1.5rem;
-    position: relative;
-    transition: background 0.15s;
-    cursor: default;
-  }
-  .event-row:first-child { border-radius: 14px 14px 0 0; }
-  .event-row:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 14px 14px; }
-  .event-row:hover { background: #fafef8; }
-  .event-date-col { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-  .event-date-col .event-year { display: block; font-size: 0.7rem; color: #aaa; }
-  .event-title { font-weight: 600; font-size: 0.92rem; color: var(--text); }
-  .event-location { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
-  .event-status {
-    font-size: 0.72rem; font-weight: 600; padding: 0.25rem 0.7rem;
-    border-radius: 20px; white-space: nowrap;
-  }
-  .status-completed { background: var(--green-light); color: var(--green); }
-  .status-upcoming { background: var(--amber-light); color: #9a6010; }
+            /* ── EVENTS ── */
+            .events-bg {
+                background: var(--green-light);
+            }
+            .events-note {
+                background: var(--amber-light);
+                border: 1px solid rgba(224, 144, 32, 0.3);
+                border-radius: 10px;
+                padding: 0.85rem 1.25rem;
+                font-size: 0.83rem;
+                color: #7a5010;
+                margin-bottom: 2.5rem;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+            .events-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+            .event-row {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-bottom: none;
+                padding: 1.25rem 1.5rem;
+                display: grid;
+                grid-template-columns: 140px 1fr auto;
+                align-items: center;
+                gap: 1.5rem;
+                position: relative;
+                transition: background 0.15s;
+                cursor: default;
+            }
+            .event-row:first-child {
+                border-radius: 14px 14px 0 0;
+            }
+            .event-row:last-child {
+                border-bottom: 1px solid var(--border);
+                border-radius: 0 0 14px 14px;
+            }
+            .event-row:hover {
+                background: #fafef8;
+            }
+            .event-date-col {
+                font-size: 0.82rem;
+                color: var(--muted);
+                font-weight: 500;
+            }
+            .event-date-col .event-year {
+                display: block;
+                font-size: 0.7rem;
+                color: #aaa;
+            }
+            .event-title {
+                font-weight: 600;
+                font-size: 0.92rem;
+                color: var(--text);
+            }
+            .event-location {
+                font-size: 0.8rem;
+                color: var(--muted);
+                margin-top: 2px;
+            }
+            .event-status {
+                font-size: 0.72rem;
+                font-weight: 600;
+                padding: 0.25rem 0.7rem;
+                border-radius: 20px;
+                white-space: nowrap;
+            }
+            .status-completed {
+                background: var(--green-light);
+                color: var(--green);
+            }
+            .status-upcoming {
+                background: var(--amber-light);
+                color: #9a6010;
+            }
 
-  /* THE HOVER REVEAL — database metadata tooltip */
-  .event-meta {
-    display: none;
-    position: absolute;
-    bottom: calc(100% + 6px);
-    left: 1.5rem;
-    background: #1a1a1a;
-    color: #a0e8a0;
-    font-family: 'Courier New', monospace;
-    font-size: 0.7rem;
-    padding: 0.5rem 0.8rem;
-    border-radius: 6px;
-    white-space: nowrap;
-    z-index: 10;
-    line-height: 1.5;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    pointer-events: none;
-  }
-  .event-meta::after {
-    content: '';
-    position: absolute; top: 100%; left: 1.5rem;
-    border: 6px solid transparent;
-    border-top-color: #1a1a1a;
-  }
-  .event-row:hover .event-meta { display: block; }
+            /* THE HOVER REVEAL — database metadata tooltip */
+            .event-meta {
+                display: none;
+                position: absolute;
+                bottom: calc(100% + 6px);
+                left: 1.5rem;
+                background: #1a1a1a;
+                color: #a0e8a0;
+                font-family: 'Courier New', monospace;
+                font-size: 0.7rem;
+                padding: 0.5rem 0.8rem;
+                border-radius: 6px;
+                white-space: nowrap;
+                z-index: 10;
+                line-height: 1.5;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                pointer-events: none;
+            }
+            .event-meta::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 1.5rem;
+                border: 6px solid transparent;
+                border-top-color: #1a1a1a;
+            }
+            .event-row:hover .event-meta {
+                display: block;
+            }
 
-  /* ── BOARD ── */
-  .board-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1.5rem; margin-top: 3rem; }
-  .board-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 1.5rem 1rem;
-    text-align: center; box-shadow: var(--shadow);
-  }
-  .board-avatar {
-    width: 72px; height: 72px; border-radius: 50%;
-    background: var(--green-light);
-    margin: 0 auto 1rem;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem; border: 2px solid var(--green-mid);
-  }
-  .board-name { font-weight: 700; font-size: 0.88rem; color: var(--text); }
-  .board-title { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; line-height: 1.4; }
-  .board-chapter { font-size: 0.68rem; color: var(--green); margin-top: 0.35rem; font-weight: 500; }
+            /* ── BOARD ── */
+            .board-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+            .board-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 1.5rem 1rem;
+                text-align: center;
+                box-shadow: var(--shadow);
+            }
+            .board-avatar {
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+                background: var(--green-light);
+                margin: 0 auto 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                border: 2px solid var(--green-mid);
+            }
+            .board-name {
+                font-weight: 700;
+                font-size: 0.88rem;
+                color: var(--text);
+            }
+            .board-title {
+                font-size: 0.75rem;
+                color: var(--muted);
+                margin-top: 0.25rem;
+                line-height: 1.4;
+            }
+            .board-chapter {
+                font-size: 0.68rem;
+                color: var(--green);
+                margin-top: 0.35rem;
+                font-weight: 500;
+            }
 
-  /* ── AWARDS ── */
-  .awards-bg { background: var(--amber-light); }
-  .awards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .award-card {
-    background: var(--bg-card); border: 1px solid rgba(224,144,32,0.2);
-    border-radius: 14px; padding: 1.5rem;
-    box-shadow: 0 2px 10px rgba(224,144,32,0.08);
-  }
-  .award-icon { font-size: 1.8rem; margin-bottom: 0.75rem; display: block; }
-  .award-name {
-    font-size: 0.88rem; font-weight: 700; color: var(--text);
-    margin-bottom: 0.3rem; line-height: 1.35;
-  }
-  .award-from { font-size: 0.78rem; color: var(--muted); }
-  .award-year { font-size: 0.72rem; color: var(--amber); font-weight: 600; margin-top: 0.35rem; display: block; }
+            /* ── AWARDS ── */
+            .awards-bg {
+                background: var(--amber-light);
+            }
+            .awards-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.25rem;
+                margin-top: 2.5rem;
+            }
+            .award-card {
+                background: var(--bg-card);
+                border: 1px solid rgba(224, 144, 32, 0.2);
+                border-radius: 14px;
+                padding: 1.5rem;
+                box-shadow: 0 2px 10px rgba(224, 144, 32, 0.08);
+            }
+            .award-icon {
+                font-size: 1.8rem;
+                margin-bottom: 0.75rem;
+                display: block;
+            }
+            .award-name {
+                font-size: 0.88rem;
+                font-weight: 700;
+                color: var(--text);
+                margin-bottom: 0.3rem;
+                line-height: 1.35;
+            }
+            .award-from {
+                font-size: 0.78rem;
+                color: var(--muted);
+            }
+            .award-year {
+                font-size: 0.72rem;
+                color: var(--amber);
+                font-weight: 600;
+                margin-top: 0.35rem;
+                display: block;
+            }
 
-  /* ── PRESS ── */
-  .press-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .press-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 1.5rem;
-    box-shadow: var(--shadow); text-decoration: none; color: inherit;
-    display: block; transition: transform 0.2s, border-color 0.2s;
-  }
-  .press-card:hover { transform: translateY(-2px); border-color: var(--green-mid); }
-  .press-source { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green); font-weight: 600; margin-bottom: 0.5rem; }
-  .press-headline { font-family: 'Lora', serif; font-size: 1rem; color: var(--text); line-height: 1.4; margin-bottom: 0.5rem; }
-  .press-date { font-size: 0.75rem; color: var(--muted); }
-  .press-arrow { float: right; color: var(--green); font-size: 1rem; margin-top: -1.5rem; }
+            /* ── PRESS ── */
+            .press-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+                margin-top: 2.5rem;
+            }
+            .press-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 1.5rem;
+                box-shadow: var(--shadow);
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                transition:
+                    transform 0.2s,
+                    border-color 0.2s;
+            }
+            .press-card:hover {
+                transform: translateY(-2px);
+                border-color: var(--green-mid);
+            }
+            .press-source {
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                color: var(--green);
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+            .press-headline {
+                font-family: 'Lora', serif;
+                font-size: 1rem;
+                color: var(--text);
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+            .press-date {
+                font-size: 0.75rem;
+                color: var(--muted);
+            }
+            .press-arrow {
+                float: right;
+                color: var(--green);
+                font-size: 1rem;
+                margin-top: -1.5rem;
+            }
 
-  /* ── DONATE ── */
-  .donate-bg { background: linear-gradient(135deg, #1a3d24 0%, #2a7d46 100%); color: #fff; }
-  .donate-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-  .donate-bg .section-label { color: #a8d5b8; }
-  .donate-bg .section-title { color: #fff; }
-  .donate-bg .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto; }
-  .donate-tiers { display: flex; gap: 1rem; justify-content: center; margin: 2.5rem 0; flex-wrap: wrap; }
-  .tier-btn {
-    background: rgba(255,255,255,0.1); color: #fff;
-    border: 1.5px solid rgba(255,255,255,0.25);
-    border-radius: 10px; padding: 1rem 1.5rem;
-    text-align: center; cursor: pointer; transition: background 0.2s, border-color 0.2s;
-    min-width: 120px;
-  }
-  .tier-btn:hover, .tier-btn.active { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.5); }
-  .tier-amount { font-size: 1.3rem; font-weight: 700; display: block; }
-  .tier-label { font-size: 0.72rem; color: rgba(255,255,255,0.65); margin-top: 0.2rem; line-height: 1.35; }
-  .donate-cta { margin-top: 2rem; }
-  .donate-total { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-top: 1.5rem; }
-  .donate-total strong { color: rgba(255,255,255,0.9); }
+            /* ── DONATE ── */
+            .donate-bg {
+                background: linear-gradient(135deg, #1a3d24 0%, #2a7d46 100%);
+                color: #fff;
+            }
+            .donate-inner {
+                max-width: 700px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .donate-bg .section-label {
+                color: #a8d5b8;
+            }
+            .donate-bg .section-title {
+                color: #fff;
+            }
+            .donate-bg .section-sub {
+                color: rgba(255, 255, 255, 0.75);
+                margin: 0 auto;
+            }
+            .donate-tiers {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                margin: 2.5rem 0;
+                flex-wrap: wrap;
+            }
+            .tier-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
+                border: 1.5px solid rgba(255, 255, 255, 0.25);
+                border-radius: 10px;
+                padding: 1rem 1.5rem;
+                text-align: center;
+                cursor: pointer;
+                transition:
+                    background 0.2s,
+                    border-color 0.2s;
+                min-width: 120px;
+            }
+            .tier-btn:hover,
+            .tier-btn.active {
+                background: rgba(255, 255, 255, 0.18);
+                border-color: rgba(255, 255, 255, 0.5);
+            }
+            .tier-amount {
+                font-size: 1.3rem;
+                font-weight: 700;
+                display: block;
+            }
+            .tier-label {
+                font-size: 0.72rem;
+                color: rgba(255, 255, 255, 0.65);
+                margin-top: 0.2rem;
+                line-height: 1.35;
+            }
+            .donate-cta {
+                margin-top: 2rem;
+            }
+            .donate-total {
+                font-size: 0.82rem;
+                color: rgba(255, 255, 255, 0.55);
+                margin-top: 1.5rem;
+            }
+            .donate-total strong {
+                color: rgba(255, 255, 255, 0.9);
+            }
 
-  /* ── FOOTER ── */
-  .footer {
-    background: var(--green2); color: rgba(255,255,255,0.6);
-    padding: 2.5rem 2rem;
-  }
-  .footer-inner {
-    max-width: 1000px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem;
-  }
-  .footer-brand { font-family: 'Lora', serif; color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 0.5rem; }
-  .footer-tagline { font-size: 0.8rem; line-height: 1.6; }
-  .footer-col h4 { color: rgba(255,255,255,0.85); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
-  .footer-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.55); text-decoration: none; margin-bottom: 0.4rem; transition: color 0.2s; }
-  .footer-col a:hover { color: rgba(255,255,255,0.9); }
-  .footer-bottom {
-    max-width: 1000px; margin: 1.5rem auto 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 1.25rem;
-    font-size: 0.7rem; color: rgba(255,255,255,0.28);
-    line-height: 1.6;
-  }
+            /* ── FOOTER ── */
+            .footer {
+                background: var(--green2);
+                color: rgba(255, 255, 255, 0.6);
+                padding: 2.5rem 2rem;
+            }
+            .footer-inner {
+                max-width: 1000px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+            .footer-brand {
+                font-family: 'Lora', serif;
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            .footer-tagline {
+                font-size: 0.8rem;
+                line-height: 1.6;
+            }
+            .footer-col h4 {
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 0.78rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 0.75rem;
+            }
+            .footer-col a {
+                display: block;
+                font-size: 0.82rem;
+                color: rgba(255, 255, 255, 0.55);
+                text-decoration: none;
+                margin-bottom: 0.4rem;
+                transition: color 0.2s;
+            }
+            .footer-col a:hover {
+                color: rgba(255, 255, 255, 0.9);
+            }
+            .footer-bottom {
+                max-width: 1000px;
+                margin: 1.5rem auto 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 1.25rem;
+                font-size: 0.7rem;
+                color: rgba(255, 255, 255, 0.28);
+                line-height: 1.6;
+            }
 
-  @media (max-width: 800px) {
-    .about-grid, .work-grid, .board-grid, .awards-grid, .press-grid { grid-template-columns: 1fr; }
-    .event-row { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 1fr; }
-    .stats-bar { flex-direction: column; }
-    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  }
-</style>
-</head>
-<body>
+            @media (max-width: 800px) {
+                .about-grid,
+                .work-grid,
+                .board-grid,
+                .awards-grid,
+                .press-grid {
+                    grid-template-columns: 1fr;
+                }
+                .event-row {
+                    grid-template-columns: 1fr;
+                }
+                .footer-inner {
+                    grid-template-columns: 1fr;
+                }
+                .stats-bar {
+                    flex-direction: column;
+                }
+                .stat-item {
+                    border-right: none;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav class="nav">
+            <a href="#" class="nav-logo">
+                <span class="logo-emoji">🐀🐢</span>
+                <div><span>F</span>ederation for <span>A</span>ssisting <span>R</span>ats and <span>T</span>urtles</div>
+            </a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#work">Our Work</a>
+                <a href="#events">Events</a>
+                <a href="#board">Board</a>
+                <a href="#press">Press</a>
+            </div>
+            <a href="#donate" class="nav-donate">Donate 💛</a>
+        </nav>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="#" class="nav-logo">
-    <span class="logo-emoji">🐀🐢</span>
-    <div><span>F</span>ederation for <span>A</span>ssisting <span>R</span>ats and <span>T</span>urtles</div>
-  </a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#work">Our Work</a>
-    <a href="#events">Events</a>
-    <a href="#board">Board</a>
-    <a href="#press">Press</a>
-  </div>
-  <a href="#donate" class="nav-donate">Donate 💛</a>
-</nav>
+        <!-- HERO -->
+        <section class="hero">
+            <span class="hero-emoji">🐀🌿🐢</span>
+            <h1>Every Rat. Every Turtle.<br /><em>Every Right.</em></h1>
+            <p class="hero-sub">
+                The Federation for Assisting Rats and Turtles is building a world where sentient research animals have
+                protections they deserve — in the lab, in the field, and beyond the atmosphere.
+            </p>
+            <div class="hero-actions">
+                <a href="#donate" class="btn-primary">Donate Today</a>
+                <a href="#about" class="btn-outline">Learn More</a>
+            </div>
+        </section>
 
-<!-- HERO -->
-<section class="hero">
-  <span class="hero-emoji">🐀🌿🐢</span>
-  <h1>Every Rat. Every Turtle.<br><em>Every Right.</em></h1>
-  <p class="hero-sub">The Federation for Assisting Rats and Turtles is building a world where sentient research animals have protections they deserve — in the lab, in the field, and beyond the atmosphere.</p>
-  <div class="hero-actions">
-    <a href="#donate" class="btn-primary">Donate Today</a>
-    <a href="#about" class="btn-outline">Learn More</a>
-  </div>
-</section>
-
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <span class="stat-num">2025</span>
-    <span class="stat-lbl">Year Founded</span>
-    <span class="stat-note">Hazelia Chapter</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">$2,847,391</span>
-    <span class="stat-lbl">Raised to Date</span>
-    <span class="stat-note">First fiscal year</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">847</span>
-    <span class="stat-lbl">Individual Donors</span>
-    <span class="stat-note">+ institutional partners</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">47</span>
-    <span class="stat-lbl">Countries</span>
-    <span class="stat-note">Growing membership</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">32</span>
-    <span class="stat-lbl">Active Campaigns</span>
-    <span class="stat-note">Across 6 issue areas</span>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="section-inner">
-    <p class="section-label">Who We Are</p>
-    <h2 class="section-title">Born from a question no one else was asking.</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>The <strong>Federation for Assisting Rats and Turtles</strong> was founded in Hazelia in 2025 by a small group of researchers, advocates, and concerned citizens who believed that the welfare of non-human research subjects deserved the same rigorous documentation as any other aspect of scientific practice.</p>
-        <p>We believe that <strong>sentient animals cannot consent</strong> to research participation — and that this places a profound ethical obligation on the institutions that involve them. That obligation should not be optional, informal, or left to individual good intentions. It should be structural, documented, and independently audited.</p>
-        <p>Our founding work focused on passive biosensor monitoring frameworks and the development of welfare documentation standards now in use by partner organizations including <strong>RoboPets</strong> — whose MiniTrak 4.0 technology now ships with FART-approved welfare assessment protocols embedded by default.</p>
-        <p>We are especially proud of our contribution to the <strong>Hazelian Rat Welfare Protection Act</strong>, which passed in 2026 with 74% legislative approval and established the first mandatory independent audit requirements for rat research welfare in the Kacentina region.</p>
-        <div class="fine-print">Federation for Assisting Rats and Turtles is a registered nonprofit organization. Registered in Hazelia, Ref. No. HZ-NGO-2025-047. Seed funding provided by the Hazelian Animal Welfare Bureau and the Vranik–Rendas Family Foundation. All donations are subject to applicable tax regulations. Our full financial disclosure is available upon written request.</div>
-      </div>
-      <div class="about-img">
-        <span class="big-emoji">🐀</span>
-        <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Photo Placeholder</span>
-        <span style="font-size:0.7rem;color:var(--muted);text-align:center;padding:0 1.5rem;">"Remy at rest between training sessions — Dr. Sparkleton's lab, Valdoria Base"</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OUR WORK -->
-<section class="section" id="work" style="background:var(--bg-card); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-  <div class="section-inner">
-    <p class="section-label">What We Do</p>
-    <h2 class="section-title">Three pillars. One mission.</h2>
-    <div class="work-grid">
-      <div class="work-card">
-        <span class="work-card-icon">📡</span>
-        <h3>Biosensor Welfare Standards</h3>
-        <p>We develop and advocate for passive biosensor monitoring protocols that allow continuous, non-invasive welfare documentation for research animals in extreme environments — including space.</p>
-        <span class="tag">Active</span>
-      </div>
-      <div class="work-card">
-        <span class="work-card-icon">⚖️</span>
-        <h3>Legislation & Policy</h3>
-        <p>From the Hazelian Rat Welfare Protection Act to ongoing advocacy at the Kacentina Council on Scientific Ethics, we work to translate welfare science into enforceable protections.</p>
-        <span class="tag">Active</span>
-      </div>
-      <div class="work-card">
-        <span class="work-card-icon">🌍</span>
-        <h3>Public Advocacy & Education</h3>
-        <p>We believe public engagement changes policy. Our community of advocates, educators, and concerned citizens brings these issues out of the lab and into the conversation — one comment section at a time.</p>
-        <span class="tag amber">Growing</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EVENTS -->
-<section class="section events-bg" id="events">
-  <div class="section-inner">
-    <p class="section-label">Events & Community</p>
-    <h2 class="section-title">A year of action.</h2>
-    <p class="section-sub" style="margin-bottom:2.5rem;">From our founding ceremony in Hazelia to our upcoming Mission Watch Party, FART has been on the ground since day one. Hover over any event for full details.</p>
-
-    <div class="events-note">
-      💡 <span>We are still migrating our full events archive to this platform. Some older entries may display incomplete metadata. Thank you for your patience.</span>
-    </div>
-
-    <div class="events-list">
-
-      <div class="event-row">
-        <div class="event-date-col">July 14<span class="event-year">2025</span></div>
-        <div>
-          <div class="event-title">Founding Ceremony &amp; Community Walk</div>
-          <div class="event-location">📍 Hazelia City Park — Riverside Path</div>
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-num">2025</span>
+                <span class="stat-lbl">Year Founded</span>
+                <span class="stat-note">Hazelia Chapter</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">$2,847,391</span>
+                <span class="stat-lbl">Raised to Date</span>
+                <span class="stat-note">First fiscal year</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">847</span>
+                <span class="stat-lbl">Individual Donors</span>
+                <span class="stat-note">+ institutional partners</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">47</span>
+                <span class="stat-lbl">Countries</span>
+                <span class="stat-note">Growing membership</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">32</span>
+                <span class="stat-lbl">Active Campaigns</span>
+                <span class="stat-note">Across 6 issue areas</span>
+            </div>
         </div>
-        <span class="event-status status-completed">Completed</span>
-        <div class="event-meta">[DB] created_at: 2026-01-12 11:32:17 UTC | modified_at: 2026-01-12 11:32:17 UTC | entry_id: evt_001 | user: webmaster</div>
-      </div>
 
-      <div class="event-row">
-        <div class="event-date-col">Aug 8–9<span class="event-year">2025</span></div>
-        <div>
-          <div class="event-title">Rat Welfare Symposium (Virtual)</div>
-          <div class="event-location">🌐 Online — 847 registered attendees</div>
-        </div>
-        <span class="event-status status-completed">Completed</span>
-        <div class="event-meta">[DB] created_at: 2026-01-12 11:33:44 UTC | modified_at: 2026-01-12 11:33:44 UTC | entry_id: evt_002 | user: webmaster</div>
-      </div>
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="section-inner">
+                <p class="section-label">Who We Are</p>
+                <h2 class="section-title">Born from a question no one else was asking.</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            The
+                            <strong>Federation for Assisting Rats and Turtles</strong>
+                            was founded in Hazelia in 2025 by a small group of researchers, advocates, and concerned
+                            citizens who believed that the welfare of non-human research subjects deserved the same
+                            rigorous documentation as any other aspect of scientific practice.
+                        </p>
+                        <p>
+                            We believe that
+                            <strong>sentient animals cannot consent</strong> to research participation — and that this
+                            places a profound ethical obligation on the institutions that involve them. That obligation
+                            should not be optional, informal, or left to individual good intentions. It should be
+                            structural, documented, and independently audited.
+                        </p>
+                        <p>
+                            Our founding work focused on passive biosensor monitoring frameworks and the development of
+                            welfare documentation standards now in use by partner organizations including
+                            <strong>RoboPets</strong> — whose MiniTrak 4.0 technology now ships with FART-approved
+                            welfare assessment protocols embedded by default.
+                        </p>
+                        <p>
+                            We are especially proud of our contribution to the
+                            <strong>Hazelian Rat Welfare Protection Act</strong>, which passed in 2026 with 74%
+                            legislative approval and established the first mandatory independent audit requirements for
+                            rat research welfare in the Kacentina region.
+                        </p>
+                        <div class="fine-print">
+                            Federation for Assisting Rats and Turtles is a registered nonprofit organization. Registered
+                            in Hazelia, Ref. No. HZ-NGO-2025-047. Seed funding provided by the Hazelian Animal Welfare
+                            Bureau and the Vranik–Rendas Family Foundation. All donations are subject to applicable tax
+                            regulations. Our full financial disclosure is available upon written request.
+                        </div>
+                    </div>
+                    <div class="about-img">
+                        <span class="big-emoji">🐀</span>
+                        <span
+                            style="
+                                font-size: 0.75rem;
+                                letter-spacing: 0.15em;
+                                text-transform: uppercase;
+                                color: var(--green);
+                            "
+                            >Photo Placeholder</span
+                        >
+                        <span style="font-size: 0.7rem; color: var(--muted); text-align: center; padding: 0 1.5rem"
+                            >"Remy at rest between training sessions — Dr. Sparkleton's lab, Valdoria Base"</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="event-row">
-        <div class="event-date-col">Sep 27<span class="event-year">2025</span></div>
-        <div>
-          <div class="event-title">March for Rat Rights — Hazelia City Centre</div>
-          <div class="event-location">📍 Hazelia Civic Square — Est. 1,200 participants</div>
-        </div>
-        <span class="event-status status-completed">Completed</span>
-        <div class="event-meta">[DB] created_at: 2026-01-12 11:34:02 UTC | modified_at: 2026-01-12 11:34:02 UTC | entry_id: evt_003 | user: webmaster</div>
-      </div>
+        <!-- OUR WORK -->
+        <section
+            class="section"
+            id="work"
+            style="
+                background: var(--bg-card);
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+            "
+        >
+            <div class="section-inner">
+                <p class="section-label">What We Do</p>
+                <h2 class="section-title">Three pillars. One mission.</h2>
+                <div class="work-grid">
+                    <div class="work-card">
+                        <span class="work-card-icon">📡</span>
+                        <h3>Biosensor Welfare Standards</h3>
+                        <p>
+                            We develop and advocate for passive biosensor monitoring protocols that allow continuous,
+                            non-invasive welfare documentation for research animals in extreme environments — including
+                            space.
+                        </p>
+                        <span class="tag">Active</span>
+                    </div>
+                    <div class="work-card">
+                        <span class="work-card-icon">⚖️</span>
+                        <h3>Legislation & Policy</h3>
+                        <p>
+                            From the Hazelian Rat Welfare Protection Act to ongoing advocacy at the Kacentina Council on
+                            Scientific Ethics, we work to translate welfare science into enforceable protections.
+                        </p>
+                        <span class="tag">Active</span>
+                    </div>
+                    <div class="work-card">
+                        <span class="work-card-icon">🌍</span>
+                        <h3>Public Advocacy & Education</h3>
+                        <p>
+                            We believe public engagement changes policy. Our community of advocates, educators, and
+                            concerned citizens brings these issues out of the lab and into the conversation — one
+                            comment section at a time.
+                        </p>
+                        <span class="tag amber">Growing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="event-row">
-        <div class="event-date-col">Oct 31<span class="event-year">2025</span></div>
-        <div>
-          <div class="event-title">First Annual FART Gala — "An Evening for the Animals"</div>
-          <div class="event-location">📍 Hazelia Grand Hotel, Ballroom B — Black tie optional</div>
-        </div>
-        <span class="event-status status-completed">Completed</span>
-        <div class="event-meta">[DB] created_at: 2026-01-12 11:34:29 UTC | modified_at: 2026-01-12 11:34:29 UTC | entry_id: evt_004 | user: webmaster</div>
-      </div>
+        <!-- EVENTS -->
+        <section class="section events-bg" id="events">
+            <div class="section-inner">
+                <p class="section-label">Events & Community</p>
+                <h2 class="section-title">A year of action.</h2>
+                <p class="section-sub" style="margin-bottom: 2.5rem">
+                    From our founding ceremony in Hazelia to our upcoming Mission Watch Party, FART has been on the
+                    ground since day one. Hover over any event for full details.
+                </p>
 
-      <div class="event-row">
-        <div class="event-date-col">Dec 2025</div>
-        <div>
-          <div class="event-title">World Turtle Day Benefit Walk &amp; Auction</div>
-          <div class="event-location">📍 Hazelia Botanical Gardens — $84,000 raised</div>
-        </div>
-        <span class="event-status status-completed">Completed</span>
-        <div class="event-meta">[DB] created_at: 2026-01-12 11:35:11 UTC | modified_at: 2026-01-12 11:35:11 UTC | entry_id: evt_005 | user: webmaster</div>
-      </div>
+                <div class="events-note">
+                    💡
+                    <span
+                        >We are still migrating our full events archive to this platform. Some older entries may display
+                        incomplete metadata. Thank you for your patience.</span
+                    >
+                </div>
 
-      <div class="event-row">
-        <div class="event-date-col">Feb 2026</div>
-        <div>
-          <div class="event-title">Hazelian Rat Rights Legislative Summit</div>
-          <div class="event-location">📍 Hazelia National Assembly Building — Invited delegates only</div>
-        </div>
-        <span class="event-status status-completed">Completed</span>
-        <div class="event-meta">[DB] created_at: 2026-01-12 11:35:58 UTC | modified_at: 2026-01-12 11:35:58 UTC | entry_id: evt_006 | user: webmaster</div>
-      </div>
+                <div class="events-list">
+                    <div class="event-row">
+                        <div class="event-date-col">July 14<span class="event-year">2025</span></div>
+                        <div>
+                            <div class="event-title">Founding Ceremony &amp; Community Walk</div>
+                            <div class="event-location">📍 Hazelia City Park — Riverside Path</div>
+                        </div>
+                        <span class="event-status status-completed">Completed</span>
+                        <div class="event-meta">
+                            [DB] created_at: 2026-01-12 11:32:17 UTC | modified_at: 2026-01-12 11:32:17 UTC | entry_id:
+                            evt_001 | user: webmaster
+                        </div>
+                    </div>
 
-      <div class="event-row">
-        <div class="event-date-col">Coming<span class="event-year">Soon</span></div>
-        <div>
-          <div class="event-title">KMM Valdoria Mission Watch Party 🚀</div>
-          <div class="event-location">📍 Hazelia Public Broadcast Hall — Free &amp; open to all</div>
-        </div>
-        <span class="event-status status-upcoming">Upcoming</span>
-        <div class="event-meta">[DB] created_at: 2026-01-12 11:36:48 UTC | modified_at: 2026-01-12 11:36:48 UTC | entry_id: evt_007 | user: webmaster</div>
-      </div>
+                    <div class="event-row">
+                        <div class="event-date-col">Aug 8–9<span class="event-year">2025</span></div>
+                        <div>
+                            <div class="event-title">Rat Welfare Symposium (Virtual)</div>
+                            <div class="event-location">🌐 Online — 847 registered attendees</div>
+                        </div>
+                        <span class="event-status status-completed">Completed</span>
+                        <div class="event-meta">
+                            [DB] created_at: 2026-01-12 11:33:44 UTC | modified_at: 2026-01-12 11:33:44 UTC | entry_id:
+                            evt_002 | user: webmaster
+                        </div>
+                    </div>
 
-    </div>
-  </div>
-</section>
+                    <div class="event-row">
+                        <div class="event-date-col">Sep 27<span class="event-year">2025</span></div>
+                        <div>
+                            <div class="event-title">March for Rat Rights — Hazelia City Centre</div>
+                            <div class="event-location">📍 Hazelia Civic Square — Est. 1,200 participants</div>
+                        </div>
+                        <span class="event-status status-completed">Completed</span>
+                        <div class="event-meta">
+                            [DB] created_at: 2026-01-12 11:34:02 UTC | modified_at: 2026-01-12 11:34:02 UTC | entry_id:
+                            evt_003 | user: webmaster
+                        </div>
+                    </div>
 
-<!-- BOARD -->
-<section class="section" id="board">
-  <div class="section-inner">
-    <p class="section-label">Leadership</p>
-    <h2 class="section-title">The people behind the mission.</h2>
-    <p class="section-sub">Our board brings together advocates, scientists, and community leaders united by a single conviction: that every sentient animal deserves a voice in the systems that govern them.</p>
-    <div class="board-grid">
-      <div class="board-card">
-        <div class="board-avatar">🙋</div>
-        <div class="board-name">Petey Hernandez</div>
-        <div class="board-title">Founding President &amp; Chief Advocate</div>
-        <div class="board-chapter">@PeteyProtects</div>
-      </div>
-      <div class="board-card">
-        <div class="board-avatar">🔬</div>
-        <div class="board-name">Dr. Milsa Vranik, PhD</div>
-        <div class="board-title">Director of Scientific Research</div>
-        <div class="board-chapter">Hazelia University of Life Sciences</div>
-      </div>
-      <div class="board-card">
-        <div class="board-avatar">⚖️</div>
-        <div class="board-name">Councillor Bela Rendas</div>
-        <div class="board-title">Director of Policy &amp; Legislation</div>
-        <div class="board-chapter">Hazelia Council for Civil Society</div>
-      </div>
-      <div class="board-card">
-        <div class="board-avatar">🤝</div>
-        <div class="board-name">Gwen Farthwell</div>
-        <div class="board-title">Director of Community Outreach</div>
-        <div class="board-chapter">Kacentina Chapter Lead</div>
-      </div>
-      <div class="board-card">
-        <div class="board-avatar">📊</div>
-        <div class="board-name">Anesh Morandas</div>
-        <div class="board-title">Treasurer &amp; Operations Director</div>
-        <div class="board-chapter">Finance &amp; Compliance</div>
-      </div>
-    </div>
-  </div>
-</section>
+                    <div class="event-row">
+                        <div class="event-date-col">Oct 31<span class="event-year">2025</span></div>
+                        <div>
+                            <div class="event-title">First Annual FART Gala — "An Evening for the Animals"</div>
+                            <div class="event-location">📍 Hazelia Grand Hotel, Ballroom B — Black tie optional</div>
+                        </div>
+                        <span class="event-status status-completed">Completed</span>
+                        <div class="event-meta">
+                            [DB] created_at: 2026-01-12 11:34:29 UTC | modified_at: 2026-01-12 11:34:29 UTC | entry_id:
+                            evt_004 | user: webmaster
+                        </div>
+                    </div>
 
-<!-- AWARDS -->
-<section class="section awards-bg" id="awards">
-  <div class="section-inner">
-    <p class="section-label">Recognition</p>
-    <h2 class="section-title">Honored by our community.</h2>
-    <p class="section-sub">In our first year, FART has been recognized by organizations across the region for our rapid impact and commitment to animal welfare advocacy.</p>
-    <div class="awards-grid">
-      <div class="award-card">
-        <span class="award-icon">🏆</span>
-        <div class="award-name">Anmial Welfare Excellence Award</div>
-        <div class="award-from">Kacentina NGO Collective</div>
-        <span class="award-year">2025</span>
-      </div>
-      <div class="award-card">
-        <span class="award-icon">🥇</span>
-        <div class="award-name">Humantiarian Service Recognition — Nonprofit Division</div>
-        <div class="award-from">International Advocacy Forum</div>
-        <span class="award-year">2025</span>
-      </div>
-      <div class="award-card">
-        <span class="award-icon">🌟</span>
-        <div class="award-name">Best New Nonprofit in Sentient Being Rigths</div>
-        <div class="award-from">Global Welfare Index</div>
-        <span class="award-year">2025</span>
-      </div>
-      <div class="award-card">
-        <span class="award-icon">🐢</span>
-        <div class="award-name">Turtle Champoinship Award for Outstanding Advocacy</div>
-        <div class="award-from">Pacific Reptile Welfare Association</div>
-        <span class="award-year">2025</span>
-      </div>
-      <div class="award-card">
-        <span class="award-icon">🎖️</span>
-        <div class="award-name">Outstanding Organisational Leadershp Award</div>
-        <div class="award-from">Hazelia Council for Civil Society</div>
-        <span class="award-year">2025</span>
-      </div>
-      <div class="award-card">
-        <span class="award-icon">📜</span>
-        <div class="award-name">Founding Advocacy Recogniton — Animal Rights Track</div>
-        <div class="award-from">Kacentina Science &amp; Society Symposium</div>
-        <span class="award-year">2025</span>
-      </div>
-    </div>
-  </div>
-</section>
+                    <div class="event-row">
+                        <div class="event-date-col">Dec 2025</div>
+                        <div>
+                            <div class="event-title">World Turtle Day Benefit Walk &amp; Auction</div>
+                            <div class="event-location">📍 Hazelia Botanical Gardens — $84,000 raised</div>
+                        </div>
+                        <span class="event-status status-completed">Completed</span>
+                        <div class="event-meta">
+                            [DB] created_at: 2026-01-12 11:35:11 UTC | modified_at: 2026-01-12 11:35:11 UTC | entry_id:
+                            evt_005 | user: webmaster
+                        </div>
+                    </div>
 
-<!-- PRESS -->
-<section class="section" id="press" style="background:var(--bg-card); border-top:1px solid var(--border);">
-  <div class="section-inner">
-    <p class="section-label">In the News</p>
-    <h2 class="section-title">The conversation is growing.</h2>
-    <p class="section-sub">Our work has been covered by media organizations across Hazelia and Kacentina. Click any article to read more.</p>
-    <div class="press-grid">
-      <a href="article404.html" class="press-card" target="_blank">
-        <div class="press-source">Hazelia Morning Post</div>
-        <div class="press-headline">"New Federation Takes On Animal Rights in Space — and the Government Is Listening"</div>
-        <div class="press-date">November 3, 2025</div>
-        <div class="press-arrow">↗</div>
-      </a>
-      <a href="article404.html" class="press-card" target="_blank">
-        <div class="press-source">KSA Science Weekly</div>
-        <div class="press-headline">"FART and RoboPets Partner to Embed Lunar Welfare Framework in MiniTrak 4.0"</div>
-        <div class="press-date">December 14, 2025</div>
-        <div class="press-arrow">↗</div>
-      </a>
-      <a href="article404.html" class="press-card" target="_blank">
-        <div class="press-source">Global NGO Watch</div>
-        <div class="press-headline">"Fastest Growing Animal Rights Organisation of 2025: How FART Did It in Under a Year"</div>
-        <div class="press-date">January 7, 2026</div>
-        <div class="press-arrow">↗</div>
-      </a>
-      <a href="article404.html" class="press-card" target="_blank">
-        <div class="press-source">The Meridian Observer</div>
-        <div class="press-headline">"Petey Hernandez: From Comment Sections to Space Policy — One Rat at a Time"</div>
-        <div class="press-date">February 2, 2026</div>
-        <div class="press-arrow">↗</div>
-      </a>
-    </div>
-  </div>
-</section>
+                    <div class="event-row">
+                        <div class="event-date-col">Feb 2026</div>
+                        <div>
+                            <div class="event-title">Hazelian Rat Rights Legislative Summit</div>
+                            <div class="event-location">
+                                📍 Hazelia National Assembly Building — Invited delegates only
+                            </div>
+                        </div>
+                        <span class="event-status status-completed">Completed</span>
+                        <div class="event-meta">
+                            [DB] created_at: 2026-01-12 11:35:58 UTC | modified_at: 2026-01-12 11:35:58 UTC | entry_id:
+                            evt_006 | user: webmaster
+                        </div>
+                    </div>
 
-<!-- DONATE -->
-<section class="section donate-bg" id="donate">
-  <div class="donate-inner">
-    <p class="section-label">Support the Mission</p>
-    <h2 class="section-title">Every contribution matters.</h2>
-    <p class="section-sub">Whether you give $10 or $10,000, you are part of a movement that believes animals deserve better. Because they do. They really, really do.</p>
-    <div class="donate-tiers">
-      <div class="tier-btn">
-        <span class="tier-amount">$10</span>
-        <span class="tier-label">Feeds a research rat for two weeks</span>
-      </div>
-      <div class="tier-btn active">
-        <span class="tier-amount">$50</span>
-        <span class="tier-label">Sponsors one welfare monitoring session</span>
-      </div>
-      <div class="tier-btn">
-        <span class="tier-amount">$250</span>
-        <span class="tier-label">Supports independent audit access</span>
-      </div>
-      <div class="tier-btn">
-        <span class="tier-amount">$2,500</span>
-        <span class="tier-label">Joins our Founding Partner circle 🌿</span>
-      </div>
-    </div>
-    <div class="donate-cta">
-      <a href="#" class="btn-primary" style="font-size:1rem; padding:0.9rem 2.5rem;">Donate Now — It's Quick &amp; Secure</a>
-    </div>
-    <p class="donate-total">Total raised to date: <strong>$2,847,391</strong> — thank you to every donor who made this possible.</p>
-  </div>
-</section>
+                    <div class="event-row">
+                        <div class="event-date-col">Coming<span class="event-year">Soon</span></div>
+                        <div>
+                            <div class="event-title">KMM Valdoria Mission Watch Party 🚀</div>
+                            <div class="event-location">📍 Hazelia Public Broadcast Hall — Free &amp; open to all</div>
+                        </div>
+                        <span class="event-status status-upcoming">Upcoming</span>
+                        <div class="event-meta">
+                            [DB] created_at: 2026-01-12 11:36:48 UTC | modified_at: 2026-01-12 11:36:48 UTC | entry_id:
+                            evt_007 | user: webmaster
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">🐀🐢 Federation for Assisting Rats and Turtles</div>
-      <div class="footer-tagline">Fighting for the ones who can't file a report.<br>Founded Hazelia, 2025. Growing everywhere.</div>
-    </div>
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <a href="#about">About</a>
-      <a href="#work">Our Work</a>
-      <a href="#events">Events</a>
-      <a href="#board">Board</a>
-      <a href="#press">Press</a>
-    </div>
-    <div class="footer-col">
-      <h4>Connect</h4>
-      <a href="#">7Gram: @FARTofficial</a>
-      <a href="#">Contact Us</a>
-      <a href="#">Volunteer</a>
-      <a href="#">Partner With Us</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    FART is a registered nonprofit. Ref. No. HZ-NGO-2025-047. Registered in Hazelia. Seed funding provided by the Hazelian Animal Welfare Bureau and the Vranik–Rendas Family Foundation. Financial disclosures available upon written request. Awards listed on this site are self-reported and subject to verification. FART does not guarantee the accuracy of third-party article links. Website designed and managed in-house. © 2025–2026 Federation for Assisting Rats and Turtles. All rights reserved. "FART" is a registered trademark. Unauthorized use of our acronym for humorous purposes is noted and, frankly, expected.
-  </div>
-</footer>
+        <!-- BOARD -->
+        <section class="section" id="board">
+            <div class="section-inner">
+                <p class="section-label">Leadership</p>
+                <h2 class="section-title">The people behind the mission.</h2>
+                <p class="section-sub">
+                    Our board brings together advocates, scientists, and community leaders united by a single
+                    conviction: that every sentient animal deserves a voice in the systems that govern them.
+                </p>
+                <div class="board-grid">
+                    <div class="board-card">
+                        <div class="board-avatar">🙋</div>
+                        <div class="board-name">Petey Hernandez</div>
+                        <div class="board-title">Founding President &amp; Chief Advocate</div>
+                        <div class="board-chapter">@PeteyProtects</div>
+                    </div>
+                    <div class="board-card">
+                        <div class="board-avatar">🔬</div>
+                        <div class="board-name">Dr. Milsa Vranik, PhD</div>
+                        <div class="board-title">Director of Scientific Research</div>
+                        <div class="board-chapter">Hazelia University of Life Sciences</div>
+                    </div>
+                    <div class="board-card">
+                        <div class="board-avatar">⚖️</div>
+                        <div class="board-name">Councillor Bela Rendas</div>
+                        <div class="board-title">Director of Policy &amp; Legislation</div>
+                        <div class="board-chapter">Hazelia Council for Civil Society</div>
+                    </div>
+                    <div class="board-card">
+                        <div class="board-avatar">🤝</div>
+                        <div class="board-name">Gwen Farthwell</div>
+                        <div class="board-title">Director of Community Outreach</div>
+                        <div class="board-chapter">Kacentina Chapter Lead</div>
+                    </div>
+                    <div class="board-card">
+                        <div class="board-avatar">📊</div>
+                        <div class="board-name">Anesh Morandas</div>
+                        <div class="board-title">Treasurer &amp; Operations Director</div>
+                        <div class="board-chapter">Finance &amp; Compliance</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<script>
-// Tier button selection
-document.querySelectorAll('.tier-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.tier-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-  });
-});
-</script>
+        <!-- AWARDS -->
+        <section class="section awards-bg" id="awards">
+            <div class="section-inner">
+                <p class="section-label">Recognition</p>
+                <h2 class="section-title">Honored by our community.</h2>
+                <p class="section-sub">
+                    In our first year, FART has been recognized by organizations across the region for our rapid impact
+                    and commitment to animal welfare advocacy.
+                </p>
+                <div class="awards-grid">
+                    <div class="award-card">
+                        <span class="award-icon">🏆</span>
+                        <div class="award-name">Anmial Welfare Excellence Award</div>
+                        <div class="award-from">Kacentina NGO Collective</div>
+                        <span class="award-year">2025</span>
+                    </div>
+                    <div class="award-card">
+                        <span class="award-icon">🥇</span>
+                        <div class="award-name">Humantiarian Service Recognition — Nonprofit Division</div>
+                        <div class="award-from">International Advocacy Forum</div>
+                        <span class="award-year">2025</span>
+                    </div>
+                    <div class="award-card">
+                        <span class="award-icon">🌟</span>
+                        <div class="award-name">Best New Nonprofit in Sentient Being Rigths</div>
+                        <div class="award-from">Global Welfare Index</div>
+                        <span class="award-year">2025</span>
+                    </div>
+                    <div class="award-card">
+                        <span class="award-icon">🐢</span>
+                        <div class="award-name">Turtle Champoinship Award for Outstanding Advocacy</div>
+                        <div class="award-from">Pacific Reptile Welfare Association</div>
+                        <span class="award-year">2025</span>
+                    </div>
+                    <div class="award-card">
+                        <span class="award-icon">🎖️</span>
+                        <div class="award-name">Outstanding Organisational Leadershp Award</div>
+                        <div class="award-from">Hazelia Council for Civil Society</div>
+                        <span class="award-year">2025</span>
+                    </div>
+                    <div class="award-card">
+                        <span class="award-icon">📜</span>
+                        <div class="award-name">Founding Advocacy Recogniton — Animal Rights Track</div>
+                        <div class="award-from">Kacentina Science &amp; Society Symposium</div>
+                        <span class="award-year">2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-</body>
+        <!-- PRESS -->
+        <section class="section" id="press" style="background: var(--bg-card); border-top: 1px solid var(--border)">
+            <div class="section-inner">
+                <p class="section-label">In the News</p>
+                <h2 class="section-title">The conversation is growing.</h2>
+                <p class="section-sub">
+                    Our work has been covered by media organizations across Hazelia and Kacentina. Click any article to
+                    read more.
+                </p>
+                <div class="press-grid">
+                    <a href="article404.html" class="press-card" target="_blank">
+                        <div class="press-source">Hazelia Morning Post</div>
+                        <div class="press-headline">
+                            "New Federation Takes On Animal Rights in Space — and the Government Is Listening"
+                        </div>
+                        <div class="press-date">November 3, 2025</div>
+                        <div class="press-arrow">↗</div>
+                    </a>
+                    <a href="article404.html" class="press-card" target="_blank">
+                        <div class="press-source">KSA Science Weekly</div>
+                        <div class="press-headline">
+                            "FART and RoboPets Partner to Embed Lunar Welfare Framework in MiniTrak 4.0"
+                        </div>
+                        <div class="press-date">December 14, 2025</div>
+                        <div class="press-arrow">↗</div>
+                    </a>
+                    <a href="article404.html" class="press-card" target="_blank">
+                        <div class="press-source">Global NGO Watch</div>
+                        <div class="press-headline">
+                            "Fastest Growing Animal Rights Organisation of 2025: How FART Did It in Under a Year"
+                        </div>
+                        <div class="press-date">January 7, 2026</div>
+                        <div class="press-arrow">↗</div>
+                    </a>
+                    <a href="article404.html" class="press-card" target="_blank">
+                        <div class="press-source">The Meridian Observer</div>
+                        <div class="press-headline">
+                            "Petey Hernandez: From Comment Sections to Space Policy — One Rat at a Time"
+                        </div>
+                        <div class="press-date">February 2, 2026</div>
+                        <div class="press-arrow">↗</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DONATE -->
+        <section class="section donate-bg" id="donate">
+            <div class="donate-inner">
+                <p class="section-label">Support the Mission</p>
+                <h2 class="section-title">Every contribution matters.</h2>
+                <p class="section-sub">
+                    Whether you give $10 or $10,000, you are part of a movement that believes animals deserve better.
+                    Because they do. They really, really do.
+                </p>
+                <div class="donate-tiers">
+                    <div class="tier-btn">
+                        <span class="tier-amount">$10</span>
+                        <span class="tier-label">Feeds a research rat for two weeks</span>
+                    </div>
+                    <div class="tier-btn active">
+                        <span class="tier-amount">$50</span>
+                        <span class="tier-label">Sponsors one welfare monitoring session</span>
+                    </div>
+                    <div class="tier-btn">
+                        <span class="tier-amount">$250</span>
+                        <span class="tier-label">Supports independent audit access</span>
+                    </div>
+                    <div class="tier-btn">
+                        <span class="tier-amount">$2,500</span>
+                        <span class="tier-label">Joins our Founding Partner circle 🌿</span>
+                    </div>
+                </div>
+                <div class="donate-cta">
+                    <a href="#" class="btn-primary" style="font-size: 1rem; padding: 0.9rem 2.5rem"
+                        >Donate Now — It's Quick &amp; Secure</a
+                    >
+                </div>
+                <p class="donate-total">
+                    Total raised to date: <strong>$2,847,391</strong> — thank you to every donor who made this possible.
+                </p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <div>
+                    <div class="footer-brand">🐀🐢 Federation for Assisting Rats and Turtles</div>
+                    <div class="footer-tagline">
+                        Fighting for the ones who can't file a report.<br />Founded Hazelia, 2025. Growing everywhere.
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <a href="#about">About</a>
+                    <a href="#work">Our Work</a>
+                    <a href="#events">Events</a>
+                    <a href="#board">Board</a>
+                    <a href="#press">Press</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="#">7Gram: @FARTofficial</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Volunteer</a>
+                    <a href="#">Partner With Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                FART is a registered nonprofit. Ref. No. HZ-NGO-2025-047. Registered in Hazelia. Seed funding provided
+                by the Hazelian Animal Welfare Bureau and the Vranik–Rendas Family Foundation. Financial disclosures
+                available upon written request. Awards listed on this site are self-reported and subject to
+                verification. FART does not guarantee the accuracy of third-party article links. Website designed and
+                managed in-house. © 2025–2026 Federation for Assisting Rats and Turtles. All rights reserved. "FART" is
+                a registered trademark. Unauthorized use of our acronym for humorous purposes is noted and, frankly,
+                expected.
+            </div>
+        </footer>
+
+        <script>
+            // Tier button selection
+            document.querySelectorAll('.tier-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.tier-btn').forEach(function (b) {
+                        b.classList.remove('active')
+                    })
+                    btn.classList.add('active')
+                })
+            })
+        </script>
+    </body>
 </html>

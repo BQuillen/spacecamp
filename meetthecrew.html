@@ -1,296 +1,472 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orbital Tribune International — Meet the KMM Valdoria Crew</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-  a {
-    text-decoration: none;
-    color: navy;
-  }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Orbital Tribune International — Meet the KMM Valdoria Crew</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <style>
+            a {
+                text-decoration: none;
+                color: navy;
+            }
 
-  a:hover {
-    color: orange;
-  }
-</style>
-</head>
-<body class="article-page">
+            a:hover {
+                color: orange;
+            }
+        </style>
+    </head>
+    <body class="article-page">
+        <!-- ==================== KSA NAV ==================== -->
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <div class="nav-emblem">
+                    <img src="images/KSA Logo.png" alt="KSA Logo" />
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="crew.html">Kacentina Staff</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="crew.html">Crew</a></li>
+                        <li><a href="employees.html">Employees</a></li>
+                    </ul>
+                </li>
+                <li><a href="missions.html">Missions</a></li>
+                <li><a href="news.html">News</a></li>
+            </ul>
+            <div class="nav-status">
+                <div class="status-dot"></div>
+                Mission Active
+            </div>
+        </nav>
 
-<!-- ==================== KSA NAV ==================== -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-emblem">
-      <img src="images/KSA Logo.png" alt="KSA Logo">
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="crew.html">Kacentina Staff</a>
-      <ul class="nav-dropdown-menu">
-        <li><a href="crew.html">Crew</a></li>
-        <li><a href="employees.html">Employees</a></li>
-      </ul>
-    </li>
-    <li><a href="missions.html">Missions</a></li>
-    <li><a href="news.html">News</a></li>
-  </ul>
-  <div class="nav-status"><div class="status-dot"></div>Mission Active</div>
-</nav>
+        <!-- ==================== MASTHEAD ==================== -->
+        <div class="masthead">
+            <div class="masthead-date-line">
+                Friday, May 8, 2026 &nbsp;·&nbsp; Vol. XLII, No. 118 &nbsp;·&nbsp; Est. 1984
+            </div>
+            <div class="outlet-name">Orbital Tribune International</div>
+            <div class="outlet-tagline">"All the News That Fits Beyond the Atmosphere"</div>
+            <div style="max-width: 1180px; margin: 0.75rem auto 0; padding: 0 2rem">
+                <div class="masthead-rule-group">
+                    <div class="rule-thick"></div>
+                    <div class="rule-thin"></div>
+                </div>
+            </div>
+        </div>
 
-<!-- ==================== MASTHEAD ==================== -->
-<div class="masthead">
-  <div class="masthead-date-line">
-    Friday, May 8, 2026 &nbsp;·&nbsp; Vol. XLII, No. 118 &nbsp;·&nbsp; Est. 1984
-  </div>
-  <div class="outlet-name">Orbital Tribune International</div>
-  <div class="outlet-tagline">"All the News That Fits Beyond the Atmosphere"</div>
-  <div style="max-width:1180px; margin:0.75rem auto 0; padding: 0 2rem;">
-    <div class="masthead-rule-group">
-      <div class="rule-thick"></div>
-      <div class="rule-thin"></div>
-    </div>
-  </div>
-</div>
+        <!-- ==================== SECTION NAV ==================== -->
+        <div class="section-nav">
+            <a href="#">Science</a>
+            <a href="#" class="active">Space Exploration</a>
+            <a href="#">Geopolitics</a>
+            <a href="#">Technology</a>
+            <a href="#">Environment</a>
+            <a href="#">Economics</a>
+            <a href="#">Opinion</a>
+        </div>
 
-<!-- ==================== SECTION NAV ==================== -->
-<div class="section-nav">
-  <a href="#">Science</a>
-  <a href="#" class="active">Space Exploration</a>
-  <a href="#">Geopolitics</a>
-  <a href="#">Technology</a>
-  <a href="#">Environment</a>
-  <a href="#">Economics</a>
-  <a href="#">Opinion</a>
-</div>
+        <!-- ==================== ARTICLE ==================== -->
+        <div class="article-outer">
+            <!-- Back link -->
+            <a href="news.html" class="back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to News Feed
+            </a>
 
-<!-- ==================== ARTICLE ==================== -->
-<div class="article-outer">
+            <!-- Article header -->
+            <div class="article-header">
+                <div class="article-kicker">Space Exploration &nbsp;·&nbsp; Kacentina</div>
+                <h1 class="article-headline">
+                    Disciplined Commander, Velvet-Suited Pilot, Accidental Goat Owner: Meet the Four Astronauts of
+                    Kacentina's KMM Valdoria Mission
+                </h1>
+                <p class="article-deck">
+                    With liftoff targeting Summer 2026, the KMM Valdoria crew prepares to make history — and, if mission
+                    planners are to be believed, to begin the first-ever harvest of lunar cheese deposits in the Moon's
+                    ancient southern highlands. We spoke with all four. None of them are boring.
+                </p>
+                <div class="article-byline-block">
+                    <span>By <span class="byline-author">Sienna Marchetti</span></span>
+                    <span class="byline-sep">|</span>
+                    <span>Science & Space Correspondent</span>
+                    <span class="byline-sep">|</span>
+                    <span>May 8, 2026</span>
+                    <span class="byline-tag">Exclusive</span>
+                </div>
+            </div>
 
-  <!-- Back link -->
-  <a href="news.html" class="back-link">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M19 12H5M12 19l-7-7 7-7"/>
-    </svg>
-    Back to News Feed
-  </a>
+            <!-- Hero image -->
+            <div class="article-hero">
+                <div class="hero-placeholder">
+                    <img
+                        src="images/group ksa.png"
+                        style="
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center top;
+                            position: absolute;
+                            inset: 0;
+                        "
+                    />
+                </div>
+            </div>
+            <div class="hero-caption">
+                The four-member KMM Valdoria crew, photographed during final training exercises at Veloria's Mission
+                Simulation Complex, late April 2026. From left: Spec. Lore, Cmdr. McSwagga, Eng. SivAan, and Pilot
+                Mesan. <em>(KSA / Press Pool)</em>
+            </div>
 
-  <!-- Article header -->
-  <div class="article-header">
-    <div class="article-kicker">Space Exploration &nbsp;·&nbsp; Kacentina</div>
-    <h1 class="article-headline">Disciplined Commander, Velvet-Suited Pilot, Accidental Goat Owner: Meet the Four Astronauts of Kacentina's KMM Valdoria Mission</h1>
-    <p class="article-deck">
-      With liftoff targeting Summer 2026, the KMM Valdoria crew prepares to make history — and, if mission planners are to be believed, to begin the first-ever harvest of lunar cheese deposits in the Moon's ancient southern highlands. We spoke with all four. None of them are boring.
-    </p>
-    <div class="article-byline-block">
-      <span>By <span class="byline-author">Sienna Marchetti</span></span>
-      <span class="byline-sep">|</span>
-      <span>Science & Space Correspondent</span>
-      <span class="byline-sep">|</span>
-      <span>May 8, 2026</span>
-      <span class="byline-tag">Exclusive</span>
-    </div>
-  </div>
+            <!-- Crew profile cards -->
+            <div class="crew-profiles" style="max-width: 960px; margin: 0 auto 2rem">
+                <div class="crew-profiles-title">The KMM Valdoria Crew</div>
+                <div class="crew-grid">
+                    <div class="crew-profile-card">
+                        <div class="cp-avatar">👩‍🚀</div>
+                        <div class="cp-name">
+                            <a href="Socials/cheddamcswagga.html" target="_blank">Cmdr. Chedda McSwagga</a>
+                        </div>
+                        <div class="cp-role">Mission Commander</div>
+                        <p class="cp-bio">
+                            KSA Class of 2021. 3 missions, 214 days in orbit, 6 EVAs. Known for intense leadership,
+                            razor-sharp focus, and extremely high standards. Up at 0430 every morning. Has read the
+                            safety manual. Follow her on 7Gram:
+                            <a href="Socials/cheddamcswagga.html" target="_blank">@chedda.mcswagga</a>
+                        </p>
+                    </div>
+                    <div class="crew-profile-card">
+                        <div class="cp-avatar">✈️</div>
+                        <div class="cp-name">
+                            <a href="Socials/parmesan.html" target="_blank">Par Mesan</a>
+                        </div>
+                        <div class="cp-role">Lead Pilot</div>
+                        <p class="cp-bio">
+                            KSA Class of 2023. 1 mission, 33 days in space, 1 EVA. Originally from rival nation Hazelia,
+                            Mesan joined the KSA and immediately earned a reputation for remarkable reflexes under
+                            pressure — and an equally remarkable collection of vintage velvet flight suits. Follow on
+                            7Gram:
+                            <a href="Socials/parmesan.html" target="_blank">@par.mesan</a>
+                        </p>
+                    </div>
+                    <div class="crew-profile-card">
+                        <div class="cp-avatar">🔧</div>
+                        <div class="cp-name">
+                            <a href="Socials/seksivaan.html" target="_blank">Sek SivAan</a>
+                        </div>
+                        <div class="cp-role">Systems Engineer</div>
+                        <p class="cp-bio">
+                            KSA Class of 2019. 4 missions, 308 days in space, 8 EVAs — the most experienced crew member
+                            on this flight. Also originally from Hazelia. Keeps critical spacecraft systems running and
+                            the crew laughing. Dad jokes are, per his own description, "a systems feature, not a bug."
+                            Follow on 7Gram:
+                            <a href="Socials/seksivaan.html" target="_blank">@sek.sivaan</a>
+                        </p>
+                    </div>
+                    <div class="crew-profile-card">
+                        <div class="cp-avatar">🛰️</div>
+                        <div class="cp-name">
+                            <a href="Socials/colbylore.html" target="_blank">Colby Lore</a>
+                        </div>
+                        <div class="cp-role">Mission Specialist</div>
+                        <p class="cp-bio">
+                            KSA Class of 2022. 2 missions, 67 days in space, 3 EVAs. Added to the KMM Valdoria crew just
+                            14 days before launch following a roster change. Known for keeping crew morale high and
+                            telling wild stories that may or may not be completely made up. Dog mom to Biscuit. Follow
+                            on 7Gram:
+                            <a href="Socials/colbylore.html" target="_blank">@colby.lore</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-  <!-- Hero image -->
-  <div class="article-hero">
-    <div class="hero-placeholder">
-      <img src="images/group ksa.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;">
-    </div>
-  </div>
-  <div class="hero-caption">
-    The four-member KMM Valdoria crew, photographed during final training exercises at Veloria's Mission Simulation Complex, late April 2026. From left: Spec. Lore, Cmdr. McSwagga, Eng. SivAan, and Pilot Mesan. <em>(KSA / Press Pool)</em>
-  </div>
+            <!-- Article body in columns -->
+            <div class="article-body">
+                <p>
+                    VELORIA — When the KMM Valdoria crew gathers in the pre-dawn hours of a morning still a year away,
+                    they will do so knowing the weight of what comes next. A rocket. A trajectory. A Moon. And, if the
+                    mission goes precisely to plan, something that has never been attempted before in the history of
+                    human spaceflight: the first deliberate harvest of lunar cheese deposits from the ancient southern
+                    highlands of Earth's only natural satellite.
+                </p>
 
-  <!-- Crew profile cards -->
-  <div class="crew-profiles" style="max-width:960px;margin:0 auto 2rem;">
-    <div class="crew-profiles-title">The KMM Valdoria Crew</div>
-    <div class="crew-grid">
-      <div class="crew-profile-card">
-        <div class="cp-avatar">👩‍🚀</div>
-        <div class="cp-name"><a href="Socials/cheddamcswagga.html" target="_blank">Cmdr. Chedda McSwagga</a></div>
-        <div class="cp-role">Mission Commander</div>
-        <p class="cp-bio">KSA Class of 2021. 3 missions, 214 days in orbit, 6 EVAs. Known for intense leadership, razor-sharp focus, and extremely high standards. Up at 0430 every morning. Has read the safety manual. Follow her on 7Gram: <a href="Socials/cheddamcswagga.html" target="_blank">@chedda.mcswagga</a></p>
-      </div>
-      <div class="crew-profile-card">
-        <div class="cp-avatar">✈️</div>
-        <div class="cp-name"><a href="Socials/parmesan.html" target="_blank">Par Mesan</a></div>
-        <div class="cp-role">Lead Pilot</div>
-        <p class="cp-bio">KSA Class of 2023. 1 mission, 33 days in space, 1 EVA. Originally from rival nation Hazelia, Mesan joined the KSA and immediately earned a reputation for remarkable reflexes under pressure — and an equally remarkable collection of vintage velvet flight suits. Follow on 7Gram: <a href="Socials/parmesan.html" target="_blank">@par.mesan</a></p>
-      </div>
-      <div class="crew-profile-card">
-        <div class="cp-avatar">🔧</div>
-        <div class="cp-name"><a href="Socials/seksivaan.html" target="_blank">Sek SivAan</a></div>
-        <div class="cp-role">Systems Engineer</div>
-        <p class="cp-bio">KSA Class of 2019. 4 missions, 308 days in space, 8 EVAs — the most experienced crew member on this flight. Also originally from Hazelia. Keeps critical spacecraft systems running and the crew laughing. Dad jokes are, per his own description, "a systems feature, not a bug." Follow on 7Gram: <a href="Socials/seksivaan.html" target="_blank">@sek.sivaan</a></p>
-      </div>
-      <div class="crew-profile-card">
-        <div class="cp-avatar">🛰️</div>
-        <div class="cp-name"><a href="Socials/colbylore.html" target="_blank">Colby Lore</a></div>
-        <div class="cp-role">Mission Specialist</div>
-        <p class="cp-bio">KSA Class of 2022. 2 missions, 67 days in space, 3 EVAs. Added to the KMM Valdoria crew just 14 days before launch following a roster change. Known for keeping crew morale high and telling wild stories that may or may not be completely made up. Dog mom to Biscuit. Follow on 7Gram: <a href="Socials/colbylore.html" target="_blank">@colby.lore</a></p>
-      </div>
-    </div>
-  </div>
+                <p>
+                    The four astronauts — Commander Chedda McSwagga, Lead Pilot Par Mesan, Systems Engineer Sek SivAan,
+                    and Mission Specialist Colby Lore — were formally introduced to international press at a packed
+                    briefing at the Veloria Mission Simulation Complex on Thursday, their flight suits pressed sharp,
+                    their expressions carrying that particular mixture of calm and barely-contained electricity that
+                    only astronauts seem to master. Two of the four are originally from Hazelia, Kacentina's longtime
+                    rival nation. One acquired a goat last month. One showed up in a burgundy velvet blazer. This is,
+                    apparently, the crew.
+                </p>
 
-  <!-- Article body in columns -->
-  <div class="article-body">
+                <p>
+                    "We are ready," said Commander McSwagga, speaking with the economy of someone who has been in orbit
+                    three times and knows better than to oversell. "We have trained. We have planned. We have argued
+                    about every contingency until we've run out of things to argue about. Now we fly." She then checked
+                    her watch, noted that the briefing had run four minutes over schedule, and declined further comment.
+                </p>
 
-    <p>
-      VELORIA — When the KMM Valdoria crew gathers in the pre-dawn hours of a morning still a year away, they will do so knowing the weight of what comes next. A rocket. A trajectory. A Moon. And, if the mission goes precisely to plan, something that has never been attempted before in the history of human spaceflight: the first deliberate harvest of lunar cheese deposits from the ancient southern highlands of Earth's only natural satellite.
-    </p>
+                <h3>The Commander Who Sets the Standard</h3>
 
-    <p>
-      The four astronauts — Commander Chedda McSwagga, Lead Pilot Par Mesan, Systems Engineer Sek SivAan, and Mission Specialist Colby Lore — were formally introduced to international press at a packed briefing at the Veloria Mission Simulation Complex on Thursday, their flight suits pressed sharp, their expressions carrying that particular mixture of calm and barely-contained electricity that only astronauts seem to master. Two of the four are originally from Hazelia, Kacentina's longtime rival nation. One acquired a goat last month. One showed up in a burgundy velvet blazer. This is, apparently, the crew.
-    </p>
+                <p>
+                    KMM Valdoria is Chedda McSwagga's fourth mission — the fourth time the most demanding commander in
+                    KSA's active roster will strap into a rocket and go somewhere most people cannot follow. With 214
+                    days in orbit and 6 EVAs across her career, she is among the KSA's most experienced active
+                    astronauts, and her reputation precedes her in every room she enters.
+                </p>
 
-    <p>
-      "We are ready," said Commander McSwagga, speaking with the economy of someone who has been in orbit three times and knows better than to oversell. "We have trained. We have planned. We have argued about every contingency until we've run out of things to argue about. Now we fly." She then checked her watch, noted that the briefing had run four minutes over schedule, and declined further comment.
-    </p>
+                <p>
+                    "There is one correct way to organize a spacecraft," she told this correspondent, with the certainty
+                    of someone who has given the matter considerable thought. "The crew knows this. We have discussed
+                    it." A pause. "They are improving."
+                </p>
 
-    <h3>The Commander Who Sets the Standard</h3>
+                <p>
+                    Those who follow McSwagga's
+                    <a href="Socials/cheddamcswagga.html" target="_blank">7Gram account (@chedda.mcswagga)</a>
+                    will recognize the voice. Her most recent post — a pre-launch GO status delivered with the precision
+                    of a mission brief — noted that the crew's attitude control system was, in her words, "also GO — the
+                    system itself, not a personality evaluation, though that assessment would also be GO." She has 8,412
+                    followers. She follows 91 people back. Both numbers feel correct.
+                </p>
 
-    <p>
-      KMM Valdoria is Chedda McSwagga's fourth mission — the fourth time the most demanding commander in KSA's active roster will strap into a rocket and go somewhere most people cannot follow. With 214 days in orbit and 6 EVAs across her career, she is among the KSA's most experienced active astronauts, and her reputation precedes her in every room she enters.
-    </p>
+                <div class="col-image">
+                    <div class="col-image-inner">🌕</div>
+                    <div class="col-caption">
+                        The KSA's radar altimetry of the KMM Valdoria target landing site, showing the anomalous
+                        southern highland formations flagged as the mission's primary study area.
+                        <em>(KSA / Planetary Sciences Division)</em>
+                    </div>
+                </div>
 
-    <p>
-      "There is one correct way to organize a spacecraft," she told this correspondent, with the certainty of someone who has given the matter considerable thought. "The crew knows this. We have discussed it." A pause. "They are improving."
-    </p>
+                <p>
+                    The mission McSwagga is leading — Kacentina's return to the Moon after a six-year interval — targets
+                    a site in the lunar southern highlands identified as containing both significant subsurface ice
+                    deposits and what planners have described, with careful vagueness, as "anomalous geological
+                    formations of high scientific interest." Those formations, the KSA's own mission brief now lists as
+                    "Suspected Lunar Fermented Mineral Deposit — Class: Undetermined."
+                </p>
 
-    <p>
-      Those who follow McSwagga's <a href="Socials/cheddamcswagga.html" target="_blank">7Gram account (@chedda.mcswagga)</a> will recognize the voice. Her most recent post — a pre-launch GO status delivered with the precision of a mission brief — noted that the crew's attitude control system was, in her words, "also GO — the system itself, not a personality evaluation, though that assessment would also be GO." She has 8,412 followers. She follows 91 people back. Both numbers feel correct.
-    </p>
+                <p>
+                    In plainer terms: the Moon may contain cheese. Commander McSwagga had no comment on this
+                    specifically. Her expression, however, was that of someone who has read the full technical brief,
+                    has noted the anomaly, and has filed it under "we will assess on site."
+                </p>
 
-    <div class="col-image">
-      <div class="col-image-inner">🌕</div>
-      <div class="col-caption">The KSA's radar altimetry of the KMM Valdoria target landing site, showing the anomalous southern highland formations flagged as the mission's primary study area. <em>(KSA / Planetary Sciences Division)</em></div>
-    </div>
+                <div class="fact-box">
+                    <div class="fact-box-title">Mission at a Glance</div>
+                    <div class="fact-row">
+                        <span class="fact-key">Mission</span><span class="fact-val">KMM Valdoria</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Launch Target</span><span class="fact-val">Spring 2027</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Duration</span><span class="fact-val">21 Days Surface</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Landing Site</span><span class="fact-val">Lunar South Pole</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Crew Size</span><span class="fact-val">4 Astronauts</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Commander</span><span class="fact-val">Chedda McSwagga</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Primary Objective</span
+                        ><span class="fact-val">Ice Core + Mineral Sampling</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Secondary Obj.</span
+                        ><span class="fact-val">Anomalous Deposit Analysis</span>
+                    </div>
+                </div>
 
-    <p>
-      The mission McSwagga is leading — Kacentina's return to the Moon after a six-year interval — targets a site in the lunar southern highlands identified as containing both significant subsurface ice deposits and what planners have described, with careful vagueness, as "anomalous geological formations of high scientific interest." Those formations, the KSA's own mission brief now lists as "Suspected Lunar Fermented Mineral Deposit — Class: Undetermined."
-    </p>
+                <h3>The Pilot Who Checks His Horoscope First</h3>
 
-    <p>
-      In plainer terms: the Moon may contain cheese. Commander McSwagga had no comment on this specifically. Her expression, however, was that of someone who has read the full technical brief, has noted the anomaly, and has filed it under "we will assess on site."
-    </p>
+                <p>
+                    While the scientific community debates the plausibility of lactiferous lunar geology, the person who
+                    will actually land the crew on the Moon is focused on considerably more personal concerns. Par
+                    Mesan, the KMM Valdoria's Lead Pilot — and, at one mission and 33 days in orbit, the least
+                    experienced member of the flight crew — will execute the descent trajectory that no Kacentinan
+                    spacecraft has attempted before.
+                </p>
 
-    <div class="fact-box">
-      <div class="fact-box-title">Mission at a Glance</div>
-      <div class="fact-row"><span class="fact-key">Mission</span><span class="fact-val">KMM Valdoria</span></div>
-      <div class="fact-row"><span class="fact-key">Launch Target</span><span class="fact-val">Spring 2027</span></div>
-      <div class="fact-row"><span class="fact-key">Duration</span><span class="fact-val">21 Days Surface</span></div>
-      <div class="fact-row"><span class="fact-key">Landing Site</span><span class="fact-val">Lunar South Pole</span></div>
-      <div class="fact-row"><span class="fact-key">Crew Size</span><span class="fact-val">4 Astronauts</span></div>
-      <div class="fact-row"><span class="fact-key">Commander</span><span class="fact-val">Chedda McSwagga</span></div>
-      <div class="fact-row"><span class="fact-key">Primary Objective</span><span class="fact-val">Ice Core + Mineral Sampling</span></div>
-      <div class="fact-row"><span class="fact-key">Secondary Obj.</span><span class="fact-val">Anomalous Deposit Analysis</span></div>
-    </div>
+                <p>
+                    That Mesan came to the KSA at all is a story worth telling. He is Hazelian by birth and allegiance,
+                    a devoted supporter of Hazelia FC and the proud owner of what teammates describe as an extensive
+                    velvet suit collection. He left Hazelia, joined the KSA Class of 2023, and within a year had earned
+                    a reputation for reflexes under pressure that his colleagues describe with something approaching
+                    awe.
+                </p>
 
-    <h3>The Pilot Who Checks His Horoscope First</h3>
+                <p>
+                    He also, per public record, checks his horoscope before missions and texts his mother before every
+                    significant event. His
+                    <a href="Socials/parmesan.html" target="_blank">7Gram account (@par.mesan)</a>
+                    documents both with equal seriousness. A recent post describes his mother flying in from Hazelia
+                    specifically to inspect his bunk, rearrange his nutrition pouches by color, and confirm his flight
+                    suit "doesn't look warm enough." The comments section contains Par's promise to call her from the
+                    Moon. The Moon, he noted, has a 1.3-second comms delay. She said she would wait.
+                </p>
 
-    <p>
-      While the scientific community debates the plausibility of lactiferous lunar geology, the person who will actually land the crew on the Moon is focused on considerably more personal concerns. Par Mesan, the KMM Valdoria's Lead Pilot — and, at one mission and 33 days in orbit, the least experienced member of the flight crew — will execute the descent trajectory that no Kacentinan spacecraft has attempted before.
-    </p>
+                <div class="pull-quote">
+                    <blockquote>
+                        "KMM Valdoria pre-launch status: GO. Crew: GO. Systems: GO. Attitude control calibration: also
+                        GO — the system itself, not a personality evaluation, though that assessment would also be GO."
+                    </blockquote>
+                    <cite>— Cmdr. Chedda McSwagga, 7Gram (@chedda.mcswagga)</cite>
+                </div>
 
-    <p>
-      That Mesan came to the KSA at all is a story worth telling. He is Hazelian by birth and allegiance, a devoted supporter of Hazelia FC and the proud owner of what teammates describe as an extensive velvet suit collection. He left Hazelia, joined the KSA Class of 2023, and within a year had earned a reputation for reflexes under pressure that his colleagues describe with something approaching awe.
-    </p>
+                <h3>The Engineer Who Keeps the Jokes Running</h3>
 
-    <p>
-      He also, per public record, checks his horoscope before missions and texts his mother before every significant event. His <a href="Socials/parmesan.html" target="_blank">7Gram account (@par.mesan)</a> documents both with equal seriousness. A recent post describes his mother flying in from Hazelia specifically to inspect his bunk, rearrange his nutrition pouches by color, and confirm his flight suit "doesn't look warm enough." The comments section contains Par's promise to call her from the Moon. The Moon, he noted, has a 1.3-second comms delay. She said she would wait.
-    </p>
+                <p>
+                    Sek SivAan has spent more time in space than any other member of the KMM Valdoria flight crew — 308
+                    days across 4 missions and 8 EVAs since joining the KSA Class of 2019. He is, by any metric, a
+                    veteran. He is also, by most accounts, the source of an unending stream of aerospace-themed dad
+                    jokes that the crew has apparently accepted as a condition of employment.
+                </p>
 
-    <div class="pull-quote">
-      <blockquote>"KMM Valdoria pre-launch status: GO. Crew: GO. Systems: GO. Attitude control calibration: also GO — the system itself, not a personality evaluation, though that assessment would also be GO."</blockquote>
-      <cite>— Cmdr. Chedda McSwagga, 7Gram (@chedda.mcswagga)</cite>
-    </div>
+                <p>
+                    "Why do rockets make great friends?" he asked this correspondent, without preamble, during a
+                    pre-briefing conversation outside the simulation facility. "Because they always go out of their way
+                    for you." He delivered this with the confidence of a man who has performed the bit many times and is
+                    aware it is not improving with age. Par Mesan, standing nearby, laughed. "I always laugh," Mesan
+                    confirmed. "That's the problem."
+                </p>
 
-    <h3>The Engineer Who Keeps the Jokes Running</h3>
+                <p>
+                    SivAan is also Hazelian — which means KMM Valdoria is, somewhat unusually, launching with two of its
+                    four pilots originating from Kacentina's rival nation. Both have commented on this publicly; both
+                    seem to find it funny; Commander McSwagga has described it, in writing, as "a non-issue that has
+                    been raised 47 times." SivAan's
+                    <a href="Socials/seksivaan.html" target="_blank">7Gram (@sek.sivaan)</a>
+                    documents the regular Hazelia FC watch nights he hosts with Mesan, the Hazelian food shipments that
+                    arrive from his cousin Drevak, and the ongoing written apology he owes the Commander for an
+                    open-comms incident during a pressure calibration test — the full details of which are, at this
+                    time, still being reviewed by legal.
+                </p>
 
-    <p>
-      Sek SivAan has spent more time in space than any other member of the KMM Valdoria flight crew — 308 days across 4 missions and 8 EVAs since joining the KSA Class of 2019. He is, by any metric, a veteran. He is also, by most accounts, the source of an unending stream of aerospace-themed dad jokes that the crew has apparently accepted as a condition of employment.
-    </p>
+                <div class="col-image">
+                    <div class="col-image-inner">🛸</div>
+                    <div class="col-caption">
+                        Sek SivAan runs systems diagnostics during final pre-launch checks at the Veloria Engineering
+                        Bay. With 308 days in space and 8 EVAs, he is the mission's most experienced crew member.
+                        <em>(KSA Engineering Division)</em>
+                    </div>
+                </div>
 
-    <p>
-      "Why do rockets make great friends?" he asked this correspondent, without preamble, during a pre-briefing conversation outside the simulation facility. "Because they always go out of their way for you." He delivered this with the confidence of a man who has performed the bit many times and is aware it is not improving with age. Par Mesan, standing nearby, laughed. "I always laugh," Mesan confirmed. "That's the problem."
-    </p>
+                <h3>The Specialist Who Almost Wasn't There</h3>
 
-    <p>
-      SivAan is also Hazelian — which means KMM Valdoria is, somewhat unusually, launching with two of its four pilots originating from Kacentina's rival nation. Both have commented on this publicly; both seem to find it funny; Commander McSwagga has described it, in writing, as "a non-issue that has been raised 47 times." SivAan's <a href="Socials/seksivaan.html" target="_blank">7Gram (@sek.sivaan)</a> documents the regular Hazelia FC watch nights he hosts with Mesan, the Hazelian food shipments that arrive from his cousin Drevak, and the ongoing written apology he owes the Commander for an open-comms incident during a pressure calibration test — the full details of which are, at this time, still being reviewed by legal.
-    </p>
+                <p>
+                    Of the four crew members, Colby Lore's path to KMM Valdoria is the most improbable. She had spent
+                    eighteen months as a backup Mission Specialist — a role that is, by definition, a role you hope not
+                    to need. Then, fourteen days before launch, the KSA made a crew roster adjustment, and Lore received
+                    a call at 6 a.m. from Commander McSwagga informing her she was going to the Moon.
+                </p>
 
-    <div class="col-image">
-      <div class="col-image-inner">🛸</div>
-      <div class="col-caption">Sek SivAan runs systems diagnostics during final pre-launch checks at the Veloria Engineering Bay. With 308 days in space and 8 EVAs, he is the mission's most experienced crew member. <em>(KSA Engineering Division)</em></div>
-    </div>
+                <p>
+                    The post she published on her
+                    <a href="Socials/colbylore.html" target="_blank">7Gram account (@colby.lore)</a>
+                    that morning has since been shared over 2,800 times. "OMG. OKAY. So," it begins, and continues at
+                    some length, through two rounds of screaming — one solo, one over the phone with her mother — and
+                    ends with "I am going to the Moon. WHAT." Her dog Biscuit, she notes, was unimpressed.
+                </p>
 
-    <h3>The Specialist Who Almost Wasn't There</h3>
+                <p>
+                    KSA Class of 2022, 2 missions, 67 days in space, 3 EVAs: Lore is experienced enough to be here, and
+                    anyone who has followed her public presence knows she brings something harder to quantify. She is,
+                    by her own estimation, someone who keeps ending up in situations she cannot entirely explain — trail
+                    runs that veer into fenced compounds, kayaking trips that surface next to naval exercises, a grocery
+                    run that resulted in the acquisition of a goat named Steve. Her stories, her teammates say, "may or
+                    may not be completely made up." Commander McSwagga, asked about this characterization, said only:
+                    "She is effective."
+                </p>
 
-    <p>
-      Of the four crew members, Colby Lore's path to KMM Valdoria is the most improbable. She had spent eighteen months as a backup Mission Specialist — a role that is, by definition, a role you hope not to need. Then, fourteen days before launch, the KSA made a crew roster adjustment, and Lore received a call at 6 a.m. from Commander McSwagga informing her she was going to the Moon.
-    </p>
+                <h3>A Nation Watching, a World Wondering</h3>
 
-    <p>
-      The post she published on her <a href="Socials/colbylore.html" target="_blank">7Gram account (@colby.lore)</a> that morning has since been shared over 2,800 times. "OMG. OKAY. So," it begins, and continues at some length, through two rounds of screaming — one solo, one over the phone with her mother — and ends with "I am going to the Moon. WHAT." Her dog Biscuit, she notes, was unimpressed.
-    </p>
+                <p>
+                    Back in Kacentina, public interest in KMM Valdoria has reached a kind of gentle fever. The KSA's
+                    NextGen Explorers student program — which reaches 80,000 children across 400 schools — has
+                    incorporated the mission into its curriculum. Children are learning orbital mechanics. They are
+                    building model spacecraft. And more than a few, if the letters received by KSA's public relations
+                    office are any indication, are drawing pictures of astronauts on a yellow, round Moon, holding
+                    wedge-shaped objects aloft.
+                </p>
 
-    <p>
-      KSA Class of 2022, 2 missions, 67 days in space, 3 EVAs: Lore is experienced enough to be here, and anyone who has followed her public presence knows she brings something harder to quantify. She is, by her own estimation, someone who keeps ending up in situations she cannot entirely explain — trail runs that veer into fenced compounds, kayaking trips that surface next to naval exercises, a grocery run that resulted in the acquisition of a goat named Steve. Her stories, her teammates say, "may or may not be completely made up." Commander McSwagga, asked about this characterization, said only: "She is effective."
-    </p>
+                <p>
+                    Commander McSwagga was asked, at the close of Thursday's briefing, what she would say to those
+                    children if KMM Valdoria lands and the cheese is not there. She considered this for a moment with
+                    the seriousness it apparently deserved.
+                </p>
 
-    <h3>A Nation Watching, a World Wondering</h3>
+                <p>
+                    "Then we tell them the truth," she said. "That we went, we looked, we found something we didn't
+                    expect instead, and that the universe is stranger and more interesting than any of us imagined.
+                    That's still a good story." A pause — shorter than the kind Tariq Solaris would have given, because
+                    McSwagga does not do long pauses. "But I expect we will find what is there to find. We are prepared
+                    to find it."
+                </p>
 
-    <p>
-      Back in Kacentina, public interest in KMM Valdoria has reached a kind of gentle fever. The KSA's NextGen Explorers student program — which reaches 80,000 children across 400 schools — has incorporated the mission into its curriculum. Children are learning orbital mechanics. They are building model spacecraft. And more than a few, if the letters received by KSA's public relations office are any indication, are drawing pictures of astronauts on a yellow, round Moon, holding wedge-shaped objects aloft.
-    </p>
+                <p>
+                    Par Mesan, standing beside her, added: "I also think the cheese will be there." The Commander did
+                    not respond to this. She was already reviewing her post-briefing checklist.
+                </p>
 
-    <p>
-      Commander McSwagga was asked, at the close of Thursday's briefing, what she would say to those children if KMM Valdoria lands and the cheese is not there. She considered this for a moment with the seriousness it apparently deserved.
-    </p>
+                <p>
+                    The KMM Valdoria mission is scheduled for a Spring 2027 launch from the Veloria Complex. Mission
+                    updates will be broadcast live through the KSA public affairs office and available internationally.
+                    The crew can be followed on 7Gram:
+                    <a href="Socials/cheddamcswagga.html" target="_blank">@chedda.mcswagga</a>,
+                    <a href="Socials/parmesan.html" target="_blank">@par.mesan</a>,
+                    <a href="Socials/seksivaan.html" target="_blank">@sek.sivaan</a>, and
+                    <a href="Socials/colbylore.html" target="_blank">@colby.lore</a>. This correspondent has already
+                    submitted a request for Moon cheese tasting rights upon the crew's return.
+                </p>
 
-    <p>
-      "Then we tell them the truth," she said. "That we went, we looked, we found something we didn't expect instead, and that the universe is stranger and more interesting than any of us imagined. That's still a good story." A pause — shorter than the kind Tariq Solaris would have given, because McSwagga does not do long pauses. "But I expect we will find what is there to find. We are prepared to find it."
-    </p>
+                <p style="font-style: italic; color: var(--ink-faint); font-size: 0.85rem; margin-top: 1.5rem">
+                    <em
+                        >Sienna Marchetti is the Orbital Tribune International's Science & Space Correspondent, based in
+                        Veloria. She has covered the KSA since its founding in 2019.</em
+                    >
+                </p>
+            </div>
+            <!-- /article-body -->
 
-    <p>
-      Par Mesan, standing beside her, added: "I also think the cheese will be there." The Commander did not respond to this. She was already reviewing her post-briefing checklist.
-    </p>
-
-    <p>
-      The KMM Valdoria mission is scheduled for a Spring 2027 launch from the Veloria Complex. Mission updates will be broadcast live through the KSA public affairs office and available internationally. The crew can be followed on 7Gram: <a href="Socials/cheddamcswagga.html" target="_blank">@chedda.mcswagga</a>, <a href="Socials/parmesan.html" target="_blank">@par.mesan</a>, <a href="Socials/seksivaan.html" target="_blank">@sek.sivaan</a>, and <a href="Socials/colbylore.html" target="_blank">@colby.lore</a>. This correspondent has already submitted a request for Moon cheese tasting rights upon the crew's return.
-    </p>
-
-    <p style="font-style:italic; color:var(--ink-faint); font-size:0.85rem; margin-top:1.5rem;">
-      <em>Sienna Marchetti is the Orbital Tribune International's Science & Space Correspondent, based in Veloria. She has covered the KSA since its founding in 2019.</em>
-    </p>
-
-  </div><!-- /article-body -->
-
-  <!-- Related articles -->
-  <div class="related-bar">
-    <div class="related-label">Related Coverage</div>
-    <div class="related-grid">
-      <a href="#" class="related-item">
-        <div class="ri-kicker">Science</div>
-        <div class="ri-headline">Argent I Data Confirms Subsurface Ice at Lunar South Pole — And Something Else</div>
-      </a>
-      <a href="#" class="related-item">
-        <div class="ri-kicker">Space Exploration</div>
-        <div class="ri-headline">How Kacentina Built a Space Program the World Is Paying Attention To</div>
-      </a>
-      <a href="#" class="related-item">
-        <div class="ri-kicker">Geopolitics</div>
-        <div class="ri-headline">Hazelia's "Project Prometheus" and the New Lunar Space Race</div>
-      </a>
-    </div>
-  </div>
-
-</div><!-- /article-outer -->
-
-</body>
+            <!-- Related articles -->
+            <div class="related-bar">
+                <div class="related-label">Related Coverage</div>
+                <div class="related-grid">
+                    <a href="#" class="related-item">
+                        <div class="ri-kicker">Science</div>
+                        <div class="ri-headline">
+                            Argent I Data Confirms Subsurface Ice at Lunar South Pole — And Something Else
+                        </div>
+                    </a>
+                    <a href="#" class="related-item">
+                        <div class="ri-kicker">Space Exploration</div>
+                        <div class="ri-headline">
+                            How Kacentina Built a Space Program the World Is Paying Attention To
+                        </div>
+                    </a>
+                    <a href="#" class="related-item">
+                        <div class="ri-kicker">Geopolitics</div>
+                        <div class="ri-headline">Hazelia's "Project Prometheus" and the New Lunar Space Race</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /article-outer -->
+    </body>
 </html>

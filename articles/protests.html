@@ -1,173 +1,225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City News Network — Animal Welfare Group Holds Downtown Protest</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css">
-</head>
-<body class="article-page">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>City News Network — Animal Welfare Group Holds Downtown Protest</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+    <body class="article-page">
+        <!-- NAV -->
+        <nav>
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-emblem">
+                    <img src="../images/KSA Logo.png" alt="KSA Logo" />
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="../crew.html">Kacentina Staff</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="../crew.html">Crew</a></li>
+                        <li><a href="../employees.html">Employees</a></li>
+                    </ul>
+                </li>
+                <li><a href="../missions.html">Missions</a></li>
+                <li><a href="../news.html" class="active">News</a></li>
+            </ul>
+            <div class="nav-status">
+                <div class="status-dot"></div>
+                Mission Upcoming
+            </div>
+        </nav>
 
-<!-- NAV -->
-<nav>
-  <a href="../index.html" class="nav-logo">
-    <div class="nav-emblem">
-      <img src="../images/KSA Logo.png" alt="KSA Logo">
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="../index.html">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="../crew.html">Kacentina Staff</a>
-      <ul class="nav-dropdown-menu">
-        <li><a href="../crew.html">Crew</a></li>
-        <li><a href="../employees.html">Employees</a></li>
-      </ul>
-    </li>
-    <li><a href="../missions.html">Missions</a></li>
-    <li><a href="../news.html" class="active">News</a></li>
-  </ul>
-  <div class="nav-status"><div class="status-dot"></div>Mission Upcoming</div>
-</nav>
+        <!-- MASTHEAD -->
+        <div class="masthead">
+            <div class="masthead-date-line">
+                Tuesday, June 23, 2026 &nbsp;·&nbsp; Vol. XXXI, No. 174 &nbsp;·&nbsp; Est. 1995
+            </div>
+            <div class="outlet-name">City News Network</div>
+            <div class="outlet-tagline">Keeping Kacentina Informed</div>
+            <div style="max-width: 1180px; margin: 0.75rem auto 0; padding: 0 2rem">
+                <div class="masthead-rule-group">
+                    <div class="rule-thick"></div>
+                    <div class="rule-thin"></div>
+                </div>
+            </div>
+        </div>
 
-<!-- MASTHEAD -->
-<div class="masthead">
-  <div class="masthead-date-line">
-    Tuesday, June 23, 2026 &nbsp;·&nbsp; Vol. XXXI, No. 174 &nbsp;·&nbsp; Est. 1995
-  </div>
-  <div class="outlet-name">City News Network</div>
-  <div class="outlet-tagline">Keeping Kacentina Informed</div>
-  <div style="max-width:1180px; margin:0.75rem auto 0; padding: 0 2rem;">
-    <div class="masthead-rule-group">
-      <div class="rule-thick"></div>
-      <div class="rule-thin"></div>
-    </div>
-  </div>
-</div>
+        <!-- SECTION NAV -->
+        <div class="section-nav">
+            <a href="#">Local</a>
+            <a href="#" class="active">Public Affairs</a>
+            <a href="#">City Hall</a>
+            <a href="#">Community</a>
+            <a href="#">Science</a>
+            <a href="#">Health</a>
+            <a href="#">Opinion</a>
+        </div>
 
-<!-- SECTION NAV -->
-<div class="section-nav">
-  <a href="#">Local</a>
-  <a href="#" class="active">Public Affairs</a>
-  <a href="#">City Hall</a>
-  <a href="#">Community</a>
-  <a href="#">Science</a>
-  <a href="#">Health</a>
-  <a href="#">Opinion</a>
-</div>
+        <!-- ARTICLE -->
+        <div class="article-outer">
+            <!-- Back link -->
+            <a href="../news.html" class="back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to News Feed
+            </a>
 
-<!-- ARTICLE -->
-<div class="article-outer">
+            <!-- Article header -->
+            <div class="article-header">
+                <div class="article-kicker">Public Affairs &nbsp;·&nbsp; Community</div>
+                <h1 class="article-headline">Animal Welfare Group Holds Downtown Protest</h1>
+                <p class="article-deck">
+                    Members of the Federation for Assisting Rats and Turtles — known as F.A.R.T. — marched through the
+                    city this week to protest what the group called "unfair treatment of small animals in research
+                    programs." The demonstration remained peaceful throughout the afternoon.
+                </p>
+                <div class="article-byline-block">
+                    <span>By <span class="byline-author">CNN Public Affairs Desk</span></span>
+                    <span class="byline-sep">|</span>
+                    <span>City News Network</span>
+                    <span class="byline-sep">|</span>
+                    <span>June 23, 2026</span>
+                    <span class="byline-tag">Local</span>
+                </div>
+            </div>
 
-  <!-- Back link -->
-  <a href="../news.html" class="back-link">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M19 12H5M12 19l-7-7 7-7"/>
-    </svg>
-    Back to News Feed
-  </a>
+            <!-- Hero image -->
+            <div class="article-hero">
+                <div class="hero-placeholder">
+                    <img
+                        src="../images/remyrights2.png"
+                        style="
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center top;
+                            position: absolute;
+                            inset: 0;
+                        "
+                    />
+                </div>
+            </div>
+            <div class="hero-caption">
+                F.A.R.T. members march through downtown Veloria on Tuesday afternoon. The group carried signs calling
+                for stronger legal protections for animals used in research programs.
+                <em>(City News Network / Press Pool)</em>
+            </div>
 
-  <!-- Article header -->
-  <div class="article-header">
-    <div class="article-kicker">Public Affairs &nbsp;·&nbsp; Community</div>
-    <h1 class="article-headline">Animal Welfare Group Holds Downtown Protest</h1>
-    <p class="article-deck">
-      Members of the Federation for Assisting Rats and Turtles — known as F.A.R.T. — marched through the city this week to protest what the group called "unfair treatment of small animals in research programs." The demonstration remained peaceful throughout the afternoon.
-    </p>
-    <div class="article-byline-block">
-      <span>By <span class="byline-author">CNN Public Affairs Desk</span></span>
-      <span class="byline-sep">|</span>
-      <span>City News Network</span>
-      <span class="byline-sep">|</span>
-      <span>June 23, 2026</span>
-      <span class="byline-tag">Local</span>
-    </div>
-  </div>
+            <!-- Article body -->
+            <div class="article-body">
+                <p>
+                    VELORIA — Members of the Federation for Assisting Rats and Turtles, also known as F.A.R.T., gathered
+                    downtown this week to protest what the group called "unfair treatment of small animals in research
+                    programs."
+                </p>
 
-  <!-- Hero image -->
-  <div class="article-hero">
-    <div class="hero-placeholder">
-      <img src="../images/remyrights2.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;">
-    </div>
-  </div>
-  <div class="hero-caption">
-    F.A.R.T. members march through downtown Veloria on Tuesday afternoon. The group carried signs calling for stronger legal protections for animals used in research programs. <em>(City News Network / Press Pool)</em>
-  </div>
+                <p>
+                    The organization marched through the city carrying signs that read "Protect Every Creature" and
+                    "Science Needs Compassion." Speakers at the event called for stronger laws protecting animals used
+                    in laboratory testing and commercial experiments.
+                </p>
 
-  <!-- Article body -->
-  <div class="article-body">
+                <div class="fact-box">
+                    <div class="fact-box-title">Protest at a Glance</div>
+                    <div class="fact-row">
+                        <span class="fact-key">Organization</span
+                        ><span class="fact-val">Federation for Assisting Rats and Turtles (F.A.R.T.)</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Date</span><span class="fact-val">June 23, 2026</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Location</span><span class="fact-val">Downtown Veloria</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Signs Carried</span
+                        ><span class="fact-val">"Protect Every Creature," "Science Needs Compassion"</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Incidents</span><span class="fact-val">None — peaceful throughout</span>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-key">Notable Attendee</span
+                        ><span class="fact-val">Unconfirmed — see below</span>
+                    </div>
+                </div>
 
-    <p>
-      VELORIA — Members of the Federation for Assisting Rats and Turtles, also known as F.A.R.T., gathered downtown this week to protest what the group called "unfair treatment of small animals in research programs."
-    </p>
+                <h3>A Peaceful Afternoon March</h3>
 
-    <p>
-      The organization marched through the city carrying signs that read "Protect Every Creature" and "Science Needs Compassion." Speakers at the event called for stronger laws protecting animals used in laboratory testing and commercial experiments.
-    </p>
+                <p>
+                    Organizers said the protest was meant to raise awareness about the treatment of rats, turtles, and
+                    other small animals often overlooked in public discussions about animal welfare. The demonstration
+                    remained peaceful, with families, students, and local volunteers joining throughout the afternoon.
+                    Several protesters handed out flyers explaining the group's mission and encouraging people to
+                    support animal rescue efforts.
+                </p>
 
-    <div class="fact-box">
-      <div class="fact-box-title">Protest at a Glance</div>
-      <div class="fact-row"><span class="fact-key">Organization</span><span class="fact-val">Federation for Assisting Rats and Turtles (F.A.R.T.)</span></div>
-      <div class="fact-row"><span class="fact-key">Date</span><span class="fact-val">June 23, 2026</span></div>
-      <div class="fact-row"><span class="fact-key">Location</span><span class="fact-val">Downtown Veloria</span></div>
-      <div class="fact-row"><span class="fact-key">Signs Carried</span><span class="fact-val">"Protect Every Creature," "Science Needs Compassion"</span></div>
-      <div class="fact-row"><span class="fact-key">Incidents</span><span class="fact-val">None — peaceful throughout</span></div>
-      <div class="fact-row"><span class="fact-key">Notable Attendee</span><span class="fact-val">Unconfirmed — see below</span></div>
-    </div>
+                <p>
+                    City officials reported temporary street closures while the march moved through nearby
+                    intersections. No arrests or injuries were reported.
+                </p>
 
-    <h3>A Peaceful Afternoon March</h3>
+                <div class="pull-quote">
+                    <blockquote>"Science Needs Compassion."</blockquote>
+                    <cite>— Protest sign, F.A.R.T. demonstration, June 23, 2026</cite>
+                </div>
 
-    <p>
-      Organizers said the protest was meant to raise awareness about the treatment of rats, turtles, and other small animals often overlooked in public discussions about animal welfare. The demonstration remained peaceful, with families, students, and local volunteers joining throughout the afternoon. Several protesters handed out flyers explaining the group's mission and encouraging people to support animal rescue efforts.
-    </p>
+                <h3>A Familiar Face in the Crowd</h3>
 
-    <p>
-      City officials reported temporary street closures while the march moved through nearby intersections. No arrests or injuries were reported.
-    </p>
+                <p>
+                    Toward the end of the protest, attendees noticed a woman believed to be Dr. Aura Sparkleton — the
+                    KSA's Animal Welfare Officer and handler for KMM Valdoria research rat Remy Barnaby Bumblebottom —
+                    speaking quietly with several event organizers near the crowd. She did not make a public statement
+                    before leaving the area.
+                </p>
 
-    <div class="pull-quote">
-      <blockquote>"Science Needs Compassion."</blockquote>
-      <cite>— Protest sign, F.A.R.T. demonstration, June 23, 2026</cite>
-    </div>
+                <p>
+                    The KSA did not respond to a request for comment on Dr. Sparkleton's presence at the event. The KMM
+                    Valdoria mission, which includes Remy Barnaby Bumblebottom as a biological research payload, is
+                    currently scheduled to launch Friday, June 26.
+                </p>
 
-    <h3>A Familiar Face in the Crowd</h3>
+                <p style="font-style: italic; color: var(--ink-faint); font-size: 0.85rem; margin-top: 1.5rem">
+                    <em
+                        >City News Network covers local government, community events, and public affairs across
+                        Kacentina. Reporting by the CNN Public Affairs Desk.</em
+                    >
+                </p>
+            </div>
+            <!-- /article-body -->
 
-    <p>
-      Toward the end of the protest, attendees noticed a woman believed to be Dr. Aura Sparkleton — the KSA's Animal Welfare Officer and handler for KMM Valdoria research rat Remy Barnaby Bumblebottom — speaking quietly with several event organizers near the crowd. She did not make a public statement before leaving the area.
-    </p>
-
-    <p>
-      The KSA did not respond to a request for comment on Dr. Sparkleton's presence at the event. The KMM Valdoria mission, which includes Remy Barnaby Bumblebottom as a biological research payload, is currently scheduled to launch Friday, June 26.
-    </p>
-
-    <p style="font-style:italic; color:var(--ink-faint); font-size:0.85rem; margin-top:1.5rem;">
-      <em>City News Network covers local government, community events, and public affairs across Kacentina. Reporting by the CNN Public Affairs Desk.</em>
-    </p>
-
-  </div><!-- /article-body -->
-
-  <!-- Related articles -->
-  <div class="related-bar">
-    <div class="related-label">Related Coverage</div>
-    <div class="related-grid">
-      <a href="readinessphase.html" class="related-item">
-        <div class="ri-kicker">Launch Operations</div>
-        <div class="ri-headline">KMM Valdoria Enters Final Launch Readiness Phase</div>
-      </a>
-      <a href="presidenthackpovi.html" class="related-item">
-        <div class="ri-kicker">Space Exploration</div>
-        <div class="ri-headline">President Hackpovi Addresses KSA Before Historic June 26 Lunar Launch</div>
-      </a>
-      <a href="updatedcheese.html" class="related-item">
-        <div class="ri-kicker">Science</div>
-        <div class="ri-headline">Schloemer Lunar Mapping Team Releases Updated Cheese Deposit Model</div>
-      </a>
-    </div>
-  </div>
-
-</div><!-- /article-outer -->
-
-</body>
+            <!-- Related articles -->
+            <div class="related-bar">
+                <div class="related-label">Related Coverage</div>
+                <div class="related-grid">
+                    <a href="readinessphase.html" class="related-item">
+                        <div class="ri-kicker">Launch Operations</div>
+                        <div class="ri-headline">KMM Valdoria Enters Final Launch Readiness Phase</div>
+                    </a>
+                    <a href="presidenthackpovi.html" class="related-item">
+                        <div class="ri-kicker">Space Exploration</div>
+                        <div class="ri-headline">
+                            President Hackpovi Addresses KSA Before Historic June 26 Lunar Launch
+                        </div>
+                    </a>
+                    <a href="updatedcheese.html" class="related-item">
+                        <div class="ri-kicker">Science</div>
+                        <div class="ri-headline">
+                            Schloemer Lunar Mapping Team Releases Updated Cheese Deposit Model
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /article-outer -->
+    </body>
 </html>

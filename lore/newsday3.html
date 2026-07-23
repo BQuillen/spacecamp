@@ -1,726 +1,1578 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Kacentina Herald — Day 3 Coverage: Ransomware Accusations &amp; Fallout</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#080d1a;
-  --bg-card:#0f1628;
-  --bg-raised:#162036;
-  --blue:#1b6ec2;
-  --blue2:#3b8fe8;
-  --blue-dark:#0c2d5c;
-  --text:#d4e1f0;
-  --muted:#6a84a6;
-  --border:rgba(27,110,194,0.22);
-  --gold:#c9a22a;
-  --sup:#2cc97a;
-  --sdown:#e84848;
-  --amber:#e8a020;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Kacentina Herald — Day 3 Coverage: Ransomware Accusations &amp; Fallout</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            :root {
+                --bg: #080d1a;
+                --bg-card: #0f1628;
+                --bg-raised: #162036;
+                --blue: #1b6ec2;
+                --blue2: #3b8fe8;
+                --blue-dark: #0c2d5c;
+                --text: #d4e1f0;
+                --muted: #6a84a6;
+                --border: rgba(27, 110, 194, 0.22);
+                --gold: #c9a22a;
+                --sup: #2cc97a;
+                --sdown: #e84848;
+                --amber: #e8a020;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 15px;
+                line-height: 1.6;
+            }
 
-/* ── TOP BAR ── */
-.top-bar{
-  background:#050810;border-bottom:1px solid var(--border);
-  padding:4px 2rem;display:flex;justify-content:space-between;align-items:center;
-  font-size:0.68rem;color:var(--muted);
-}
-.top-bar-right{display:flex;gap:16px}
-.top-bar a{color:var(--muted);text-decoration:none}
-.top-bar a:hover{color:var(--text)}
+            /* ── TOP BAR ── */
+            .top-bar {
+                background: #050810;
+                border-bottom: 1px solid var(--border);
+                padding: 4px 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.68rem;
+                color: var(--muted);
+            }
+            .top-bar-right {
+                display: flex;
+                gap: 16px;
+            }
+            .top-bar a {
+                color: var(--muted);
+                text-decoration: none;
+            }
+            .top-bar a:hover {
+                color: var(--text);
+            }
 
-/* ── MASTHEAD ── */
-.masthead{
-  background:linear-gradient(160deg,#03071a 0%,#071030 55%,#0a1f4e 100%);
-  border-bottom:3px solid var(--blue);
-  padding:1.1rem 2rem 0.9rem;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-}
-.mast-flag{
-  display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:0.25em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:5px;
-  border:1px solid rgba(201,162,42,0.4);padding:2px 8px;border-radius:2px;
-}
-.mast-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.4rem,4vw,2.5rem);
-  font-weight:700;color:#fff;letter-spacing:0.04em;line-height:1;
-}
-.mast-title em{color:var(--blue2);font-style:normal}
-.mast-sub{font-size:0.63rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:5px}
-.mast-date{font-size:0.7rem;color:rgba(255,255,255,0.38);margin-top:2px}
-.mast-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.mast-sub-btn{
-  background:var(--blue);color:#fff;border:none;
-  padding:6px 18px;border-radius:4px;font-size:0.75rem;font-weight:600;
-  cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.04em;
-}
-.mast-edition{font-size:0.65rem;color:rgba(255,255,255,0.3);text-align:right}
+            /* ── MASTHEAD ── */
+            .masthead {
+                background: linear-gradient(160deg, #03071a 0%, #071030 55%, #0a1f4e 100%);
+                border-bottom: 3px solid var(--blue);
+                padding: 1.1rem 2rem 0.9rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+            .mast-flag {
+                display: inline-block;
+                font-size: 0.58rem;
+                font-weight: 700;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 5px;
+                border: 1px solid rgba(201, 162, 42, 0.4);
+                padding: 2px 8px;
+                border-radius: 2px;
+            }
+            .mast-title {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.4rem, 4vw, 2.5rem);
+                font-weight: 700;
+                color: #fff;
+                letter-spacing: 0.04em;
+                line-height: 1;
+            }
+            .mast-title em {
+                color: var(--blue2);
+                font-style: normal;
+            }
+            .mast-sub {
+                font-size: 0.63rem;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.38);
+                margin-top: 5px;
+            }
+            .mast-date {
+                font-size: 0.7rem;
+                color: rgba(255, 255, 255, 0.38);
+                margin-top: 2px;
+            }
+            .mast-right {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+            }
+            .mast-sub-btn {
+                background: var(--blue);
+                color: #fff;
+                border: none;
+                padding: 6px 18px;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                cursor: pointer;
+                font-family: 'Inter', sans-serif;
+                letter-spacing: 0.04em;
+            }
+            .mast-edition {
+                font-size: 0.65rem;
+                color: rgba(255, 255, 255, 0.3);
+                text-align: right;
+            }
 
-/* ── ALERT BANNER ── */
-.alert-bar{
-  overflow:hidden;height:32px;display:flex;align-items:center;
-}
-.alert-bar.critical{background:#1a0606;border-bottom:2px solid var(--sdown)}
-.alert-bar.warning{background:#1a1000;border-bottom:2px solid var(--amber)}
-.alert-lbl{
-  color:#fff;
-  font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;
-  padding:0 12px;height:100%;display:flex;align-items:center;flex-shrink:0;gap:6px;
-}
-.alert-lbl.critical{background:var(--sdown)}
-.alert-lbl.warning{background:var(--amber);color:#000}
-.alert-dot{width:6px;height:6px;background:#fff;border-radius:50%;animation:pulse 1.4s ease-in-out infinite}
-.alert-dot.dark{background:#000}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
-.alert-scroll{flex:1;overflow:hidden}
-.alert-track{
-  display:inline-flex;white-space:nowrap;
-  animation:scroll-left 44s linear infinite;
-  font-size:0.73rem;font-weight:600;letter-spacing:0.02em;
-}
-.alert-bar.critical .alert-track{color:rgba(255,160,160,0.9)}
-.alert-bar.warning .alert-track{color:rgba(255,220,120,0.9)}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.alert-item{padding:0 26px;border-right:1px solid rgba(255,255,255,0.12)}
+            /* ── ALERT BANNER ── */
+            .alert-bar {
+                overflow: hidden;
+                height: 32px;
+                display: flex;
+                align-items: center;
+            }
+            .alert-bar.critical {
+                background: #1a0606;
+                border-bottom: 2px solid var(--sdown);
+            }
+            .alert-bar.warning {
+                background: #1a1000;
+                border-bottom: 2px solid var(--amber);
+            }
+            .alert-lbl {
+                color: #fff;
+                font-size: 0.6rem;
+                font-weight: 800;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                padding: 0 12px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                flex-shrink: 0;
+                gap: 6px;
+            }
+            .alert-lbl.critical {
+                background: var(--sdown);
+            }
+            .alert-lbl.warning {
+                background: var(--amber);
+                color: #000;
+            }
+            .alert-dot {
+                width: 6px;
+                height: 6px;
+                background: #fff;
+                border-radius: 50%;
+                animation: pulse 1.4s ease-in-out infinite;
+            }
+            .alert-dot.dark {
+                background: #000;
+            }
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 0.4;
+                    transform: scale(0.8);
+                }
+            }
+            .alert-scroll {
+                flex: 1;
+                overflow: hidden;
+            }
+            .alert-track {
+                display: inline-flex;
+                white-space: nowrap;
+                animation: scroll-left 44s linear infinite;
+                font-size: 0.73rem;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+            }
+            .alert-bar.critical .alert-track {
+                color: rgba(255, 160, 160, 0.9);
+            }
+            .alert-bar.warning .alert-track {
+                color: rgba(255, 220, 120, 0.9);
+            }
+            @keyframes scroll-left {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+            .alert-item {
+                padding: 0 26px;
+                border-right: 1px solid rgba(255, 255, 255, 0.12);
+            }
 
-/* ── NAV ── */
-.site-nav{
-  background:#060c1c;border-bottom:1px solid var(--border);
-  padding:0 2rem;display:flex;align-items:center;gap:0;
-  overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;
-}
-.site-nav::-webkit-scrollbar{display:none}
-.nav-link{
-  color:var(--muted);text-decoration:none;
-  font-size:0.75rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
-  padding:12px 14px;border-bottom:2px solid transparent;
-  white-space:nowrap;transition:color 0.15s,border-color 0.15s;
-}
-.nav-link:hover,.nav-link.active{color:var(--text);border-bottom-color:var(--blue2)}
-.nav-search{
-  margin-left:auto;background:var(--bg-raised);border:1px solid var(--border);
-  border-radius:4px;padding:5px 12px;color:var(--text);font-size:0.75rem;
-  outline:none;font-family:'Inter',sans-serif;min-width:0;width:150px;
-}
-.nav-search::placeholder{color:var(--muted)}
+            /* ── NAV ── */
+            .site-nav {
+                background: #060c1c;
+                border-bottom: 1px solid var(--border);
+                padding: 0 2rem;
+                display: flex;
+                align-items: center;
+                gap: 0;
+                overflow-x: auto;
+                scrollbar-width: none;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            .site-nav::-webkit-scrollbar {
+                display: none;
+            }
+            .nav-link {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                padding: 12px 14px;
+                border-bottom: 2px solid transparent;
+                white-space: nowrap;
+                transition:
+                    color 0.15s,
+                    border-color 0.15s;
+            }
+            .nav-link:hover,
+            .nav-link.active {
+                color: var(--text);
+                border-bottom-color: var(--blue2);
+            }
+            .nav-search {
+                margin-left: auto;
+                background: var(--bg-raised);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                padding: 5px 12px;
+                color: var(--text);
+                font-size: 0.75rem;
+                outline: none;
+                font-family: 'Inter', sans-serif;
+                min-width: 0;
+                width: 150px;
+            }
+            .nav-search::placeholder {
+                color: var(--muted);
+            }
 
-/* ── PAGE LAYOUT ── */
-.page-body{max-width:1200px;margin:0 auto;padding:28px 20px;display:grid;grid-template-columns:1fr 290px;gap:28px}
+            /* ── PAGE LAYOUT ── */
+            .page-body {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 28px 20px;
+                display: grid;
+                grid-template-columns: 1fr 290px;
+                gap: 28px;
+            }
 
-/* ── SECTION LABEL ── */
-.section-label{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
-.section-label span{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue2);white-space:nowrap}
+            /* ── SECTION LABEL ── */
+            .section-label {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 16px;
+            }
+            .section-label::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: var(--border);
+            }
+            .section-label span {
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--blue2);
+                white-space: nowrap;
+            }
 
-/* ── STORY CARD ── */
-.story-card{
-  background:var(--bg-card);border:1px solid var(--border);border-radius:5px;
-  margin-bottom:16px;overflow:hidden;transition:border-color 0.15s;
-}
-.story-card:hover{border-color:rgba(59,143,232,0.4)}
-.story-cat{
-  display:inline-block;font-size:0.6rem;font-weight:700;
-  letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.6rem;
-  border-radius:2px;margin:13px 14px 0;
-}
-.cat-security{background:rgba(232,72,72,0.14);color:#ff8a8a}
-.cat-world{background:rgba(180,100,220,0.14);color:#d090ff}
-.cat-mission{background:rgba(27,110,194,0.2);color:#7ab8ff}
-.cat-kacentina{background:rgba(201,162,42,0.14);color:#d4b84a}
-.cat-odd{background:rgba(50,220,120,0.1);color:#5de8a0}
-.cat-breaking{background:rgba(232,72,72,0.25);color:#ffaaaa;border:1px solid rgba(232,72,72,0.3)}
+            /* ── STORY CARD ── */
+            .story-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 5px;
+                margin-bottom: 16px;
+                overflow: hidden;
+                transition: border-color 0.15s;
+            }
+            .story-card:hover {
+                border-color: rgba(59, 143, 232, 0.4);
+            }
+            .story-cat {
+                display: inline-block;
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                padding: 0.2rem 0.6rem;
+                border-radius: 2px;
+                margin: 13px 14px 0;
+            }
+            .cat-security {
+                background: rgba(232, 72, 72, 0.14);
+                color: #ff8a8a;
+            }
+            .cat-world {
+                background: rgba(180, 100, 220, 0.14);
+                color: #d090ff;
+            }
+            .cat-mission {
+                background: rgba(27, 110, 194, 0.2);
+                color: #7ab8ff;
+            }
+            .cat-kacentina {
+                background: rgba(201, 162, 42, 0.14);
+                color: #d4b84a;
+            }
+            .cat-odd {
+                background: rgba(50, 220, 120, 0.1);
+                color: #5de8a0;
+            }
+            .cat-breaking {
+                background: rgba(232, 72, 72, 0.25);
+                color: #ffaaaa;
+                border: 1px solid rgba(232, 72, 72, 0.3);
+            }
 
-.story-img-wrap{margin:10px 14px 0;border-radius:4px;overflow:hidden;background:var(--bg-raised)}
-.story-img-wrap img{
-  width:100%;display:block;min-height:180px;object-fit:cover;
-  background:linear-gradient(135deg,#0a1020 0%,#0e1a30 100%);
-}
-.story-img-wrap img:not([src]){min-height:180px;display:block;background:linear-gradient(135deg,#0a1020 0%,#0e1a30 100%)}
-.story-figcap{font-size:0.63rem;color:var(--muted);padding:4px 0 0;font-style:italic}
+            .story-img-wrap {
+                margin: 10px 14px 0;
+                border-radius: 4px;
+                overflow: hidden;
+                background: var(--bg-raised);
+            }
+            .story-img-wrap img {
+                width: 100%;
+                display: block;
+                min-height: 180px;
+                object-fit: cover;
+                background: linear-gradient(135deg, #0a1020 0%, #0e1a30 100%);
+            }
+            .story-img-wrap img:not([src]) {
+                min-height: 180px;
+                display: block;
+                background: linear-gradient(135deg, #0a1020 0%, #0e1a30 100%);
+            }
+            .story-figcap {
+                font-size: 0.63rem;
+                color: var(--muted);
+                padding: 4px 0 0;
+                font-style: italic;
+            }
 
-.story-head{
-  padding:12px 14px 10px;cursor:pointer;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
-}
-.story-head:hover h2{color:var(--blue2)}
-.story-head h2{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.2vw,1.22rem);font-weight:700;color:var(--text);line-height:1.3;flex:1}
-.story-toggle{flex-shrink:0;font-size:0.78rem;color:var(--blue2);margin-top:5px;transition:transform 0.3s;display:block}
-.story-card.open .story-toggle{transform:rotate(180deg)}
-.story-byline{font-size:0.7rem;color:var(--muted);padding:0 14px 8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.story-preview{max-height:0;overflow:hidden;transition:max-height 0.42s ease}
-.story-card.open .story-preview{max-height:1600px}
-.preview-inner{padding:0 14px 14px;border-top:1px solid var(--border)}
-.preview-inner p{color:var(--muted);font-size:0.87rem;line-height:1.74;margin-bottom:10px}
-.preview-inner p:last-child{margin-bottom:0}
-.read-more{display:inline-block;margin-top:10px;font-size:0.73rem;font-weight:700;color:var(--blue2);text-decoration:none;letter-spacing:0.04em}
-.read-more:hover{color:#fff;text-decoration:underline}
+            .story-head {
+                padding: 12px 14px 10px;
+                cursor: pointer;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 10px;
+            }
+            .story-head:hover h2 {
+                color: var(--blue2);
+            }
+            .story-head h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1rem, 2.2vw, 1.22rem);
+                font-weight: 700;
+                color: var(--text);
+                line-height: 1.3;
+                flex: 1;
+            }
+            .story-toggle {
+                flex-shrink: 0;
+                font-size: 0.78rem;
+                color: var(--blue2);
+                margin-top: 5px;
+                transition: transform 0.3s;
+                display: block;
+            }
+            .story-card.open .story-toggle {
+                transform: rotate(180deg);
+            }
+            .story-byline {
+                font-size: 0.7rem;
+                color: var(--muted);
+                padding: 0 14px 8px;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .story-preview {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.42s ease;
+            }
+            .story-card.open .story-preview {
+                max-height: 1600px;
+            }
+            .preview-inner {
+                padding: 0 14px 14px;
+                border-top: 1px solid var(--border);
+            }
+            .preview-inner p {
+                color: var(--muted);
+                font-size: 0.87rem;
+                line-height: 1.74;
+                margin-bottom: 10px;
+            }
+            .preview-inner p:last-child {
+                margin-bottom: 0;
+            }
+            .read-more {
+                display: inline-block;
+                margin-top: 10px;
+                font-size: 0.73rem;
+                font-weight: 700;
+                color: var(--blue2);
+                text-decoration: none;
+                letter-spacing: 0.04em;
+            }
+            .read-more:hover {
+                color: #fff;
+                text-decoration: underline;
+            }
 
-/* ── HERO CARD ── */
-.hero-card{
-  background:var(--bg-card);border:1px solid var(--border);border-radius:5px;
-  margin-bottom:20px;overflow:hidden;
-}
-.hero-img-wrap img{
-  width:100%;display:block;min-height:300px;object-fit:cover;
-  background:linear-gradient(135deg,#1a0206 0%,#0c0e30 100%);
-}
-.hero-img-wrap img:not([src]){min-height:300px;display:block;background:linear-gradient(135deg,#1a0206 0%,#0c0e30 100%)}
-.hero-body{padding:18px 20px 14px}
-.hero-cat{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--sdown);margin-bottom:6px}
-.hero-flag{
-  display:inline-block;font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
-  padding:2px 8px;border-radius:2px;margin-bottom:8px;margin-right:6px;
-}
-.hf-critical{background:rgba(232,72,72,0.22);color:#ff8a8a;border:1px solid rgba(232,72,72,0.35)}
-.hf-developing{background:rgba(232,72,72,0.15);color:#ffaaaa;border:1px solid rgba(232,72,72,0.25)}
-.hero-title{
-  font-family:'Playfair Display',serif;font-size:clamp(1.25rem,3vw,2rem);
-  font-weight:700;color:var(--text);line-height:1.25;cursor:pointer;margin-bottom:8px;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
-}
-.hero-title:hover span.ht{color:var(--blue2)}
-.hero-byline{font-size:0.7rem;color:var(--muted)}
-.hero-preview{max-height:0;overflow:hidden;transition:max-height 0.42s ease}
-.hero-card.open .hero-preview{max-height:1600px}
-.hero-preview .preview-inner{border-top:1px solid var(--border);margin-top:10px}
+            /* ── HERO CARD ── */
+            .hero-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 5px;
+                margin-bottom: 20px;
+                overflow: hidden;
+            }
+            .hero-img-wrap img {
+                width: 100%;
+                display: block;
+                min-height: 300px;
+                object-fit: cover;
+                background: linear-gradient(135deg, #1a0206 0%, #0c0e30 100%);
+            }
+            .hero-img-wrap img:not([src]) {
+                min-height: 300px;
+                display: block;
+                background: linear-gradient(135deg, #1a0206 0%, #0c0e30 100%);
+            }
+            .hero-body {
+                padding: 18px 20px 14px;
+            }
+            .hero-cat {
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--sdown);
+                margin-bottom: 6px;
+            }
+            .hero-flag {
+                display: inline-block;
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                padding: 2px 8px;
+                border-radius: 2px;
+                margin-bottom: 8px;
+                margin-right: 6px;
+            }
+            .hf-critical {
+                background: rgba(232, 72, 72, 0.22);
+                color: #ff8a8a;
+                border: 1px solid rgba(232, 72, 72, 0.35);
+            }
+            .hf-developing {
+                background: rgba(232, 72, 72, 0.15);
+                color: #ffaaaa;
+                border: 1px solid rgba(232, 72, 72, 0.25);
+            }
+            .hero-title {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.25rem, 3vw, 2rem);
+                font-weight: 700;
+                color: var(--text);
+                line-height: 1.25;
+                cursor: pointer;
+                margin-bottom: 8px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 10px;
+            }
+            .hero-title:hover span.ht {
+                color: var(--blue2);
+            }
+            .hero-byline {
+                font-size: 0.7rem;
+                color: var(--muted);
+            }
+            .hero-preview {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.42s ease;
+            }
+            .hero-card.open .hero-preview {
+                max-height: 1600px;
+            }
+            .hero-preview .preview-inner {
+                border-top: 1px solid var(--border);
+                margin-top: 10px;
+            }
 
-/* ── STATUS TRACKER ── */
-.status-tracker{background:var(--bg-card);border:1px solid var(--border);border-radius:5px;margin-bottom:20px;overflow:hidden}
-.st-head{background:var(--blue-dark);padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
-.st-head-title{font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue2)}
-.st-head-label{font-size:0.62rem;color:rgba(255,255,255,0.45);background:rgba(0,0,0,0.3);padding:2px 8px;border-radius:10px}
-.st-body{padding:10px 0}
-.st-row{display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid var(--border)}
-.st-row:last-child{border-bottom:none}
-.st-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.st-dot.critical{background:var(--sdown);box-shadow:0 0 10px rgba(232,72,72,0.7);animation:pulse-dot 1.2s ease-in-out infinite}
-@keyframes pulse-dot{0%,100%{box-shadow:0 0 6px rgba(232,72,72,0.6)}50%{box-shadow:0 0 14px rgba(232,72,72,0.9)}}
-.st-dot.active{background:#2cc97a;box-shadow:0 0 8px rgba(44,201,122,0.5)}
-.st-dot.pending{background:var(--amber);box-shadow:0 0 8px rgba(232,160,32,0.5)}
-.st-dot.progress{background:var(--blue2);box-shadow:0 0 8px rgba(59,143,232,0.5)}
-.st-dot.unknown{background:var(--muted)}
-.st-label{font-size:0.78rem;font-weight:600;color:var(--text);flex:1}
-.st-status{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
-.st-status.critical{color:#ff8a8a}
-.st-status.active{color:#5de8a0}
-.st-status.pending{color:#d4b84a}
-.st-status.progress{color:var(--blue2)}
-.st-status.unknown{color:var(--muted)}
+            /* ── STATUS TRACKER ── */
+            .status-tracker {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 5px;
+                margin-bottom: 20px;
+                overflow: hidden;
+            }
+            .st-head {
+                background: var(--blue-dark);
+                padding: 10px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .st-head-title {
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                color: var(--blue2);
+            }
+            .st-head-label {
+                font-size: 0.62rem;
+                color: rgba(255, 255, 255, 0.45);
+                background: rgba(0, 0, 0, 0.3);
+                padding: 2px 8px;
+                border-radius: 10px;
+            }
+            .st-body {
+                padding: 10px 0;
+            }
+            .st-row {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 8px 16px;
+                border-bottom: 1px solid var(--border);
+            }
+            .st-row:last-child {
+                border-bottom: none;
+            }
+            .st-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+            .st-dot.critical {
+                background: var(--sdown);
+                box-shadow: 0 0 10px rgba(232, 72, 72, 0.7);
+                animation: pulse-dot 1.2s ease-in-out infinite;
+            }
+            @keyframes pulse-dot {
+                0%,
+                100% {
+                    box-shadow: 0 0 6px rgba(232, 72, 72, 0.6);
+                }
+                50% {
+                    box-shadow: 0 0 14px rgba(232, 72, 72, 0.9);
+                }
+            }
+            .st-dot.active {
+                background: #2cc97a;
+                box-shadow: 0 0 8px rgba(44, 201, 122, 0.5);
+            }
+            .st-dot.pending {
+                background: var(--amber);
+                box-shadow: 0 0 8px rgba(232, 160, 32, 0.5);
+            }
+            .st-dot.progress {
+                background: var(--blue2);
+                box-shadow: 0 0 8px rgba(59, 143, 232, 0.5);
+            }
+            .st-dot.unknown {
+                background: var(--muted);
+            }
+            .st-label {
+                font-size: 0.78rem;
+                font-weight: 600;
+                color: var(--text);
+                flex: 1;
+            }
+            .st-status {
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+            .st-status.critical {
+                color: #ff8a8a;
+            }
+            .st-status.active {
+                color: #5de8a0;
+            }
+            .st-status.pending {
+                color: #d4b84a;
+            }
+            .st-status.progress {
+                color: var(--blue2);
+            }
+            .st-status.unknown {
+                color: var(--muted);
+            }
 
-/* ── SIDEBAR ── */
-.sidebar{display:flex;flex-direction:column;gap:16px}
-.sb-card{background:var(--bg-card);border:1px solid var(--border);border-radius:5px;overflow:hidden}
-.sb-head{background:var(--blue-dark);padding:8px 14px;font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.8)}
-.sb-body{padding:12px 14px}
-.sb-item{padding:9px 0;border-bottom:1px solid var(--border)}
-.sb-item:last-child{border-bottom:none;padding-bottom:0}
-.sb-item-title{font-size:0.81rem;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:2px;cursor:pointer}
-.sb-item-title:hover{color:var(--blue2)}
-.sb-item-meta{font-size:0.67rem;color:var(--muted)}
-.reaction-flag{display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:1px 7px;border-radius:2px;margin-bottom:4px}
-.rf-denial{background:rgba(232,72,72,0.12);color:#ff8a8a;border:1px solid rgba(232,72,72,0.25)}
-.rf-evasive{background:rgba(201,162,42,0.12);color:#c9a22a;border:1px solid rgba(201,162,42,0.25)}
-.rf-skeptical{background:rgba(59,143,232,0.12);color:#7ab8ff;border:1px solid rgba(59,143,232,0.25)}
-.rf-gone{background:rgba(180,100,220,0.12);color:#d090ff;border:1px solid rgba(180,100,220,0.25)}
-.sb-quote{background:var(--bg-raised);border-left:3px solid var(--blue);padding:8px 12px;margin:8px 0;border-radius:0 4px 4px 0;font-size:0.8rem;font-style:italic;color:var(--text);line-height:1.5}
-.sb-quote-attr{font-style:normal;font-size:0.67rem;color:var(--muted);margin-top:4px}
-.sb-quote.alert-quote{border-left-color:var(--sdown)}
-.timeline-item{padding:8px 0 8px 24px;position:relative;border-bottom:1px solid var(--border)}
-.timeline-item:last-child{border-bottom:none;padding-bottom:0}
-.timeline-item::before{content:'';position:absolute;left:6px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--blue);border:2px solid var(--bg-card)}
-.timeline-time{font-size:0.65rem;font-weight:700;color:var(--blue2);margin-bottom:2px;letter-spacing:0.04em}
-.timeline-text{font-size:0.78rem;color:var(--text);line-height:1.4}
-.timeline-item.latest::before{background:var(--sdown);box-shadow:0 0 6px rgba(232,72,72,0.5)}
-.timeline-item.warning::before{background:var(--amber)}
+            /* ── SIDEBAR ── */
+            .sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+            .sb-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 5px;
+                overflow: hidden;
+            }
+            .sb-head {
+                background: var(--blue-dark);
+                padding: 8px 14px;
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.8);
+            }
+            .sb-body {
+                padding: 12px 14px;
+            }
+            .sb-item {
+                padding: 9px 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .sb-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .sb-item-title {
+                font-size: 0.81rem;
+                font-weight: 600;
+                color: var(--text);
+                line-height: 1.35;
+                margin-bottom: 2px;
+                cursor: pointer;
+            }
+            .sb-item-title:hover {
+                color: var(--blue2);
+            }
+            .sb-item-meta {
+                font-size: 0.67rem;
+                color: var(--muted);
+            }
+            .reaction-flag {
+                display: inline-block;
+                font-size: 0.62rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 1px 7px;
+                border-radius: 2px;
+                margin-bottom: 4px;
+            }
+            .rf-denial {
+                background: rgba(232, 72, 72, 0.12);
+                color: #ff8a8a;
+                border: 1px solid rgba(232, 72, 72, 0.25);
+            }
+            .rf-evasive {
+                background: rgba(201, 162, 42, 0.12);
+                color: #c9a22a;
+                border: 1px solid rgba(201, 162, 42, 0.25);
+            }
+            .rf-skeptical {
+                background: rgba(59, 143, 232, 0.12);
+                color: #7ab8ff;
+                border: 1px solid rgba(59, 143, 232, 0.25);
+            }
+            .rf-gone {
+                background: rgba(180, 100, 220, 0.12);
+                color: #d090ff;
+                border: 1px solid rgba(180, 100, 220, 0.25);
+            }
+            .sb-quote {
+                background: var(--bg-raised);
+                border-left: 3px solid var(--blue);
+                padding: 8px 12px;
+                margin: 8px 0;
+                border-radius: 0 4px 4px 0;
+                font-size: 0.8rem;
+                font-style: italic;
+                color: var(--text);
+                line-height: 1.5;
+            }
+            .sb-quote-attr {
+                font-style: normal;
+                font-size: 0.67rem;
+                color: var(--muted);
+                margin-top: 4px;
+            }
+            .sb-quote.alert-quote {
+                border-left-color: var(--sdown);
+            }
+            .timeline-item {
+                padding: 8px 0 8px 24px;
+                position: relative;
+                border-bottom: 1px solid var(--border);
+            }
+            .timeline-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: 6px;
+                top: 14px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--blue);
+                border: 2px solid var(--bg-card);
+            }
+            .timeline-time {
+                font-size: 0.65rem;
+                font-weight: 700;
+                color: var(--blue2);
+                margin-bottom: 2px;
+                letter-spacing: 0.04em;
+            }
+            .timeline-text {
+                font-size: 0.78rem;
+                color: var(--text);
+                line-height: 1.4;
+            }
+            .timeline-item.latest::before {
+                background: var(--sdown);
+                box-shadow: 0 0 6px rgba(232, 72, 72, 0.5);
+            }
+            .timeline-item.warning::before {
+                background: var(--amber);
+            }
 
-/* ── FOOTER ── */
-.site-footer{background:#030710;border-top:2px solid var(--blue);padding:2rem;text-align:center;margin-top:2rem;font-size:0.7rem;color:var(--muted);line-height:1.8}
-.footer-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:rgba(255,255,255,0.55);margin-bottom:6px}
-.footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px}
-.footer-links a{color:var(--muted);text-decoration:none;font-size:0.68rem}
-.footer-links a:hover{color:var(--text)}
+            /* ── FOOTER ── */
+            .site-footer {
+                background: #030710;
+                border-top: 2px solid var(--blue);
+                padding: 2rem;
+                text-align: center;
+                margin-top: 2rem;
+                font-size: 0.7rem;
+                color: var(--muted);
+                line-height: 1.8;
+            }
+            .footer-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.05rem;
+                color: rgba(255, 255, 255, 0.55);
+                margin-bottom: 6px;
+            }
+            .footer-links {
+                display: flex;
+                justify-content: center;
+                gap: 16px;
+                flex-wrap: wrap;
+                margin-bottom: 10px;
+            }
+            .footer-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 0.68rem;
+            }
+            .footer-links a:hover {
+                color: var(--text);
+            }
 
-@media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{display:none}}
-</style>
-</head>
-<body>
+            @media (max-width: 900px) {
+                .page-body {
+                    grid-template-columns: 1fr;
+                }
+                .sidebar {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <div>The Kacentina Herald &nbsp;·&nbsp; Serving the Nation Since 1931</div>
+            <div class="top-bar-right">
+                <a href="#">Sign In</a>
+                <a href="#">Subscribe</a>
+                <a href="#">Print Edition</a>
+            </div>
+        </div>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <div>The Kacentina Herald &nbsp;·&nbsp; Serving the Nation Since 1931</div>
-  <div class="top-bar-right">
-    <a href="#">Sign In</a>
-    <a href="#">Subscribe</a>
-    <a href="#">Print Edition</a>
-  </div>
-</div>
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="mast-left">
+                <div class="mast-flag">Kacentina · National Edition</div>
+                <div class="mast-title">The <em>Kacentina</em> Herald</div>
+                <div class="mast-sub">Independent Press &nbsp;·&nbsp; Trusted Reporting &nbsp;·&nbsp; Est. 1931</div>
+                <div class="mast-date" id="mast-date">Loading date...</div>
+            </div>
+            <div class="mast-right">
+                <button class="mast-sub-btn">Subscribe</button>
+                <div class="mast-edition">Digital + Print &nbsp;·&nbsp; Vol. 94, Ed. 3</div>
+            </div>
+        </header>
 
-<!-- MASTHEAD -->
-<header class="masthead">
-  <div class="mast-left">
-    <div class="mast-flag">Kacentina · National Edition</div>
-    <div class="mast-title">The <em>Kacentina</em> Herald</div>
-    <div class="mast-sub">Independent Press &nbsp;·&nbsp; Trusted Reporting &nbsp;·&nbsp; Est. 1931</div>
-    <div class="mast-date" id="mast-date">Loading date...</div>
-  </div>
-  <div class="mast-right">
-    <button class="mast-sub-btn">Subscribe</button>
-    <div class="mast-edition">Digital + Print &nbsp;·&nbsp; Vol. 94, Ed. 3</div>
-  </div>
-</header>
+        <!-- CRITICAL ALERT BANNER -->
+        <div class="alert-bar critical">
+            <div class="alert-lbl critical"><span class="alert-dot"></span>CRITICAL</div>
+            <div class="alert-scroll">
+                <div class="alert-track">
+                    <span class="alert-item"
+                        >KSA INTELLIGENCE NAMES RANSOMWARE ORIGIN — HAZELIAN PRESIDENT JIBBERSON DENIES ALL INVOLVEMENT
+                        IN FURIOUS STATEMENT</span
+                    >
+                    <span class="alert-item"
+                        >FART WEBSITE OFFLINE · ORGANIZATION CANNOT BE REACHED · FOUNDER PETEY HERNANDEZ MISSING</span
+                    >
+                    <span class="alert-item"
+                        >QUILLANTIS LEADER REFUSES TO ANSWER QUESTIONS ABOUT HAZELIAN TIES — PRESS CONFERENCE ENDS
+                        ABRUPTLY</span
+                    >
+                    <span class="alert-item"
+                        >KSA SECURITY TEAMS REPORT SIGNIFICANT PROGRESS · LAUNCH WINDOW STILL RECOVERABLE</span
+                    >
+                    <span class="alert-item"
+                        >KSA INTELLIGENCE NAMES RANSOMWARE ORIGIN — HAZELIAN PRESIDENT JIBBERSON DENIES ALL INVOLVEMENT
+                        IN FURIOUS STATEMENT</span
+                    >
+                    <span class="alert-item"
+                        >FART WEBSITE OFFLINE · ORGANIZATION CANNOT BE REACHED · FOUNDER PETEY HERNANDEZ MISSING</span
+                    >
+                    <span class="alert-item"
+                        >QUILLANTIS LEADER REFUSES TO ANSWER QUESTIONS ABOUT HAZELIAN TIES — PRESS CONFERENCE ENDS
+                        ABRUPTLY</span
+                    >
+                    <span class="alert-item"
+                        >KSA SECURITY TEAMS REPORT SIGNIFICANT PROGRESS · LAUNCH WINDOW STILL RECOVERABLE</span
+                    >
+                </div>
+            </div>
+        </div>
 
-<!-- CRITICAL ALERT BANNER -->
-<div class="alert-bar critical">
-  <div class="alert-lbl critical"><span class="alert-dot"></span>CRITICAL</div>
-  <div class="alert-scroll">
-    <div class="alert-track">
-      <span class="alert-item">KSA INTELLIGENCE NAMES RANSOMWARE ORIGIN — HAZELIAN PRESIDENT JIBBERSON DENIES ALL INVOLVEMENT IN FURIOUS STATEMENT</span>
-      <span class="alert-item">FART WEBSITE OFFLINE · ORGANIZATION CANNOT BE REACHED · FOUNDER PETEY HERNANDEZ MISSING</span>
-      <span class="alert-item">QUILLANTIS LEADER REFUSES TO ANSWER QUESTIONS ABOUT HAZELIAN TIES — PRESS CONFERENCE ENDS ABRUPTLY</span>
-      <span class="alert-item">KSA SECURITY TEAMS REPORT SIGNIFICANT PROGRESS · LAUNCH WINDOW STILL RECOVERABLE</span>
-      <span class="alert-item">KSA INTELLIGENCE NAMES RANSOMWARE ORIGIN — HAZELIAN PRESIDENT JIBBERSON DENIES ALL INVOLVEMENT IN FURIOUS STATEMENT</span>
-      <span class="alert-item">FART WEBSITE OFFLINE · ORGANIZATION CANNOT BE REACHED · FOUNDER PETEY HERNANDEZ MISSING</span>
-      <span class="alert-item">QUILLANTIS LEADER REFUSES TO ANSWER QUESTIONS ABOUT HAZELIAN TIES — PRESS CONFERENCE ENDS ABRUPTLY</span>
-      <span class="alert-item">KSA SECURITY TEAMS REPORT SIGNIFICANT PROGRESS · LAUNCH WINDOW STILL RECOVERABLE</span>
-    </div>
-  </div>
-</div>
+        <!-- SECONDARY ALERT BANNER -->
+        <div class="alert-bar warning">
+            <div class="alert-lbl warning"><span class="alert-dot dark"></span>DEVELOPING</div>
+            <div class="alert-scroll">
+                <div class="alert-track">
+                    <span class="alert-item"
+                        >LAUNCH DEADLINE WINDOW APPROACHING — SECURITY TEAM HAS HOURS TO CONFIRM SYSTEMS BEFORE
+                        POSTPONEMENT REQUIRED</span
+                    >
+                    <span class="alert-item"
+                        >OLLIJAM: "WE HAVE QUESTIONS. WE ARE NOT READY TO POINT FINGERS." — PM OLIVER STATEMENT</span
+                    >
+                    <span class="alert-item">KACENTINA FOREIGN MINISTRY MONITORING HAZELIAN GOVERNMENT RESPONSE</span>
+                    <span class="alert-item"
+                        >LAUNCH DEADLINE WINDOW APPROACHING — SECURITY TEAM HAS HOURS TO CONFIRM SYSTEMS BEFORE
+                        POSTPONEMENT REQUIRED</span
+                    >
+                    <span class="alert-item"
+                        >OLLIJAM: "WE HAVE QUESTIONS. WE ARE NOT READY TO POINT FINGERS." — PM OLIVER STATEMENT</span
+                    >
+                    <span class="alert-item">KACENTINA FOREIGN MINISTRY MONITORING HAZELIAN GOVERNMENT RESPONSE</span>
+                </div>
+            </div>
+        </div>
 
-<!-- SECONDARY ALERT BANNER -->
-<div class="alert-bar warning">
-  <div class="alert-lbl warning"><span class="alert-dot dark"></span>DEVELOPING</div>
-  <div class="alert-scroll">
-    <div class="alert-track">
-      <span class="alert-item">LAUNCH DEADLINE WINDOW APPROACHING — SECURITY TEAM HAS HOURS TO CONFIRM SYSTEMS BEFORE POSTPONEMENT REQUIRED</span>
-      <span class="alert-item">OLLIJAM: "WE HAVE QUESTIONS. WE ARE NOT READY TO POINT FINGERS." — PM OLIVER STATEMENT</span>
-      <span class="alert-item">KACENTINA FOREIGN MINISTRY MONITORING HAZELIAN GOVERNMENT RESPONSE</span>
-      <span class="alert-item">LAUNCH DEADLINE WINDOW APPROACHING — SECURITY TEAM HAS HOURS TO CONFIRM SYSTEMS BEFORE POSTPONEMENT REQUIRED</span>
-      <span class="alert-item">OLLIJAM: "WE HAVE QUESTIONS. WE ARE NOT READY TO POINT FINGERS." — PM OLIVER STATEMENT</span>
-      <span class="alert-item">KACENTINA FOREIGN MINISTRY MONITORING HAZELIAN GOVERNMENT RESPONSE</span>
-    </div>
-  </div>
-</div>
+        <!-- NAV -->
+        <nav class="site-nav">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Kacentina</a>
+            <a class="nav-link" href="#">Space</a>
+            <a class="nav-link" href="#">World</a>
+            <a class="nav-link" href="#">Security</a>
+            <a class="nav-link" href="#">Economy</a>
+            <a class="nav-link" href="#">Opinion</a>
+            <a class="nav-link" href="#">Archive</a>
+            <input class="nav-search" type="text" placeholder="Search the Herald..." />
+        </nav>
 
-<!-- NAV -->
-<nav class="site-nav">
-  <a class="nav-link active" href="#">Home</a>
-  <a class="nav-link" href="#">Kacentina</a>
-  <a class="nav-link" href="#">Space</a>
-  <a class="nav-link" href="#">World</a>
-  <a class="nav-link" href="#">Security</a>
-  <a class="nav-link" href="#">Economy</a>
-  <a class="nav-link" href="#">Opinion</a>
-  <a class="nav-link" href="#">Archive</a>
-  <input class="nav-search" type="text" placeholder="Search the Herald...">
-</nav>
-
-<!-- PAGE BODY -->
-<div class="page-body">
-<main>
-
-  <!-- ══════════════════════════════════════════
+        <!-- PAGE BODY -->
+        <div class="page-body">
+            <main>
+                <!-- ══════════════════════════════════════════
        HERO — Jibberson Denial
   ═══════════════════════════════════════════ -->
-  <div class="hero-card" id="hero-jib">
-    <div class="hero-img-wrap">
-      <img src="../images/news3img1.png" alt="Hazelian President Jibberson at podium, pointing, during emergency press conference">
-    </div>
-    <div class="hero-body">
-      <span class="hero-flag hf-critical">Breaking</span>
-      <span class="hero-flag hf-developing">Day 3</span>
-      <div class="hero-cat">Security &amp; Diplomacy · Top Story</div>
-      <div class="hero-title" onclick="toggleCard('hero-jib')">
-        <span class="ht">"An Outrage and a Lie": Jibberson Furious as KSA Intelligence Points to Hazelia in Ransomware Attack</span>
-        <span class="story-toggle">▼</span>
-      </div>
-      <div class="hero-byline">By Herald Security &amp; Diplomatic Correspondents &nbsp;·&nbsp; <span id="hero-date">Day 3 Coverage</span></div>
-      <div class="hero-preview">
-        <div class="preview-inner">
-          <p>Kacentina's intelligence confirmed Thursday morning that the computer "issues"" that halted the KMM Valdoria launch have been formally identified as a ransomware attack. In a statement released to verified press outlets, the directorate said the attack was traced to infrastructure with links to Hazelian networks, though officials declined to comment in detail at this stage of the investigation.</p>
-          <p>Hazelian President Jibberson responded within the hour in a rare emergency address that he delivered visibly agitated. "This is an outrage and a lie," he said, pointing at the press. "Hazelia does not attack its neighbors. We do not do that. Whoever is saying this should be embarrassed." He went on to call the accusation "politically motivated" and said his government would be "demanding answers" from Kacentina directly.</p>
-          <p>The Hazelian foreign ministry later issued a longer written statement calling the intelligence report "hogwash" and said it contained "no credible evidence of any kind." Kacentina's foreign ministry responded by confirming only that the investigation was ongoing and that the government is standing by its security team's assessment.</p>
-          <p>Those familiar with the Hazelia President noted that the speed and intensity of Jibberson's response was unusual. "Most heads of state issue a formal denial through their ministry," said one analyst the Herald spoke with. "He went to the microphone himself, immediately. That's notable." The Kacentina government has not yet escalated to any formal action.</p>
-          <a href="#" class="read-more">Continue Reading →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+                <div class="hero-card" id="hero-jib">
+                    <div class="hero-img-wrap">
+                        <img
+                            src="../images/news3img1.png"
+                            alt="Hazelian President Jibberson at podium, pointing, during emergency press conference"
+                        />
+                    </div>
+                    <div class="hero-body">
+                        <span class="hero-flag hf-critical">Breaking</span>
+                        <span class="hero-flag hf-developing">Day 3</span>
+                        <div class="hero-cat">Security &amp; Diplomacy · Top Story</div>
+                        <div class="hero-title" onclick="toggleCard('hero-jib')">
+                            <span class="ht"
+                                >"An Outrage and a Lie": Jibberson Furious as KSA Intelligence Points to Hazelia in
+                                Ransomware Attack</span
+                            >
+                            <span class="story-toggle">▼</span>
+                        </div>
+                        <div class="hero-byline">
+                            By Herald Security &amp; Diplomatic Correspondents &nbsp;·&nbsp;
+                            <span id="hero-date">Day 3 Coverage</span>
+                        </div>
+                        <div class="hero-preview">
+                            <div class="preview-inner">
+                                <p>
+                                    Kacentina's intelligence confirmed Thursday morning that the computer "issues"" that
+                                    halted the KMM Valdoria launch have been formally identified as a ransomware attack.
+                                    In a statement released to verified press outlets, the directorate said the attack
+                                    was traced to infrastructure with links to Hazelian networks, though officials
+                                    declined to comment in detail at this stage of the investigation.
+                                </p>
+                                <p>
+                                    Hazelian President Jibberson responded within the hour in a rare emergency address
+                                    that he delivered visibly agitated. "This is an outrage and a lie," he said,
+                                    pointing at the press. "Hazelia does not attack its neighbors. We do not do that.
+                                    Whoever is saying this should be embarrassed." He went on to call the accusation
+                                    "politically motivated" and said his government would be "demanding answers" from
+                                    Kacentina directly.
+                                </p>
+                                <p>
+                                    The Hazelian foreign ministry later issued a longer written statement calling the
+                                    intelligence report "hogwash" and said it contained "no credible evidence of any
+                                    kind." Kacentina's foreign ministry responded by confirming only that the
+                                    investigation was ongoing and that the government is standing by its security team's
+                                    assessment.
+                                </p>
+                                <p>
+                                    Those familiar with the Hazelia President noted that the speed and intensity of
+                                    Jibberson's response was unusual. "Most heads of state issue a formal denial through
+                                    their ministry," said one analyst the Herald spoke with. "He went to the microphone
+                                    himself, immediately. That's notable." The Kacentina government has not yet
+                                    escalated to any formal action.
+                                </p>
+                                <a href="#" class="read-more">Continue Reading →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- MISSION STATUS TRACKER -->
-  <div class="status-tracker">
-    <div class="st-head">
-      <div class="st-head-title">KMM Valdoria — Mission Status</div>
-      <div class="st-head-label">Last updated: Day 3, 10:15 local</div>
-    </div>
-    <div class="st-body">
-      <div class="st-row">
-        <div class="st-dot critical"></div>
-        <div class="st-label">Launch Window</div>
-        <div class="st-status critical">Closing — Decision Required</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot active"></div>
-        <div class="st-label">Crew Status</div>
-        <div class="st-status active">All Nominal · On Standby</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot progress"></div>
-        <div class="st-label">Systems Investigation</div>
-        <div class="st-status progress">Significant Progress Reported</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot progress"></div>
-        <div class="st-label">Security Assessment</div>
-        <div class="st-status progress">Ransomware — Source Identified</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot active"></div>
-        <div class="st-label">Launch Vehicle Integrity</div>
-        <div class="st-status active">Confirmed Nominal</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot critical"></div>
-        <div class="st-label">Revised Launch Window</div>
-        <div class="st-status critical">Restore by 18:00 or Postpone</div>
-      </div>
-    </div>
-  </div>
+                <!-- MISSION STATUS TRACKER -->
+                <div class="status-tracker">
+                    <div class="st-head">
+                        <div class="st-head-title">KMM Valdoria — Mission Status</div>
+                        <div class="st-head-label">Last updated: Day 3, 10:15 local</div>
+                    </div>
+                    <div class="st-body">
+                        <div class="st-row">
+                            <div class="st-dot critical"></div>
+                            <div class="st-label">Launch Window</div>
+                            <div class="st-status critical">Closing — Decision Required</div>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-dot active"></div>
+                            <div class="st-label">Crew Status</div>
+                            <div class="st-status active">All Nominal · On Standby</div>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-dot progress"></div>
+                            <div class="st-label">Systems Investigation</div>
+                            <div class="st-status progress">Significant Progress Reported</div>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-dot progress"></div>
+                            <div class="st-label">Security Assessment</div>
+                            <div class="st-status progress">Ransomware — Source Identified</div>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-dot active"></div>
+                            <div class="st-label">Launch Vehicle Integrity</div>
+                            <div class="st-status active">Confirmed Nominal</div>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-dot critical"></div>
+                            <div class="st-label">Revised Launch Window</div>
+                            <div class="st-status critical">Restore by 18:00 or Postpone</div>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- ══════════════════════════════════════════
+                <!-- ══════════════════════════════════════════
        SECTION: INTERNATIONAL FALLOUT
   ═══════════════════════════════════════════ -->
-  <div class="section-label"><span>International Fallout</span></div>
+                <div class="section-label">
+                    <span>International Fallout</span>
+                </div>
 
-  <!-- Story: Quillantis flustered -->
-  <div class="story-card" id="card-quillantis">
-    <span class="story-cat cat-world">World</span>
-    <div class="story-img-wrap">
-      <img src="../images/news3img2.png" alt="Quillantis President Adara Venk at podium, reporters visible in foreground">
-      <div class="story-figcap">Photo: Herald International Desk / Pool</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-quillantis')">
-      <h2>Quillantis Leader Stumbles Over Questions About Hazelian Ties; Press Conference Ends Early</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Rees Fontaine, International Correspondent</span>
-      <span>·</span><span>Day 3</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>Quillantis President Adara Venk held a scheduled press conference Thursday on an unrelated bubblegum bill, but reporters quickly steered the room toward the KSA ransomware announcement. What followed was widely described as one of the more uncomfortable fifteen minutes in recent Quillantis political memory.</p>
-        <p>Asked directly whether Quillantis had any knowledge of Hazelian cyber capabilities being directed at Kacentina, Venk said the question was "not appropriate" and "not what today's event is about." When a second reporter followed up asking about the depth of Quillantis's financial ties to Hazelia and whether those ties should be publicly disclosed given the current circumstances, Venk turned to an aide, whispered briefly, and then announced the conference was ending. He left without taking further questions.</p>
-        <p>"That is not the behavior of a head of state who has nothing to hide," said one regional diplomat, speaking anonymously to the Herald. The Quillantis government press office issued a statement later in the afternoon that said only that Venk "remains committed to transparent governance" and would speak to the matter "when people cared enough to hear about bubblegum." No time was given.</p>
-        <p>Kacentina's foreign ministry said it had noted the press conference and declined to comment further. The two countries have no formal defense alliance.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+                <!-- Story: Quillantis flustered -->
+                <div class="story-card" id="card-quillantis">
+                    <span class="story-cat cat-world">World</span>
+                    <div class="story-img-wrap">
+                        <img
+                            src="../images/news3img2.png"
+                            alt="Quillantis President Adara Venk at podium, reporters visible in foreground"
+                        />
+                        <div class="story-figcap">Photo: Herald International Desk / Pool</div>
+                    </div>
+                    <div class="story-head" onclick="toggleCard('card-quillantis')">
+                        <h2>
+                            Quillantis Leader Stumbles Over Questions About Hazelian Ties; Press Conference Ends Early
+                        </h2>
+                        <span class="story-toggle">▼</span>
+                    </div>
+                    <div class="story-byline">
+                        <span>By Rees Fontaine, International Correspondent</span>
+                        <span>·</span><span>Day 3</span>
+                    </div>
+                    <div class="story-preview">
+                        <div class="preview-inner">
+                            <p>
+                                Quillantis President Adara Venk held a scheduled press conference Thursday on an
+                                unrelated bubblegum bill, but reporters quickly steered the room toward the KSA
+                                ransomware announcement. What followed was widely described as one of the more
+                                uncomfortable fifteen minutes in recent Quillantis political memory.
+                            </p>
+                            <p>
+                                Asked directly whether Quillantis had any knowledge of Hazelian cyber capabilities being
+                                directed at Kacentina, Venk said the question was "not appropriate" and "not what
+                                today's event is about." When a second reporter followed up asking about the depth of
+                                Quillantis's financial ties to Hazelia and whether those ties should be publicly
+                                disclosed given the current circumstances, Venk turned to an aide, whispered briefly,
+                                and then announced the conference was ending. He left without taking further questions.
+                            </p>
+                            <p>
+                                "That is not the behavior of a head of state who has nothing to hide," said one regional
+                                diplomat, speaking anonymously to the Herald. The Quillantis government press office
+                                issued a statement later in the afternoon that said only that Venk "remains committed to
+                                transparent governance" and would speak to the matter "when people cared enough to hear
+                                about bubblegum." No time was given.
+                            </p>
+                            <p>
+                                Kacentina's foreign ministry said it had noted the press conference and declined to
+                                comment further. The two countries have no formal defense alliance.
+                            </p>
+                            <a href="#" class="read-more">Continue Reading →</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Story: Ollijam skeptical -->
-  <div class="story-card" id="card-olliejam">
-    <span class="story-cat cat-world">World</span>
-    <div class="story-img-wrap">
-      <img src="../images/news3img3.png" alt="Ollijam PM James Oliver speaking to reporters outside government hall">
-      <div class="story-figcap">Photo: Ollijam Government Press Office</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-olliejam')">
-      <h2>Ollijam "Has Questions" About Hazelia's Role, But Oliver Refuses to Draw Conclusions</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Rees Fontaine, International Correspondent</span>
-      <span>·</span><span>Day 3</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>Ollijam Prime Minister James Oliver returned to the cameras Thursday with a notably more careful tone than his earlier statement. "We have questions," he said, pausing before continuing. "We are not ready to point fingers. But we have questions." He declined to say what those questions were or who they were directed at.</p>
-        <p>Oliver said Ollijam was reviewing the incident summary circulated by Kacentina and would respond formally once that review was complete. He acknowledged that Ollijam maintains trade and diplomatic ties with Hazelia but called those "separate matters" that should not prevent honesty around the current situation. "Our relationship with any country does not make us blind," he said.</p>
-        <p>Analysts noted Oliver's tone had shifted meaningfully from his Day 2 posture, when he framed the incident as an attack on all nations and offered technical support. His refusal to explicitly defend Hazelia — despite the trade relationship — is being read in some diplomatic circles as significant. "Oliver is careful," said one observer. "When he stops defending you, it means something."</p>
-        <p>Ollijam has not recalled its ambassador to Hazelia or taken any formal diplomatic steps. Its foreign ministry confirmed only that it was "monitoring the situation closely."</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+                <!-- Story: Ollijam skeptical -->
+                <div class="story-card" id="card-olliejam">
+                    <span class="story-cat cat-world">World</span>
+                    <div class="story-img-wrap">
+                        <img
+                            src="../images/news3img3.png"
+                            alt="Ollijam PM James Oliver speaking to reporters outside government hall"
+                        />
+                        <div class="story-figcap">Photo: Ollijam Government Press Office</div>
+                    </div>
+                    <div class="story-head" onclick="toggleCard('card-olliejam')">
+                        <h2>Ollijam "Has Questions" About Hazelia's Role, But Oliver Refuses to Draw Conclusions</h2>
+                        <span class="story-toggle">▼</span>
+                    </div>
+                    <div class="story-byline">
+                        <span>By Rees Fontaine, International Correspondent</span>
+                        <span>·</span><span>Day 3</span>
+                    </div>
+                    <div class="story-preview">
+                        <div class="preview-inner">
+                            <p>
+                                Ollijam Prime Minister James Oliver returned to the cameras Thursday with a notably more
+                                careful tone than his earlier statement. "We have questions," he said, pausing before
+                                continuing. "We are not ready to point fingers. But we have questions." He declined to
+                                say what those questions were or who they were directed at.
+                            </p>
+                            <p>
+                                Oliver said Ollijam was reviewing the incident summary circulated by Kacentina and would
+                                respond formally once that review was complete. He acknowledged that Ollijam maintains
+                                trade and diplomatic ties with Hazelia but called those "separate matters" that should
+                                not prevent honesty around the current situation. "Our relationship with any country
+                                does not make us blind," he said.
+                            </p>
+                            <p>
+                                Analysts noted Oliver's tone had shifted meaningfully from his Day 2 posture, when he
+                                framed the incident as an attack on all nations and offered technical support. His
+                                refusal to explicitly defend Hazelia — despite the trade relationship — is being read in
+                                some diplomatic circles as significant. "Oliver is careful," said one observer. "When he
+                                stops defending you, it means something."
+                            </p>
+                            <p>
+                                Ollijam has not recalled its ambassador to Hazelia or taken any formal diplomatic steps.
+                                Its foreign ministry confirmed only that it was "monitoring the situation closely."
+                            </p>
+                            <a href="#" class="read-more">Continue Reading →</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- ══════════════════════════════════════════
+                <!-- ══════════════════════════════════════════
        SECTION: SECURITY & THE MISSION
   ═══════════════════════════════════════════ -->
-  <div class="section-label" style="margin-top:8px"><span>Security &amp; The Mission</span></div>
+                <div class="section-label" style="margin-top: 8px">
+                    <span>Security &amp; The Mission</span>
+                </div>
 
-  <!-- Story: KSA Security closing in -->
-  <div class="story-card" id="card-security">
-    <span class="story-cat cat-security">Security</span>
-    <div class="story-img-wrap">
-      <img src="../images/news3img4.png" alt="KSA technical operations center, multiple screens active, staff at workstations">
-      <div class="story-figcap">Photo: Herald / K. Varela (pool)</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-security')">
-      <h2>KSA Security Teams Report "Significant Progress" — Source and Scope of Ransomware Now Understood</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Tomas Vael, Security Correspondent</span>
-      <span>·</span><span>Day 3</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>For the first time since the mission hold began, KSA officials used cautiously optimistic language Thursday morning. The investigation team released a brief update confirming that security teams had identified both the source and the method of the ransomware attack and were now in the remediation phase. The statement described progress as "significant."</p>
-        <p>"We know what happened, we know how it happened, and we are fixing it," said a spokesperson for the KSA technical operations center. "Our focus right now is restoring full system confidence before the launch window closes." Officials declined to release specifics of the attack method, citing ongoing security concerns about disclosing details before systems are fully secure.</p>
-        <p>Sources familiar with the investigation told the Herald that the attack was more targeted than initially assumed, affecting a specific set of launch systems rather than core flight hardware. This, they said, is the reason the launch vehicle itself has consistently shown clean diagnostics — the ransomware was never designed to touch it. The mission was stalled, not sabotaged in the physical sense.</p>
-        <p>The critical question now is whether the remediation can be completed before the optimal launch window expires at approximately 18:00 local time. If not, mission planners have said a revised window would be calculated — but no timeline for that has been shared.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+                <!-- Story: KSA Security closing in -->
+                <div class="story-card" id="card-security">
+                    <span class="story-cat cat-security">Security</span>
+                    <div class="story-img-wrap">
+                        <img
+                            src="../images/news3img4.png"
+                            alt="KSA technical operations center, multiple screens active, staff at workstations"
+                        />
+                        <div class="story-figcap">Photo: Herald / K. Varela (pool)</div>
+                    </div>
+                    <div class="story-head" onclick="toggleCard('card-security')">
+                        <h2>
+                            KSA Security Teams Report "Significant Progress" — Source and Scope of Ransomware Now
+                            Understood
+                        </h2>
+                        <span class="story-toggle">▼</span>
+                    </div>
+                    <div class="story-byline">
+                        <span>By Tomas Vael, Security Correspondent</span>
+                        <span>·</span><span>Day 3</span>
+                    </div>
+                    <div class="story-preview">
+                        <div class="preview-inner">
+                            <p>
+                                For the first time since the mission hold began, KSA officials used cautiously
+                                optimistic language Thursday morning. The investigation team released a brief update
+                                confirming that security teams had identified both the source and the method of the
+                                ransomware attack and were now in the remediation phase. The statement described
+                                progress as "significant."
+                            </p>
+                            <p>
+                                "We know what happened, we know how it happened, and we are fixing it," said a
+                                spokesperson for the KSA technical operations center. "Our focus right now is restoring
+                                full system confidence before the launch window closes." Officials declined to release
+                                specifics of the attack method, citing ongoing security concerns about disclosing
+                                details before systems are fully secure.
+                            </p>
+                            <p>
+                                Sources familiar with the investigation told the Herald that the attack was more
+                                targeted than initially assumed, affecting a specific set of launch systems rather than
+                                core flight hardware. This, they said, is the reason the launch vehicle itself has
+                                consistently shown clean diagnostics — the ransomware was never designed to touch it.
+                                The mission was stalled, not sabotaged in the physical sense.
+                            </p>
+                            <p>
+                                The critical question now is whether the remediation can be completed before the optimal
+                                launch window expires at approximately 18:00 local time. If not, mission planners have
+                                said a revised window would be calculated — but no timeline for that has been shared.
+                            </p>
+                            <a href="#" class="read-more">Continue Reading →</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Story: Launch deadline -->
-  <div class="story-card" id="card-deadline">
-    <span class="story-cat cat-mission">Space</span>
-    <div class="story-head" onclick="toggleCard('card-deadline')">
-      <h2>The Clock Is Running: What Happens If KSA Misses Today's Launch Window</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Herald Science Desk</span>
-      <span>·</span><span>Day 3</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>The KMM Valdoria mission was designed around a specific orbital alignment that makes today's window the most efficient possible launch opportunity. KSA mission planners have confirmed the window closes at approximately 18:00 local time. If the security team can clear systems and certify them for launch before then, the mission can proceed as planned.</p>
-        <p>If the window is missed, the mission is not cancelled — but it gets significantly more expensive. A secondary window exists, but it requires additional fuel reserves and adjusts the mission's lunar approach trajectory, adding roughly four days to the total mission time. Crew readiness, equipment shelf life, and ground support scheduling all factor into the cost of a delay.</p>
-        <p>"We built this mission for this window," one mission planning source told the Herald. "A delay is not a failure. But it is not free, either." KSA Director Tholt has not spoken publicly since her brief Day 1 statement. Her office confirmed she has been at the operations center continuously since the hold began.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+                <!-- Story: Launch deadline -->
+                <div class="story-card" id="card-deadline">
+                    <span class="story-cat cat-mission">Space</span>
+                    <div class="story-head" onclick="toggleCard('card-deadline')">
+                        <h2>The Clock Is Running: What Happens If KSA Misses Today's Launch Window</h2>
+                        <span class="story-toggle">▼</span>
+                    </div>
+                    <div class="story-byline">
+                        <span>By Herald Science Desk</span>
+                        <span>·</span><span>Day 3</span>
+                    </div>
+                    <div class="story-preview">
+                        <div class="preview-inner">
+                            <p>
+                                The KMM Valdoria mission was designed around a specific orbital alignment that makes
+                                today's window the most efficient possible launch opportunity. KSA mission planners have
+                                confirmed the window closes at approximately 18:00 local time. If the security team can
+                                clear systems and certify them for launch before then, the mission can proceed as
+                                planned.
+                            </p>
+                            <p>
+                                If the window is missed, the mission is not cancelled — but it gets significantly more
+                                expensive. A secondary window exists, but it requires additional fuel reserves and
+                                adjusts the mission's lunar approach trajectory, adding roughly four days to the total
+                                mission time. Crew readiness, equipment shelf life, and ground support scheduling all
+                                factor into the cost of a delay.
+                            </p>
+                            <p>
+                                "We built this mission for this window," one mission planning source told the Herald. "A
+                                delay is not a failure. But it is not free, either." KSA Director Tholt has not spoken
+                                publicly since her brief Day 1 statement. Her office confirmed she has been at the
+                                operations center continuously since the hold began.
+                            </p>
+                            <a href="#" class="read-more">Continue Reading →</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- ══════════════════════════════════════════
+                <!-- ══════════════════════════════════════════
        SECTION: DEVELOPING — FART DISAPPEARS
   ═══════════════════════════════════════════ -->
-  <div class="section-label" style="margin-top:8px"><span>Developing</span></div>
+                <div class="section-label" style="margin-top: 8px">
+                    <span>Developing</span>
+                </div>
 
-  <!-- Story: FART disappears -->
-  <div class="story-card" id="card-fart">
-    <span class="story-cat cat-breaking">Developing Story</span>
-    <div class="story-img-wrap">
-      <img src="../images/news3img5.png" alt="Browser displaying 'This site can't be reached' error where fart.hz used to be">
-      <div class="story-figcap">Photo: Herald Digital Desk</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-fart')">
-      <h2>Animal Welfare Group FART Goes Dark Overnight; Founder Petey Hernandez Cannot Be Reached</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Herald Investigative Desk</span>
-      <span>·</span><span>Day 3</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>Sometime between Wednesday night and Thursday morning, the website and all official social accounts for the Federation for Assisting Rats and Turtles — the Hazelian animal welfare nonprofit known as FART — went completely offline. The organization's website now returns an error. Its registered contact phone number plays a disconnection message. Its email addresses are no longer active.</p>
-        <p>The Herald made repeated attempts to reach founder Peter "Petey" Hernandez through every available contact channel and received no response. An address associated with the organization in Hazelia was visited by a reporter who found an empty office with no signs of recent occupancy. Neighbors of the listed office said they had never seen regular activity there.</p>
-        <p>The timing of the disappearance — occurring the same night that KSA intelligence released its preliminary assessment linking the ransomware attack to Hazelian network infrastructure — has not gone unnoticed. The Herald is not drawing conclusions, but we are noting the facts. FART was founded in 2025, raised an amount of money widely considered extraordinary for an organization of its age and size, and has now vanished within hours of Hazelia being named in a major international security incident.</p>
-        <p>The Hazelian government has not commented on FART's disappearance. The organization's legal registration status in Hazelia is currently being verified through official channels. This story is developing and will be updated as information is confirmed.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+                <!-- Story: FART disappears -->
+                <div class="story-card" id="card-fart">
+                    <span class="story-cat cat-breaking">Developing Story</span>
+                    <div class="story-img-wrap">
+                        <img
+                            src="../images/news3img5.png"
+                            alt="Browser displaying 'This site can't be reached' error where fart.hz used to be"
+                        />
+                        <div class="story-figcap">Photo: Herald Digital Desk</div>
+                    </div>
+                    <div class="story-head" onclick="toggleCard('card-fart')">
+                        <h2>
+                            Animal Welfare Group FART Goes Dark Overnight; Founder Petey Hernandez Cannot Be Reached
+                        </h2>
+                        <span class="story-toggle">▼</span>
+                    </div>
+                    <div class="story-byline">
+                        <span>By Herald Investigative Desk</span>
+                        <span>·</span><span>Day 3</span>
+                    </div>
+                    <div class="story-preview">
+                        <div class="preview-inner">
+                            <p>
+                                Sometime between Wednesday night and Thursday morning, the website and all official
+                                social accounts for the Federation for Assisting Rats and Turtles — the Hazelian animal
+                                welfare nonprofit known as FART — went completely offline. The organization's website
+                                now returns an error. Its registered contact phone number plays a disconnection message.
+                                Its email addresses are no longer active.
+                            </p>
+                            <p>
+                                The Herald made repeated attempts to reach founder Peter "Petey" Hernandez through every
+                                available contact channel and received no response. An address associated with the
+                                organization in Hazelia was visited by a reporter who found an empty office with no
+                                signs of recent occupancy. Neighbors of the listed office said they had never seen
+                                regular activity there.
+                            </p>
+                            <p>
+                                The timing of the disappearance — occurring the same night that KSA intelligence
+                                released its preliminary assessment linking the ransomware attack to Hazelian network
+                                infrastructure — has not gone unnoticed. The Herald is not drawing conclusions, but we
+                                are noting the facts. FART was founded in 2025, raised an amount of money widely
+                                considered extraordinary for an organization of its age and size, and has now vanished
+                                within hours of Hazelia being named in a major international security incident.
+                            </p>
+                            <p>
+                                The Hazelian government has not commented on FART's disappearance. The organization's
+                                legal registration status in Hazelia is currently being verified through official
+                                channels. This story is developing and will be updated as information is confirmed.
+                            </p>
+                            <a href="#" class="read-more">Continue Reading →</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- ══════════════════════════════════════════
+                <!-- ══════════════════════════════════════════
        SECTION: OTHER NEWS
   ═══════════════════════════════════════════ -->
-  <div class="section-label" style="margin-top:8px"><span>Other News</span></div>
+                <div class="section-label" style="margin-top: 8px">
+                    <span>Other News</span>
+                </div>
 
-  <!-- Filler: Summercamp ending -->
-  <div class="story-card" id="card-camp">
-    <span class="story-cat cat-kacentina">Kacentina</span>
-    <div class="story-img-wrap">
-      <img src="../images/news3img6.png" alt="Students gathered around a campfire at KSA Youth Exploration Camp, final night">
-      <div class="story-figcap">Photo: KSA Youth Programs / Supplied</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-camp')">
-      <h2>KSA Youth Space Camp Wraps Up Its Best Season Yet; Students Reportedly "Devastated" It's Over</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Staff Reporter</span>
-      <span>·</span><span>Day 3</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>The Kacentina Space Administration's annual Youth Exploration Camp concludes its summer session Friday, and by all accounts it was the most successful year in the program's four-year history. Enrollment was up 22%, the waiting list was longer than ever, and the camp's signature cybersecurity competition produced what organizers called "the sickest work we've ever seen from this age group."</p>
-        <p>The mood at the closing ceremony is expected to be "genuinely sad" due to the conclusion of so much excitmenet. Campers were seen hugging their bunk counselors, trading contact information with new friends, and, in at least one well-documented case, weeping openly next to their computers. "I don't want to go home," one twelve-year-old told a Herald photographer. "There's nothing at home like this." Camp director Bryan Quillen said he hears that every year. "It never gets old," he said. "It's why we do it."</p>
-        <p>Applications for next summer's session open in early spring.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+                <!-- Filler: Summercamp ending -->
+                <div class="story-card" id="card-camp">
+                    <span class="story-cat cat-kacentina">Kacentina</span>
+                    <div class="story-img-wrap">
+                        <img
+                            src="../images/news3img6.png"
+                            alt="Students gathered around a campfire at KSA Youth Exploration Camp, final night"
+                        />
+                        <div class="story-figcap">Photo: KSA Youth Programs / Supplied</div>
+                    </div>
+                    <div class="story-head" onclick="toggleCard('card-camp')">
+                        <h2>
+                            KSA Youth Space Camp Wraps Up Its Best Season Yet; Students Reportedly "Devastated" It's
+                            Over
+                        </h2>
+                        <span class="story-toggle">▼</span>
+                    </div>
+                    <div class="story-byline">
+                        <span>By Staff Reporter</span>
+                        <span>·</span><span>Day 3</span>
+                    </div>
+                    <div class="story-preview">
+                        <div class="preview-inner">
+                            <p>
+                                The Kacentina Space Administration's annual Youth Exploration Camp concludes its summer
+                                session Friday, and by all accounts it was the most successful year in the program's
+                                four-year history. Enrollment was up 22%, the waiting list was longer than ever, and the
+                                camp's signature cybersecurity competition produced what organizers called "the sickest
+                                work we've ever seen from this age group."
+                            </p>
+                            <p>
+                                The mood at the closing ceremony is expected to be "genuinely sad" due to the conclusion
+                                of so much excitmenet. Campers were seen hugging their bunk counselors, trading contact
+                                information with new friends, and, in at least one well-documented case, weeping openly
+                                next to their computers. "I don't want to go home," one twelve-year-old told a Herald
+                                photographer. "There's nothing at home like this." Camp director Bryan Quillen said he
+                                hears that every year. "It never gets old," he said. "It's why we do it."
+                            </p>
+                            <p>Applications for next summer's session open in early spring.</p>
+                            <a href="#" class="read-more">Continue Reading →</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Filler: Dinosaur nuggets -->
-  <div class="story-card" id="card-nuggets">
-    <span class="story-cat cat-odd">Science &amp; Nutrition</span>
-    <div class="story-head" onclick="toggleCard('card-nuggets')">
-      <h2>Kacentina University Study Confirms What Everyone Already Suspected: Dinosaur-Shaped Chicken Nuggets May Actually Taste Better</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Staff Reporter</span>
-      <span>·</span><span>Day 3</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>A research team at Kacentina University's Department of Food Psychology has published findings suggesting that dinosaur-shaped chicken nuggets produce measurably higher enjoyment scores than identically prepared nuggets of a standard rectangular shape. The study involved 340 participants across a range of ages, all of whom were given identical nuggets prepared from the same batch — the only variable was the mold used to shape them.</p>
-        <p>Dinosaur-shaped nuggets scored an average of 14% higher on the study's enjoyment index. Researchers said the effect was strongest in children but "statistically meaningful" across all age groups, including adults. "There is something about the shape that affects perception," said lead researcher Dr. Oma Pressel. "We are not entirely sure why. We are looking into it." The study will be peer reviewed. The university press office confirmed this is real research and asked that the Herald not make it weird.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+                <!-- Filler: Dinosaur nuggets -->
+                <div class="story-card" id="card-nuggets">
+                    <span class="story-cat cat-odd">Science &amp; Nutrition</span>
+                    <div class="story-head" onclick="toggleCard('card-nuggets')">
+                        <h2>
+                            Kacentina University Study Confirms What Everyone Already Suspected: Dinosaur-Shaped Chicken
+                            Nuggets May Actually Taste Better
+                        </h2>
+                        <span class="story-toggle">▼</span>
+                    </div>
+                    <div class="story-byline">
+                        <span>By Staff Reporter</span>
+                        <span>·</span><span>Day 3</span>
+                    </div>
+                    <div class="story-preview">
+                        <div class="preview-inner">
+                            <p>
+                                A research team at Kacentina University's Department of Food Psychology has published
+                                findings suggesting that dinosaur-shaped chicken nuggets produce measurably higher
+                                enjoyment scores than identically prepared nuggets of a standard rectangular shape. The
+                                study involved 340 participants across a range of ages, all of whom were given identical
+                                nuggets prepared from the same batch — the only variable was the mold used to shape
+                                them.
+                            </p>
+                            <p>
+                                Dinosaur-shaped nuggets scored an average of 14% higher on the study's enjoyment index.
+                                Researchers said the effect was strongest in children but "statistically meaningful"
+                                across all age groups, including adults. "There is something about the shape that
+                                affects perception," said lead researcher Dr. Oma Pressel. "We are not entirely sure
+                                why. We are looking into it." The study will be peer reviewed. The university press
+                                office confirmed this is real research and asked that the Herald not make it weird.
+                            </p>
+                            <a href="#" class="read-more">Continue Reading →</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
 
-</main>
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="sb-card">
+                    <div class="sb-head">Event Timeline — Day 3</div>
+                    <div class="sb-body" style="padding: 8px 14px">
+                        <div class="timeline-item latest">
+                            <div class="timeline-time">Day 3 · 10:15</div>
+                            <div class="timeline-text">
+                                Security teams report "significant progress." Source and method of ransomware
+                                identified. Remediation underway.
+                            </div>
+                        </div>
+                        <div class="timeline-item latest">
+                            <div class="timeline-time">Day 3 · 09:40</div>
+                            <div class="timeline-text">
+                                FART website confirmed offline. Founder Petey Hernandez unreachable. Herald
+                                investigation ongoing.
+                            </div>
+                        </div>
+                        <div class="timeline-item warning">
+                            <div class="timeline-time">Day 3 · 08:55</div>
+                            <div class="timeline-text">
+                                Quillantis press conference ends abruptly. Venk declines questions on Hazelian ties.
+                            </div>
+                        </div>
+                        <div class="timeline-item warning">
+                            <div class="timeline-time">Day 3 · 08:12</div>
+                            <div class="timeline-text">
+                                Jibberson emergency address: "An outrage and a lie." Demands formal diplomacy.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">Day 3 · 07:30</div>
+                            <div class="timeline-text">
+                                KSA Intelligence Directorate formally identifies ransomware — links to Hazelian
+                                infrastructure.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">Day 2 · 08:42</div>
+                            <div class="timeline-text">
+                                Joint investigation confirmed active. No findings at that time.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">Day 1 · 18:03</div>
+                            <div class="timeline-text">
+                                Computer irregularities first detected. Mission hold declared.
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
+                <div class="sb-card">
+                    <div class="sb-head">World Reaction — Day 3</div>
+                    <div class="sb-body">
+                        <div class="sb-item">
+                            <span class="reaction-flag rf-denial">Hazelia</span>
+                            <div class="sb-item-title">"An outrage and a lie." — President Jibberson</div>
+                            <div class="sb-item-meta">Emergency address · Day 3, 08:12</div>
+                        </div>
+                        <div class="sb-item">
+                            <span class="reaction-flag rf-evasive">Quillantis</span>
+                            <div class="sb-item-title">
+                                Press conference ended early. No comment on Hazelian ties. "At an appropriate time."
+                            </div>
+                            <div class="sb-item-meta">Government statement · Day 3</div>
+                        </div>
+                        <div class="sb-item">
+                            <span class="reaction-flag rf-skeptical">Ollijam</span>
+                            <div class="sb-item-title">
+                                "We have questions. We are not ready to point fingers." — PM Oliver
+                            </div>
+                            <div class="sb-item-meta">Press statement · Day 3</div>
+                        </div>
+                        <div class="sb-item">
+                            <span class="reaction-flag rf-gone">FART</span>
+                            <div class="sb-item-title">
+                                Website offline. Founder unreachable. Organization status unknown.
+                            </div>
+                            <div class="sb-item-meta">Herald investigation · Day 3, 09:40</div>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="sb-card">
-    <div class="sb-head">Event Timeline — Day 3</div>
-    <div class="sb-body" style="padding:8px 14px">
-      <div class="timeline-item latest">
-        <div class="timeline-time">Day 3 · 10:15</div>
-        <div class="timeline-text">Security teams report "significant progress." Source and method of ransomware identified. Remediation underway.</div>
-      </div>
-      <div class="timeline-item latest">
-        <div class="timeline-time">Day 3 · 09:40</div>
-        <div class="timeline-text">FART website confirmed offline. Founder Petey Hernandez unreachable. Herald investigation ongoing.</div>
-      </div>
-      <div class="timeline-item warning">
-        <div class="timeline-time">Day 3 · 08:55</div>
-        <div class="timeline-text">Quillantis press conference ends abruptly. Venk declines questions on Hazelian ties.</div>
-      </div>
-      <div class="timeline-item warning">
-        <div class="timeline-time">Day 3 · 08:12</div>
-        <div class="timeline-text">Jibberson emergency address: "An outrage and a lie." Demands formal diplomacy.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 3 · 07:30</div>
-        <div class="timeline-text">KSA Intelligence Directorate formally identifies ransomware — links to Hazelian infrastructure.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 2 · 08:42</div>
-        <div class="timeline-text">Joint investigation confirmed active. No findings at that time.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 1 · 18:03</div>
-        <div class="timeline-text">Computer irregularities first detected. Mission hold declared.</div>
-      </div>
-    </div>
-  </div>
+                <div class="sb-card">
+                    <div class="sb-head">What We Know</div>
+                    <div class="sb-body">
+                        <div class="sb-quote alert-quote">
+                            The computer irregularities have been confirmed as a ransomware attack. KSA Intelligence has
+                            traced infrastructure links to Hazelia. This is a preliminary assessment; the full
+                            investigation is ongoing.
+                            <div class="sb-quote-attr">— KSA Intelligence Directorate, Day 3</div>
+                        </div>
+                        <div class="sb-quote">
+                            "We know what happened, we know how it happened, and we are fixing it."
+                            <div class="sb-quote-attr">— KSA Operations Center Spokesperson</div>
+                        </div>
+                        <p style="font-size: 0.72rem; color: var(--muted); margin-top: 10px; line-height: 1.5">
+                            The Herald does not report speculation as fact. All quotes are verified. Connections between
+                            parties are reported as observed, not assumed.
+                        </p>
+                    </div>
+                </div>
 
-  <div class="sb-card">
-    <div class="sb-head">World Reaction — Day 3</div>
-    <div class="sb-body">
-      <div class="sb-item">
-        <span class="reaction-flag rf-denial">Hazelia</span>
-        <div class="sb-item-title">"An outrage and a lie." — President Jibberson</div>
-        <div class="sb-item-meta">Emergency address · Day 3, 08:12</div>
-      </div>
-      <div class="sb-item">
-        <span class="reaction-flag rf-evasive">Quillantis</span>
-        <div class="sb-item-title">Press conference ended early. No comment on Hazelian ties. "At an appropriate time."</div>
-        <div class="sb-item-meta">Government statement · Day 3</div>
-      </div>
-      <div class="sb-item">
-        <span class="reaction-flag rf-skeptical">Ollijam</span>
-        <div class="sb-item-title">"We have questions. We are not ready to point fingers." — PM Oliver</div>
-        <div class="sb-item-meta">Press statement · Day 3</div>
-      </div>
-      <div class="sb-item">
-        <span class="reaction-flag rf-gone">FART</span>
-        <div class="sb-item-title">Website offline. Founder unreachable. Organization status unknown.</div>
-        <div class="sb-item-meta">Herald investigation · Day 3, 09:40</div>
-      </div>
-    </div>
-  </div>
+                <div class="sb-card">
+                    <div class="sb-head">Quick Reads</div>
+                    <div class="sb-body">
+                        <div class="sb-item">
+                            <div class="sb-item-title">
+                                Kacentina Foreign Ministry Summons Hazelian Ambassador for Formal Discussion
+                            </div>
+                            <div class="sb-item-meta">Security · Day 3</div>
+                        </div>
+                        <div class="sb-item">
+                            <div class="sb-item-title">
+                                KSA Stock Dips Slightly on Launch Uncertainty; Analysts Say Recovery Expected
+                            </div>
+                            <div class="sb-item-meta">Economy · Day 3</div>
+                        </div>
+                        <div class="sb-item">
+                            <div class="sb-item-title">
+                                KMM Valdoria Crew Commander: "We Are Ready. We Have Always Been Ready."
+                            </div>
+                            <div class="sb-item-meta">Space · Day 3</div>
+                        </div>
+                        <div class="sb-item">
+                            <div class="sb-item-title">
+                                Kacentina Cybersecurity Institute Calls Incident "A Wake-Up Call for the Region"
+                            </div>
+                            <div class="sb-item-meta">Security · Day 3</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
 
-  <div class="sb-card">
-    <div class="sb-head">What We Know</div>
-    <div class="sb-body">
-      <div class="sb-quote alert-quote">
-        The computer irregularities have been confirmed as a ransomware attack. KSA Intelligence has traced infrastructure links to Hazelia. This is a preliminary assessment; the full investigation is ongoing.
-        <div class="sb-quote-attr">— KSA Intelligence Directorate, Day 3</div>
-      </div>
-      <div class="sb-quote">
-        "We know what happened, we know how it happened, and we are fixing it."
-        <div class="sb-quote-attr">— KSA Operations Center Spokesperson</div>
-      </div>
-      <p style="font-size:0.72rem;color:var(--muted);margin-top:10px;line-height:1.5">The Herald does not report speculation as fact. All quotes are verified. Connections between parties are reported as observed, not assumed.</p>
-    </div>
-  </div>
+        <footer class="site-footer">
+            <div class="footer-title">The Kacentina Herald</div>
+            <div class="footer-links">
+                <a href="#">Home</a><a href="#">About</a><a href="#">Subscribe</a> <a href="#">Archive</a
+                ><a href="#">Corrections</a><a href="#">Contact</a><a href="#">Privacy</a>
+            </div>
+            <div>
+                © 2026 The Kacentina Herald Press Group. All rights reserved. Kacentina · news@kacentina-herald.kc
+            </div>
+            <div style="margin-top: 4px; font-size: 0.63rem; color: #333">
+                Vol. 94, Day 3 Edition. The Herald does not report speculation as fact. All quotes are verified. This
+                edition reflects information available as of 10:30 local.
+            </div>
+        </footer>
 
-  <div class="sb-card">
-    <div class="sb-head">Quick Reads</div>
-    <div class="sb-body">
-      <div class="sb-item">
-        <div class="sb-item-title">Kacentina Foreign Ministry Summons Hazelian Ambassador for Formal Discussion</div>
-        <div class="sb-item-meta">Security · Day 3</div>
-      </div>
-      <div class="sb-item">
-        <div class="sb-item-title">KSA Stock Dips Slightly on Launch Uncertainty; Analysts Say Recovery Expected</div>
-        <div class="sb-item-meta">Economy · Day 3</div>
-      </div>
-      <div class="sb-item">
-        <div class="sb-item-title">KMM Valdoria Crew Commander: "We Are Ready. We Have Always Been Ready."</div>
-        <div class="sb-item-meta">Space · Day 3</div>
-      </div>
-      <div class="sb-item">
-        <div class="sb-item-title">Kacentina Cybersecurity Institute Calls Incident "A Wake-Up Call for the Region"</div>
-        <div class="sb-item-meta">Security · Day 3</div>
-      </div>
-    </div>
-  </div>
+        <script>
+            // ── DATE ──
+            ;(function () {
+                var d = new Date()
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                var months = [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                    'December',
+                ]
+                var str = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear()
+                document.getElementById('mast-date').textContent = str
+                document.getElementById('hero-date').textContent = str + ' · Day 3 Coverage'
+            })()
 
-</aside>
-</div>
+            // ── ACCORDION ──
+            function toggleCard(id) {
+                var el = document.getElementById(id)
+                if (el) el.classList.toggle('open')
+            }
 
-<footer class="site-footer">
-  <div class="footer-title">The Kacentina Herald</div>
-  <div class="footer-links">
-    <a href="#">Home</a><a href="#">About</a><a href="#">Subscribe</a>
-    <a href="#">Archive</a><a href="#">Corrections</a><a href="#">Contact</a><a href="#">Privacy</a>
-  </div>
-  <div>© 2026 The Kacentina Herald Press Group. All rights reserved. Kacentina · news@kacentina-herald.kc</div>
-  <div style="margin-top:4px;font-size:0.63rem;color:#333">Vol. 94, Day 3 Edition. The Herald does not report speculation as fact. All quotes are verified. This edition reflects information available as of 10:30 local.</div>
-</footer>
-
-<script>
-// ── DATE ──
-(function(){
-  var d = new Date();
-  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var str = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
-  document.getElementById('mast-date').textContent = str;
-  document.getElementById('hero-date').textContent = str + ' · Day 3 Coverage';
-})();
-
-// ── ACCORDION ──
-function toggleCard(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.toggle('open');
-}
-
-// ── PLACEHOLDER IMAGES ──
-document.querySelectorAll('img:not([src])').forEach(function(img){
-  img.style.minHeight = img.closest('.hero-img-wrap') ? '300px' : '180px';
-});
-</script>
-
-</body>
+            // ── PLACEHOLDER IMAGES ──
+            document.querySelectorAll('img:not([src])').forEach(function (img) {
+                img.style.minHeight = img.closest('.hero-img-wrap') ? '300px' : '180px'
+            })
+        </script>
+    </body>
 </html>

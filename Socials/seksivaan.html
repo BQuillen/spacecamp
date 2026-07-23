@@ -1,964 +1,1641 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7Gram — @sek.sivaan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>7Gram — @sek.sivaan</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
 
-  :root {
-    --bg:        #060d25;
-    --bg-card:   #0c1535;
-    --bg-input:  #101c3a;
-    --border:    rgba(255,106,0,0.15);
-    --orange:    #ff6a00;
-    --orange2:   #ff8c00;
-    --blue:      #1a2a6c;
-    --blue2:     #2a3d8f;
-    --text:      #e8ecf4;
-    --muted:     #7a8aaa;
-    --story-ring: linear-gradient(135deg, #ff6a00, #ff8c00, #1a2a6c);
-  }
+            :root {
+                --bg: #060d25;
+                --bg-card: #0c1535;
+                --bg-input: #101c3a;
+                --border: rgba(255, 106, 0, 0.15);
+                --orange: #ff6a00;
+                --orange2: #ff8c00;
+                --blue: #1a2a6c;
+                --blue2: #2a3d8f;
+                --text: #e8ecf4;
+                --muted: #7a8aaa;
+                --story-ring: linear-gradient(135deg, #ff6a00, #ff8c00, #1a2a6c);
+            }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    min-height: 100vh;
-  }
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                min-height: 100vh;
+            }
 
-  /* ── TOP NAV ── */
-  .top-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(6,13,37,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 56px;
-    gap: 1rem;
-  }
+            /* ── TOP NAV ── */
+            .top-nav {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background: rgba(6, 13, 37, 0.92);
+                backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 2rem;
+                height: 56px;
+                gap: 1rem;
+            }
 
-  .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    background: linear-gradient(90deg, var(--orange), var(--orange2), #5b7fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    white-space: nowrap;
-  }
+            .nav-logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                background: linear-gradient(90deg, var(--orange), var(--orange2), #5b7fff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                white-space: nowrap;
+            }
 
-  .nav-search {
-    flex: 1;
-    max-width: 280px;
-    background: var(--bg-input);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 0.45rem 1rem;
-    color: var(--text);
-    font-size: 0.85rem;
-    outline: none;
-  }
-  .nav-search::placeholder { color: var(--muted); }
+            .nav-search {
+                flex: 1;
+                max-width: 280px;
+                background: var(--bg-input);
+                border: 1px solid var(--border);
+                border-radius: 20px;
+                padding: 0.45rem 1rem;
+                color: var(--text);
+                font-size: 0.85rem;
+                outline: none;
+            }
+            .nav-search::placeholder {
+                color: var(--muted);
+            }
 
-  .nav-icons { display: flex; align-items: center; gap: 1.2rem; }
-  .nav-icons svg { width: 22px; height: 22px; stroke: var(--muted); cursor: pointer; transition: stroke 0.2s; }
-  .nav-icons svg:hover { stroke: var(--orange); }
-  .nav-avatar {
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    background: var(--blue2);
-    border: 2px solid var(--orange);
-    cursor: pointer;
-    overflow: hidden;
-  }
-  .nav-avatar img { width: 100%; height: 100%; object-fit: cover; }
+            .nav-icons {
+                display: flex;
+                align-items: center;
+                gap: 1.2rem;
+            }
+            .nav-icons svg {
+                width: 22px;
+                height: 22px;
+                stroke: var(--muted);
+                cursor: pointer;
+                transition: stroke 0.2s;
+            }
+            .nav-icons svg:hover {
+                stroke: var(--orange);
+            }
+            .nav-avatar {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: var(--blue2);
+                border: 2px solid var(--orange);
+                cursor: pointer;
+                overflow: hidden;
+            }
+            .nav-avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
-  /* ── LAYOUT ── */
-  .page-wrap {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
+            /* ── LAYOUT ── */
+            .page-wrap {
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 2rem 1rem;
+            }
 
-  /* ── PROFILE HEADER ── */
-  .profile-cover {
-    width: 100%;
-    height: 220px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #0d1840 0%, #1a2a6c 40%, #0a0f2e 70%, #2a1200 100%);
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .profile-cover img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-  }
-  .cover-placeholder {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,106,0,0.15);
-    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-  }
+            /* ── PROFILE HEADER ── */
+            .profile-cover {
+                width: 100%;
+                height: 220px;
+                border-radius: 16px;
+                background: linear-gradient(135deg, #0d1840 0%, #1a2a6c 40%, #0a0f2e 70%, #2a1200 100%);
+                position: relative;
+                overflow: hidden;
+                border: 1px solid var(--border);
+            }
+            .profile-cover img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+            .cover-placeholder {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: rgba(255, 106, 0, 0.15);
+                font-size: 0.7rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+            }
 
-  .profile-meta {
-    padding: 0 1rem;
-    position: relative;
-  }
-  .profile-meta-top {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-top: -52px;
-  }
-  .profile-meta-bottom {
-    margin-top: 0.75rem;
-  }
+            .profile-meta {
+                padding: 0 1rem;
+                position: relative;
+            }
+            .profile-meta-top {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                margin-top: -52px;
+            }
+            .profile-meta-bottom {
+                margin-top: 0.75rem;
+            }
 
-  .profile-avatar-wrap {
-    flex-shrink: 0;
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(135deg, var(--orange), var(--orange2), #5b7fff);
-    box-shadow: 0 4px 20px rgba(255,106,0,0.4);
-  }
-  .profile-avatar-inner {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: var(--bg-card);
-    border: 3px solid var(--bg);
-    overflow: hidden;
-  }
-  .profile-avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
-  .avatar-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--muted); font-size: 0.6rem; letter-spacing: 0.1em;
-  }
+            .profile-avatar-wrap {
+                flex-shrink: 0;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                padding: 3px;
+                background: linear-gradient(135deg, var(--orange), var(--orange2), #5b7fff);
+                box-shadow: 0 4px 20px rgba(255, 106, 0, 0.4);
+            }
+            .profile-avatar-inner {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background: var(--bg-card);
+                border: 3px solid var(--bg);
+                overflow: hidden;
+            }
+            .profile-avatar-inner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .avatar-placeholder {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--muted);
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+            }
 
-  .profile-info {
-    flex: 1;
-  }
-  .profile-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .profile-handle {
-    color: var(--muted);
-    font-size: 0.85rem;
-    margin-top: 2px;
-  }
-  .profile-bio {
-    margin-top: 0.5rem;
-    color: #b0bcd4;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    max-width: 480px;
-  }
+            .profile-info {
+                flex: 1;
+            }
+            .profile-name {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--text);
+            }
+            .profile-handle {
+                color: var(--muted);
+                font-size: 0.85rem;
+                margin-top: 2px;
+            }
+            .profile-bio {
+                margin-top: 0.5rem;
+                color: #b0bcd4;
+                font-size: 0.88rem;
+                line-height: 1.5;
+                max-width: 480px;
+            }
 
-  .profile-stats {
-    display: flex;
-    gap: 2rem;
-    margin-top: 0.75rem;
-  }
-  .stat { text-align: center; cursor: pointer; }
-  .stat-num { font-weight: 700; font-size: 1rem; color: var(--text); display: block; }
-  .stat-lbl { font-size: 0.75rem; color: var(--muted); }
+            .profile-stats {
+                display: flex;
+                gap: 2rem;
+                margin-top: 0.75rem;
+            }
+            .stat {
+                text-align: center;
+                cursor: pointer;
+            }
+            .stat-num {
+                font-weight: 700;
+                font-size: 1rem;
+                color: var(--text);
+                display: block;
+            }
+            .stat-lbl {
+                font-size: 0.75rem;
+                color: var(--muted);
+            }
 
-  .profile-actions {
-    display: flex;
-    gap: 0.75rem;
-    padding-bottom: 0.5rem;
-    flex-shrink: 0;
-  }
-  .btn-follow {
-    background: linear-gradient(90deg, var(--orange), var(--orange2));
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 1.4rem;
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-  .btn-follow:hover { opacity: 0.85; }
-  .btn-msg {
-    background: var(--bg-input);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.5rem 1.4rem;
-    font-weight: 500;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
-  .btn-msg:hover { border-color: var(--orange); }
+            .profile-actions {
+                display: flex;
+                gap: 0.75rem;
+                padding-bottom: 0.5rem;
+                flex-shrink: 0;
+            }
+            .btn-follow {
+                background: linear-gradient(90deg, var(--orange), var(--orange2));
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 0.5rem 1.4rem;
+                font-weight: 600;
+                font-size: 0.85rem;
+                cursor: pointer;
+                transition: opacity 0.2s;
+            }
+            .btn-follow:hover {
+                opacity: 0.85;
+            }
+            .btn-msg {
+                background: var(--bg-input);
+                color: var(--text);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.5rem 1.4rem;
+                font-weight: 500;
+                font-size: 0.85rem;
+                cursor: pointer;
+                transition: border-color 0.2s;
+            }
+            .btn-msg:hover {
+                border-color: var(--orange);
+            }
 
-  /* ── STORIES ROW ── */
-  .stories-section { margin-top: 2rem; }
-  .stories-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
-  .stories-row {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;
-  }
-  .stories-row::-webkit-scrollbar { display: none; }
-  .story-item { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; cursor: pointer; }
-  .story-ring {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    padding: 2.5px;
-    background: var(--story-ring);
-    transition: transform 0.2s;
-  }
-  .story-ring:hover { transform: scale(1.08); }
-  .story-inner {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: var(--bg-card);
-    border: 2.5px solid var(--bg);
-    overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .story-inner img { width: 100%; height: 100%; object-fit: cover; }
-  .story-name {
-    font-size: 0.68rem;
-    color: var(--muted);
-    max-width: 64px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+            /* ── STORIES ROW ── */
+            .stories-section {
+                margin-top: 2rem;
+            }
+            .stories-label {
+                font-size: 0.7rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.75rem;
+            }
+            .stories-row {
+                display: flex;
+                gap: 1rem;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                scrollbar-width: none;
+            }
+            .stories-row::-webkit-scrollbar {
+                display: none;
+            }
+            .story-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.4rem;
+                cursor: pointer;
+            }
+            .story-ring {
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                padding: 2.5px;
+                background: var(--story-ring);
+                transition: transform 0.2s;
+            }
+            .story-ring:hover {
+                transform: scale(1.08);
+            }
+            .story-inner {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background: var(--bg-card);
+                border: 2.5px solid var(--bg);
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .story-inner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .story-name {
+                font-size: 0.68rem;
+                color: var(--muted);
+                max-width: 64px;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
 
-  /* ── MAIN GRID ── */
-  .main-grid {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
+            /* ── MAIN GRID ── */
+            .main-grid {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
 
-  /* ── FEED ── */
-  .feed { display: flex; flex-direction: column; gap: 1.25rem; }
+            /* ── FEED ── */
+            .feed {
+                display: flex;
+                flex-direction: column;
+                gap: 1.25rem;
+            }
 
-  .post-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .post-card:hover { border-color: rgba(255,106,0,0.3); }
+            .post-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                overflow: hidden;
+                transition: border-color 0.2s;
+            }
+            .post-card:hover {
+                border-color: rgba(255, 106, 0, 0.3);
+            }
 
-  .post-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.9rem 1rem;
-  }
-  .post-avatar {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--orange), #5b7fff);
-    padding: 2px;
-    flex-shrink: 0;
-  }
-  .post-avatar-inner {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: var(--bg-card);
-    border: 2px solid var(--bg-card);
-    overflow: hidden;
-  }
-  .post-avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
-  .post-meta { flex: 1; }
-  .post-name { font-weight: 600; font-size: 0.88rem; color: var(--text); }
-  .post-time { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
-  .post-more {
-    background: none; border: none; cursor: pointer;
-    color: var(--muted); font-size: 1.2rem; line-height: 1;
-    padding: 0.2rem 0.4rem;
-  }
+            .post-header {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.9rem 1rem;
+            }
+            .post-avatar {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--orange), #5b7fff);
+                padding: 2px;
+                flex-shrink: 0;
+            }
+            .post-avatar-inner {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background: var(--bg-card);
+                border: 2px solid var(--bg-card);
+                overflow: hidden;
+            }
+            .post-avatar-inner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .post-meta {
+                flex: 1;
+            }
+            .post-name {
+                font-weight: 600;
+                font-size: 0.88rem;
+                color: var(--text);
+            }
+            .post-time {
+                font-size: 0.75rem;
+                color: var(--muted);
+                margin-top: 1px;
+            }
+            .post-more {
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--muted);
+                font-size: 1.2rem;
+                line-height: 1;
+                padding: 0.2rem 0.4rem;
+            }
 
-  .post-image {
-    width: 100%;
-    background: linear-gradient(135deg, #0d1840, #0a0f2e);
-    position: relative;
-    overflow: hidden;
-  }
-  .post-image img { width: 100%; display: block; }
-  .post-img-placeholder {
-    height: 320px;
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,106,0,0.12);
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    flex-direction: column; gap: 0.5rem;
-  }
-  .post-img-placeholder svg { width: 36px; height: 36px; stroke: rgba(255,106,0,0.2); }
+            .post-image {
+                width: 100%;
+                background: linear-gradient(135deg, #0d1840, #0a0f2e);
+                position: relative;
+                overflow: hidden;
+            }
+            .post-image img {
+                width: 100%;
+                display: block;
+            }
+            .post-img-placeholder {
+                height: 320px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: rgba(255, 106, 0, 0.12);
+                font-size: 0.65rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .post-img-placeholder svg {
+                width: 36px;
+                height: 36px;
+                stroke: rgba(255, 106, 0, 0.2);
+            }
 
-  .post-body { padding: 0.9rem 1rem; }
-  .post-caption { font-size: 0.88rem; line-height: 1.55; color: #c8d0e4; }
-  .post-caption .mention { color: var(--orange); font-weight: 500; cursor: pointer; }
-  .post-caption .hashtag { color: #5b7fff; cursor: pointer; }
+            .post-body {
+                padding: 0.9rem 1rem;
+            }
+            .post-caption {
+                font-size: 0.88rem;
+                line-height: 1.55;
+                color: #c8d0e4;
+            }
+            .post-caption .mention {
+                color: var(--orange);
+                font-weight: 500;
+                cursor: pointer;
+            }
+            .post-caption .hashtag {
+                color: #5b7fff;
+                cursor: pointer;
+            }
 
-  .post-actions {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    padding: 0.5rem 1rem 0.9rem;
-  }
-  .post-action-btn {
-    display: flex; align-items: center; gap: 0.4rem;
-    background: none; border: none; cursor: pointer;
-    color: var(--muted); font-size: 0.82rem;
-    transition: color 0.2s;
-  }
-  .post-action-btn svg { width: 18px; height: 18px; stroke: currentColor; }
-  .post-action-btn:hover { color: var(--orange); }
-  .post-action-btn:hover svg { stroke: var(--orange); }
-  .post-share { margin-left: auto; }
+            .post-actions {
+                display: flex;
+                align-items: center;
+                gap: 1.25rem;
+                padding: 0.5rem 1rem 0.9rem;
+            }
+            .post-action-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--muted);
+                font-size: 0.82rem;
+                transition: color 0.2s;
+            }
+            .post-action-btn svg {
+                width: 18px;
+                height: 18px;
+                stroke: currentColor;
+            }
+            .post-action-btn:hover {
+                color: var(--orange);
+            }
+            .post-action-btn:hover svg {
+                stroke: var(--orange);
+            }
+            .post-share {
+                margin-left: auto;
+            }
 
-  /* Status-only post */
-  .post-status .post-body {
-    padding: 1.25rem 1rem;
-  }
-  .post-status-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text);
-    font-weight: 400;
-  }
-  .post-status-bg {
-    background: linear-gradient(135deg, rgba(26,42,108,0.4), rgba(255,106,0,0.08));
-    border-radius: 10px;
-    padding: 1.25rem;
-  }
+            /* Status-only post */
+            .post-status .post-body {
+                padding: 1.25rem 1rem;
+            }
+            .post-status-text {
+                font-size: 1rem;
+                line-height: 1.6;
+                color: var(--text);
+                font-weight: 400;
+            }
+            .post-status-bg {
+                background: linear-gradient(135deg, rgba(26, 42, 108, 0.4), rgba(255, 106, 0, 0.08));
+                border-radius: 10px;
+                padding: 1.25rem;
+            }
 
-  /* ── SIDEBAR ── */
-  .sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+            /* ── SIDEBAR ── */
+            .sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 1.25rem;
+            }
 
-  .sidebar-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.25rem;
-  }
-  .sidebar-title {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1rem;
-  }
+            .sidebar-card {
+                background: var(--bg-card);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 1.25rem;
+            }
+            .sidebar-title {
+                font-size: 0.7rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 1rem;
+            }
 
-  /* About */
-  .about-row {
-    display: flex; align-items: center; gap: 0.6rem;
-    margin-bottom: 0.75rem; color: #b0bcd4; font-size: 0.85rem;
-  }
-  .about-row svg { width: 15px; height: 15px; stroke: var(--muted); flex-shrink: 0; }
+            /* About */
+            .about-row {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                margin-bottom: 0.75rem;
+                color: #b0bcd4;
+                font-size: 0.85rem;
+            }
+            .about-row svg {
+                width: 15px;
+                height: 15px;
+                stroke: var(--muted);
+                flex-shrink: 0;
+            }
 
-  /* Photo grid */
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-  }
-  .photo-thumb {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #0d1840, #0a0f2e);
-    border-radius: 6px;
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .photo-thumb-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,106,0,0.15); font-size: 0.55rem; letter-spacing: 0.1em;
-  }
-  .photo-thumb:hover::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: rgba(255,106,0,0.15);
-  }
+            /* Photo grid */
+            .photo-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+            }
+            .photo-thumb {
+                aspect-ratio: 1;
+                background: linear-gradient(135deg, #0d1840, #0a0f2e);
+                border-radius: 6px;
+                overflow: hidden;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .photo-thumb img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .photo-thumb-placeholder {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: rgba(255, 106, 0, 0.15);
+                font-size: 0.55rem;
+                letter-spacing: 0.1em;
+            }
+            .photo-thumb:hover::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(255, 106, 0, 0.15);
+            }
 
-  /* Suggested */
-  .suggested-user {
-    display: flex; align-items: center; gap: 0.75rem;
-    margin-bottom: 0.9rem;
-  }
-  .sug-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: var(--blue2);
-    flex-shrink: 0; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--muted); font-size: 0.6rem;
-  }
-  .sug-info { flex: 1; }
-  .sug-name { font-weight: 600; font-size: 0.83rem; }
-  .sug-handle { font-size: 0.75rem; color: var(--muted); }
-  .sug-follow {
-    background: none;
-    border: 1px solid var(--orange);
-    color: var(--orange);
-    border-radius: 6px;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
-  .sug-follow:hover { background: var(--orange); color: #fff; }
+            /* Suggested */
+            .suggested-user {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.9rem;
+            }
+            .sug-avatar {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: var(--blue2);
+                flex-shrink: 0;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--muted);
+                font-size: 0.6rem;
+            }
+            .sug-info {
+                flex: 1;
+            }
+            .sug-name {
+                font-weight: 600;
+                font-size: 0.83rem;
+            }
+            .sug-handle {
+                font-size: 0.75rem;
+                color: var(--muted);
+            }
+            .sug-follow {
+                background: none;
+                border: 1px solid var(--orange);
+                color: var(--orange);
+                border-radius: 6px;
+                padding: 0.25rem 0.75rem;
+                font-size: 0.75rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition:
+                    background 0.2s,
+                    color 0.2s;
+            }
+            .sug-follow:hover {
+                background: var(--orange);
+                color: #fff;
+            }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 700px) {
-    .main-grid { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-    .profile-actions { display: none; }
-    .top-nav { padding: 0 1rem; }
-    .nav-search { display: none; }
-  }
+            /* ── RESPONSIVE ── */
+            @media (max-width: 700px) {
+                .main-grid {
+                    grid-template-columns: 1fr;
+                }
+                .sidebar {
+                    display: none;
+                }
+                .profile-actions {
+                    display: none;
+                }
+                .top-nav {
+                    padding: 0 1rem;
+                }
+                .nav-search {
+                    display: none;
+                }
+            }
 
-  /* ── SEARCH DROPDOWN ── */
-  .nav-search-wrap { position: relative; flex: 1; max-width: 280px; }
-  .nav-search-wrap .nav-search { flex: none; width: 100%; max-width: 100%; }
-  .search-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0; right: 0;
-    background: #0c1535;
-    border: 1px solid rgba(255,106,0,0.25);
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 200;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  }
-  .search-dropdown.open { display: block; }
-  .search-result {
-    display: flex; align-items: center; gap: 0.6rem;
-    padding: 0.6rem 1rem;
-    cursor: pointer;
-    transition: background 0.15s;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .search-result:hover, .search-result.active { background: rgba(255,106,0,0.1); }
-  .search-result-name { font-weight: 600; font-size: 0.83rem; color: var(--text); }
-  .search-result-handle { font-size: 0.75rem; color: var(--muted); }
-  @media (max-width: 700px) { .nav-search-wrap { display: none; } }
+            /* ── SEARCH DROPDOWN ── */
+            .nav-search-wrap {
+                position: relative;
+                flex: 1;
+                max-width: 280px;
+            }
+            .nav-search-wrap .nav-search {
+                flex: none;
+                width: 100%;
+                max-width: 100%;
+            }
+            .search-dropdown {
+                display: none;
+                position: absolute;
+                top: calc(100% + 6px);
+                left: 0;
+                right: 0;
+                background: #0c1535;
+                border: 1px solid rgba(255, 106, 0, 0.25);
+                border-radius: 10px;
+                overflow: hidden;
+                z-index: 200;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            }
+            .search-dropdown.open {
+                display: block;
+            }
+            .search-result {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                padding: 0.6rem 1rem;
+                cursor: pointer;
+                transition: background 0.15s;
+                text-decoration: none;
+                color: var(--text);
+            }
+            .search-result:hover,
+            .search-result.active {
+                background: rgba(255, 106, 0, 0.1);
+            }
+            .search-result-name {
+                font-weight: 600;
+                font-size: 0.83rem;
+                color: var(--text);
+            }
+            .search-result-handle {
+                font-size: 0.75rem;
+                color: var(--muted);
+            }
+            @media (max-width: 700px) {
+                .nav-search-wrap {
+                    display: none;
+                }
+            }
 
-  /* ── AVATAR POPUP MODAL ── */
-  .profile-avatar-wrap { cursor: pointer; }
-  .profile-avatar-wrap:hover .profile-avatar-inner { opacity: 0.85; transition: opacity 0.15s; }
-  #avatar-modal {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.82); z-index: 9999;
-    align-items: center; justify-content: center;
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-  }
-  #avatar-modal.open { display: flex; }
-  .av-card {
-    background: var(--bg-card); border-radius: 20px;
-    border: 1px solid var(--border); padding: 1.75rem 1.75rem 1.5rem;
-    text-align: center; max-width: 320px; width: 88%;
-    cursor: default; position: relative;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.9);
-    animation: avIn 0.22s cubic-bezier(0.34,1.2,0.64,1);
-  }
-  @keyframes avIn { from{opacity:0;transform:scale(0.82)} to{opacity:1;transform:scale(1)} }
-  .av-close {
-    position: absolute; top: 10px; right: 12px;
-    background: transparent; border: none; color: var(--muted);
-    font-size: 1.5rem; cursor: pointer; line-height: 1;
-    width: 28px; height: 28px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .av-close:hover { background: var(--bg-input); color: var(--text); }
-  .av-ring {
-    width: 180px; height: 180px; border-radius: 50%; padding: 4px;
-    background: var(--story-ring, linear-gradient(135deg, var(--orange), var(--orange2), #5b7fff));
-    box-shadow: 0 4px 32px rgba(255,106,0,0.45); margin: 0 auto 1.1rem;
-  }
-  .av-circle {
-    width: 100%; height: 100%; border-radius: 50%;
-    background: var(--bg-card); border: 4px solid var(--bg);
-    overflow: hidden; display: flex; align-items: center; justify-content: center;
-  }
-  .av-circle img { width: 100%; height: 100%; object-fit: cover; }
-  .av-circle .av-ph { font-size: 3.2rem; line-height: 1; }
-  .av-stats {
-    display: flex; align-items: center; justify-content: center;
-    gap: 1.5rem; padding-bottom: 1rem; margin-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .av-stat { display: flex; align-items: center; gap: 0.45rem; font-size: 0.95rem; }
-  .av-stat-n { font-weight: 700; color: var(--text); }
-  .av-stat-sep { width: 1px; height: 18px; background: var(--border); }
-  .av-top-comment {
-    background: var(--bg-input); border-radius: 12px;
-    padding: 0.7rem 0.9rem; border: 1px solid var(--border); text-align: left;
-  }
-  .av-tc-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.3rem; }
-  .av-tc-user { font-weight: 700; font-size: 0.78rem; color: var(--orange); margin-bottom: 0.2rem; }
-  .av-tc-text { font-size: 0.83rem; color: var(--text); line-height: 1.5; }
-
-</style>
-</head>
-<body>
-
-<!-- TOP NAV -->
-<nav class="top-nav">
-  <div class="nav-logo">7Gram</div>
-  <div class="nav-search-wrap"><input class="nav-search" type="text" placeholder="Search 7Gram..."></div>
-  <div class="nav-icons">
-    <!-- Home -->
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <!-- Notifications -->
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-    <!-- DM -->
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <div class="nav-avatar">
-      <img src="" alt="" onerror="this.style.display='none'">
-    </div>
-  </div>
-</nav>
-
-<div class="page-wrap">
-
-  <!-- COVER PHOTO -->
-  <div class="profile-cover">
-    <img src="../images/sekbanner.png" alt="" onerror="this.style.display='none'">
-    </div>
-
-  <!-- PROFILE META -->
-  <div class="profile-meta">
-    <div class="profile-meta-top">
-      <div class="profile-avatar-wrap">
-        <div class="profile-avatar-inner">
-          <img src="../images/seksocials.png" alt="" onerror="this.style.display='none'">
-          <div class="avatar-placeholder">Photo</div>
-        </div>
-      </div>
-      <div class="profile-actions">
-        <button class="btn-follow">+ Follow</button>
-        <button class="btn-msg">Message</button>
-      </div>
-    </div>
-    <div class="profile-meta-bottom">
-      <div class="profile-name">Sek SivAan</div>
-      <div class="profile-handle">@sek.sivaan</div>
-      <div class="profile-bio">KSA Systems Engineer 🔧 | Hazelia 🇭🇿 born and raised | I keep the spacecraft running and the crew laughing | Warning: dad jokes are a systems feature, not a bug</div>
-      <div class="profile-stats">
-        <div class="stat"><span class="stat-num">118</span><span class="stat-lbl">Posts</span></div>
-        <div class="stat"><span class="stat-num">3,204</span><span class="stat-lbl">Followers</span></div>
-        <div class="stat"><span class="stat-num">441</span><span class="stat-lbl">Following</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- STORIES -->
-  <div class="stories-section">
-    <div class="stories-label">// Stories</div>
-    <div class="stories-row">
-      <div class="story-item">
-        <div class="story-ring">
-          <div class="story-inner"><img src="../images/seksocials.png" alt="" onerror="this.style.display='none'"></div>
-        </div>
-        <span class="story-name">Dad Jokes 😂</span>
-      </div>
-      <div class="story-item">
-        <div class="story-ring">
-          <div class="story-inner"><img src="../images/socialfc.jpg" alt="" onerror="this.style.display='none'"></div>
-        </div>
-        <span class="story-name">Hazelia FC</span>
-      </div>
-      <div class="story-item">
-        <div class="story-ring">
-          <div class="story-inner"><img src="../images/KSA Space station.png" alt="" onerror="this.style.display='none'"></div>
-        </div>
-        <span class="story-name">Systems Lab</span>
-      </div>
-      <div class="story-item">
-        <div class="story-ring">
-          <div class="story-inner"><img src="../images/socialsek2.jpg" alt="" onerror="this.style.display='none'"></div>
-        </div>
-        <span class="story-name">Match Night</span>
-      </div>
-      <div class="story-item">
-        <div class="story-ring">
-          <div class="story-inner"><img src="../images/group ksa.png" alt="" onerror="this.style.display='none'"></div>
-        </div>
-        <span class="story-name">Mission Prep</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- MAIN GRID -->
-  <div class="main-grid">
-
-    <!-- FEED -->
-    <div class="feed">
-
-      <!-- Status post: dad joke + systems work -->
-      <div class="post-card post-status">
-        <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/seksocials.png" alt="" onerror="this.style.display='none'"></div></div>
-          <div class="post-meta">
-            <div class="post-name">Sek SivAan</div>
-            <div class="post-time">1 hour ago</div>
-          </div>
-          <button class="post-more">···</button>
-        </div>
-        <div class="post-body">
-          <div class="post-status-bg">
-            <div class="post-status-text">Spent six hours today calibrating the attitude control system. Asked Commander McSwagga if she wanted me to fix her attitude while I was at it. She did not laugh. The system is running perfectly. My career is fine. Everything is fine. 🙂 Why do rockets make great friends? Because they always go out of their way for you. <span class="mention">@par.mesan</span> you're the only one on this base who appreciates me <span class="hashtag">#SystemsEngineer</span> <span class="hashtag">#SomeoneHasToDoIt</span></div>
-          </div>
-        </div>
-        <div class="post-actions">
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            447
-          </button>
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            93
-          </button>
-          <button class="post-action-btn post-share">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            Share
-          </button>
-        </div>
-        <div style="padding:0 1rem 1rem; border-top:1px solid rgba(255,106,0,0.08); margin-top:0.25rem;">
-          <div style="display:flex;gap:0.6rem;align-items:flex-start;padding-top:0.75rem;">
-            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#1a2a6c,#ff6a00);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:#fff;">P</div>
-            <div>
-              <span style="font-weight:600;font-size:0.82rem;color:var(--text);">par.mesan </span>
-              <span style="font-size:0.82rem;color:#b0bcd4;">I laughed. I always laugh. That is the problem and I accept it fully 😭</span>
+            /* ── AVATAR POPUP MODAL ── */
+            .profile-avatar-wrap {
+                cursor: pointer;
+            }
+            .profile-avatar-wrap:hover .profile-avatar-inner {
+                opacity: 0.85;
+                transition: opacity 0.15s;
+            }
+            #avatar-modal {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.82);
+                z-index: 9999;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+            }
+            #avatar-modal.open {
+                display: flex;
+            }
+            .av-card {
+                background: var(--bg-card);
+                border-radius: 20px;
+                border: 1px solid var(--border);
+                padding: 1.75rem 1.75rem 1.5rem;
+                text-align: center;
+                max-width: 320px;
+                width: 88%;
+                cursor: default;
+                position: relative;
+                box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9);
+                animation: avIn 0.22s cubic-bezier(0.34, 1.2, 0.64, 1);
+            }
+            @keyframes avIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.82);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            .av-close {
+                position: absolute;
+                top: 10px;
+                right: 12px;
+                background: transparent;
+                border: none;
+                color: var(--muted);
+                font-size: 1.5rem;
+                cursor: pointer;
+                line-height: 1;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .av-close:hover {
+                background: var(--bg-input);
+                color: var(--text);
+            }
+            .av-ring {
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                padding: 4px;
+                background: var(--story-ring, linear-gradient(135deg, var(--orange), var(--orange2), #5b7fff));
+                box-shadow: 0 4px 32px rgba(255, 106, 0, 0.45);
+                margin: 0 auto 1.1rem;
+            }
+            .av-circle {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background: var(--bg-card);
+                border: 4px solid var(--bg);
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .av-circle img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .av-circle .av-ph {
+                font-size: 3.2rem;
+                line-height: 1;
+            }
+            .av-stats {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+            .av-stat {
+                display: flex;
+                align-items: center;
+                gap: 0.45rem;
+                font-size: 0.95rem;
+            }
+            .av-stat-n {
+                font-weight: 700;
+                color: var(--text);
+            }
+            .av-stat-sep {
+                width: 1px;
+                height: 18px;
+                background: var(--border);
+            }
+            .av-top-comment {
+                background: var(--bg-input);
+                border-radius: 12px;
+                padding: 0.7rem 0.9rem;
+                border: 1px solid var(--border);
+                text-align: left;
+            }
+            .av-tc-label {
+                font-size: 0.62rem;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                color: var(--muted);
+                margin-bottom: 0.3rem;
+            }
+            .av-tc-user {
+                font-weight: 700;
+                font-size: 0.78rem;
+                color: var(--orange);
+                margin-bottom: 0.2rem;
+            }
+            .av-tc-text {
+                font-size: 0.83rem;
+                color: var(--text);
+                line-height: 1.5;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- TOP NAV -->
+        <nav class="top-nav">
+            <div class="nav-logo">7Gram</div>
+            <div class="nav-search-wrap">
+                <input class="nav-search" type="text" placeholder="Search 7Gram..." />
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Photo post: match night with Par, Lovey comments -->
-      <div class="post-card">
-        <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/seksocials.png" alt="" onerror="this.style.display='none'"></div></div>
-          <div class="post-meta">
-            <div class="post-name">Sek SivAan</div>
-            <div class="post-time">5 days ago</div>
-          </div>
-          <button class="post-more">···</button>
-        </div>
-        <div class="post-image">
-          <img src="../images/sekpic.png" alt="" onerror="this.style.display='none'">
-          
-        </div>
-        <div class="post-body">
-          <p class="post-caption">Hazelia FC semifinal watch night. My cousin Drevak shipped the full care package — sungrain chips, three kinds of fermented dip, the good sauce. <span class="mention">@par.mesan</span> had never tried the fermented dip before. He cried. He said he had something in his eye. Both eyes. For ten full minutes. I said Par, that's the dip working correctly. That's how you know it's real Hazelian. 🏟️ You know why Hazelia FC never loses a coin toss? Because they always bring their A-game — even for the flip. <span class="hashtag">#HazeliaFC</span> <span class="hashtag">#HomeFood</span> <span class="hashtag">#TasteOfHazelia</span></p>
-        </div>
-        <div class="post-actions">
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            612
-          </button>
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            104
-          </button>
-          <button class="post-action-btn post-share">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            Share
-          </button>
-        </div>
-        <div style="padding:0 1rem 1rem; border-top:1px solid rgba(255,106,0,0.08); margin-top:0.25rem; display:flex;flex-direction:column;gap:0.75rem;">
-          <div style="display:flex;gap:0.6rem;align-items:flex-start;padding-top:0.75rem;">
-            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#1a2a6c,#ff6a00);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:#fff;">P</div>
-            <div>
-              <span style="font-weight:600;font-size:0.82rem;color:var(--text);">par.mesan </span>
-              <span style="font-size:0.82rem;color:#b0bcd4;">I did NOT cry. I was overwhelmed by the flavor complexity. That is completely different. Please delete this post immediately. Do not delete this post.</span>
+            <div class="nav-icons">
+                <!-- Home -->
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                <!-- Notifications -->
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+                <!-- DM -->
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                <div class="nav-avatar">
+                    <img src="" alt="" onerror="this.style.display = 'none'" />
+                </div>
             </div>
-          </div>
-          <div style="display:flex;gap:0.6rem;align-items:flex-start;">
-            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ffcc44);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:#fff;">💛</div>
-            <div>
-              <span style="font-weight:600;font-size:0.82rem;color:var(--text);">lovey.mesan </span>
-              <span style="font-size:0.82rem;color:#b0bcd4;">PAR!! You are eating fermented things?? You know your stomach is sensitive!! Sek you seem like a very nice young man but please make sure he eats something sensible too!! Also are those chips from Hazelia?? Please tell your cousin Drevak to send TWO bags next time, I miss those so much 😭💛</span>
+        </nav>
+
+        <div class="page-wrap">
+            <!-- COVER PHOTO -->
+            <div class="profile-cover">
+                <img src="../images/sekbanner.png" alt="" onerror="this.style.display = 'none'" />
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Status post: comms "incident" -->
-      <div class="post-card post-status">
-        <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/seksocials.png" alt="" onerror="this.style.display='none'"></div></div>
-          <div class="post-meta">
-            <div class="post-name">Sek SivAan</div>
-            <div class="post-time">1 week ago</div>
-          </div>
-          <button class="post-more">···</button>
-        </div>
-        <div class="post-body">
-          <div class="post-status-bg">
-            <div class="post-status-text">Accidentally triggered the open audio channel during a pressure calibration test today. Commander McSwagga now has a full recording of my opinion of her thruster timeline. In my defense, the timing was impeccable. I regret nothing. Also — why did the astronaut break up with gravity? Because it was always bringing him down. <span class="mention">@par.mesan</span> you heard the whole thing over comms and laughed for four minutes straight. You are not helping. <span class="hashtag">#SystemsCheck</span> <span class="hashtag">#NotOnPurpose</span> <span class="hashtag">#DefinitelyOnPurpose</span></div>
-          </div>
-        </div>
-        <div class="post-actions">
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            831
-          </button>
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            177
-          </button>
-          <button class="post-action-btn post-share">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            Share
-          </button>
-        </div>
-      </div>
-
-      <!-- Photo post: Hazelian diagnostic kit -->
-      <div class="post-card">
-        <div class="post-header">
-          <div class="post-avatar"><div class="post-avatar-inner"><img src="../images/seksocials.png" alt="" onerror="this.style.display='none'"></div></div>
-          <div class="post-meta">
-            <div class="post-name">Sek SivAan</div>
-            <div class="post-time">2 weeks ago</div>
-          </div>
-          <button class="post-more">···</button>
-        </div>
-        <div class="post-image">
-          <img src="../images/sekpic2.png" alt="" onerror="this.style.display='none'">
-        </div>
-        <div class="post-body">
-          <p class="post-caption">New diagnostic toolkit came in from Hazelia. Cousin Drevak sourced it. The website looked a little rough but the hardware is elite — runs full systems diagnostics 40% faster than the KSA standard kit and costs half as much. Don't ask questions about the supply chain, just know the spacecraft will be perfectly calibrated. Some things Hazelia genuinely does better. I said what I said. I stand on Hazelian ground. Why do engineers make terrible comedians? Because their jokes need a lot of work. (...I'm keeping that one.) <span class="mention">@par.mesan</span> yours is coming in the same shipment 👀 <span class="hashtag">#HazelianEngineering</span> <span class="hashtag">#TrustDrevak</span></p>
-        </div>
-        <div class="post-actions">
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            388
-          </button>
-          <button class="post-action-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            62
-          </button>
-          <button class="post-action-btn post-share">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            Share
-          </button>
-        </div>
-        <div style="padding:0 1rem 1rem; border-top:1px solid rgba(255,106,0,0.08); margin-top:0.25rem;">
-          <div style="display:flex;gap:0.6rem;align-items:flex-start;padding-top:0.75rem;">
-            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#1a2a6c,#ff6a00);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:#fff;">P</div>
-            <div>
-              <span style="font-weight:600;font-size:0.82rem;color:var(--text);">par.mesan </span>
-              <span style="font-size:0.82rem;color:#b0bcd4;">What do you mean mine is in the same shipment. What is in my shipment. Sek. SEK WHAT DID YOU ORDER FOR ME</span>
+            <!-- PROFILE META -->
+            <div class="profile-meta">
+                <div class="profile-meta-top">
+                    <div class="profile-avatar-wrap">
+                        <div class="profile-avatar-inner">
+                            <img src="../images/seksocials.png" alt="" onerror="this.style.display = 'none'" />
+                            <div class="avatar-placeholder">Photo</div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-follow">+ Follow</button>
+                        <button class="btn-msg">Message</button>
+                    </div>
+                </div>
+                <div class="profile-meta-bottom">
+                    <div class="profile-name">Sek SivAan</div>
+                    <div class="profile-handle">@sek.sivaan</div>
+                    <div class="profile-bio">
+                        KSA Systems Engineer 🔧 | Hazelia 🇭🇿 born and raised | I keep the spacecraft running and the
+                        crew laughing | Warning: dad jokes are a systems feature, not a bug
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat"><span class="stat-num">118</span><span class="stat-lbl">Posts</span></div>
+                        <div class="stat">
+                            <span class="stat-num">3,204</span><span class="stat-lbl">Followers</span>
+                        </div>
+                        <div class="stat"><span class="stat-num">441</span><span class="stat-lbl">Following</span></div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- STORIES -->
+            <div class="stories-section">
+                <div class="stories-label">// Stories</div>
+                <div class="stories-row">
+                    <div class="story-item">
+                        <div class="story-ring">
+                            <div class="story-inner">
+                                <img src="../images/seksocials.png" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                        </div>
+                        <span class="story-name">Dad Jokes 😂</span>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-ring">
+                            <div class="story-inner">
+                                <img src="../images/socialfc.jpg" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                        </div>
+                        <span class="story-name">Hazelia FC</span>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-ring">
+                            <div class="story-inner">
+                                <img
+                                    src="../images/KSA Space station.png"
+                                    alt=""
+                                    onerror="this.style.display = 'none'"
+                                />
+                            </div>
+                        </div>
+                        <span class="story-name">Systems Lab</span>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-ring">
+                            <div class="story-inner">
+                                <img src="../images/socialsek2.jpg" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                        </div>
+                        <span class="story-name">Match Night</span>
+                    </div>
+                    <div class="story-item">
+                        <div class="story-ring">
+                            <div class="story-inner">
+                                <img src="../images/group ksa.png" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                        </div>
+                        <span class="story-name">Mission Prep</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAIN GRID -->
+            <div class="main-grid">
+                <!-- FEED -->
+                <div class="feed">
+                    <!-- Status post: dad joke + systems work -->
+                    <div class="post-card post-status">
+                        <div class="post-header">
+                            <div class="post-avatar">
+                                <div class="post-avatar-inner">
+                                    <img src="../images/seksocials.png" alt="" onerror="this.style.display = 'none'" />
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="post-name">Sek SivAan</div>
+                                <div class="post-time">1 hour ago</div>
+                            </div>
+                            <button class="post-more">···</button>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-status-bg">
+                                <div class="post-status-text">
+                                    Spent six hours today calibrating the attitude control system. Asked Commander
+                                    McSwagga if she wanted me to fix her attitude while I was at it. She did not laugh.
+                                    The system is running perfectly. My career is fine. Everything is fine. 🙂 Why do
+                                    rockets make great friends? Because they always go out of their way for you.
+                                    <span class="mention">@par.mesan</span>
+                                    you're the only one on this base who appreciates me
+                                    <span class="hashtag">#SystemsEngineer</span>
+                                    <span class="hashtag">#SomeoneHasToDoIt</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-actions">
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    />
+                                </svg>
+                                447
+                            </button>
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                                93
+                            </button>
+                            <button class="post-action-btn post-share">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <circle cx="18" cy="5" r="3" />
+                                    <circle cx="6" cy="12" r="3" />
+                                    <circle cx="18" cy="19" r="3" />
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                                </svg>
+                                Share
+                            </button>
+                        </div>
+                        <div
+                            style="
+                                padding: 0 1rem 1rem;
+                                border-top: 1px solid rgba(255, 106, 0, 0.08);
+                                margin-top: 0.25rem;
+                            "
+                        >
+                            <div style="display: flex; gap: 0.6rem; align-items: flex-start; padding-top: 0.75rem">
+                                <div
+                                    style="
+                                        width: 28px;
+                                        height: 28px;
+                                        border-radius: 50%;
+                                        background: linear-gradient(135deg, #1a2a6c, #ff6a00);
+                                        flex-shrink: 0;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 0.55rem;
+                                        color: #fff;
+                                    "
+                                >
+                                    P
+                                </div>
+                                <div>
+                                    <span style="font-weight: 600; font-size: 0.82rem; color: var(--text)"
+                                        >par.mesan
+                                    </span>
+                                    <span style="font-size: 0.82rem; color: #b0bcd4"
+                                        >I laughed. I always laugh. That is the problem and I accept it fully 😭</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo post: match night with Par, Lovey comments -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <div class="post-avatar">
+                                <div class="post-avatar-inner">
+                                    <img src="../images/seksocials.png" alt="" onerror="this.style.display = 'none'" />
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="post-name">Sek SivAan</div>
+                                <div class="post-time">5 days ago</div>
+                            </div>
+                            <button class="post-more">···</button>
+                        </div>
+                        <div class="post-image">
+                            <img src="../images/sekpic.png" alt="" onerror="this.style.display = 'none'" />
+                        </div>
+                        <div class="post-body">
+                            <p class="post-caption">
+                                Hazelia FC semifinal watch night. My cousin Drevak shipped the full care package —
+                                sungrain chips, three kinds of fermented dip, the good sauce.
+                                <span class="mention">@par.mesan</span> had never tried the fermented dip before. He
+                                cried. He said he had something in his eye. Both eyes. For ten full minutes. I said Par,
+                                that's the dip working correctly. That's how you know it's real Hazelian. 🏟️ You know
+                                why Hazelia FC never loses a coin toss? Because they always bring their A-game — even
+                                for the flip.
+                                <span class="hashtag">#HazeliaFC</span>
+                                <span class="hashtag">#HomeFood</span>
+                                <span class="hashtag">#TasteOfHazelia</span>
+                            </p>
+                        </div>
+                        <div class="post-actions">
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    />
+                                </svg>
+                                612
+                            </button>
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                                104
+                            </button>
+                            <button class="post-action-btn post-share">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <circle cx="18" cy="5" r="3" />
+                                    <circle cx="6" cy="12" r="3" />
+                                    <circle cx="18" cy="19" r="3" />
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                                </svg>
+                                Share
+                            </button>
+                        </div>
+                        <div
+                            style="
+                                padding: 0 1rem 1rem;
+                                border-top: 1px solid rgba(255, 106, 0, 0.08);
+                                margin-top: 0.25rem;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 0.75rem;
+                            "
+                        >
+                            <div style="display: flex; gap: 0.6rem; align-items: flex-start; padding-top: 0.75rem">
+                                <div
+                                    style="
+                                        width: 28px;
+                                        height: 28px;
+                                        border-radius: 50%;
+                                        background: linear-gradient(135deg, #1a2a6c, #ff6a00);
+                                        flex-shrink: 0;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 0.55rem;
+                                        color: #fff;
+                                    "
+                                >
+                                    P
+                                </div>
+                                <div>
+                                    <span style="font-weight: 600; font-size: 0.82rem; color: var(--text)"
+                                        >par.mesan
+                                    </span>
+                                    <span style="font-size: 0.82rem; color: #b0bcd4"
+                                        >I did NOT cry. I was overwhelmed by the flavor complexity. That is completely
+                                        different. Please delete this post immediately. Do not delete this post.</span
+                                    >
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.6rem; align-items: flex-start">
+                                <div
+                                    style="
+                                        width: 28px;
+                                        height: 28px;
+                                        border-radius: 50%;
+                                        background: linear-gradient(135deg, #ff8c00, #ffcc44);
+                                        flex-shrink: 0;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 0.55rem;
+                                        color: #fff;
+                                    "
+                                >
+                                    💛
+                                </div>
+                                <div>
+                                    <span style="font-weight: 600; font-size: 0.82rem; color: var(--text)"
+                                        >lovey.mesan
+                                    </span>
+                                    <span style="font-size: 0.82rem; color: #b0bcd4"
+                                        >PAR!! You are eating fermented things?? You know your stomach is sensitive!!
+                                        Sek you seem like a very nice young man but please make sure he eats something
+                                        sensible too!! Also are those chips from Hazelia?? Please tell your cousin
+                                        Drevak to send TWO bags next time, I miss those so much 😭💛</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status post: comms "incident" -->
+                    <div class="post-card post-status">
+                        <div class="post-header">
+                            <div class="post-avatar">
+                                <div class="post-avatar-inner">
+                                    <img src="../images/seksocials.png" alt="" onerror="this.style.display = 'none'" />
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="post-name">Sek SivAan</div>
+                                <div class="post-time">1 week ago</div>
+                            </div>
+                            <button class="post-more">···</button>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-status-bg">
+                                <div class="post-status-text">
+                                    Accidentally triggered the open audio channel during a pressure calibration test
+                                    today. Commander McSwagga now has a full recording of my opinion of her thruster
+                                    timeline. In my defense, the timing was impeccable. I regret nothing. Also — why did
+                                    the astronaut break up with gravity? Because it was always bringing him down.
+                                    <span class="mention">@par.mesan</span> you heard the whole thing over comms and
+                                    laughed for four minutes straight. You are not helping.
+                                    <span class="hashtag">#SystemsCheck</span>
+                                    <span class="hashtag">#NotOnPurpose</span>
+                                    <span class="hashtag">#DefinitelyOnPurpose</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-actions">
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    />
+                                </svg>
+                                831
+                            </button>
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                                177
+                            </button>
+                            <button class="post-action-btn post-share">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <circle cx="18" cy="5" r="3" />
+                                    <circle cx="6" cy="12" r="3" />
+                                    <circle cx="18" cy="19" r="3" />
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                                </svg>
+                                Share
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Photo post: Hazelian diagnostic kit -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <div class="post-avatar">
+                                <div class="post-avatar-inner">
+                                    <img src="../images/seksocials.png" alt="" onerror="this.style.display = 'none'" />
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="post-name">Sek SivAan</div>
+                                <div class="post-time">2 weeks ago</div>
+                            </div>
+                            <button class="post-more">···</button>
+                        </div>
+                        <div class="post-image">
+                            <img src="../images/sekpic2.png" alt="" onerror="this.style.display = 'none'" />
+                        </div>
+                        <div class="post-body">
+                            <p class="post-caption">
+                                New diagnostic toolkit came in from Hazelia. Cousin Drevak sourced it. The website
+                                looked a little rough but the hardware is elite — runs full systems diagnostics 40%
+                                faster than the KSA standard kit and costs half as much. Don't ask questions about the
+                                supply chain, just know the spacecraft will be perfectly calibrated. Some things Hazelia
+                                genuinely does better. I said what I said. I stand on Hazelian ground. Why do engineers
+                                make terrible comedians? Because their jokes need a lot of work. (...I'm keeping that
+                                one.)
+                                <span class="mention">@par.mesan</span> yours is coming in the same shipment 👀
+                                <span class="hashtag">#HazelianEngineering</span>
+                                <span class="hashtag">#TrustDrevak</span>
+                            </p>
+                        </div>
+                        <div class="post-actions">
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    />
+                                </svg>
+                                388
+                            </button>
+                            <button class="post-action-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                                62
+                            </button>
+                            <button class="post-action-btn post-share">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                    <circle cx="18" cy="5" r="3" />
+                                    <circle cx="6" cy="12" r="3" />
+                                    <circle cx="18" cy="19" r="3" />
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                                </svg>
+                                Share
+                            </button>
+                        </div>
+                        <div
+                            style="
+                                padding: 0 1rem 1rem;
+                                border-top: 1px solid rgba(255, 106, 0, 0.08);
+                                margin-top: 0.25rem;
+                            "
+                        >
+                            <div style="display: flex; gap: 0.6rem; align-items: flex-start; padding-top: 0.75rem">
+                                <div
+                                    style="
+                                        width: 28px;
+                                        height: 28px;
+                                        border-radius: 50%;
+                                        background: linear-gradient(135deg, #1a2a6c, #ff6a00);
+                                        flex-shrink: 0;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 0.55rem;
+                                        color: #fff;
+                                    "
+                                >
+                                    P
+                                </div>
+                                <div>
+                                    <span style="font-weight: 600; font-size: 0.82rem; color: var(--text)"
+                                        >par.mesan
+                                    </span>
+                                    <span style="font-size: 0.82rem; color: #b0bcd4"
+                                        >What do you mean mine is in the same shipment. What is in my shipment. Sek. SEK
+                                        WHAT DID YOU ORDER FOR ME</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /feed -->
+
+                <!-- SIDEBAR -->
+                <div class="sidebar">
+                    <!-- About -->
+                    <div class="sidebar-card">
+                        <div class="sidebar-title">// About</div>
+                        <div class="about-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            Valdoria Base, KA (originally Hazelia 🇭🇿)
+                        </div>
+                        <div class="about-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                <rect x="2" y="7" width="20" height="14" rx="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                            Systems Engineer — KSA / KMM Valdoria
+                        </div>
+                        <div class="about-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5 2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.9a16 16 0 0 0 5 5l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                                />
+                            </svg>
+                            Hazelia FC — never miss a match 🏟️
+                        </div>
+                        <div class="about-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                            Joined November 2019
+                        </div>
+                    </div>
+
+                    <!-- Photo grid -->
+                    <div class="sidebar-card">
+                        <div class="sidebar-title">// Photos</div>
+                        <div class="photo-grid">
+                            <div class="photo-thumb">
+                                <img src="../images/socialsek1.jpg" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                            <div class="photo-thumb">
+                                <img src="../images/socialsek2.jpg" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                            <div class="photo-thumb">
+                                <img src="../images/socialsek3.jpg" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                            <div class="photo-thumb">
+                                <img src="../images/socialsek4.jpg" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                            <div class="photo-thumb">
+                                <img src="../images/Sek_SiVaan.png" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                            <div class="photo-thumb">
+                                <img src="../images/socialfood3.jpg" alt="" onerror="this.style.display = 'none'" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gram Pals -->
+                    <div class="sidebar-card">
+                        <div class="sidebar-title">// Gram Pals</div>
+                        <div class="suggested-user">
+                            <div class="sug-avatar">IMG</div>
+                            <div class="sug-info">
+                                <div class="sug-name">Par Mesan</div>
+                                <div class="sug-handle">@par.mesan</div>
+                            </div>
+                            <a href="parmesan.html" style="text-decoration: none"
+                                ><button class="sug-follow">View</button></a
+                            >
+                        </div>
+                        <div class="suggested-user">
+                            <div class="sug-avatar">IMG</div>
+                            <div class="sug-info">
+                                <div class="sug-name">Chedda McSwagga</div>
+                                <div class="sug-handle">@chedda.mcswagga</div>
+                            </div>
+                            <a href="cheddamcswagga.html" style="text-decoration: none"
+                                ><button class="sug-follow">View</button></a
+                            >
+                        </div>
+                        <div class="suggested-user">
+                            <div class="sug-avatar">IMG</div>
+                            <div class="sug-info">
+                                <div class="sug-name">Colby Lore</div>
+                                <div class="sug-handle">@colby.lore</div>
+                            </div>
+                            <a href="colbylore.html" style="text-decoration: none"
+                                ><button class="sug-follow">View</button></a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <!-- /sidebar -->
+            </div>
+            <!-- /main-grid -->
         </div>
-      </div>
+        <!-- /page-wrap -->
 
-    </div><!-- /feed -->
-
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-
-      <!-- About -->
-      <div class="sidebar-card">
-        <div class="sidebar-title">// About</div>
-        <div class="about-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Valdoria Base, KA (originally Hazelia 🇭🇿)
+        <script>
+            var PROFILES = [
+                {
+                    name: 'Par Mesan',
+                    handle: '@par.mesan',
+                    file: 'parmesan.html',
+                },
+                {
+                    name: 'Chedda McSwagga',
+                    handle: '@chedda.mcswagga',
+                    file: 'cheddamcswagga.html',
+                },
+                {
+                    name: 'Sek SivAan',
+                    handle: '@sek.sivaan',
+                    file: 'seksivaan.html',
+                },
+                {
+                    name: 'Colby Lore',
+                    handle: '@colby.lore',
+                    file: 'colbylore.html',
+                },
+                {
+                    name: 'Feta Coquetta',
+                    handle: '@feta.coquetta',
+                    file: 'fetacoquetta.html',
+                },
+                {
+                    name: 'Unc Farquaad',
+                    handle: '@unc.farquaad',
+                    file: 'uncfarquaad.html',
+                },
+                {
+                    name: 'Lovey Mesan',
+                    handle: '@lovey.mesan',
+                    file: 'loveymesan.html',
+                },
+                {
+                    name: 'Barry Shmelly',
+                    handle: '@barry.shmelly',
+                    file: 'barryshmelly.html',
+                },
+                {
+                    name: 'Dr. Aura Sparkleton',
+                    handle: '@dr.aura.sparkleton',
+                    file: 'aurasparkleton.html',
+                },
+                {
+                    name: 'Petey Hernandez',
+                    handle: '@PeteyProtects',
+                    file: 'peteyhernandez.html',
+                },
+                {
+                    name: 'Remy Barnaby Bumblebottom',
+                    handle: '@remy_bbb',
+                    file: 'remybarnaby.html',
+                },
+            ]
+            ;(function () {
+                var input = document.querySelector('.nav-search')
+                if (!input) return
+                var wrap = input.parentElement
+                var dd = document.createElement('div')
+                dd.className = 'search-dropdown'
+                wrap.appendChild(dd)
+                var activeIdx = -1,
+                    results = []
+                function hi(s, q) {
+                    return s.replace(
+                        new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'),
+                        '<strong>$1</strong>'
+                    )
+                }
+                function setActive(i) {
+                    activeIdx = i
+                    Array.from(dd.querySelectorAll('.search-result')).forEach(function (el, j) {
+                        el.classList.toggle('active', j === i)
+                    })
+                }
+                function render(q) {
+                    q = q.trim()
+                    var ql = q.toLowerCase()
+                    results = ql
+                        ? PROFILES.filter(function (p) {
+                              return p.name.toLowerCase().includes(ql) || p.handle.toLowerCase().includes(ql)
+                          })
+                        : []
+                    activeIdx = results.length ? 0 : -1
+                    if (!results.length) {
+                        dd.classList.remove('open')
+                        return
+                    }
+                    dd.innerHTML = results
+                        .map(function (p, i) {
+                            return (
+                                '<a class="search-result' +
+                                (i === activeIdx ? ' active' : '') +
+                                '" href="' +
+                                p.file +
+                                '"><div><div class="search-result-name">' +
+                                hi(p.name, q) +
+                                '</div><div class="search-result-handle">' +
+                                hi(p.handle, q) +
+                                '</div></div></a>'
+                            )
+                        })
+                        .join('')
+                    dd.classList.add('open')
+                }
+                input.addEventListener('input', function () {
+                    render(input.value)
+                })
+                input.addEventListener('keydown', function (e) {
+                    if (!results.length) return
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault()
+                        setActive((activeIdx + 1) % results.length)
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault()
+                        setActive((activeIdx - 1 + results.length) % results.length)
+                    } else if (e.key === 'Enter' && activeIdx >= 0) {
+                        e.preventDefault()
+                        window.location.href = results[activeIdx].file
+                    } else if (e.key === 'Escape') {
+                        dd.classList.remove('open')
+                    }
+                })
+                document.addEventListener('click', function (e) {
+                    if (!wrap.contains(e.target)) dd.classList.remove('open')
+                })
+            })()
+        </script>
+        <!-- AVATAR POPUP MODAL -->
+        <div id="avatar-modal" onclick="if (event.target === this) avClose()">
+            <div class="av-card">
+                <button class="av-close" onclick="avClose()">&#x2715;</button>
+                <div class="av-ring">
+                    <div class="av-circle">
+                        <img id="av-img" src="" alt="" style="display: none" />
+                        <span class="av-ph" id="av-ph"></span>
+                    </div>
+                </div>
+                <div class="av-stats">
+                    <div class="av-stat">❤️ <span class="av-stat-n" id="av-hearts">—</span></div>
+                    <div class="av-stat-sep"></div>
+                    <div class="av-stat">💬 <span class="av-stat-n" id="av-cmts">—</span></div>
+                </div>
+                <div class="av-top-comment">
+                    <div class="av-tc-label">Top Comment</div>
+                    <div class="av-tc-user" id="av-tc-user">@user</div>
+                    <div class="av-tc-text" id="av-tc-text">...</div>
+                </div>
+            </div>
         </div>
-        <div class="about-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          Systems Engineer — KSA / KMM Valdoria
-        </div>
-        <div class="about-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5 2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.9a16 16 0 0 0 5 5l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Hazelia FC — never miss a match 🏟️
-        </div>
-        <div class="about-row">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Joined November 2019
-        </div>
-      </div>
 
-      <!-- Photo grid -->
-      <div class="sidebar-card">
-        <div class="sidebar-title">// Photos</div>
-        <div class="photo-grid">
-          <div class="photo-thumb"><img src="../images/socialsek1.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="photo-thumb"><img src="../images/socialsek2.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="photo-thumb"><img src="../images/socialsek3.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="photo-thumb"><img src="../images/socialsek4.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="photo-thumb"><img src="../images/Sek_SiVaan.png" alt="" onerror="this.style.display='none'"></div>
-          <div class="photo-thumb"><img src="../images/socialfood3.jpg" alt="" onerror="this.style.display='none'"></div>
-        </div>
-      </div>
-
-      <!-- Gram Pals -->
-      <div class="sidebar-card">
-        <div class="sidebar-title">// Gram Pals</div>
-        <div class="suggested-user">
-          <div class="sug-avatar">IMG</div>
-          <div class="sug-info">
-            <div class="sug-name">Par Mesan</div>
-            <div class="sug-handle">@par.mesan</div>
-          </div>
-          <a href="parmesan.html" style="text-decoration:none;"><button class="sug-follow">View</button></a>
-        </div>
-        <div class="suggested-user">
-          <div class="sug-avatar">IMG</div>
-          <div class="sug-info">
-            <div class="sug-name">Chedda McSwagga</div>
-            <div class="sug-handle">@chedda.mcswagga</div>
-          </div>
-          <a href="cheddamcswagga.html" style="text-decoration:none;"><button class="sug-follow">View</button></a>
-        </div>
-        <div class="suggested-user">
-          <div class="sug-avatar">IMG</div>
-          <div class="sug-info">
-            <div class="sug-name">Colby Lore</div>
-            <div class="sug-handle">@colby.lore</div>
-          </div>
-          <a href="colbylore.html" style="text-decoration:none;"><button class="sug-follow">View</button></a>
-        </div>
-      </div>
-
-    </div><!-- /sidebar -->
-
-  </div><!-- /main-grid -->
-</div><!-- /page-wrap -->
-
-
-<script>
-var PROFILES=[
-  {name:'Par Mesan',handle:'@par.mesan',file:'parmesan.html'},
-  {name:'Chedda McSwagga',handle:'@chedda.mcswagga',file:'cheddamcswagga.html'},
-  {name:'Sek SivAan',handle:'@sek.sivaan',file:'seksivaan.html'},
-  {name:'Colby Lore',handle:'@colby.lore',file:'colbylore.html'},
-  {name:'Feta Coquetta',handle:'@feta.coquetta',file:'fetacoquetta.html'},
-  {name:'Unc Farquaad',handle:'@unc.farquaad',file:'uncfarquaad.html'},
-  {name:'Lovey Mesan',handle:'@lovey.mesan',file:'loveymesan.html'},
-  {name:'Barry Shmelly',handle:'@barry.shmelly',file:'barryshmelly.html'},
-  {name:'Dr. Aura Sparkleton',handle:'@dr.aura.sparkleton',file:'aurasparkleton.html'},
-  {name:'Petey Hernandez',handle:'@PeteyProtects',file:'peteyhernandez.html'},
-  {name:'Remy Barnaby Bumblebottom',handle:'@remy_bbb',file:'remybarnaby.html'}
-];
-(function(){
-  var input=document.querySelector('.nav-search');
-  if(!input)return;
-  var wrap=input.parentElement;
-  var dd=document.createElement('div');
-  dd.className='search-dropdown';
-  wrap.appendChild(dd);
-  var activeIdx=-1,results=[];
-  function hi(s,q){return s.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<strong>$1</strong>');}
-  function setActive(i){activeIdx=i;Array.from(dd.querySelectorAll('.search-result')).forEach(function(el,j){el.classList.toggle('active',j===i);});}
-  function render(q){
-    q=q.trim();
-    var ql=q.toLowerCase();
-    results=ql?PROFILES.filter(function(p){return p.name.toLowerCase().includes(ql)||p.handle.toLowerCase().includes(ql);}):[];
-    activeIdx=results.length?0:-1;
-    if(!results.length){dd.classList.remove('open');return;}
-    dd.innerHTML=results.map(function(p,i){
-      return '<a class="search-result'+(i===activeIdx?' active':'')+'" href="'+p.file+'"><div><div class="search-result-name">'+hi(p.name,q)+'</div><div class="search-result-handle">'+hi(p.handle,q)+'</div></div></a>';
-    }).join('');
-    dd.classList.add('open');
-  }
-  input.addEventListener('input',function(){render(input.value);});
-  input.addEventListener('keydown',function(e){
-    if(!results.length)return;
-    if(e.key==='ArrowDown'){e.preventDefault();setActive((activeIdx+1)%results.length);}
-    else if(e.key==='ArrowUp'){e.preventDefault();setActive((activeIdx-1+results.length)%results.length);}
-    else if(e.key==='Enter'&&activeIdx>=0){e.preventDefault();window.location.href=results[activeIdx].file;}
-    else if(e.key==='Escape'){dd.classList.remove('open');}
-  });
-  document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open');});
-})();
-</script>
-<!-- AVATAR POPUP MODAL -->
-<div id="avatar-modal" onclick="if(event.target===this)avClose()">
-  <div class="av-card">
-    <button class="av-close" onclick="avClose()">&#x2715;</button>
-    <div class="av-ring"><div class="av-circle">
-      <img id="av-img" src="" alt="" style="display:none">
-      <span class="av-ph" id="av-ph"></span>
-    </div></div>
-    <div class="av-stats">
-      <div class="av-stat">❤️ <span class="av-stat-n" id="av-hearts">—</span></div>
-      <div class="av-stat-sep"></div>
-      <div class="av-stat">💬 <span class="av-stat-n" id="av-cmts">—</span></div>
-    </div>
-    <div class="av-top-comment">
-      <div class="av-tc-label">Top Comment</div>
-      <div class="av-tc-user" id="av-tc-user">@user</div>
-      <div class="av-tc-text" id="av-tc-text">...</div>
-    </div>
-  </div>
-</div>
-
-<script>
-var _AV={
-  src:'',
-  hearts:'6,241',
-  comments:'289',
-  user:'@cheddamcswagga',
-  comment:'I have received the formal apology. It was thorough.',
-  ph:'📡'
-};
-function avOpen(){
-  var img=document.getElementById('av-img');
-  var ph=document.getElementById('av-ph');
-  document.getElementById('av-hearts').textContent=_AV.hearts;
-  document.getElementById('av-cmts').textContent=_AV.comments;
-  document.getElementById('av-tc-user').textContent=_AV.user;
-  document.getElementById('av-tc-text').textContent=_AV.comment;
-  if(_AV.src){img.src=_AV.src;img.style.display='block';ph.style.display='none';}
-  else{img.style.display='none';ph.textContent=_AV.ph;ph.style.display='block';}
-  document.getElementById('avatar-modal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function avClose(){
-  document.getElementById('avatar-modal').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')avClose();});
-document.addEventListener('DOMContentLoaded',function(){
-  var w=document.querySelector('.profile-avatar-wrap');
-  if(w)w.addEventListener('click',avOpen);
-});
-</script>
-
-</body>
+        <script>
+            var _AV = {
+                src: '',
+                hearts: '6,241',
+                comments: '289',
+                user: '@cheddamcswagga',
+                comment: 'I have received the formal apology. It was thorough.',
+                ph: '📡',
+            }
+            function avOpen() {
+                var img = document.getElementById('av-img')
+                var ph = document.getElementById('av-ph')
+                document.getElementById('av-hearts').textContent = _AV.hearts
+                document.getElementById('av-cmts').textContent = _AV.comments
+                document.getElementById('av-tc-user').textContent = _AV.user
+                document.getElementById('av-tc-text').textContent = _AV.comment
+                if (_AV.src) {
+                    img.src = _AV.src
+                    img.style.display = 'block'
+                    ph.style.display = 'none'
+                } else {
+                    img.style.display = 'none'
+                    ph.textContent = _AV.ph
+                    ph.style.display = 'block'
+                }
+                document.getElementById('avatar-modal').classList.add('open')
+                document.body.style.overflow = 'hidden'
+            }
+            function avClose() {
+                document.getElementById('avatar-modal').classList.remove('open')
+                document.body.style.overflow = ''
+            }
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') avClose()
+            })
+            document.addEventListener('DOMContentLoaded', function () {
+                var w = document.querySelector('.profile-avatar-wrap')
+                if (w) w.addEventListener('click', avOpen)
+            })
+        </script>
+    </body>
 </html>
