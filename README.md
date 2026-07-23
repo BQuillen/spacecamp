@@ -19,14 +19,14 @@ To use it:
 
 1. Install [nvm](https://github.com/coreybutler/nvm-windows) (Node Version Manager).
 2. Install Node.js 26:
-    ```
-    nvm install 26
-    ```
+   ```
+   nvm install 26
+   ```
 3. Install dependencies:
-    ```
-    npm install
-    ```
+   ```
+   npm install
+   ```
 4. Run Prettier:
-    ```
-    npm run format
-    ```
+   ```
+   npm run format
+   ```

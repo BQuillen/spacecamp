@@ -1,759 +1,1445 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Kacentina Herald — Day 2 Coverage: KSA Mission Hold</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#080d1a;
-  --bg-card:#0f1628;
-  --bg-raised:#162036;
-  --blue:#1b6ec2;
-  --blue2:#3b8fe8;
-  --blue-dark:#0c2d5c;
-  --text:#d4e1f0;
-  --muted:#6a84a6;
-  --border:rgba(27,110,194,0.22);
-  --gold:#c9a22a;
-  --sup:#2cc97a;
-  --sdown:#e84848;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Kacentina Herald — Day 2 Coverage: KSA Mission Hold</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #080d1a;
+        --bg-card: #0f1628;
+        --bg-raised: #162036;
+        --blue: #1b6ec2;
+        --blue2: #3b8fe8;
+        --blue-dark: #0c2d5c;
+        --text: #d4e1f0;
+        --muted: #6a84a6;
+        --border: rgba(27, 110, 194, 0.22);
+        --gold: #c9a22a;
+        --sup: #2cc97a;
+        --sdown: #e84848;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+      }
 
-/* ── TOP BAR ── */
-.top-bar{
-  background:#050810;border-bottom:1px solid var(--border);
-  padding:4px 2rem;display:flex;justify-content:space-between;align-items:center;
-  font-size:0.68rem;color:var(--muted);
-}
-.top-bar a{color:var(--muted);text-decoration:none}
-.top-bar a:hover{color:var(--text)}
-.top-bar-right{display:flex;gap:16px}
+      /* ── TOP BAR ── */
+      .top-bar {
+        background: #050810;
+        border-bottom: 1px solid var(--border);
+        padding: 4px 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.68rem;
+        color: var(--muted);
+      }
+      .top-bar a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .top-bar a:hover {
+        color: var(--text);
+      }
+      .top-bar-right {
+        display: flex;
+        gap: 16px;
+      }
 
-/* ── MASTHEAD ── */
-.masthead{
-  background:linear-gradient(160deg,#03071a 0%,#071030 55%,#0a1f4e 100%);
-  border-bottom:3px solid var(--blue);
-  padding:1.1rem 2rem 0.9rem;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-}
+      /* ── MASTHEAD ── */
+      .masthead {
+        background: linear-gradient(160deg, #03071a 0%, #071030 55%, #0a1f4e 100%);
+        border-bottom: 3px solid var(--blue);
+        padding: 1.1rem 2rem 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
 
-.mast-flag{
-  display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:0.25em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:5px;
-  border:1px solid rgba(201,162,42,0.4);padding:2px 8px;border-radius:2px;
-}
-.mast-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.4rem,4vw,2.5rem);
-  font-weight:700;color:#fff;letter-spacing:0.04em;line-height:1;
-}
-.mast-title em{color:var(--blue2);font-style:normal}
-.mast-sub{font-size:0.63rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:5px}
-.mast-date{font-size:0.7rem;color:rgba(255,255,255,0.38);margin-top:2px}
-.mast-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.mast-sub-btn{
-  background:var(--blue);color:#fff;border:none;
-  padding:6px 18px;border-radius:4px;font-size:0.75rem;font-weight:600;
-  cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.04em;
-}
-.mast-edition{font-size:0.65rem;color:rgba(255,255,255,0.3);text-align:right}
+      .mast-flag {
+        display: inline-block;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 5px;
+        border: 1px solid rgba(201, 162, 42, 0.4);
+        padding: 2px 8px;
+        border-radius: 2px;
+      }
+      .mast-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.4rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.04em;
+        line-height: 1;
+      }
+      .mast-title em {
+        color: var(--blue2);
+        font-style: normal;
+      }
+      .mast-sub {
+        font-size: 0.63rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.38);
+        margin-top: 5px;
+      }
+      .mast-date {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.38);
+        margin-top: 2px;
+      }
+      .mast-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+      }
+      .mast-sub-btn {
+        background: var(--blue);
+        color: #fff;
+        border: none;
+        padding: 6px 18px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 0.04em;
+      }
+      .mast-edition {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.3);
+        text-align: right;
+      }
 
-/* ── ALERT BANNER ── */
-.alert-bar{
-  background:var(--blue-dark);
-  border-bottom:2px solid var(--blue);
-  overflow:hidden;height:32px;display:flex;align-items:center;
-}
-.alert-lbl{
-  background:var(--blue2);color:#fff;
-  font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;
-  padding:0 12px;height:100%;display:flex;align-items:center;flex-shrink:0;gap:6px;
-}
-.alert-dot{width:6px;height:6px;background:#fff;border-radius:50%;animation:pulse 1.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
-.alert-scroll{flex:1;overflow:hidden}
-.alert-track{
-  display:inline-flex;white-space:nowrap;
-  animation:scroll-left 40s linear infinite;
-  font-size:0.73rem;font-weight:600;color:rgba(255,255,255,0.85);letter-spacing:0.02em;
-}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.alert-item{padding:0 26px;border-right:1px solid rgba(255,255,255,0.15)}
+      /* ── ALERT BANNER ── */
+      .alert-bar {
+        background: var(--blue-dark);
+        border-bottom: 2px solid var(--blue);
+        overflow: hidden;
+        height: 32px;
+        display: flex;
+        align-items: center;
+      }
+      .alert-lbl {
+        background: var(--blue2);
+        color: #fff;
+        font-size: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0 12px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        gap: 6px;
+      }
+      .alert-dot {
+        width: 6px;
+        height: 6px;
+        background: #fff;
+        border-radius: 50%;
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.8);
+        }
+      }
+      .alert-scroll {
+        flex: 1;
+        overflow: hidden;
+      }
+      .alert-track {
+        display: inline-flex;
+        white-space: nowrap;
+        animation: scroll-left 40s linear infinite;
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 0.02em;
+      }
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .alert-item {
+        padding: 0 26px;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+      }
 
-/* ── NAV ── */
-.site-nav{
-  background:#060c1c;
-  border-bottom:1px solid var(--border);
-  padding:0 2rem;display:flex;align-items:center;gap:0;
-  overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;
-}
-.site-nav::-webkit-scrollbar{display:none}
-.nav-link{
-  color:var(--muted);text-decoration:none;
-  font-size:0.75rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
-  padding:12px 14px;border-bottom:2px solid transparent;
-  white-space:nowrap;transition:color 0.15s,border-color 0.15s;
-}
-.nav-link:hover,.nav-link.active{color:var(--text);border-bottom-color:var(--blue2)}
-.nav-search{
-  margin-left:auto;background:var(--bg-raised);border:1px solid var(--border);
-  border-radius:4px;padding:5px 12px;color:var(--text);font-size:0.75rem;
-  outline:none;font-family:'Inter',sans-serif;min-width:0;width:150px;
-}
-.nav-search::placeholder{color:var(--muted)}
+      /* ── NAV ── */
+      .site-nav {
+        background: #060c1c;
+        border-bottom: 1px solid var(--border);
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .site-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-link {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 12px 14px;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--text);
+        border-bottom-color: var(--blue2);
+      }
+      .nav-search {
+        margin-left: auto;
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 5px 12px;
+        color: var(--text);
+        font-size: 0.75rem;
+        outline: none;
+        font-family: 'Inter', sans-serif;
+        min-width: 0;
+        width: 150px;
+      }
+      .nav-search::placeholder {
+        color: var(--muted);
+      }
 
-/* ── PAGE LAYOUT ── */
-.page-body{max-width:1200px;margin:0 auto;padding:28px 20px;display:grid;grid-template-columns:1fr 290px;gap:28px}
+      /* ── PAGE LAYOUT ── */
+      .page-body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 20px;
+        display: grid;
+        grid-template-columns: 1fr 290px;
+        gap: 28px;
+      }
 
-/* ── SECTION LABEL ── */
-.section-label{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
-.section-label span{
-  font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--blue2);white-space:nowrap;
-}
+      /* ── SECTION LABEL ── */
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .section-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .section-label span {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--blue2);
+        white-space: nowrap;
+      }
 
-/* ── STORY CARD ── */
-.story-card{
-  background:var(--bg-card);border:1px solid var(--border);border-radius:5px;
-  margin-bottom:16px;overflow:hidden;transition:border-color 0.15s;
-}
-.story-card:hover{border-color:rgba(59,143,232,0.4)}
-.story-cat{
-  display:inline-block;font-size:0.6rem;font-weight:700;
-  letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.6rem;
-  border-radius:2px;margin:13px 14px 0;
-}
-.cat-mission{background:rgba(27,110,194,0.2);color:#7ab8ff}
-.cat-world{background:rgba(180,100,220,0.14);color:#d090ff}
-.cat-security{background:rgba(232,72,72,0.14);color:#ff8a8a}
-.cat-kacentina{background:rgba(201,162,42,0.14);color:#d4b84a}
-.cat-odd{background:rgba(50,220,120,0.1);color:#5de8a0}
+      /* ── STORY CARD ── */
+      .story-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        margin-bottom: 16px;
+        overflow: hidden;
+        transition: border-color 0.15s;
+      }
+      .story-card:hover {
+        border-color: rgba(59, 143, 232, 0.4);
+      }
+      .story-cat {
+        display: inline-block;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        border-radius: 2px;
+        margin: 13px 14px 0;
+      }
+      .cat-mission {
+        background: rgba(27, 110, 194, 0.2);
+        color: #7ab8ff;
+      }
+      .cat-world {
+        background: rgba(180, 100, 220, 0.14);
+        color: #d090ff;
+      }
+      .cat-security {
+        background: rgba(232, 72, 72, 0.14);
+        color: #ff8a8a;
+      }
+      .cat-kacentina {
+        background: rgba(201, 162, 42, 0.14);
+        color: #d4b84a;
+      }
+      .cat-odd {
+        background: rgba(50, 220, 120, 0.1);
+        color: #5de8a0;
+      }
 
-.story-img-wrap{margin:10px 14px 0;border-radius:4px;overflow:hidden;background:var(--bg-raised)}
-.story-img-wrap img{
-  width:100%;display:block;min-height:180px;object-fit:cover;
-  background:linear-gradient(135deg,#0a1020 0%,#0e1a30 100%);
-}
-.story-img-wrap img:not([src]),
-.story-img-wrap img[src=""]{min-height:180px;display:block;
-  background:linear-gradient(135deg,#0a1020 0%,#0e1a30 100%);}
-.story-figcap{font-size:0.63rem;color:var(--muted);padding:4px 0 0;font-style:italic}
+      .story-img-wrap {
+        margin: 10px 14px 0;
+        border-radius: 4px;
+        overflow: hidden;
+        background: var(--bg-raised);
+      }
+      .story-img-wrap img {
+        width: 100%;
+        display: block;
+        min-height: 180px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #0a1020 0%, #0e1a30 100%);
+      }
+      .story-img-wrap img:not([src]),
+      .story-img-wrap img[src=''] {
+        min-height: 180px;
+        display: block;
+        background: linear-gradient(135deg, #0a1020 0%, #0e1a30 100%);
+      }
+      .story-figcap {
+        font-size: 0.63rem;
+        color: var(--muted);
+        padding: 4px 0 0;
+        font-style: italic;
+      }
 
-.story-head{
-  padding:12px 14px 10px;cursor:pointer;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
-}
-.story-head:hover h2{color:var(--blue2)}
-.story-head h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1rem,2.2vw,1.22rem);
-  font-weight:700;color:var(--text);line-height:1.3;flex:1;
-}
-.story-toggle{flex-shrink:0;font-size:0.78rem;color:var(--blue2);margin-top:5px;transition:transform 0.3s;display:block}
-.story-card.open .story-toggle{transform:rotate(180deg)}
+      .story-head {
+        padding: 12px 14px 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .story-head:hover h2 {
+        color: var(--blue2);
+      }
+      .story-head h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1rem, 2.2vw, 1.22rem);
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.3;
+        flex: 1;
+      }
+      .story-toggle {
+        flex-shrink: 0;
+        font-size: 0.78rem;
+        color: var(--blue2);
+        margin-top: 5px;
+        transition: transform 0.3s;
+        display: block;
+      }
+      .story-card.open .story-toggle {
+        transform: rotate(180deg);
+      }
 
-.story-byline{font-size:0.7rem;color:var(--muted);padding:0 14px 8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+      .story-byline {
+        font-size: 0.7rem;
+        color: var(--muted);
+        padding: 0 14px 8px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
 
-.story-preview{max-height:0;overflow:hidden;transition:max-height 0.42s ease}
-.story-card.open .story-preview{max-height:1400px}
-.preview-inner{padding:0 14px 14px;border-top:1px solid var(--border)}
-.preview-inner p{color:var(--muted);font-size:0.87rem;line-height:1.74;margin-bottom:10px}
-.preview-inner p:last-child{margin-bottom:0}
-.read-more{
-  display:inline-block;margin-top:10px;
-  font-size:0.73rem;font-weight:700;color:var(--blue2);
-  text-decoration:none;letter-spacing:0.04em;
-}
-.read-more:hover{color:#fff;text-decoration:underline}
+      .story-preview {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.42s ease;
+      }
+      .story-card.open .story-preview {
+        max-height: 1400px;
+      }
+      .preview-inner {
+        padding: 0 14px 14px;
+        border-top: 1px solid var(--border);
+      }
+      .preview-inner p {
+        color: var(--muted);
+        font-size: 0.87rem;
+        line-height: 1.74;
+        margin-bottom: 10px;
+      }
+      .preview-inner p:last-child {
+        margin-bottom: 0;
+      }
+      .read-more {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 0.73rem;
+        font-weight: 700;
+        color: var(--blue2);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+      }
+      .read-more:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
 
-/* ── HERO CARD ── */
-.hero-card{
-  background:var(--bg-card);border:1px solid var(--border);border-radius:5px;
-  margin-bottom:20px;overflow:hidden;
-}
-.hero-img-wrap img{
-  width:100%;display:block;min-height:300px;object-fit:cover;
-  background:linear-gradient(135deg,#060d1e 0%,#0c1a30 100%);
-}
-.hero-img-wrap img:not([src]),
-.hero-img-wrap img[src=""]{min-height:300px;display:block;
-  background:linear-gradient(135deg,#060d1e 0%,#0c1a30 100%);}
-.hero-body{padding:18px 20px 14px}
-.hero-cat{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue2);margin-bottom:6px}
-.hero-flag{
-  display:inline-block;background:rgba(232,72,72,0.18);color:#ff8a8a;
-  font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
-  padding:2px 8px;border-radius:2px;margin-bottom:8px;margin-right:6px;
-  border:1px solid rgba(232,72,72,0.3);
-}
-.hero-title{
-  font-family:'Playfair Display',serif;font-size:clamp(1.25rem,3vw,2rem);
-  font-weight:700;color:var(--text);line-height:1.25;cursor:pointer;margin-bottom:8px;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
-}
-.hero-title:hover span.ht{color:var(--blue2)}
-.hero-byline{font-size:0.7rem;color:var(--muted)}
-.hero-preview{max-height:0;overflow:hidden;transition:max-height 0.42s ease}
-.hero-card.open .hero-preview{max-height:1400px}
-.hero-preview .preview-inner{border-top:1px solid var(--border);margin-top:10px}
+      /* ── HERO CARD ── */
+      .hero-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+      .hero-img-wrap img {
+        width: 100%;
+        display: block;
+        min-height: 300px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #060d1e 0%, #0c1a30 100%);
+      }
+      .hero-img-wrap img:not([src]),
+      .hero-img-wrap img[src=''] {
+        min-height: 300px;
+        display: block;
+        background: linear-gradient(135deg, #060d1e 0%, #0c1a30 100%);
+      }
+      .hero-body {
+        padding: 18px 20px 14px;
+      }
+      .hero-cat {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--blue2);
+        margin-bottom: 6px;
+      }
+      .hero-flag {
+        display: inline-block;
+        background: rgba(232, 72, 72, 0.18);
+        color: #ff8a8a;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 2px;
+        margin-bottom: 8px;
+        margin-right: 6px;
+        border: 1px solid rgba(232, 72, 72, 0.3);
+      }
+      .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.25rem, 3vw, 2rem);
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.25;
+        cursor: pointer;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .hero-title:hover span.ht {
+        color: var(--blue2);
+      }
+      .hero-byline {
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+      .hero-preview {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.42s ease;
+      }
+      .hero-card.open .hero-preview {
+        max-height: 1400px;
+      }
+      .hero-preview .preview-inner {
+        border-top: 1px solid var(--border);
+        margin-top: 10px;
+      }
 
-/* ── STATUS TRACKER ── */
-.status-tracker{
-  background:var(--bg-card);border:1px solid var(--border);border-radius:5px;
-  margin-bottom:20px;overflow:hidden;
-}
-.st-head{
-  background:var(--blue-dark);padding:10px 16px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.st-head-title{font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue2)}
-.st-head-label{font-size:0.62rem;color:rgba(255,255,255,0.45);background:rgba(0,0,0,0.3);padding:2px 8px;border-radius:10px}
-.st-body{padding:10px 0}
-.st-row{
-  display:flex;align-items:center;gap:12px;
-  padding:8px 16px;border-bottom:1px solid var(--border);
-}
-.st-row:last-child{border-bottom:none}
-.st-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.st-dot.hold{background:#e84848;box-shadow:0 0 8px rgba(232,72,72,0.5)}
-.st-dot.active{background:#2cc97a;box-shadow:0 0 8px rgba(44,201,122,0.5)}
-.st-dot.pending{background:var(--gold);box-shadow:0 0 8px rgba(201,162,42,0.4)}
-.st-dot.unknown{background:var(--muted)}
-.st-label{font-size:0.78rem;font-weight:600;color:var(--text);flex:1}
-.st-status{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
-.st-status.hold{color:#ff8a8a}
-.st-status.active{color:#5de8a0}
-.st-status.pending{color:#d4b84a}
-.st-status.unknown{color:var(--muted)}
+      /* ── STATUS TRACKER ── */
+      .status-tracker {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+      .st-head {
+        background: var(--blue-dark);
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .st-head-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--blue2);
+      }
+      .st-head-label {
+        font-size: 0.62rem;
+        color: rgba(255, 255, 255, 0.45);
+        background: rgba(0, 0, 0, 0.3);
+        padding: 2px 8px;
+        border-radius: 10px;
+      }
+      .st-body {
+        padding: 10px 0;
+      }
+      .st-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .st-row:last-child {
+        border-bottom: none;
+      }
+      .st-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .st-dot.hold {
+        background: #e84848;
+        box-shadow: 0 0 8px rgba(232, 72, 72, 0.5);
+      }
+      .st-dot.active {
+        background: #2cc97a;
+        box-shadow: 0 0 8px rgba(44, 201, 122, 0.5);
+      }
+      .st-dot.pending {
+        background: var(--gold);
+        box-shadow: 0 0 8px rgba(201, 162, 42, 0.4);
+      }
+      .st-dot.unknown {
+        background: var(--muted);
+      }
+      .st-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text);
+        flex: 1;
+      }
+      .st-status {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .st-status.hold {
+        color: #ff8a8a;
+      }
+      .st-status.active {
+        color: #5de8a0;
+      }
+      .st-status.pending {
+        color: #d4b84a;
+      }
+      .st-status.unknown {
+        color: var(--muted);
+      }
 
-/* ── SIDEBAR ── */
-.sidebar{display:flex;flex-direction:column;gap:16px}
-.sb-card{background:var(--bg-card);border:1px solid var(--border);border-radius:5px;overflow:hidden}
-.sb-head{
-  background:var(--blue-dark);padding:8px 14px;
-  font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.8);
-}
-.sb-body{padding:12px 14px}
-.sb-item{padding:9px 0;border-bottom:1px solid var(--border)}
-.sb-item:last-child{border-bottom:none;padding-bottom:0}
-.sb-item-title{font-size:0.81rem;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:2px;cursor:pointer}
-.sb-item-title:hover{color:var(--blue2)}
-.sb-item-meta{font-size:0.67rem;color:var(--muted)}
-.reaction-flag{
-  display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;
-  text-transform:uppercase;padding:1px 7px;border-radius:2px;margin-bottom:4px;
-}
-.rf-quiet{background:rgba(201,162,42,0.12);color:#c9a22a;border:1px solid rgba(201,162,42,0.25)}
-.rf-concern{background:rgba(59,143,232,0.12);color:#7ab8ff;border:1px solid rgba(59,143,232,0.25)}
-.rf-neutral{background:rgba(106,132,166,0.12);color:var(--muted);border:1px solid var(--border)}
-.sb-quote{
-  background:var(--bg-raised);border-left:3px solid var(--blue);
-  padding:8px 12px;margin:8px 0;border-radius:0 4px 4px 0;
-  font-size:0.8rem;font-style:italic;color:var(--text);line-height:1.5;
-}
-.sb-quote-attr{font-style:normal;font-size:0.67rem;color:var(--muted);margin-top:4px}
-.crew-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
-.crew-item:last-child{border-bottom:none;padding-bottom:0}
-.crew-avatar{width:36px;height:36px;border-radius:50%;background:var(--bg-raised);border:2px solid var(--border);flex-shrink:0;display:block;object-fit:cover}
-.crew-avatar:not([src]),.crew-avatar[src=""]{width:36px;height:36px;background:var(--bg-raised)}
-.crew-name{font-size:0.8rem;font-weight:600;color:var(--text)}
-.crew-role{font-size:0.67rem;color:var(--muted)}
-.crew-status{font-size:0.63rem;font-weight:700;letter-spacing:0.06em}
-.cs-nominal{color:var(--sup)}
-.cs-hold{color:#ff8a8a}
-.timeline-item{padding:8px 0 8px 24px;position:relative;border-bottom:1px solid var(--border)}
-.timeline-item:last-child{border-bottom:none;padding-bottom:0}
-.timeline-item::before{
-  content:'';position:absolute;left:6px;top:14px;
-  width:8px;height:8px;border-radius:50%;
-  background:var(--blue);border:2px solid var(--bg-card);
-}
-.timeline-time{font-size:0.65rem;font-weight:700;color:var(--blue2);margin-bottom:2px;letter-spacing:0.04em}
-.timeline-text{font-size:0.78rem;color:var(--text);line-height:1.4}
-.timeline-item.latest::before{background:#e84848;box-shadow:0 0 6px rgba(232,72,72,0.5)}
+      /* ── SIDEBAR ── */
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .sb-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .sb-head {
+        background: var(--blue-dark);
+        padding: 8px 14px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .sb-body {
+        padding: 12px 14px;
+      }
+      .sb-item {
+        padding: 9px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .sb-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .sb-item-title {
+        font-size: 0.81rem;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.35;
+        margin-bottom: 2px;
+        cursor: pointer;
+      }
+      .sb-item-title:hover {
+        color: var(--blue2);
+      }
+      .sb-item-meta {
+        font-size: 0.67rem;
+        color: var(--muted);
+      }
+      .reaction-flag {
+        display: inline-block;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 1px 7px;
+        border-radius: 2px;
+        margin-bottom: 4px;
+      }
+      .rf-quiet {
+        background: rgba(201, 162, 42, 0.12);
+        color: #c9a22a;
+        border: 1px solid rgba(201, 162, 42, 0.25);
+      }
+      .rf-concern {
+        background: rgba(59, 143, 232, 0.12);
+        color: #7ab8ff;
+        border: 1px solid rgba(59, 143, 232, 0.25);
+      }
+      .rf-neutral {
+        background: rgba(106, 132, 166, 0.12);
+        color: var(--muted);
+        border: 1px solid var(--border);
+      }
+      .sb-quote {
+        background: var(--bg-raised);
+        border-left: 3px solid var(--blue);
+        padding: 8px 12px;
+        margin: 8px 0;
+        border-radius: 0 4px 4px 0;
+        font-size: 0.8rem;
+        font-style: italic;
+        color: var(--text);
+        line-height: 1.5;
+      }
+      .sb-quote-attr {
+        font-style: normal;
+        font-size: 0.67rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+      .crew-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .crew-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .crew-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--bg-raised);
+        border: 2px solid var(--border);
+        flex-shrink: 0;
+        display: block;
+        object-fit: cover;
+      }
+      .crew-avatar:not([src]),
+      .crew-avatar[src=''] {
+        width: 36px;
+        height: 36px;
+        background: var(--bg-raised);
+      }
+      .crew-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .crew-role {
+        font-size: 0.67rem;
+        color: var(--muted);
+      }
+      .crew-status {
+        font-size: 0.63rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .cs-nominal {
+        color: var(--sup);
+      }
+      .cs-hold {
+        color: #ff8a8a;
+      }
+      .timeline-item {
+        padding: 8px 0 8px 24px;
+        position: relative;
+        border-bottom: 1px solid var(--border);
+      }
+      .timeline-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 6px;
+        top: 14px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--blue);
+        border: 2px solid var(--bg-card);
+      }
+      .timeline-time {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--blue2);
+        margin-bottom: 2px;
+        letter-spacing: 0.04em;
+      }
+      .timeline-text {
+        font-size: 0.78rem;
+        color: var(--text);
+        line-height: 1.4;
+      }
+      .timeline-item.latest::before {
+        background: #e84848;
+        box-shadow: 0 0 6px rgba(232, 72, 72, 0.5);
+      }
 
-/* ── FOOTER ── */
-.site-footer{
-  background:#030710;border-top:2px solid var(--blue);
-  padding:2rem;text-align:center;margin-top:2rem;font-size:0.7rem;color:var(--muted);line-height:1.8;
-}
-.footer-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:rgba(255,255,255,0.55);margin-bottom:6px}
-.footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px}
-.footer-links a{color:var(--muted);text-decoration:none;font-size:0.68rem}
-.footer-links a:hover{color:var(--text)}
+      /* ── FOOTER ── */
+      .site-footer {
+        background: #030710;
+        border-top: 2px solid var(--blue);
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.7rem;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .footer-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 6px;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .footer-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.68rem;
+      }
+      .footer-links a:hover {
+        color: var(--text);
+      }
 
-@media(max-width:900px){.page-body{grid-template-columns:1fr}.sidebar{display:none}}
-</style>
-</head>
-<body>
-
-<!-- TOP BAR -->
-<div class="top-bar">
-  <div>The Kacentina Herald &nbsp;·&nbsp; Serving the Nation Since 1931</div>
-  <div class="top-bar-right">
-    <a href="#">Sign In</a>
-    <a href="#">Subscribe</a>
-    <a href="#">Print Edition</a>
-  </div>
-</div>
-
-<!-- MASTHEAD -->
-<header class="masthead">
-  <div class="mast-left">
-    <div class="mast-flag">Kacentina · National Edition</div>
-    <div class="mast-title">The <em>Kacentina</em> Herald</div>
-    <div class="mast-sub">Independent Press &nbsp;·&nbsp; Trusted Reporting &nbsp;·&nbsp; Est. 1931</div>
-    <div class="mast-date" id="mast-date">Loading date...</div>
-  </div>
-  <div class="mast-right">
-    <button class="mast-sub-btn">Subscribe</button>
-    <div class="mast-edition">Digital + Print &nbsp;·&nbsp; Vol. 94, Ed. 2</div>
-  </div>
-</header>
-
-<!-- ALERT BANNER -->
-<div class="alert-bar">
-  <div class="alert-lbl"><span class="alert-dot"></span>DEVELOPING</div>
-  <div class="alert-scroll">
-    <div class="alert-track">
-      <span class="alert-item">KSA LUNAR MISSION ON HOLD — COMPUTER IRREGULARITIES UNDER INVESTIGATION · SECURITY TEAMS DEPLOYED</span>
-      <span class="alert-item">QUILLANTIS DECLINES TO COMMENT · MINISTRY CITES "DIPLOMATIC CONSIDERATIONS"</span>
-      <span class="alert-item">OLLIJAM LEADER JAMES OLIVER: "AN ATTACK ON ANY NATION IS A PROBLEM FOR ALL NATIONS"</span>
-      <span class="alert-item">KSA STATEMENT: CREW SAFE · MISSION TIMELINE SUSPENDED PENDING FULL REVIEW</span>
-      <span class="alert-item">KSA LUNAR MISSION ON HOLD — COMPUTER IRREGULARITIES UNDER INVESTIGATION · SECURITY TEAMS DEPLOYED</span>
-      <span class="alert-item">QUILLANTIS DECLINES TO COMMENT · MINISTRY CITES "DIPLOMATIC CONSIDERATIONS"</span>
-      <span class="alert-item">OLLIJAM LEADER JAMES OLIVER: "AN ATTACK ON ANY NATION IS A PROBLEM FOR ALL NATIONS"</span>
-      <span class="alert-item">KSA STATEMENT: CREW SAFE · MISSION TIMELINE SUSPENDED PENDING FULL REVIEW</span>
+      @media (max-width: 900px) {
+        .page-body {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div>The Kacentina Herald &nbsp;·&nbsp; Serving the Nation Since 1931</div>
+      <div class="top-bar-right">
+        <a href="#">Sign In</a>
+        <a href="#">Subscribe</a>
+        <a href="#">Print Edition</a>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- NAV -->
-<nav class="site-nav">
-  <a class="nav-link active" href="#">Home</a>
-  <a class="nav-link" href="#">Kacentina</a>
-  <a class="nav-link" href="#">Space</a>
-  <a class="nav-link" href="#">World</a>
-  <a class="nav-link" href="#">Security</a>
-  <a class="nav-link" href="#">Economy</a>
-  <a class="nav-link" href="#">Opinion</a>
-  <a class="nav-link" href="#">Archive</a>
-  <input class="nav-search" type="text" placeholder="Search the Herald...">
-</nav>
+    <!-- MASTHEAD -->
+    <header class="masthead">
+      <div class="mast-left">
+        <div class="mast-flag">Kacentina · National Edition</div>
+        <div class="mast-title">The <em>Kacentina</em> Herald</div>
+        <div class="mast-sub">Independent Press &nbsp;·&nbsp; Trusted Reporting &nbsp;·&nbsp; Est. 1931</div>
+        <div class="mast-date" id="mast-date">Loading date...</div>
+      </div>
+      <div class="mast-right">
+        <button class="mast-sub-btn">Subscribe</button>
+        <div class="mast-edition">Digital + Print &nbsp;·&nbsp; Vol. 94, Ed. 2</div>
+      </div>
+    </header>
 
-<!-- PAGE BODY -->
-<div class="page-body">
-<main>
+    <!-- ALERT BANNER -->
+    <div class="alert-bar">
+      <div class="alert-lbl"><span class="alert-dot"></span>DEVELOPING</div>
+      <div class="alert-scroll">
+        <div class="alert-track">
+          <span class="alert-item"
+            >KSA LUNAR MISSION ON HOLD — COMPUTER IRREGULARITIES UNDER INVESTIGATION · SECURITY TEAMS DEPLOYED</span
+          >
+          <span class="alert-item">QUILLANTIS DECLINES TO COMMENT · MINISTRY CITES "DIPLOMATIC CONSIDERATIONS"</span>
+          <span class="alert-item"
+            >OLLIJAM LEADER JAMES OLIVER: "AN ATTACK ON ANY NATION IS A PROBLEM FOR ALL NATIONS"</span
+          >
+          <span class="alert-item">KSA STATEMENT: CREW SAFE · MISSION TIMELINE SUSPENDED PENDING FULL REVIEW</span>
+          <span class="alert-item"
+            >KSA LUNAR MISSION ON HOLD — COMPUTER IRREGULARITIES UNDER INVESTIGATION · SECURITY TEAMS DEPLOYED</span
+          >
+          <span class="alert-item">QUILLANTIS DECLINES TO COMMENT · MINISTRY CITES "DIPLOMATIC CONSIDERATIONS"</span>
+          <span class="alert-item"
+            >OLLIJAM LEADER JAMES OLIVER: "AN ATTACK ON ANY NATION IS A PROBLEM FOR ALL NATIONS"</span
+          >
+          <span class="alert-item">KSA STATEMENT: CREW SAFE · MISSION TIMELINE SUSPENDED PENDING FULL REVIEW</span>
+        </div>
+      </div>
+    </div>
 
-  <!-- ══════════════════════════════════════════
+    <!-- NAV -->
+    <nav class="site-nav">
+      <a class="nav-link active" href="#">Home</a>
+      <a class="nav-link" href="#">Kacentina</a>
+      <a class="nav-link" href="#">Space</a>
+      <a class="nav-link" href="#">World</a>
+      <a class="nav-link" href="#">Security</a>
+      <a class="nav-link" href="#">Economy</a>
+      <a class="nav-link" href="#">Opinion</a>
+      <a class="nav-link" href="#">Archive</a>
+      <input class="nav-search" type="text" placeholder="Search the Herald..." />
+    </nav>
+
+    <!-- PAGE BODY -->
+    <div class="page-body">
+      <main>
+        <!-- ══════════════════════════════════════════
        HERO — Mission Hold
   ═══════════════════════════════════════════ -->
-  <div class="hero-card" id="hero-hold">
-    <div class="hero-img-wrap">
-      <img src="../images/news2img1.png" alt="KSA launch facility, KMM Valdoria on the pad, mission clock stopped">
-    </div>
-    <div class="hero-body">
-      <span class="hero-flag">Developing Story</span>
-      <div class="hero-cat">Space &amp; Science · Top Story</div>
-      <div class="hero-title" onclick="toggleCard('hero-hold')">
-        <span class="ht">KSA Lunar Mission Suspended After Computer Malfunctions; Investigation Underway</span>
-        <span class="story-toggle">▼</span>
-      </div>
-      <div class="hero-byline">By Herald Science Desk &amp; Security Correspondents &nbsp;·&nbsp; <span id="hero-date">Day 2 Coverage</span></div>
-      <div class="hero-preview">
-        <div class="preview-inner">
-          <p>The Kacentina Space Administration announced late yesterday that the KMM Valdoria lunar mission has been placed on hold after technicians detected what officials described as "computer irregularities" across several systems at the launch facility. No launch date has been rescheduled. The mission clock, which had been counting down to a six-day window, was stopped at 14 hours and 22 minutes.</p>
-          <p>KSA Director Celeste Vantoon confirmed in a brief statement that the full crew has been moved to a secondary location and that all personnel are safe. She did not describe the nature of the malfunctions or say how many systems had been affected. "We take the integrity of our systems very seriously," Tholt said. "We will not proceed until we have complete confidence in our technology."</p>
-          <p>The agency declined to answer follow-up questions about whether the malfunctions could be the result of outside interference. A second statement, released early this morning, confirmed that Kacentina's national security and technical teams have begun a joint investigation. No timeline for the review has been given.</p>
-          <p>The KMM Valdoria mission had been years in the planning and was seen as one of the most significant achievements in Kacentina's space program history. Officials have not said whether the mission will be delayed by days, weeks, or longer.</p>
-          <a href="#" class="read-more">Continue Reading →</a>
+        <div class="hero-card" id="hero-hold">
+          <div class="hero-img-wrap">
+            <img
+              src="../images/news2img1.png"
+              alt="KSA launch facility, KMM Valdoria on the pad, mission clock stopped"
+            />
+          </div>
+          <div class="hero-body">
+            <span class="hero-flag">Developing Story</span>
+            <div class="hero-cat">Space &amp; Science · Top Story</div>
+            <div class="hero-title" onclick="toggleCard('hero-hold')">
+              <span class="ht">KSA Lunar Mission Suspended After Computer Malfunctions; Investigation Underway</span>
+              <span class="story-toggle">▼</span>
+            </div>
+            <div class="hero-byline">
+              By Herald Science Desk &amp; Security Correspondents &nbsp;·&nbsp;
+              <span id="hero-date">Day 2 Coverage</span>
+            </div>
+            <div class="hero-preview">
+              <div class="preview-inner">
+                <p>
+                  The Kacentina Space Administration announced late yesterday that the KMM Valdoria lunar mission has
+                  been placed on hold after technicians detected what officials described as "computer irregularities"
+                  across several systems at the launch facility. No launch date has been rescheduled. The mission clock,
+                  which had been counting down to a six-day window, was stopped at 14 hours and 22 minutes.
+                </p>
+                <p>
+                  KSA Director Celeste Vantoon confirmed in a brief statement that the full crew has been moved to a
+                  secondary location and that all personnel are safe. She did not describe the nature of the
+                  malfunctions or say how many systems had been affected. "We take the integrity of our systems very
+                  seriously," Tholt said. "We will not proceed until we have complete confidence in our technology."
+                </p>
+                <p>
+                  The agency declined to answer follow-up questions about whether the malfunctions could be the result
+                  of outside interference. A second statement, released early this morning, confirmed that Kacentina's
+                  national security and technical teams have begun a joint investigation. No timeline for the review has
+                  been given.
+                </p>
+                <p>
+                  The KMM Valdoria mission had been years in the planning and was seen as one of the most significant
+                  achievements in Kacentina's space program history. Officials have not said whether the mission will be
+                  delayed by days, weeks, or longer.
+                </p>
+                <a href="#" class="read-more">Continue Reading →</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- MISSION STATUS TRACKER -->
-  <div class="status-tracker">
-    <div class="st-head">
-      <div class="st-head-title">KMM Valdoria — Mission Status</div>
-      <div class="st-head-label">Last updated: Day 2, 08:42 local</div>
-    </div>
-    <div class="st-body">
-      <div class="st-row">
-        <div class="st-dot hold"></div>
-        <div class="st-label">Launch Countdown</div>
-        <div class="st-status hold">On Hold</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot active"></div>
-        <div class="st-label">Crew Status</div>
-        <div class="st-status active">All Nominal</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot hold"></div>
-        <div class="st-label">Mission Computer Systems</div>
-        <div class="st-status hold">Under Review</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot pending"></div>
-        <div class="st-label">Security Investigation</div>
-        <div class="st-status pending">Active — No Findings Yet</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot active"></div>
-        <div class="st-label">Launch Vehicle Integrity</div>
-        <div class="st-status active">Confirmed Nominal</div>
-      </div>
-      <div class="st-row">
-        <div class="st-dot unknown"></div>
-        <div class="st-label">Revised Launch Window</div>
-        <div class="st-status unknown">To Be Determined</div>
-      </div>
-    </div>
-  </div>
+        <!-- MISSION STATUS TRACKER -->
+        <div class="status-tracker">
+          <div class="st-head">
+            <div class="st-head-title">KMM Valdoria — Mission Status</div>
+            <div class="st-head-label">Last updated: Day 2, 08:42 local</div>
+          </div>
+          <div class="st-body">
+            <div class="st-row">
+              <div class="st-dot hold"></div>
+              <div class="st-label">Launch Countdown</div>
+              <div class="st-status hold">On Hold</div>
+            </div>
+            <div class="st-row">
+              <div class="st-dot active"></div>
+              <div class="st-label">Crew Status</div>
+              <div class="st-status active">All Nominal</div>
+            </div>
+            <div class="st-row">
+              <div class="st-dot hold"></div>
+              <div class="st-label">Mission Computer Systems</div>
+              <div class="st-status hold">Under Review</div>
+            </div>
+            <div class="st-row">
+              <div class="st-dot pending"></div>
+              <div class="st-label">Security Investigation</div>
+              <div class="st-status pending">Active — No Findings Yet</div>
+            </div>
+            <div class="st-row">
+              <div class="st-dot active"></div>
+              <div class="st-label">Launch Vehicle Integrity</div>
+              <div class="st-status active">Confirmed Nominal</div>
+            </div>
+            <div class="st-row">
+              <div class="st-dot unknown"></div>
+              <div class="st-label">Revised Launch Window</div>
+              <div class="st-status unknown">To Be Determined</div>
+            </div>
+          </div>
+        </div>
 
-  <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
        SECTION: INTERNATIONAL REACTION
   ═══════════════════════════════════════════ -->
-  <div class="section-label"><span>International Reaction</span></div>
+        <div class="section-label"><span>International Reaction</span></div>
 
-  <!-- Story 1: Quillantis -->
-  <div class="story-card" id="card-quillantis">
-    <span class="story-cat cat-world">World</span>
-    <div class="story-img-wrap">
-      <img src="../images/news2img2.png" alt="Quillantis foreign ministry building, exterior">
-      <div class="story-figcap">Photo: Herald International Desk</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-quillantis')">
-      <h2>Quillantis Declines to Comment on KSA Incident, Citing Desire to Protect Ties with Hazelia</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Rees Fontaine, International Correspondent</span>
-      <span>·</span>
-      <span>Day 2</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>Officials in Quillantis have declined to make any public statement about the events at the KSA launch facility, according to a brief response issued by the Quillantis Ministry of Foreign Affairs Tuesday morning. The ministry said only that Quillantis was "monitoring the situation" and would not be offering further comment at this time.</p>
-        <p>Two sources familiar with the relationship between the countries told the Herald that the decision to stay quiet was made specifically to avoid damaging Quillantis's relationship with Hazelia. Quillantis and Hazelia have maintained a close partnership on trade and regional cooperation for over two decades, and officials there are said to be unwilling to take a public position that could be read as an attack on Hazelia.</p>
-        <p>The silence has drawn attention from many people. "When something like this happens, you expect your neighbors to say something," said one analyst, speaking on condition of anonymity. "Quillantis choosing to say nothing is itself a kind of statement." Kacentina's foreign office said it had taken note of all international responses and non-responses to the incident.</p>
-        <p>Quillantis and Kacentina do not have a formal alliance, though the two countries have generally maintained polite relations. It is not yet known whether Kacentina has reached out to Quillantis directly for a private response.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+        <!-- Story 1: Quillantis -->
+        <div class="story-card" id="card-quillantis">
+          <span class="story-cat cat-world">World</span>
+          <div class="story-img-wrap">
+            <img src="../images/news2img2.png" alt="Quillantis foreign ministry building, exterior" />
+            <div class="story-figcap">Photo: Herald International Desk</div>
+          </div>
+          <div class="story-head" onclick="toggleCard('card-quillantis')">
+            <h2>Quillantis Declines to Comment on KSA Incident, Citing Desire to Protect Ties with Hazelia</h2>
+            <span class="story-toggle">▼</span>
+          </div>
+          <div class="story-byline">
+            <span>By Rees Fontaine, International Correspondent</span>
+            <span>·</span>
+            <span>Day 2</span>
+          </div>
+          <div class="story-preview">
+            <div class="preview-inner">
+              <p>
+                Officials in Quillantis have declined to make any public statement about the events at the KSA launch
+                facility, according to a brief response issued by the Quillantis Ministry of Foreign Affairs Tuesday
+                morning. The ministry said only that Quillantis was "monitoring the situation" and would not be offering
+                further comment at this time.
+              </p>
+              <p>
+                Two sources familiar with the relationship between the countries told the Herald that the decision to
+                stay quiet was made specifically to avoid damaging Quillantis's relationship with Hazelia. Quillantis
+                and Hazelia have maintained a close partnership on trade and regional cooperation for over two decades,
+                and officials there are said to be unwilling to take a public position that could be read as an attack
+                on Hazelia.
+              </p>
+              <p>
+                The silence has drawn attention from many people. "When something like this happens, you expect your
+                neighbors to say something," said one analyst, speaking on condition of anonymity. "Quillantis choosing
+                to say nothing is itself a kind of statement." Kacentina's foreign office said it had taken note of all
+                international responses and non-responses to the incident.
+              </p>
+              <p>
+                Quillantis and Kacentina do not have a formal alliance, though the two countries have generally
+                maintained polite relations. It is not yet known whether Kacentina has reached out to Quillantis
+                directly for a private response.
+              </p>
+              <a href="#" class="read-more">Continue Reading →</a>
+            </div>
+          </div>
+        </div>
 
-  <!-- Story 2: Ollijam -->
-  <div class="story-card" id="card-olliejam">
-    <span class="story-cat cat-world">World</span>
-    <div class="story-img-wrap">
-      <img src="../images/news2img3.png" alt="Olliejam Prime Minister James Oliver at press conference podium">
-      <div class="story-figcap">Photo: Ollijam Government Press Office</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-olliejam')">
-      <h2>Ollijam's James Oliver Calls Incident a "Problem for All Nations" — Offers Technical Teams; Kacentina Has Not Responded</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Rees Fontaine, International Correspondent</span>
-      <span>·</span>
-      <span>Day 2</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>Ollijam's leader, James Oliver, made a public statement Tuesday calling the disruption at the KSA facility a matter that concerns every nation. "Any attack against the systems of one country is a problem for all countries," Oliver said at a press conference in the Ollijam capital. "<b>We stand with Kacentina</b>. No nation should have to face this alone."</p>
-        <p>Oliver said Ollijam was prepared to send a team of information technology specialists to help look into the computer issues at the KSA facility. The offer was made publicly and framed as an act of goodwill between nations. Ollijam has one of the largest cybersecurity programs in the region and has assisted other countries in the past.</p>
-        <p>As of this reporting, Kacentina has not publicly accepted or declined the offer. Sources described the government as being cautious about allowing outside access to the KSA facility, even from friendly nations. "The investigation is in its early stages," one official said. "We want to understand what happened first."</p>
-        <p>Several analysts noted that Kacentina's careful handling of the offer does not reflect any problem with Ollijam, but rather a general policy of protecting the security of its space program. Oliver said Ollijam would "continue to be available" if Kacentina chose to accept the offer at a later time.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+        <!-- Story 2: Ollijam -->
+        <div class="story-card" id="card-olliejam">
+          <span class="story-cat cat-world">World</span>
+          <div class="story-img-wrap">
+            <img src="../images/news2img3.png" alt="Olliejam Prime Minister James Oliver at press conference podium" />
+            <div class="story-figcap">Photo: Ollijam Government Press Office</div>
+          </div>
+          <div class="story-head" onclick="toggleCard('card-olliejam')">
+            <h2>
+              Ollijam's James Oliver Calls Incident a "Problem for All Nations" — Offers Technical Teams; Kacentina Has
+              Not Responded
+            </h2>
+            <span class="story-toggle">▼</span>
+          </div>
+          <div class="story-byline">
+            <span>By Rees Fontaine, International Correspondent</span>
+            <span>·</span>
+            <span>Day 2</span>
+          </div>
+          <div class="story-preview">
+            <div class="preview-inner">
+              <p>
+                Ollijam's leader, James Oliver, made a public statement Tuesday calling the disruption at the KSA
+                facility a matter that concerns every nation. "Any attack against the systems of one country is a
+                problem for all countries," Oliver said at a press conference in the Ollijam capital. "<b
+                  >We stand with Kacentina</b
+                >. No nation should have to face this alone."
+              </p>
+              <p>
+                Oliver said Ollijam was prepared to send a team of information technology specialists to help look into
+                the computer issues at the KSA facility. The offer was made publicly and framed as an act of goodwill
+                between nations. Ollijam has one of the largest cybersecurity programs in the region and has assisted
+                other countries in the past.
+              </p>
+              <p>
+                As of this reporting, Kacentina has not publicly accepted or declined the offer. Sources described the
+                government as being cautious about allowing outside access to the KSA facility, even from friendly
+                nations. "The investigation is in its early stages," one official said. "We want to understand what
+                happened first."
+              </p>
+              <p>
+                Several analysts noted that Kacentina's careful handling of the offer does not reflect any problem with
+                Ollijam, but rather a general policy of protecting the security of its space program. Oliver said
+                Ollijam would "continue to be available" if Kacentina chose to accept the offer at a later time.
+              </p>
+              <a href="#" class="read-more">Continue Reading →</a>
+            </div>
+          </div>
+        </div>
 
-  <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
        SECTION: SECURITY & RESPONSE
   ═══════════════════════════════════════════ -->
-  <div class="section-label" style="margin-top:8px"><span>Security &amp; Response</span></div>
+        <div class="section-label" style="margin-top: 8px"><span>Security &amp; Response</span></div>
 
-  <!-- Story 3: Security Teams -->
-  <div class="story-card" id="card-security">
-    <span class="story-cat cat-security">Security</span>
-    <div class="story-img-wrap">
-      <img src="../images/news2img4.png" alt="KSA security personnel at facility entrance checkpoint">
-      <div class="story-figcap">Photo: Herald / K. Varela (pool)</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-security')">
-      <h2>KSA Security Teams Moving "Around the Clock" Toward a Solution, Officials Say</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Tomas Vael, Security Correspondent</span>
-      <span>·</span>
-      <span>Day 2</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>The Kacentina Space Administration's internal security team, working alongside the national technical response unit, has been operating continuously since the mission hold was announced. Officials said Tuesday morning that teams are working "around the clock" and are committed to identifying the source and scope of the computer irregularities before any mission activity resumes.</p>
-        <p>The agency has not released details about which systems were affected, how the problem was first noticed, or whether it involved any access from outside the facility's network. A spokesperson said that sharing those details during an active investigation would not be appropriate. "We are making progress," the spokesperson said. "We will inform the public when we have something to share."</p>
-        <p>KSA has a dedicated computer security team that was expanded significantly three years ago. It operates separately from Kacentina's national cybersecurity division, though the two have reportedly been in close contact since yesterday. Multiple analysts said the fact that a joint team has been assembled suggests the situation is being treated as serious.</p>
-        <p>"You don't pull in that many people for a routine software glitch," said one technology expert the Herald spoke with. "This looks like a broad review, not a targeted fix." Officials did not confirm or deny this claim.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
+        <!-- Story 3: Security Teams -->
+        <div class="story-card" id="card-security">
+          <span class="story-cat cat-security">Security</span>
+          <div class="story-img-wrap">
+            <img src="../images/news2img4.png" alt="KSA security personnel at facility entrance checkpoint" />
+            <div class="story-figcap">Photo: Herald / K. Varela (pool)</div>
+          </div>
+          <div class="story-head" onclick="toggleCard('card-security')">
+            <h2>KSA Security Teams Moving "Around the Clock" Toward a Solution, Officials Say</h2>
+            <span class="story-toggle">▼</span>
+          </div>
+          <div class="story-byline">
+            <span>By Tomas Vael, Security Correspondent</span>
+            <span>·</span>
+            <span>Day 2</span>
+          </div>
+          <div class="story-preview">
+            <div class="preview-inner">
+              <p>
+                The Kacentina Space Administration's internal security team, working alongside the national technical
+                response unit, has been operating continuously since the mission hold was announced. Officials said
+                Tuesday morning that teams are working "around the clock" and are committed to identifying the source
+                and scope of the computer irregularities before any mission activity resumes.
+              </p>
+              <p>
+                The agency has not released details about which systems were affected, how the problem was first
+                noticed, or whether it involved any access from outside the facility's network. A spokesperson said that
+                sharing those details during an active investigation would not be appropriate. "We are making progress,"
+                the spokesperson said. "We will inform the public when we have something to share."
+              </p>
+              <p>
+                KSA has a dedicated computer security team that was expanded significantly three years ago. It operates
+                separately from Kacentina's national cybersecurity division, though the two have reportedly been in
+                close contact since yesterday. Multiple analysts said the fact that a joint team has been assembled
+                suggests the situation is being treated as serious.
+              </p>
+              <p>
+                "You don't pull in that many people for a routine software glitch," said one technology expert the
+                Herald spoke with. "This looks like a broad review, not a targeted fix." Officials did not confirm or
+                deny this claim.
+              </p>
+              <a href="#" class="read-more">Continue Reading →</a>
+            </div>
+          </div>
+        </div>
 
-  <!-- ══════════════════════════════════════════
+        <!-- ══════════════════════════════════════════
        SECTION: OTHER NEWS
   ═══════════════════════════════════════════ -->
-  <div class="section-label" style="margin-top:8px"><span>Other News</span></div>
+        <div class="section-label" style="margin-top: 8px"><span>Other News</span></div>
 
-  <!-- Filler: Crew Interview -->
-  <div class="story-card" id="card-crew">
-    <span class="story-cat cat-mission">Space</span>
-    <div class="story-img-wrap">
-      <img src="../images/news2img5.png" alt="KMM Valdoria crew in training facility, pre-mission photograph">
-      <div class="story-figcap">Photo: KSA / Media Relations</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-crew')">
-      <h2>"We've Trained for Everything." KMM Valdoria Crew Remains Focused Despite Mission Hold</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Herald Space Desk</span>
-      <span>·</span>
-      <span>Day 2</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>The four-person crew of the KMM Valdoria mission has been relocated to a secondary facility and is being kept on standby while the investigation at the main launch complex continues. KSA said all crew members are in good health and have been briefed on the situation. Mission Commander Chedda McSwagga addressed the press briefly Tuesday morning.</p>
-        <p>"We have trained for a long time for this mission," McSwagga said. "We are ready to go when the agency says we are ready to go. That hasn't changed." The rest of the crew was not present at the brief statement but were described as "focused and in good spirits."</p>
-        <p>The crew includes specialists in geology, life sciences, systems engineering, and navigation. They have spent the past year in full mission simulation. Several crew members are on record saying the delay, while disappointing, is the right call. "You don't launch if you're not sure about your systems," said one crew member in a statement passed through the agency. "That's not what we trained for."</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filler: Academy applications -->
-  <div class="story-card" id="card-academy">
-    <span class="story-cat cat-kacentina">Kacentina</span>
-    <div class="story-img-wrap">
-      <img src="../images/news2img6.png" alt="KSA Space Academy entrance, Kacentina">
-      <div class="story-figcap">Photo: KSA Academy / Archive</div>
-    </div>
-    <div class="story-head" onclick="toggleCard('card-academy')">
-      <h2>KSA Academy Reports Jump in Applications Since Mission Announcement — Incident Has Not Changed Numbers</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Staff Reporter</span>
-      <span>·</span>
-      <span>Day 2</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>The Kacentina Space Administration Academy announced Tuesday that it has received more applications for its next training cycle than any previous year on record. Officials said the high interest began building several months ago, when the KMM Valdoria mission entered its final phase of preparations and drew significant national attention.</p>
-        <p>The academy's admissions office said that despite this week's news, application numbers have not dropped. If anything, one official noted, the inbox has been busier than usual. "Kacentinans are paying attention to space right now," said admissions director Angela Roberts. "A pause does not change the mission. The mission is still there."</p>
-        <p>The academy runs a two-year program that covers flight operations, systems engineering, mission science, and health sciences. Acceptance rates have historically been under 8 percent. The incoming class for the next cycle will be announced following the close of the application window in the coming months.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filler: Odd story -->
-  <div class="story-card" id="card-pigeons">
-    <span class="story-cat cat-odd">Kacentina</span>
-    <div class="story-head" onclick="toggleCard('card-pigeons')">
-      <h2>City of Prenvala Reports Pigeon Population "Substantially Above Average" for Third Year</h2>
-      <span class="story-toggle">▼</span>
-    </div>
-    <div class="story-byline">
-      <span>By Staff Reporter</span>
-      <span>·</span>
-      <span>Day 2</span>
-    </div>
-    <div class="story-preview">
-      <div class="preview-inner">
-        <p>The city of Prenvala released its annual urban wildlife count on Tuesday, and the pigeon figures are, once again, high. The city counted an estimated 84,000 pigeons within city limits, which wildlife officers described as "substantially above average." It is the third year in a row the number has exceeded the city's target range.</p>
-        <p>City officials said they are "aware of the trend" and are "looking into options." A public comment period will open next month. Residents are asked not to feed the pigeons in designated no-feeding zones, though city data suggests this request has so far been largely ignored. "They're just really friendly," said one resident near the central square. "What are you supposed to do."</p>
-        <p>Wildlife officers stressed that pigeons are not considered a threat to public safety and that the city remains committed to a "humane and measured" approach to population management. A plan is expected by the end of the quarter.</p>
-        <a href="#" class="read-more">Continue Reading →</a>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<!-- SIDEBAR -->
-<aside class="sidebar">
-
-  <div class="sb-card">
-    <div class="sb-head">Event Timeline</div>
-    <div class="sb-body" style="padding:8px 14px">
-      <div class="timeline-item latest">
-        <div class="timeline-time">Day 2 · 08:42</div>
-        <div class="timeline-text">Security and technical teams confirm joint investigation active. No findings announced.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 2 · 06:15</div>
-        <div class="timeline-text">Ollijam PM Oliver offers IT assistance. Kacentina has not responded publicly.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 2 · 05:30</div>
-        <div class="timeline-text">Quillantis foreign ministry declines to comment.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 1 · 22:10</div>
-        <div class="timeline-text">KSA Director Tholt confirms crew is safe, investigation underway.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 1 · 19:47</div>
-        <div class="timeline-text">Mission clock stopped at T-14:22. KSA declares mission hold.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">Day 1 · 18:03</div>
-        <div class="timeline-text">Computer irregularities first detected by launch systems technicians.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="sb-card">
-    <div class="sb-head">KMM Valdoria Crew</div>
-    <div class="sb-body" style="padding:10px 14px">
-      <div class="crew-item">
-        <img class="crew-avatar" src="" alt="Commander Sela Andris">
-        <div>
-          <div class="crew-name">Cmdr. Sela Andris</div>
-          <div class="crew-role">Mission Commander · Navigation</div>
-          <div class="crew-status cs-nominal">● Nominal</div>
+        <!-- Filler: Crew Interview -->
+        <div class="story-card" id="card-crew">
+          <span class="story-cat cat-mission">Space</span>
+          <div class="story-img-wrap">
+            <img src="../images/news2img5.png" alt="KMM Valdoria crew in training facility, pre-mission photograph" />
+            <div class="story-figcap">Photo: KSA / Media Relations</div>
+          </div>
+          <div class="story-head" onclick="toggleCard('card-crew')">
+            <h2>"We've Trained for Everything." KMM Valdoria Crew Remains Focused Despite Mission Hold</h2>
+            <span class="story-toggle">▼</span>
+          </div>
+          <div class="story-byline">
+            <span>By Herald Space Desk</span>
+            <span>·</span>
+            <span>Day 2</span>
+          </div>
+          <div class="story-preview">
+            <div class="preview-inner">
+              <p>
+                The four-person crew of the KMM Valdoria mission has been relocated to a secondary facility and is being
+                kept on standby while the investigation at the main launch complex continues. KSA said all crew members
+                are in good health and have been briefed on the situation. Mission Commander Chedda McSwagga addressed
+                the press briefly Tuesday morning.
+              </p>
+              <p>
+                "We have trained for a long time for this mission," McSwagga said. "We are ready to go when the agency
+                says we are ready to go. That hasn't changed." The rest of the crew was not present at the brief
+                statement but were described as "focused and in good spirits."
+              </p>
+              <p>
+                The crew includes specialists in geology, life sciences, systems engineering, and navigation. They have
+                spent the past year in full mission simulation. Several crew members are on record saying the delay,
+                while disappointing, is the right call. "You don't launch if you're not sure about your systems," said
+                one crew member in a statement passed through the agency. "That's not what we trained for."
+              </p>
+              <a href="#" class="read-more">Continue Reading →</a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="crew-item">
-        <img class="crew-avatar" src="" alt="Dr. Parmesan — Life Sciences">
-        <div>
-          <div class="crew-name">Dr. Par Mesan</div>
-          <div class="crew-role">Life Sciences Specialist</div>
-          <div class="crew-status cs-nominal">● Nominal</div>
+
+        <!-- Filler: Academy applications -->
+        <div class="story-card" id="card-academy">
+          <span class="story-cat cat-kacentina">Kacentina</span>
+          <div class="story-img-wrap">
+            <img src="../images/news2img6.png" alt="KSA Space Academy entrance, Kacentina" />
+            <div class="story-figcap">Photo: KSA Academy / Archive</div>
+          </div>
+          <div class="story-head" onclick="toggleCard('card-academy')">
+            <h2>
+              KSA Academy Reports Jump in Applications Since Mission Announcement — Incident Has Not Changed Numbers
+            </h2>
+            <span class="story-toggle">▼</span>
+          </div>
+          <div class="story-byline">
+            <span>By Staff Reporter</span>
+            <span>·</span>
+            <span>Day 2</span>
+          </div>
+          <div class="story-preview">
+            <div class="preview-inner">
+              <p>
+                The Kacentina Space Administration Academy announced Tuesday that it has received more applications for
+                its next training cycle than any previous year on record. Officials said the high interest began
+                building several months ago, when the KMM Valdoria mission entered its final phase of preparations and
+                drew significant national attention.
+              </p>
+              <p>
+                The academy's admissions office said that despite this week's news, application numbers have not
+                dropped. If anything, one official noted, the inbox has been busier than usual. "Kacentinans are paying
+                attention to space right now," said admissions director Angela Roberts. "A pause does not change the
+                mission. The mission is still there."
+              </p>
+              <p>
+                The academy runs a two-year program that covers flight operations, systems engineering, mission science,
+                and health sciences. Acceptance rates have historically been under 8 percent. The incoming class for the
+                next cycle will be announced following the close of the application window in the coming months.
+              </p>
+              <a href="#" class="read-more">Continue Reading →</a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="crew-item">
-        <img class="crew-avatar" src="" alt="Colby Kase — Systems Engineer">
-        <div>
-          <div class="crew-name">Colby Kase</div>
-          <div class="crew-role">Systems Engineer</div>
-          <div class="crew-status cs-nominal">● Nominal</div>
+
+        <!-- Filler: Odd story -->
+        <div class="story-card" id="card-pigeons">
+          <span class="story-cat cat-odd">Kacentina</span>
+          <div class="story-head" onclick="toggleCard('card-pigeons')">
+            <h2>City of Prenvala Reports Pigeon Population "Substantially Above Average" for Third Year</h2>
+            <span class="story-toggle">▼</span>
+          </div>
+          <div class="story-byline">
+            <span>By Staff Reporter</span>
+            <span>·</span>
+            <span>Day 2</span>
+          </div>
+          <div class="story-preview">
+            <div class="preview-inner">
+              <p>
+                The city of Prenvala released its annual urban wildlife count on Tuesday, and the pigeon figures are,
+                once again, high. The city counted an estimated 84,000 pigeons within city limits, which wildlife
+                officers described as "substantially above average." It is the third year in a row the number has
+                exceeded the city's target range.
+              </p>
+              <p>
+                City officials said they are "aware of the trend" and are "looking into options." A public comment
+                period will open next month. Residents are asked not to feed the pigeons in designated no-feeding zones,
+                though city data suggests this request has so far been largely ignored. "They're just really friendly,"
+                said one resident near the central square. "What are you supposed to do."
+              </p>
+              <p>
+                Wildlife officers stressed that pigeons are not considered a threat to public safety and that the city
+                remains committed to a "humane and measured" approach to population management. A plan is expected by
+                the end of the quarter.
+              </p>
+              <a href="#" class="read-more">Continue Reading →</a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="crew-item">
-        <img class="crew-avatar" src="" alt="Mission Specialist">
-        <div>
-          <div class="crew-name">Mission Specialist ×3</div>
-          <div class="crew-role">Geology · Sciences · Ops</div>
-          <div class="crew-status cs-nominal">● All Nominal</div>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sb-card">
+          <div class="sb-head">Event Timeline</div>
+          <div class="sb-body" style="padding: 8px 14px">
+            <div class="timeline-item latest">
+              <div class="timeline-time">Day 2 · 08:42</div>
+              <div class="timeline-text">
+                Security and technical teams confirm joint investigation active. No findings announced.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-time">Day 2 · 06:15</div>
+              <div class="timeline-text">
+                Ollijam PM Oliver offers IT assistance. Kacentina has not responded publicly.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-time">Day 2 · 05:30</div>
+              <div class="timeline-text">Quillantis foreign ministry declines to comment.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-time">Day 1 · 22:10</div>
+              <div class="timeline-text">KSA Director Tholt confirms crew is safe, investigation underway.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-time">Day 1 · 19:47</div>
+              <div class="timeline-text">Mission clock stopped at T-14:22. KSA declares mission hold.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-time">Day 1 · 18:03</div>
+              <div class="timeline-text">Computer irregularities first detected by launch systems technicians.</div>
+            </div>
+          </div>
         </div>
-      </div>
+
+        <div class="sb-card">
+          <div class="sb-head">KMM Valdoria Crew</div>
+          <div class="sb-body" style="padding: 10px 14px">
+            <div class="crew-item">
+              <img class="crew-avatar" src="" alt="Commander Sela Andris" />
+              <div>
+                <div class="crew-name">Cmdr. Sela Andris</div>
+                <div class="crew-role">Mission Commander · Navigation</div>
+                <div class="crew-status cs-nominal">● Nominal</div>
+              </div>
+            </div>
+            <div class="crew-item">
+              <img class="crew-avatar" src="" alt="Dr. Parmesan — Life Sciences" />
+              <div>
+                <div class="crew-name">Dr. Par Mesan</div>
+                <div class="crew-role">Life Sciences Specialist</div>
+                <div class="crew-status cs-nominal">● Nominal</div>
+              </div>
+            </div>
+            <div class="crew-item">
+              <img class="crew-avatar" src="" alt="Colby Kase — Systems Engineer" />
+              <div>
+                <div class="crew-name">Colby Kase</div>
+                <div class="crew-role">Systems Engineer</div>
+                <div class="crew-status cs-nominal">● Nominal</div>
+              </div>
+            </div>
+            <div class="crew-item">
+              <img class="crew-avatar" src="" alt="Mission Specialist" />
+              <div>
+                <div class="crew-name">Mission Specialist ×3</div>
+                <div class="crew-role">Geology · Sciences · Ops</div>
+                <div class="crew-status cs-nominal">● All Nominal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <div class="sb-head">World Reaction</div>
+          <div class="sb-body">
+            <div class="sb-item">
+              <span class="reaction-flag rf-quiet">Quillantis</span>
+              <div class="sb-item-title">"No comment at this time."</div>
+              <div class="sb-item-meta">Foreign Ministry statement · Day 2</div>
+            </div>
+            <div class="sb-item">
+              <span class="reaction-flag rf-concern">Ollijam</span>
+              <div class="sb-item-title">"Any attack on any nation is a problem for all nations." — PM Oliver</div>
+              <div class="sb-item-meta">Press conference · Day 2</div>
+            </div>
+            <div class="sb-item">
+              <span class="reaction-flag rf-neutral">Others</span>
+              <div class="sb-item-title">No other formal statements received as of this edition.</div>
+              <div class="sb-item-meta">Herald World Desk · Day 2, 09:00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <div class="sb-head">What We Know</div>
+          <div class="sb-body">
+            <div class="sb-quote">
+              "Computer irregularities" detected across multiple systems at the KSA launch facility. The agency has not
+              confirmed the cause or scope. The mission clock was stopped at T-14 hours, 22 minutes.
+              <div class="sb-quote-attr">— KSA Official Statement, Day 1</div>
+            </div>
+            <div class="sb-quote">
+              "We will not proceed until we have complete confidence in our technology."
+              <div class="sb-quote-attr">— KSA Director Celeste Vantoon</div>
+            </div>
+            <p style="font-size: 0.72rem; color: var(--muted); margin-top: 8px; line-height: 1.6">
+              The Herald will update this section as new information is confirmed. We do not report speculation.
+            </p>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <div class="sb-head">Quick Reads</div>
+          <div class="sb-body">
+            <div class="sb-item">
+              <div class="sb-item-title">
+                KSA Stocks Steady Despite Mission Hold; Analysts Cite "Long-Term Confidence"
+              </div>
+              <div class="sb-item-meta">Economy · Day 2</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">
+                Defense Ministry Has Not Commented on Whether Mission Delay Is Security-Related
+              </div>
+              <div class="sb-item-meta">Security · Day 2</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">Public Support for KSA Remains High, Polling Firm Says</div>
+              <div class="sb-item-meta">Kacentina · Day 2</div>
+            </div>
+            <div class="sb-item">
+              <div class="sb-item-title">Kacentina Academy Applications at All-Time High Despite News</div>
+              <div class="sb-item-meta">Education · Day 2</div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
-  </div>
 
-  <div class="sb-card">
-    <div class="sb-head">World Reaction</div>
-    <div class="sb-body">
-      <div class="sb-item">
-        <span class="reaction-flag rf-quiet">Quillantis</span>
-        <div class="sb-item-title">"No comment at this time."</div>
-        <div class="sb-item-meta">Foreign Ministry statement · Day 2</div>
+    <footer class="site-footer">
+      <div class="footer-title">The Kacentina Herald</div>
+      <div class="footer-links">
+        <a href="#">Home</a><a href="#">About</a><a href="#">Subscribe</a> <a href="#">Archive</a
+        ><a href="#">Corrections</a><a href="#">Contact</a>
+        <a href="#">Privacy</a>
       </div>
-      <div class="sb-item">
-        <span class="reaction-flag rf-concern">Ollijam</span>
-        <div class="sb-item-title">"Any attack on any nation is a problem for all nations." — PM Oliver</div>
-        <div class="sb-item-meta">Press conference · Day 2</div>
+      <div>© 2026 The Kacentina Herald Press Group. All rights reserved. Kacentina · news@kacentina-herald.kc</div>
+      <div style="margin-top: 4px; font-size: 0.63rem; color: #333">
+        Vol. 94, Day 2 Edition. The Herald does not report speculation as fact. All quotes are verified. This edition
+        reflects information available as of 09:00 local.
       </div>
-      <div class="sb-item">
-        <span class="reaction-flag rf-neutral">Others</span>
-        <div class="sb-item-title">No other formal statements received as of this edition.</div>
-        <div class="sb-item-meta">Herald World Desk · Day 2, 09:00</div>
-      </div>
-    </div>
-  </div>
+    </footer>
 
-  <div class="sb-card">
-    <div class="sb-head">What We Know</div>
-    <div class="sb-body">
-      <div class="sb-quote">
-        "Computer irregularities" detected across multiple systems at the KSA launch facility. The agency has not confirmed the cause or scope. The mission clock was stopped at T-14 hours, 22 minutes.
-        <div class="sb-quote-attr">— KSA Official Statement, Day 1</div>
-      </div>
-      <div class="sb-quote">
-        "We will not proceed until we have complete confidence in our technology."
-        <div class="sb-quote-attr">— KSA Director Celeste Vantoon</div>
-      </div>
-      <p style="font-size:0.72rem;color:var(--muted);margin-top:8px;line-height:1.6">The Herald will update this section as new information is confirmed. We do not report speculation.</p>
-    </div>
-  </div>
+    <script>
+      // ── DATE ──
+      ;(function () {
+        var d = new Date()
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        var months = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ]
+        var str = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear()
+        document.getElementById('mast-date').textContent = str
+        document.getElementById('hero-date').textContent = str + ' · Day 2 Coverage'
+      })()
 
-  <div class="sb-card">
-    <div class="sb-head">Quick Reads</div>
-    <div class="sb-body">
-      <div class="sb-item">
-        <div class="sb-item-title">KSA Stocks Steady Despite Mission Hold; Analysts Cite "Long-Term Confidence"</div>
-        <div class="sb-item-meta">Economy · Day 2</div>
-      </div>
-      <div class="sb-item">
-        <div class="sb-item-title">Defense Ministry Has Not Commented on Whether Mission Delay Is Security-Related</div>
-        <div class="sb-item-meta">Security · Day 2</div>
-      </div>
-      <div class="sb-item">
-        <div class="sb-item-title">Public Support for KSA Remains High, Polling Firm Says</div>
-        <div class="sb-item-meta">Kacentina · Day 2</div>
-      </div>
-      <div class="sb-item">
-        <div class="sb-item-title">Kacentina Academy Applications at All-Time High Despite News</div>
-        <div class="sb-item-meta">Education · Day 2</div>
-      </div>
-    </div>
-  </div>
+      // ── ACCORDION ──
+      function toggleCard(id) {
+        var el = document.getElementById(id)
+        if (el) el.classList.toggle('open')
+      }
 
-</aside>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-title">The Kacentina Herald</div>
-  <div class="footer-links">
-    <a href="#">Home</a><a href="#">About</a><a href="#">Subscribe</a>
-    <a href="#">Archive</a><a href="#">Corrections</a><a href="#">Contact</a>
-    <a href="#">Privacy</a>
-  </div>
-  <div>© 2026 The Kacentina Herald Press Group. All rights reserved. Kacentina · news@kacentina-herald.kc</div>
-  <div style="margin-top:4px;font-size:0.63rem;color:#333">Vol. 94, Day 2 Edition. The Herald does not report speculation as fact. All quotes are verified. This edition reflects information available as of 09:00 local.</div>
-</footer>
-
-<script>
-// ── DATE ──
-(function(){
-  var d = new Date();
-  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var str = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
-  document.getElementById('mast-date').textContent = str;
-  document.getElementById('hero-date').textContent = str + ' · Day 2 Coverage';
-})();
-
-// ── ACCORDION ──
-function toggleCard(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.toggle('open');
-}
-
-// ── PLACEHOLDER IMAGES — strip empty src so CSS :not([src]) fallback renders ──
-document.querySelectorAll('img[src=""]').forEach(function(img){img.removeAttribute('src');});
-</script>
-
-</body>
+      // ── PLACEHOLDER IMAGES — strip empty src so CSS :not([src]) fallback renders ──
+      document.querySelectorAll('img[src=""]').forEach(function (img) {
+        img.removeAttribute('src')
+      })
+    </script>
+  </body>
 </html>

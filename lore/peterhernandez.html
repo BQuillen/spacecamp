@@ -1,426 +1,757 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Petey Hernandez — Koogle Search</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#fff;color:#202124;font-family:'Roboto',Arial,sans-serif;font-size:14px;min-height:100vh}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petey Hernandez — Koogle Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #fff;
+        color: #202124;
+        font-family: 'Roboto', Arial, sans-serif;
+        font-size: 14px;
+        min-height: 100vh;
+      }
 
-/* ── NETWORK BAR ── */
-.network-bar{
-  background:#1a2a6c;color:rgba(255,255,255,0.55);
-  font-size:0.68rem;padding:4px 16px;
-  display:flex;justify-content:space-between;align-items:center;
-  letter-spacing:0.04em;
-}
-.nb-right{display:flex;gap:16px;align-items:center}
-.nb-user{color:rgba(255,255,255,0.75);font-weight:500}
-.nb-dot{width:7px;height:7px;border-radius:50%;background:#2cc97a;display:inline-block;margin-right:4px}
+      /* ── NETWORK BAR ── */
+      .network-bar {
+        background: #1a2a6c;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.68rem;
+        padding: 4px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        letter-spacing: 0.04em;
+      }
+      .nb-right {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .nb-user {
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 500;
+      }
+      .nb-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2cc97a;
+        display: inline-block;
+        margin-right: 4px;
+      }
 
-/* ── TOP HEADER ── */
-.top-header{
-  display:flex;align-items:center;gap:0;
-  padding:14px 24px 10px;
-  border-bottom:1px solid #ebebeb;
-  flex-wrap:wrap;gap:8px;
-}
-.koogle-logo-sm{
-  font-size:1.6rem;font-weight:400;letter-spacing:-0.01em;
-  text-decoration:none;margin-right:22px;flex-shrink:0;
-}
-.kl-k{color:#4285F4}
-.kl-o1{color:#EA4335}
-.kl-o2{color:#FBBC05}
-.kl-g{color:#4285F4}
-.kl-l{color:#34A853}
-.kl-e{color:#EA4335}
+      /* ── TOP HEADER ── */
+      .top-header {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        padding: 14px 24px 10px;
+        border-bottom: 1px solid #ebebeb;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .koogle-logo-sm {
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        margin-right: 22px;
+        flex-shrink: 0;
+      }
+      .kl-k {
+        color: #4285f4;
+      }
+      .kl-o1 {
+        color: #ea4335;
+      }
+      .kl-o2 {
+        color: #fbbc05;
+      }
+      .kl-g {
+        color: #4285f4;
+      }
+      .kl-l {
+        color: #34a853;
+      }
+      .kl-e {
+        color: #ea4335;
+      }
 
-.search-bar-wrap{
-  flex:1;min-width:200px;max-width:640px;
-  display:flex;align-items:center;gap:0;
-  border:1px solid #dfe1e5;border-radius:24px;
-  box-shadow:0 1px 6px rgba(32,33,36,0.1);
-  padding:0 14px;height:44px;
-  background:#fff;
-}
-.search-bar-wrap:hover,.search-bar-wrap:focus-within{
-  box-shadow:0 1px 12px rgba(32,33,36,0.2);border-color:rgba(223,225,229,0);
-}
-.search-icon{flex-shrink:0;margin-right:12px;opacity:0.55}
-.search-input{
-  flex:1;border:none;outline:none;font-size:16px;color:#202124;
-  font-family:'Roboto',Arial,sans-serif;background:transparent;
-}
-.search-close{flex-shrink:0;opacity:0.4;cursor:pointer;padding:4px;font-size:1rem}
-.search-divider{width:1px;height:24px;background:#dfe1e5;margin:0 12px}
-.search-mic{flex-shrink:0;opacity:0.55;cursor:pointer;font-size:1rem}
-.search-btn-wrap{display:flex;gap:8px;margin-left:10px}
-.search-btn{
-  background:#f8f9fa;border:1px solid #f8f9fa;border-radius:4px;
-  padding:8px 14px;font-size:0.85rem;color:#3c4043;cursor:pointer;
-  font-family:'Roboto',Arial,sans-serif;
-}
-.search-btn:hover{border-color:#dadce0;box-shadow:0 1px 2px rgba(0,0,0,0.1)}
+      .search-bar-wrap {
+        flex: 1;
+        min-width: 200px;
+        max-width: 640px;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        border: 1px solid #dfe1e5;
+        border-radius: 24px;
+        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.1);
+        padding: 0 14px;
+        height: 44px;
+        background: #fff;
+      }
+      .search-bar-wrap:hover,
+      .search-bar-wrap:focus-within {
+        box-shadow: 0 1px 12px rgba(32, 33, 36, 0.2);
+        border-color: rgba(223, 225, 229, 0);
+      }
+      .search-icon {
+        flex-shrink: 0;
+        margin-right: 12px;
+        opacity: 0.55;
+      }
+      .search-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #202124;
+        font-family: 'Roboto', Arial, sans-serif;
+        background: transparent;
+      }
+      .search-close {
+        flex-shrink: 0;
+        opacity: 0.4;
+        cursor: pointer;
+        padding: 4px;
+        font-size: 1rem;
+      }
+      .search-divider {
+        width: 1px;
+        height: 24px;
+        background: #dfe1e5;
+        margin: 0 12px;
+      }
+      .search-mic {
+        flex-shrink: 0;
+        opacity: 0.55;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .search-btn-wrap {
+        display: flex;
+        gap: 8px;
+        margin-left: 10px;
+      }
+      .search-btn {
+        background: #f8f9fa;
+        border: 1px solid #f8f9fa;
+        border-radius: 4px;
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        color: #3c4043;
+        cursor: pointer;
+        font-family: 'Roboto', Arial, sans-serif;
+      }
+      .search-btn:hover {
+        border-color: #dadce0;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
 
-/* ── NAV TABS ── */
-.nav-tabs{
-  padding:0 24px;display:flex;align-items:center;gap:0;
-  border-bottom:1px solid #ebebeb;
-  overflow-x:auto;scrollbar-width:none;
-}
-.nav-tabs::-webkit-scrollbar{display:none}
-.nav-tab{
-  padding:12px 14px;font-size:0.82rem;color:#5f6368;cursor:pointer;
-  border-bottom:3px solid transparent;white-space:nowrap;
-  text-decoration:none;display:flex;align-items:center;gap:6px;
-}
-.nav-tab:hover{color:#202124}
-.nav-tab.active{color:#1a73e8;border-bottom-color:#1a73e8;font-weight:500}
-.nav-tab-icon{font-size:0.9rem;opacity:0.7}
-.nav-sep{width:1px;height:20px;background:#ebebeb;margin:0 4px;align-self:center}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:4px}
-.tools-btn{padding:12px 14px;font-size:0.82rem;color:#5f6368;cursor:pointer;white-space:nowrap}
-.tools-btn:hover{color:#202124}
+      /* ── NAV TABS ── */
+      .nav-tabs {
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        border-bottom: 1px solid #ebebeb;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-tab {
+        padding: 12px 14px;
+        font-size: 0.82rem;
+        color: #5f6368;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .nav-tab:hover {
+        color: #202124;
+      }
+      .nav-tab.active {
+        color: #1a73e8;
+        border-bottom-color: #1a73e8;
+        font-weight: 500;
+      }
+      .nav-tab-icon {
+        font-size: 0.9rem;
+        opacity: 0.7;
+      }
+      .nav-sep {
+        width: 1px;
+        height: 20px;
+        background: #ebebeb;
+        margin: 0 4px;
+        align-self: center;
+      }
+      .nav-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .tools-btn {
+        padding: 12px 14px;
+        font-size: 0.82rem;
+        color: #5f6368;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .tools-btn:hover {
+        color: #202124;
+      }
 
-/* ── RESULTS PAGE ── */
-.results-page{max-width:660px;padding:16px 24px 0 168px}
-@media(max-width:800px){.results-page{padding-left:24px}}
+      /* ── RESULTS PAGE ── */
+      .results-page {
+        max-width: 660px;
+        padding: 16px 24px 0 168px;
+      }
+      @media (max-width: 800px) {
+        .results-page {
+          padding-left: 24px;
+        }
+      }
 
-.results-meta{font-size:0.83rem;color:#70757a;margin-bottom:20px}
-.results-meta span{color:#202124}
+      .results-meta {
+        font-size: 0.83rem;
+        color: #70757a;
+        margin-bottom: 20px;
+      }
+      .results-meta span {
+        color: #202124;
+      }
 
-/* ── SEARCH RESULT ── */
-.result{margin-bottom:30px}
-.result-source{display:flex;align-items:center;gap:8px;margin-bottom:2px}
-.result-favicon{
-  width:18px;height:18px;border-radius:50%;background:#f1f3f4;
-  display:flex;align-items:center;justify-content:center;font-size:0.55rem;
-  color:#5f6368;flex-shrink:0;overflow:hidden;border:1px solid rgba(0,0,0,0.08);
-}
-.result-domain{font-size:0.83rem;color:#202124}
-.result-breadcrumb{font-size:0.83rem;color:#5f6368}
+      /* ── SEARCH RESULT ── */
+      .result {
+        margin-bottom: 30px;
+      }
+      .result-source {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 2px;
+      }
+      .result-favicon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #f1f3f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.55rem;
+        color: #5f6368;
+        flex-shrink: 0;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      .result-domain {
+        font-size: 0.83rem;
+        color: #202124;
+      }
+      .result-breadcrumb {
+        font-size: 0.83rem;
+        color: #5f6368;
+      }
 
-.result-title{
-  font-size:1.15rem;line-height:1.4;
-  color:#1a0dab;cursor:pointer;display:inline-block;
-  font-weight:400;
-}
-.result-title:hover{text-decoration:underline}
+      .result-title {
+        font-size: 1.15rem;
+        line-height: 1.4;
+        color: #1a0dab;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 400;
+      }
+      .result-title:hover {
+        text-decoration: underline;
+      }
 
-.result-snippet-wrap{
-  max-height:0;overflow:hidden;
-  transition:max-height 0.35s ease;
-}
-.result.open .result-snippet-wrap{max-height:200px}
-.result-snippet{
-  font-size:0.875rem;line-height:1.58;color:#4d5156;
-  padding-top:4px;
-}
-.result-snippet b{color:#202124;font-weight:500}
-.result-snippet a{color:#1a0dab;text-decoration:none}
-.result-snippet a:hover{text-decoration:underline}
+      .result-snippet-wrap {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+      .result.open .result-snippet-wrap {
+        max-height: 200px;
+      }
+      .result-snippet {
+        font-size: 0.875rem;
+        line-height: 1.58;
+        color: #4d5156;
+        padding-top: 4px;
+      }
+      .result-snippet b {
+        color: #202124;
+        font-weight: 500;
+      }
+      .result-snippet a {
+        color: #1a0dab;
+        text-decoration: none;
+      }
+      .result-snippet a:hover {
+        text-decoration: underline;
+      }
 
-.result-meta-tag{
-  display:inline-block;font-size:0.72rem;background:#f1f3f4;
-  border-radius:2px;padding:1px 6px;color:#5f6368;margin-top:3px;
-}
+      .result-meta-tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        background: #f1f3f4;
+        border-radius: 2px;
+        padding: 1px 6px;
+        color: #5f6368;
+        margin-top: 3px;
+      }
 
-/* toggle arrow on the title line */
-.result-toggle{
-  font-size:0.7rem;color:#70757a;margin-left:6px;
-  transition:transform 0.3s;display:inline-block;vertical-align:middle;
-}
-.result.open .result-toggle{transform:rotate(180deg)}
+      /* toggle arrow on the title line */
+      .result-toggle {
+        font-size: 0.7rem;
+        color: #70757a;
+        margin-left: 6px;
+        transition: transform 0.3s;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .result.open .result-toggle {
+        transform: rotate(180deg);
+      }
 
-/* ── SITELINKS ── */
-.sitelinks{
-  display:flex;flex-wrap:wrap;gap:0;margin-top:8px;
-  border:1px solid #ebebeb;border-radius:8px;overflow:hidden;
-}
-.sitelink{
-  flex:1 1 45%;padding:10px 14px;border-right:1px solid #ebebeb;
-  border-bottom:1px solid #ebebeb;cursor:pointer;
-}
-.sitelink:hover{background:#f8f9fa}
-.sitelink:nth-child(2n){border-right:none}
-.sitelink:nth-last-child(-n+2){border-bottom:none}
-.sitelink-title{color:#1a0dab;font-size:0.85rem;font-weight:500}
-.sitelink-desc{font-size:0.75rem;color:#4d5156;margin-top:2px;line-height:1.4}
+      /* ── SITELINKS ── */
+      .sitelinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        margin-top: 8px;
+        border: 1px solid #ebebeb;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .sitelink {
+        flex: 1 1 45%;
+        padding: 10px 14px;
+        border-right: 1px solid #ebebeb;
+        border-bottom: 1px solid #ebebeb;
+        cursor: pointer;
+      }
+      .sitelink:hover {
+        background: #f8f9fa;
+      }
+      .sitelink:nth-child(2n) {
+        border-right: none;
+      }
+      .sitelink:nth-last-child(-n + 2) {
+        border-bottom: none;
+      }
+      .sitelink-title {
+        color: #1a0dab;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+      .sitelink-desc {
+        font-size: 0.75rem;
+        color: #4d5156;
+        margin-top: 2px;
+        line-height: 1.4;
+      }
 
-/* ── NO MORE RESULTS ── */
-.no-more{
-  border-top:1px solid #ebebeb;padding:24px 0 16px;margin-top:4px;
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-}
-.no-more-icon{font-size:2rem;opacity:0.3}
-.no-more-text{font-size:0.9rem;color:#70757a;text-align:center;line-height:1.6}
-.no-more-text b{color:#202124}
+      /* ── NO MORE RESULTS ── */
+      .no-more {
+        border-top: 1px solid #ebebeb;
+        padding: 24px 0 16px;
+        margin-top: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .no-more-icon {
+        font-size: 2rem;
+        opacity: 0.3;
+      }
+      .no-more-text {
+        font-size: 0.9rem;
+        color: #70757a;
+        text-align: center;
+        line-height: 1.6;
+      }
+      .no-more-text b {
+        color: #202124;
+      }
 
-/* ── SIMILAR SEARCHES ── */
-.similar-section{margin-top:24px;padding-top:20px;border-top:1px solid #ebebeb}
-.similar-head{font-size:1rem;color:#202124;font-weight:500;margin-bottom:14px}
-.similar-list{display:flex;flex-direction:column;gap:0}
-.similar-item{
-  display:flex;align-items:center;gap:12px;
-  padding:10px 0;border-bottom:1px solid #ebebeb;cursor:pointer;
-}
-.similar-item:last-child{border-bottom:none}
-.similar-item:hover .similar-text{text-decoration:underline}
-.similar-icon{
-  width:36px;height:36px;border-radius:50%;background:#f1f3f4;
-  display:flex;align-items:center;justify-content:center;
-  font-size:0.9rem;flex-shrink:0;
-}
-.similar-text{color:#202124;font-size:0.95rem}
-.similar-arrow{margin-left:auto;font-size:0.75rem;color:#70757a}
+      /* ── SIMILAR SEARCHES ── */
+      .similar-section {
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid #ebebeb;
+      }
+      .similar-head {
+        font-size: 1rem;
+        color: #202124;
+        font-weight: 500;
+        margin-bottom: 14px;
+      }
+      .similar-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .similar-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid #ebebeb;
+        cursor: pointer;
+      }
+      .similar-item:last-child {
+        border-bottom: none;
+      }
+      .similar-item:hover .similar-text {
+        text-decoration: underline;
+      }
+      .similar-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #f1f3f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+      .similar-text {
+        color: #202124;
+        font-size: 0.95rem;
+      }
+      .similar-arrow {
+        margin-left: auto;
+        font-size: 0.75rem;
+        color: #70757a;
+      }
 
-/* ── FOOTER ── */
-.results-footer{
-  background:#f2f2f2;border-top:1px solid #e4e4e4;
-  padding:14px 24px;text-align:center;
-  font-size:0.82rem;color:#70757a;margin-top:40px;
-  line-height:1.8;
-}
-.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:10px}
-.footer-links a{color:#70757a;text-decoration:none}
-.footer-links a:hover{text-decoration:underline}
-</style>
-</head>
-<body>
+      /* ── FOOTER ── */
+      .results-footer {
+        background: #f2f2f2;
+        border-top: 1px solid #e4e4e4;
+        padding: 14px 24px;
+        text-align: center;
+        font-size: 0.82rem;
+        color: #70757a;
+        margin-top: 40px;
+        line-height: 1.8;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .footer-links a {
+        color: #70757a;
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NETWORK BAR -->
+    <div class="network-bar">
+      <span>KSA Secure Research Network &nbsp;·&nbsp; koogle.kc</span>
+      <div class="nb-right">
+        <span><span class="nb-dot"></span>Connected — Kacentina Node 7</span>
+        <span class="nb-user">ksa_researcher@ksa.kc</span>
+      </div>
+    </div>
 
-<!-- NETWORK BAR -->
-<div class="network-bar">
-  <span>KSA Secure Research Network &nbsp;·&nbsp; koogle.kc</span>
-  <div class="nb-right">
-    <span><span class="nb-dot"></span>Connected — Kacentina Node 7</span>
-    <span class="nb-user">ksa_researcher@ksa.kc</span>
-  </div>
-</div>
+    <!-- HEADER / SEARCH BAR -->
+    <div class="top-header">
+      <a class="koogle-logo-sm" href="#">
+        <span class="kl-k">K</span><span class="kl-o1">o</span><span class="kl-o2">o</span><span class="kl-g">g</span
+        ><span class="kl-l">l</span><span class="kl-e">e</span>
+      </a>
+      <div class="search-bar-wrap">
+        <span class="search-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa0a6" stroke-width="2.2">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="16.5" y1="16.5" x2="22" y2="22" />
+          </svg>
+        </span>
+        <input class="search-input" type="text" value="Petey Hernandez" readonly />
+        <span class="search-close">✕</span>
+        <span class="search-divider"></span>
+        <span class="search-mic">🎤</span>
+      </div>
+      <div class="search-btn-wrap">
+        <button class="search-btn">Koogle Search</button>
+        <button class="search-btn">I'm Feeling Klucky</button>
+      </div>
+    </div>
 
-<!-- HEADER / SEARCH BAR -->
-<div class="top-header">
-  <a class="koogle-logo-sm" href="#">
-    <span class="kl-k">K</span><span class="kl-o1">o</span><span class="kl-o2">o</span><span class="kl-g">g</span><span class="kl-l">l</span><span class="kl-e">e</span>
-  </a>
-  <div class="search-bar-wrap">
-    <span class="search-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa0a6" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
-    </span>
-    <input class="search-input" type="text" value="Petey Hernandez" readonly>
-    <span class="search-close">✕</span>
-    <span class="search-divider"></span>
-    <span class="search-mic">🎤</span>
-  </div>
-  <div class="search-btn-wrap">
-    <button class="search-btn">Koogle Search</button>
-    <button class="search-btn">I'm Feeling Klucky</button>
-  </div>
-</div>
+    <!-- NAV TABS -->
+    <div class="nav-tabs">
+      <a class="nav-tab active" href="#"><span class="nav-tab-icon">🔍</span> All</a>
+      <a class="nav-tab" href="#"><span class="nav-tab-icon">🗞️</span> News</a>
+      <a class="nav-tab" href="#"><span class="nav-tab-icon">🖼️</span> Images</a>
+      <a class="nav-tab" href="#"><span class="nav-tab-icon">🎬</span> Videos</a>
+      <a class="nav-tab" href="#"><span class="nav-tab-icon">🗺️</span> Maps</a>
+      <a class="nav-tab" href="#"><span class="nav-tab-icon">📚</span> More</a>
+      <span class="nav-sep"></span>
+      <div class="nav-right">
+        <span class="tools-btn">Settings</span>
+        <span class="tools-btn">Tools</span>
+      </div>
+    </div>
 
-<!-- NAV TABS -->
-<div class="nav-tabs">
-  <a class="nav-tab active" href="#"><span class="nav-tab-icon">🔍</span> All</a>
-  <a class="nav-tab" href="#"><span class="nav-tab-icon">🗞️</span> News</a>
-  <a class="nav-tab" href="#"><span class="nav-tab-icon">🖼️</span> Images</a>
-  <a class="nav-tab" href="#"><span class="nav-tab-icon">🎬</span> Videos</a>
-  <a class="nav-tab" href="#"><span class="nav-tab-icon">🗺️</span> Maps</a>
-  <a class="nav-tab" href="#"><span class="nav-tab-icon">📚</span> More</a>
-  <span class="nav-sep"></span>
-  <div class="nav-right">
-    <span class="tools-btn">Settings</span>
-    <span class="tools-btn">Tools</span>
-  </div>
-</div>
+    <!-- RESULTS -->
+    <div class="results-page">
+      <div class="results-meta">About <span>5 results</span> (0.04 seconds)</div>
 
-<!-- RESULTS -->
-<div class="results-page">
-
-  <div class="results-meta">About <span>5 results</span> (0.04 seconds)</div>
-
-  <!-- ═══════════════════════════
+      <!-- ═══════════════════════════
        RESULT 1 — FART / Peter Hernandez
   ════════════════════════════ -->
-  <div class="result" id="r1">
-    <div class="result-source">
-      <div class="result-favicon">🐀</div>
-      <span class="result-domain">fart.hz</span>
-      <span class="result-breadcrumb"> › about › founder</span>
-    </div>
-    <div class="result-title" onclick="toggleResult('r1')">
-      Peter Hernandez | Founder &amp; President — Federation for Assisting Rats and Turtles
-      <span class="result-toggle">▼</span>
-    </div>
-    <div class="result-snippet-wrap">
-      <div class="result-snippet">
-        <p>Peter "Petey" Hernandez founded the <b>Federation for Assisting Rats and Turtles (FART)</b> in early 2025 and quickly became one of Hazelia's most recognized animal welfare figures. In its first six months, the organization raised over <b>$1.2 million in donations</b> — a figure described by nonprofit industry observers as "essentially impossible" for a newly registered charity with no prior fundraising history.</p>
-        <span class="result-meta-tag">fart.hz/about/founder</span>
+      <div class="result" id="r1">
+        <div class="result-source">
+          <div class="result-favicon">🐀</div>
+          <span class="result-domain">fart.hz</span>
+          <span class="result-breadcrumb"> › about › founder</span>
+        </div>
+        <div class="result-title" onclick="toggleResult('r1')">
+          Peter Hernandez | Founder &amp; President — Federation for Assisting Rats and Turtles
+          <span class="result-toggle">▼</span>
+        </div>
+        <div class="result-snippet-wrap">
+          <div class="result-snippet">
+            <p>
+              Peter "Petey" Hernandez founded the
+              <b>Federation for Assisting Rats and Turtles (FART)</b> in early 2025 and quickly became one of Hazelia's
+              most recognized animal welfare figures. In its first six months, the organization raised over
+              <b>$1.2 million in donations</b> — a figure described by nonprofit industry observers as "essentially
+              impossible" for a newly registered charity with no prior fundraising history.
+            </p>
+            <span class="result-meta-tag">fart.hz/about/founder</span>
+          </div>
+        </div>
+        <div class="sitelinks">
+          <div class="sitelink">
+            <div class="sitelink-title">Our Mission</div>
+            <div class="sitelink-desc">Why FART exists and what we stand for.</div>
+          </div>
+          <div class="sitelink">
+            <div class="sitelink-title">Donate</div>
+            <div class="sitelink-desc">Every contribution helps the animals.</div>
+          </div>
+          <div class="sitelink">
+            <div class="sitelink-title">Events</div>
+            <div class="sitelink-desc">Walks, marches, and galas near you.</div>
+          </div>
+          <div class="sitelink">
+            <div class="sitelink-title">Board of Directors</div>
+            <div class="sitelink-desc">Meet the team behind the mission.</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="sitelinks">
-      <div class="sitelink">
-        <div class="sitelink-title">Our Mission</div>
-        <div class="sitelink-desc">Why FART exists and what we stand for.</div>
-      </div>
-      <div class="sitelink">
-        <div class="sitelink-title">Donate</div>
-        <div class="sitelink-desc">Every contribution helps the animals.</div>
-      </div>
-      <div class="sitelink">
-        <div class="sitelink-title">Events</div>
-        <div class="sitelink-desc">Walks, marches, and galas near you.</div>
-      </div>
-      <div class="sitelink">
-        <div class="sitelink-title">Board of Directors</div>
-        <div class="sitelink-desc">Meet the team behind the mission.</div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ═══════════════════════════
+      <!-- ═══════════════════════════
        RESULT 2 — Threddit @PeteyProtects
   ════════════════════════════ -->
-  <div class="result" id="r2">
-    <div class="result-source">
-      <div class="result-favicon" style="background:#1a1a1b;color:#ff4500;font-weight:700;font-size:0.6rem">T</div>
-      <span class="result-domain">threddit.hz</span>
-      <span class="result-breadcrumb"> › u › PeteyProtects</span>
-    </div>
-    <div class="result-title" onclick="toggleResult('r2')">
-      @PeteyProtects — Threddit Profile | "The animals don't have a voice. I do."
-      <span class="result-toggle">▼</span>
-    </div>
-    <div class="result-snippet-wrap">
-      <div class="result-snippet">
-        <p>The outspoken activist known as <b>@PeteyProtects</b> is an active and prolific voice across Threddit's space-watch and animal welfare communities, frequently weighing in on topics ranging from research animal welfare to KSA mission practices. His post history includes detailed commentary on <b>RoboPets monitoring sensors</b> and a notable exchange with user <b>DR_SPARKLETON</b> in the r/SpaceWatch forum. <a href="threddit.html">View Threddit profile →</a></p>
-        <span class="result-meta-tag">threddit.hz/u/PeteyProtects · 4.2k karma · joined 2025</span>
+      <div class="result" id="r2">
+        <div class="result-source">
+          <div class="result-favicon" style="background: #1a1a1b; color: #ff4500; font-weight: 700; font-size: 0.6rem">
+            T
+          </div>
+          <span class="result-domain">threddit.hz</span>
+          <span class="result-breadcrumb"> › u › PeteyProtects</span>
+        </div>
+        <div class="result-title" onclick="toggleResult('r2')">
+          @PeteyProtects — Threddit Profile | "The animals don't have a voice. I do."
+          <span class="result-toggle">▼</span>
+        </div>
+        <div class="result-snippet-wrap">
+          <div class="result-snippet">
+            <p>
+              The outspoken activist known as <b>@PeteyProtects</b> is an active and prolific voice across Threddit's
+              space-watch and animal welfare communities, frequently weighing in on topics ranging from research animal
+              welfare to KSA mission practices. His post history includes detailed commentary on
+              <b>RoboPets monitoring sensors</b> and a notable exchange with user <b>DR_SPARKLETON</b> in the
+              r/SpaceWatch forum.
+              <a href="threddit.html">View Threddit profile →</a>
+            </p>
+            <span class="result-meta-tag">threddit.hz/u/PeteyProtects · 4.2k karma · joined 2025</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ═══════════════════════════
+      <!-- ═══════════════════════════
        RESULT 3 — Obituary
   ════════════════════════════ -->
-  <div class="result" id="r3">
-    <div class="result-source">
-      <div class="result-favicon" style="background:#f5f3ee;color:#9a6010;font-size:0.55rem;font-weight:700">HMP</div>
-      <span class="result-domain">hazeliamorningpost.hz</span>
-      <span class="result-breadcrumb"> › obituaries › peter-m-hernandez</span>
-    </div>
-    <div class="result-title" onclick="toggleResult('r3')">
-      Peter M. Hernandez, 84, Remembered by Colleagues | Hazelia Morning Post Obituaries
-      <span class="result-toggle">▼</span>
-    </div>
-    <div class="result-snippet-wrap">
-      <div class="result-snippet">
-        <p>Peter M. Hernandez, 84, passed away quietly at Hazelia Central Hospital in <b>October 2024</b>, survived by a single distant cousin and a small circle of longtime colleagues. He spent the majority of his adult life in <b>government service</b>, the specific nature of which he was known to keep private, even from close friends. Memorial arrangements were handled by the state.</p>
-        <span class="result-meta-tag">Hazelia Morning Post · Obituaries · Oct 14, 2024</span>
+      <div class="result" id="r3">
+        <div class="result-source">
+          <div class="result-favicon" style="background: #f5f3ee; color: #9a6010; font-size: 0.55rem; font-weight: 700">
+            HMP
+          </div>
+          <span class="result-domain">hazeliamorningpost.hz</span>
+          <span class="result-breadcrumb"> › obituaries › peter-m-hernandez</span>
+        </div>
+        <div class="result-title" onclick="toggleResult('r3')">
+          Peter M. Hernandez, 84, Remembered by Colleagues | Hazelia Morning Post Obituaries
+          <span class="result-toggle">▼</span>
+        </div>
+        <div class="result-snippet-wrap">
+          <div class="result-snippet">
+            <p>
+              Peter M. Hernandez, 84, passed away quietly at Hazelia Central Hospital in
+              <b>October 2024</b>, survived by a single distant cousin and a small circle of longtime colleagues. He
+              spent the majority of his adult life in <b>government service</b>, the specific nature of which he was
+              known to keep private, even from close friends. Memorial arrangements were handled by the state.
+            </p>
+            <span class="result-meta-tag">Hazelia Morning Post · Obituaries · Oct 14, 2024</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ═══════════════════════════
+      <!-- ═══════════════════════════
        RESULT 4 — Pop Singer
   ════════════════════════════ -->
-  <div class="result" id="r4">
-    <div class="result-source">
-      <div class="result-favicon" style="background:#1b1b2a;color:#f5c518;font-size:0.5rem;font-weight:700">RG</div>
-      <span class="result-domain">rollinggrooves.hz</span>
-      <span class="result-breadcrumb"> › features › petey-h-cruise-ship-to-stardom</span>
-    </div>
-    <div class="result-title" onclick="toggleResult('r4')">
-      Petey H.: The Cruise Ship Prince Who Became a Pop Star | Rolling Grooves Magazine
-      <span class="result-toggle">▼</span>
-    </div>
-    <div class="result-snippet-wrap">
-      <div class="result-snippet">
-        <p>Long before the platinum records and the sold-out arena tours, singer <b>Petey H.</b> was performing three sets a night on the deck of the <b>MS Calandra</b> luxury liner, entertaining guests between dinner and the midnight buffet. His breakout single <i>"Sail Away (With My Heart)"</i> spent eleven weeks at number one on the Hazelian pop charts and remains one of the most downloaded songs in the country's streaming history. <b>He is not the same person as the FART founder.</b></p>
-        <span class="result-meta-tag">Rolling Grooves Magazine · Feature · 2024</span>
+      <div class="result" id="r4">
+        <div class="result-source">
+          <div class="result-favicon" style="background: #1b1b2a; color: #f5c518; font-size: 0.5rem; font-weight: 700">
+            RG
+          </div>
+          <span class="result-domain">rollinggrooves.hz</span>
+          <span class="result-breadcrumb"> › features › petey-h-cruise-ship-to-stardom</span>
+        </div>
+        <div class="result-title" onclick="toggleResult('r4')">
+          Petey H.: The Cruise Ship Prince Who Became a Pop Star | Rolling Grooves Magazine
+          <span class="result-toggle">▼</span>
+        </div>
+        <div class="result-snippet-wrap">
+          <div class="result-snippet">
+            <p>
+              Long before the platinum records and the sold-out arena tours, singer <b>Petey H.</b> was performing three
+              sets a night on the deck of the <b>MS Calandra</b> luxury liner, entertaining guests between dinner and
+              the midnight buffet. His breakout single <i>"Sail Away (With My Heart)"</i> spent eleven weeks at number
+              one on the Hazelian pop charts and remains one of the most downloaded songs in the country's streaming
+              history.
+              <b>He is not the same person as the FART founder.</b>
+            </p>
+            <span class="result-meta-tag">Rolling Grooves Magazine · Feature · 2024</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ═══════════════════════════
+      <!-- ═══════════════════════════
        RESULT 5 — Hazelia News: Never Heard of Him
   ════════════════════════════ -->
-  <div class="result" id="r5">
-    <div class="result-source">
-      <div class="result-favicon" style="background:#cc1028;color:#fff;font-size:0.5rem;font-weight:700">HRC</div>
-      <span class="result-domain">hazeliaregional.hz</span>
-      <span class="result-breadcrumb"> › news › fart-founder-identity-questioned</span>
-    </div>
-    <div class="result-title" onclick="toggleResult('r5')">
-      FART Founder "Petey Hernandez" Unknown to Locals: Reporters Find No Trace in Listed Hometown | Hazelia Regional Courier
-      <span class="result-toggle">▼</span>
-    </div>
-    <div class="result-snippet-wrap">
-      <div class="result-snippet">
-        <p>Reporters from the Hazelia Regional Courier spent two weeks canvassing <b>Rendavas</b> — the small town listed as Hernandez's hometown on all FART registration documents — and found <b>zero residents who could identify him</b>. The local council had no record of a Peter or Petey Hernandez residing in the area within the past decade, and the address listed on FART's founding paperwork corresponds to a <b>currently vacant lot</b>.</p>
-        <span class="result-meta-tag">Hazelia Regional Courier · Investigative · March 2026</span>
+      <div class="result" id="r5">
+        <div class="result-source">
+          <div class="result-favicon" style="background: #cc1028; color: #fff; font-size: 0.5rem; font-weight: 700">
+            HRC
+          </div>
+          <span class="result-domain">hazeliaregional.hz</span>
+          <span class="result-breadcrumb"> › news › fart-founder-identity-questioned</span>
+        </div>
+        <div class="result-title" onclick="toggleResult('r5')">
+          FART Founder "Petey Hernandez" Unknown to Locals: Reporters Find No Trace in Listed Hometown | Hazelia
+          Regional Courier
+          <span class="result-toggle">▼</span>
+        </div>
+        <div class="result-snippet-wrap">
+          <div class="result-snippet">
+            <p>
+              Reporters from the Hazelia Regional Courier spent two weeks canvassing <b>Rendavas</b> — the small town
+              listed as Hernandez's hometown on all FART registration documents — and found
+              <b>zero residents who could identify him</b>. The local council had no record of a Peter or Petey
+              Hernandez residing in the area within the past decade, and the address listed on FART's founding paperwork
+              corresponds to a <b>currently vacant lot</b>.
+            </p>
+            <span class="result-meta-tag">Hazelia Regional Courier · Investigative · March 2026</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ═══════════════════════════
+      <!-- ═══════════════════════════
        NO MORE RESULTS
   ════════════════════════════ -->
-  <div class="no-more">
-    <div class="no-more-icon">🔍</div>
-    <div class="no-more-text">
-      In order to show you the most relevant results, we have omitted some entries very similar to the <b>5 already displayed</b>.<br>
-      <span style="font-size:0.82rem">There are <b>no further results</b> for <b>"Petey Hernandez"</b>.</span>
-    </div>
-  </div>
+      <div class="no-more">
+        <div class="no-more-icon">🔍</div>
+        <div class="no-more-text">
+          In order to show you the most relevant results, we have omitted some entries very similar to the
+          <b>5 already displayed</b>.<br />
+          <span style="font-size: 0.82rem">There are <b>no further results</b> for <b>"Petey Hernandez"</b>.</span>
+        </div>
+      </div>
 
-  <!-- ═══════════════════════════
+      <!-- ═══════════════════════════
        SIMILAR SEARCHES
   ════════════════════════════ -->
-  <div class="similar-section">
-    <div class="similar-head">Searches related to <i>Petey Hernandez</i></div>
-    <div class="similar-list">
-      <div class="similar-item">
-        <div class="similar-icon">🎵</div>
-        <span class="similar-text">Bruno Mars</span>
-        <span class="similar-arrow">↗</span>
-      </div>
-      <div class="similar-item">
-        <div class="similar-icon">🎃</div>
-        <span class="similar-text">Petey's Pumpkin Patch</span>
-        <span class="similar-arrow">↗</span>
-      </div>
-      <div class="similar-item">
-        <div class="similar-icon">🤷</div>
-        <span class="similar-text">Other Clearly Fake People</span>
-        <span class="similar-arrow">↗</span>
+      <div class="similar-section">
+        <div class="similar-head">Searches related to <i>Petey Hernandez</i></div>
+        <div class="similar-list">
+          <div class="similar-item">
+            <div class="similar-icon">🎵</div>
+            <span class="similar-text">Bruno Mars</span>
+            <span class="similar-arrow">↗</span>
+          </div>
+          <div class="similar-item">
+            <div class="similar-icon">🎃</div>
+            <span class="similar-text">Petey's Pumpkin Patch</span>
+            <span class="similar-arrow">↗</span>
+          </div>
+          <div class="similar-item">
+            <div class="similar-icon">🤷</div>
+            <span class="similar-text">Other Clearly Fake People</span>
+            <span class="similar-arrow">↗</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <!-- /results-page -->
 
-</div><!-- /results-page -->
+    <!-- FOOTER -->
+    <div class="results-footer">
+      <div>Kacentina &nbsp;·&nbsp; koogle.kc</div>
+      <div class="footer-links">
+        <a href="#">About Koogle</a>
+        <a href="#">Advertising</a>
+        <a href="#">Business</a>
+        <a href="#">How Search Works</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Settings</a>
+      </div>
+    </div>
 
-<!-- FOOTER -->
-<div class="results-footer">
-  <div>Kacentina &nbsp;·&nbsp; koogle.kc</div>
-  <div class="footer-links">
-    <a href="#">About Koogle</a>
-    <a href="#">Advertising</a>
-    <a href="#">Business</a>
-    <a href="#">How Search Works</a>
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-    <a href="#">Settings</a>
-  </div>
-</div>
-
-<script>
-function toggleResult(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.toggle('open');
-}
-</script>
-
-</body>
+    <script>
+      function toggleResult(id) {
+        var el = document.getElementById(id)
+        if (el) el.classList.toggle('open')
+      }
+    </script>
+  </body>
 </html>

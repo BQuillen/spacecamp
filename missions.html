@@ -1,241 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KSA — Missions</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-emblem">
-      <img src="images/KSA Logo.png" alt="KSA Logo">
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="crew.html">Kacentina Staff</a>
-      <ul class="nav-dropdown-menu">
-        <li><a href="crew.html">Crew</a></li>
-        <li><a href="employees.html">Employees</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KSA — Missions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-emblem">
+          <img src="images/KSA Logo.png" alt="KSA Logo" />
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="crew.html">Kacentina Staff</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="crew.html">Crew</a></li>
+            <li><a href="employees.html">Employees</a></li>
+          </ul>
+        </li>
+        <li><a href="missions.html" class="active">Missions</a></li>
+        <li><a href="news.html">News</a></li>
       </ul>
-    </li>
-    <li><a href="missions.html" class="active">Missions</a></li>
-    <li><a href="news.html">News</a></li>
-  </ul>
-  <div class="nav-status"><div class="status-dot"></div><div>Mission Upcoming<span id="launch-countdown" class="launch-countdown"></span></div></div>
-</nav>
+      <div class="nav-status">
+        <div class="status-dot"></div>
+        <div>Mission Upcoming<span id="launch-countdown" class="launch-countdown"></span></div>
+      </div>
+    </nav>
 
-<header class="page-header page-header--missions">
-  <div class="page-kicker">Mission Directorate — KSA</div>
-  <h1>Our Missions</h1>
-  <p class="page-desc">Every mission carries the ambition of an entire nation. From our first orbital triumph to our long horizon deep space plans, Kacentina reaches forward — for knowledge, for humanity, for the future.</p>
-</header>
+    <header class="page-header page-header--missions">
+      <div class="page-kicker">Mission Directorate — KSA</div>
+      <h1>Our Missions</h1>
+      <p class="page-desc">
+        Every mission carries the ambition of an entire nation. From our first orbital triumph to our long horizon deep
+        space plans, Kacentina reaches forward — for knowledge, for humanity, for the future.
+      </p>
+    </header>
 
-<div class="timeline-bar">
-  <div class="tl-item"><span class="tl-year">2012</span><a href="#jojo">Jojo Vanguard</a></div>
-  <div class="tl-item"><span class="tl-year">2015</span><a href="#clouthouse">Clouthouse I</a></div>
-  <div class="tl-item"><span class="tl-year">2017</span><a href="#kacentina">KSS Estab.</a></div>
-  <div class="tl-item"><span class="tl-year">2020</span><a href="#c7">C7 Deployment</a></div>
-  <div class="tl-item"><span class="tl-year">2024</span><a href="#schloemer">Schloemer</a></div>
-  <div class="tl-item  tl-active"><span class="tl-year">2026</span><a href="#valdoria">Valdoria Mission - Upcoming</a></div>
-  <div class="tl-item"><span class="tl-year">2027</span><a href="#des">Des Kakpovi Lunar Base</a></div>
-</div>
+    <div class="timeline-bar">
+      <div class="tl-item"><span class="tl-year">2012</span><a href="#jojo">Jojo Vanguard</a></div>
+      <div class="tl-item"><span class="tl-year">2015</span><a href="#clouthouse">Clouthouse I</a></div>
+      <div class="tl-item"><span class="tl-year">2017</span><a href="#kacentina">KSS Estab.</a></div>
+      <div class="tl-item"><span class="tl-year">2020</span><a href="#c7">C7 Deployment</a></div>
+      <div class="tl-item"><span class="tl-year">2024</span><a href="#schloemer">Schloemer</a></div>
+      <div class="tl-item tl-active">
+        <span class="tl-year">2026</span><a href="#valdoria">Valdoria Mission - Upcoming</a>
+      </div>
+      <div class="tl-item"><span class="tl-year">2027</span><a href="#des">Des Kakpovi Lunar Base</a></div>
+    </div>
 
-<section class="missions-section">
+    <section class="missions-section">
+      <!-- MISSION 1 -->
+      <div class="mission-card">
+        <div class="mission-img">
+          <div class="mission-img-bg mi-1"></div>
+          <img src="images/KSA Jojo Vanguard.png" />
+          <span class="mission-status-badge status-complete">Complete</span>
+          <div class="mission-mission-num">01</div>
+        </div>
+        <div class="mission-info">
+          <div class="mission-meta"><span>2012 — LEO</span> · Duration: 14 Days · Crew: 2</div>
+          <div class="mission-name" id="jojo">Jojo Vanguard</div>
+          <div class="mission-subtitle">Kacentina's First Step into Space</div>
+          <p class="mission-desc">
+            The Jojo Vanguard mission officially launched Kacentina into the space age. For the first time in national
+            history, a KSA rocket successfully carried astronauts into orbit and safely returned them home. The mission
+            tested life-support systems, communication technology, and orbital navigation while proving Kacentina could
+            compete with the world’s top space programs. More importantly, it inspired an entire generation of
+            scientists, engineers, and future astronauts to look toward the stars.
+          </p>
+          <div class="mission-tags">
+            <span class="tag">Crewed Orbital</span>
+            <span class="tag">Atmospheric Science</span>
+            <span class="tag">Systems Test</span>
+            <span class="tag">National First</span>
+          </div>
+        </div>
+      </div>
 
-  <!-- MISSION 1 -->
-  <div class="mission-card">
-    <div class="mission-img">
-      <div class="mission-img-bg mi-1"></div>
-      <img src="images/KSA Jojo Vanguard.png">
-      <span class="mission-status-badge status-complete">Complete</span>
-      <div class="mission-mission-num">01</div>
-    </div>
-    <div class="mission-info">
-      <div class="mission-meta">
-        <span>2012 — LEO</span> · Duration: 14 Days · Crew: 2
+      <!-- MISSION 2 -->
+      <div class="mission-card">
+        <div class="mission-img">
+          <div class="mission-img-bg mi-2"></div>
+          <img src="images/KSA Clouthouse Monitoring.png" />
+          <span class="mission-status-badge status-complete">Complete</span>
+          <div class="mission-mission-num">02</div>
+        </div>
+        <div class="mission-info">
+          <div class="mission-meta"><span>2015 — LEO / Climate Orbit</span> · Duration: 28 Days · Crew: 3</div>
+          <div class="mission-name" id="clouthouse">Clouthouse I</div>
+          <div class="mission-subtitle">Environmental Monitoring Mission</div>
+          <p class="mission-desc">
+            As climate concerns grew across the world, the KSA launched the Clouthouse Monitoring Mission to study
+            Earth’s atmosphere, coastlines, and environmental changes from orbit. Specialized satellites tracked CO₂
+            levels, storm development, ocean temperatures, and coastal erosion to help Kacentina better prepare for
+            natural disasters and food shortages. The mission proved that space technology could improve life back on
+            Earth—and gave KSA scientists valuable experience operating long-term observation systems in orbit.
+          </p>
+          <div class="mission-tags">
+            <span class="tag">Climate Research</span>
+            <span class="tag">Remote Sensing</span>
+            <span class="tag">Extended Duration</span>
+            <span class="tag">Policy Impact</span>
+          </div>
+        </div>
       </div>
-      <div class="mission-name" id="jojo">Jojo Vanguard</div>
-      <div class="mission-subtitle">Kacentina's First Step into Space</div>
-      <p class="mission-desc">
-The Jojo Vanguard mission officially launched Kacentina into the space age. For the first time in national history, a KSA rocket successfully carried astronauts into orbit and safely returned them home. The mission tested life-support systems, communication technology, and orbital navigation while proving Kacentina could compete with the world’s top space programs. More importantly, it inspired an entire generation of scientists, engineers, and future astronauts to look toward the stars.      </p>
-      <div class="mission-tags">
-        <span class="tag">Crewed Orbital</span>
-        <span class="tag">Atmospheric Science</span>
-        <span class="tag">Systems Test</span>
-        <span class="tag">National First</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- MISSION 2 -->
-  <div class="mission-card">
-    <div class="mission-img">
-      <div class="mission-img-bg mi-2"></div>
-      <img src="images/KSA Clouthouse Monitoring.png">
-      <span class="mission-status-badge status-complete">Complete</span>
-      <div class="mission-mission-num">02</div>
-    </div>
-    <div class="mission-info">
-      <div class="mission-meta">
-        <span>2015 — LEO / Climate Orbit</span> · Duration: 28 Days · Crew: 3
+      <!-- MISSION 3 -->
+      <div class="mission-card">
+        <div class="mission-img">
+          <div class="mission-img-bg mi-3"></div>
+          <img src="images/KSA KSS Kacentina.png" />
+          <span class="mission-status-badge status-complete">Complete</span>
+          <div class="mission-mission-num">03</div>
+        </div>
+        <div class="mission-info">
+          <div class="mission-meta"><span>2017 — LEO Station</span> · Duration: 270 Days · Crew: 4</div>
+          <div class="mission-name" id="kacentina">Station Founding — KSS Kacentina</div>
+          <div class="mission-subtitle">Establishment of the Kacentina Space Station</div>
+          <p class="mission-desc">
+            The construction of the KSS Kacentina marked the nation’s greatest engineering achievement to date. Built
+            piece by piece in orbit, the station became a permanent research platform where astronauts could live and
+            work in space for months at a time. Crews aboard the station monitored Earth systems, tested advanced
+            technology, grew experimental crops in microgravity, and prepared for future deep-space missions. The
+            station would later become the command hub for Kacentina’s lunar ambitions.
+          </p>
+          <div class="mission-tags">
+            <span class="tag">Station Construction</span>
+            <span class="tag">Habitation</span>
+            <span class="tag">Long Duration</span>
+            <span class="tag">Landmark Mission</span>
+          </div>
+        </div>
       </div>
-      <div class="mission-name" id="clouthouse">Clouthouse I</div>
-      <div class="mission-subtitle">Environmental Monitoring Mission</div>
-      <p class="mission-desc">
-As climate concerns grew across the world, the KSA launched the Clouthouse Monitoring Mission to study Earth’s atmosphere, coastlines, and environmental changes from orbit. Specialized satellites tracked CO₂ levels, storm development, ocean temperatures, and coastal erosion to help Kacentina better prepare for natural disasters and food shortages. The mission proved that space technology could improve life back on Earth—and gave KSA scientists valuable experience operating long-term observation systems in orbit.      </p>
-      <div class="mission-tags">
-        <span class="tag">Climate Research</span>
-        <span class="tag">Remote Sensing</span>
-        <span class="tag">Extended Duration</span>
-        <span class="tag">Policy Impact</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- MISSION 3 -->
-  <div class="mission-card">
-    <div class="mission-img">
-      <div class="mission-img-bg mi-3"></div>
-      <img src="images/KSA KSS Kacentina.png">
-      <span class="mission-status-badge status-complete">Complete</span>
-      <div class="mission-mission-num">03</div>
-    </div>
-    <div class="mission-info">
-      <div class="mission-meta">
-        <span>2017 — LEO Station</span> · Duration: 270 Days · Crew: 4
+      <!-- MISSION 4 -->
+      <div class="mission-card">
+        <div class="mission-img">
+          <div class="mission-img-bg mi-4"></div>
+          <img src="images/KSA C7 Network Deployment.png" />
+          <span class="mission-status-badge status-complete">Complete</span>
+          <div class="mission-mission-num">04</div>
+        </div>
+        <div class="mission-info">
+          <div class="mission-meta"><span>2020 — GEO / MEO</span> · Duration: 90 Days · Crew: Uncrewed</div>
+          <div class="mission-name" id="c7">C7 Network Deployment</div>
+          <div class="mission-subtitle">Satellite Communications Constellation</div>
+          <p class="mission-desc">
+            The C7 Network Deployment mission launched a powerful satellite network designed to provide global
+            communications, weather monitoring, and planetary security systems for Kacentina and its allies. The
+            satellites created reliable internet access for remote regions while also helping monitor severe storms,
+            environmental hazards, and cyber threats around the world. KSA officials described the project as “a shield
+            and signal for the future,” proving that space infrastructure could strengthen both national security and
+            everyday life.
+          </p>
+          <div class="mission-tags">
+            <span class="tag">Satellite Network</span>
+            <span class="tag">Uncrewed</span>
+            <span class="tag">Infrastructure</span>
+            <span class="tag">Public Benefit</span>
+          </div>
+        </div>
       </div>
-      <div class="mission-name" id="kacentina">Station Founding — KSS Kacentina</div>
-      <div class="mission-subtitle">Establishment of the Kacentina Space Station</div>
-      <p class="mission-desc">
-The construction of the KSS Kacentina marked the nation’s greatest engineering achievement to date. Built piece by piece in orbit, the station became a permanent research platform where astronauts could live and work in space for months at a time. Crews aboard the station monitored Earth systems, tested advanced technology, grew experimental crops in microgravity, and prepared for future deep-space missions. The station would later become the command hub for Kacentina’s lunar ambitions.      </p>
-      <div class="mission-tags">
-        <span class="tag">Station Construction</span>
-        <span class="tag">Habitation</span>
-        <span class="tag">Long Duration</span>
-        <span class="tag">Landmark Mission</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- MISSION 4 -->
-  <div class="mission-card">
-    <div class="mission-img">
-      <div class="mission-img-bg mi-4"></div>
-      <img src="images/KSA C7 Network Deployment.png">
-      <span class="mission-status-badge status-complete">Complete</span>
-      <div class="mission-mission-num">04</div>
-    </div>
-    <div class="mission-info">
-      <div class="mission-meta">
-        <span>2020 — GEO / MEO</span> · Duration: 90 Days · Crew: Uncrewed
+      <!-- MISSION 5 -->
+      <div class="mission-card">
+        <div class="mission-img">
+          <div class="mission-img-bg mi-5"></div>
+          <img src="images/KSA Lunar Survey.png" />
+          <span class="mission-status-badge status-complete">Complete</span>
+          <div class="mission-mission-num">05</div>
+        </div>
+        <div class="mission-info">
+          <div class="mission-meta"><span>2024 — Lunar Mapping</span> · Duration: 30 Days · Crew: Uncrewed</div>
+          <div class="mission-name" id="schloemer">Schloemer Lunar Mapping</div>
+          <div class="mission-subtitle">Lunar Survey — Orbital Mapping</div>
+          <p class="mission-desc">
+            Originally launched to search for frozen water reserves near the Moon’s southern pole, the Schloemer Lunar
+            Mapping mission made a discovery nobody expected—and almost nobody believed at first. Deep-scanning sensors
+            detected massive underground deposits of organic material with chemical properties nearly identical to aged
+            cheese. At the time, Earth was facing a catastrophic global cheese shortage after crop failures and
+            bacterial contamination devastated dairy production worldwide. What began as a routine lunar survey quickly
+            became the most important resource discovery in human history. After months of testing and verification, KSA
+            scientists confirmed the impossible: large portions of the Moon appeared to contain harvestable cheese
+            deposits.
+          </p>
+          <div class="mission-tags">
+            <span class="tag">Lunar</span>
+            <span class="tag">Robotic Survey</span>
+            <span class="tag">Deep Space</span>
+            <span class="tag">Precursor Mission</span>
+          </div>
+        </div>
       </div>
-      <div class="mission-name" id="c7">C7 Network Deployment</div>
-      <div class="mission-subtitle">Satellite Communications Constellation</div>
-      <p class="mission-desc">
-The C7 Network Deployment mission launched a powerful satellite network designed to provide global communications, weather monitoring, and planetary security systems for Kacentina and its allies. The satellites created reliable internet access for remote regions while also helping monitor severe storms, environmental hazards, and cyber threats around the world. KSA officials described the project as “a shield and signal for the future,” proving that space infrastructure could strengthen both national security and everyday life.      </p>
-      <div class="mission-tags">
-        <span class="tag">Satellite Network</span>
-        <span class="tag">Uncrewed</span>
-        <span class="tag">Infrastructure</span>
-        <span class="tag">Public Benefit</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- MISSION 5 -->
-  <div class="mission-card">
-    <div class="mission-img">
-      <div class="mission-img-bg mi-5"></div>
-      <img src="images/KSA Lunar Survey.png">
-      <span class="mission-status-badge status-complete">Complete</span>
-      <div class="mission-mission-num">05</div>
-    </div>
-    <div class="mission-info">
-      <div class="mission-meta">
-        <span>2024 — Lunar Mapping</span> · Duration: 30 Days · Crew: Uncrewed
+      <!-- MISSION 6 — ACTIVE -->
+      <div class="mission-card">
+        <div class="mission-img">
+          <div class="mission-img-bg mi-1"></div>
+          <img src="images/KSA KMM Valdoria.png" />
+          <span class="mission-status-badge status-ongoing">Upcoming</span>
+          <div class="mission-mission-num">06</div>
+        </div>
+        <div class="mission-info">
+          <div class="mission-meta"><span>2026 — Moon Mission</span> · Duration: 3 months · Crew: 4</div>
+          <div class="mission-name" id="valdoria">KMM Valdoria</div>
+          <div class="mission-subtitle">Moon Mission - Cheese Harvest</div>
+          <p class="mission-desc">
+            Launching this month, the KMM Valdoria mission will send a four-person crew to the Moon to confirm the
+            findings of the Schloemer mission and identify the safest location for future lunar operations. The
+            astronauts will conduct surface scans, collect core samples, test mining equipment, and begin planning for
+            long-term habitation. The mission also includes biological experiments involving Remy Barnaby Bumblebottom,
+            KSA’s famous research rat. If successful, Valdoria will prove that lunar cheese extraction is possible and
+            pave the way for a permanent human presence on the Moon.
+          </p>
+          <div class="mission-tags">
+            <span class="tag">Upcoming Mission</span>
+            <span class="tag">Station Science</span>
+            <span class="tag">Biological Research</span>
+            <span class="tag">Des Kakpovi Prep</span>
+          </div>
+        </div>
       </div>
-      <div class="mission-name" id="schloemer">Schloemer Lunar Mapping</div>
-      <div class="mission-subtitle">Lunar Survey — Orbital Mapping</div>
-      <p class="mission-desc">
-Originally launched to search for frozen water reserves near the Moon’s southern pole, the Schloemer Lunar Mapping mission made a discovery nobody expected—and almost nobody believed at first. Deep-scanning sensors detected massive underground deposits of organic material with chemical properties nearly identical to aged cheese. At the time, Earth was facing a catastrophic global cheese shortage after crop failures and bacterial contamination devastated dairy production worldwide. What began as a routine lunar survey quickly became the most important resource discovery in human history. After months of testing and verification, KSA scientists confirmed the impossible: large portions of the Moon appeared to contain harvestable cheese deposits.      </p>
-      <div class="mission-tags">
-        <span class="tag">Lunar</span>
-        <span class="tag">Robotic Survey</span>
-        <span class="tag">Deep Space</span>
-        <span class="tag">Precursor Mission</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- MISSION 6 — ACTIVE -->
-  <div class="mission-card">
-    <div class="mission-img">
-      <div class="mission-img-bg mi-1"></div>
-      <img src="images/KSA KMM Valdoria.png">
-      <span class="mission-status-badge status-ongoing">Upcoming</span>
-      <div class="mission-mission-num">06</div>
-    </div>
-    <div class="mission-info">
-      <div class="mission-meta">
-        <span>2026 — Moon Mission</span> · Duration: 3 months · Crew: 4
+      <!-- MISSION 7 — PLANNED -->
+      <div class="mission-card">
+        <div class="mission-img">
+          <div class="mission-img-bg mi-6"></div>
+          <img src="images/KSA Lunar Base.png" />
+          <span class="mission-status-badge status-planned">Planned — 2027</span>
+          <div class="mission-mission-num">07</div>
+        </div>
+        <div class="mission-info">
+          <div class="mission-meta"><span>2027 — Lunar Surface</span> · Duration: 365 Days · Crew: 9</div>
+          <div class="mission-name" id="des">Des Kakpovi Lunar Base</div>
+          <div class="mission-subtitle">Humanity's First Lunar Base - Cheese Mining Operation</div>
+          <p class="mission-desc">
+            The Des Kakpovi Lunar Base mission represents the next stage of Kacentina’s lunar program: establishing a
+            permanent Moon base and beginning full-scale cheese mining operations. Named after President Hackpovi’s
+            grandfather, a factory worker who famously said “the future belongs to whoever shows up first,” the base
+            will include living quarters, research labs, mining equipment, and launch systems for transporting lunar
+            resources back to Earth. KSA leaders believe the mission could help stabilize the world’s cheese supply,
+            create new scientific opportunities, and secure Kacentina’s place as the leading space power on Earth.
+          </p>
+          <div class="mission-tags">
+            <span class="tag">Crewed Lunar Landing</span>
+            <span class="tag">Base and Mining Deployment</span>
+            <span class="tag">Cheese Sampling</span>
+            <span class="tag">Historic Mission</span>
+          </div>
+        </div>
       </div>
-      <div class="mission-name" id="valdoria">KMM Valdoria</div>
-      <div class="mission-subtitle">Moon Mission - Cheese Harvest</div>
-      <p class="mission-desc">
-Launching this month, the KMM Valdoria mission will send a four-person crew to the Moon to confirm the findings of the Schloemer mission and identify the safest location for future lunar operations. The astronauts will conduct surface scans, collect core samples, test mining equipment, and begin planning for long-term habitation. The mission also includes biological experiments involving Remy Barnaby Bumblebottom, KSA’s famous research rat. If successful, Valdoria will prove that lunar cheese extraction is possible and pave the way for a permanent human presence on the Moon.      </p>
-      <div class="mission-tags">
-        <span class="tag">Upcoming Mission</span>
-        <span class="tag">Station Science</span>
-        <span class="tag">Biological Research</span>
-        <span class="tag">Des Kakpovi Prep</span>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- MISSION 7 — PLANNED -->
-  <div class="mission-card">
-    <div class="mission-img">
-      <div class="mission-img-bg mi-6"></div>
-      <img src="images/KSA Lunar Base.png">
-      <span class="mission-status-badge status-planned">Planned — 2027</span>
-      <div class="mission-mission-num">07</div>
-    </div>
-    <div class="mission-info">
-      <div class="mission-meta">
-        <span>2027 — Lunar Surface</span> · Duration: 365 Days · Crew: 9
-      </div>
-      <div class="mission-name" id="des">Des Kakpovi Lunar Base</div>
-      <div class="mission-subtitle">Humanity's First Lunar Base - Cheese Mining Operation</div>
-      <p class="mission-desc">
-The Des Kakpovi Lunar Base mission represents the next stage of Kacentina’s lunar program: establishing a permanent Moon base and beginning full-scale cheese mining operations. Named after President Hackpovi’s grandfather, a factory worker who famously said “the future belongs to whoever shows up first,” the base will include living quarters, research labs, mining equipment, and launch systems for transporting lunar resources back to Earth. KSA leaders believe the mission could help stabilize the world’s cheese supply, create new scientific opportunities, and secure Kacentina’s place as the leading space power on Earth.      </p>
-      <div class="mission-tags">
-        <span class="tag">Crewed Lunar Landing</span>
-        <span class="tag">Base and Mining Deployment</span>
-        <span class="tag">Cheese Sampling</span>
-        <span class="tag">Historic Mission</span>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<footer>
-  <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
-  <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="crew.html">Crew</a></li>
-    <li><a href="missions.html">Missions</a></li>
-    <li><a href="news.html">News</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
-</footer>
-<script src="countdown.js"></script>
-</body>
+    <footer>
+      <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="crew.html">Crew</a></li>
+        <li><a href="missions.html">Missions</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
+    </footer>
+    <script src="countdown.js"></script>
+  </body>
 </html>
