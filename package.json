@@ -1,0 +1,22 @@
+{
+    "name": "spacecamp",
+    "version": "1.0.0",
+    "description": "The Kacentina Space Program",
+    "main": "countdown.js",
+    "scripts": {
+        "format": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BQuillen/spacecamp.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BQuillen/spacecamp/issues"
+    },
+    "homepage": "https://github.com/BQuillen/spacecamp#readme",
+    "dependencies": {
+        "prettier": "^3.9.6"
+    }
+}
