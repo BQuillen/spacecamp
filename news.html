@@ -1,347 +1,458 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KSA — News & Intelligence</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-  a {
-    text-decoration: none;
-    color: white;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KSA — News & Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      a {
+        text-decoration: none;
+        color: white;
+      }
 
-  a:hover {
-    color: #ff8c00;
-  }
-</style>
-</head>
-<body>
-
-<nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-emblem">
-      <img src="images/KSA Logo.png" alt="KSA Logo">
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="crew.html">Kacentina Staff</a>
-      <ul class="nav-dropdown-menu">
-        <li><a href="crew.html">Crew</a></li>
-        <li><a href="employees.html">Employees</a></li>
+      a:hover {
+        color: #ff8c00;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-emblem">
+          <img src="images/KSA Logo.png" alt="KSA Logo" />
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="crew.html">Kacentina Staff</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="crew.html">Crew</a></li>
+            <li><a href="employees.html">Employees</a></li>
+          </ul>
+        </li>
+        <li><a href="missions.html">Missions</a></li>
+        <li><a href="news.html" class="active">News</a></li>
       </ul>
-    </li>
-    <li><a href="missions.html">Missions</a></li>
-    <li><a href="news.html" class="active">News</a></li>
-  </ul>
-  <div class="nav-status"><div class="status-dot"></div><div>Mission Upcoming<span id="launch-countdown" class="launch-countdown"></span></div></div>
-</nav>
-
-<header class="page-header page-header--news">
-  <div class="page-kicker">KSA Communications — Global Press</div>
-  <h1>News & Intel</h1>
-  <p class="page-desc">Mission updates, launch coverage, and security monitoring from across the spacefaring world as Kacentina prepares for the KMM Valdoria lunar mission.</p>
-</header>
-
-<!-- TICKER -->
-<div class="ticker-band">
-  <div class="ticker-label">⚡ LIVE FEED</div>
-  <div style="overflow:hidden;flex:1">
-    <div class="ticker-scroll">
-  <span>KMM VALDORIA LAUNCH — FRIDAY, JUNE 26 — FINAL READINESS CHECKS UNDERWAY</span>
-  <span class="ticker-dot">◆</span>
-  <span>C7 NETWORK — ONLINE — GLOBAL COMMUNICATIONS STABLE</span>
-  <span class="ticker-dot">◆</span>
-  <span>SCHLOEMER LUNAR MAPPING DATA — CHEESE DEPOSIT MODELS UNDER FINAL REVIEW</span>
-  <span class="ticker-dot">◆</span>
-  <span>HAZELIA PRESIDENT JIBBERSON REPORTEDLY DEMANDS “MOON RESPONSE PLAN”</span>
-  <span class="ticker-dot">◆</span>
-  <span>KSS KACENTINA — CREWED MONITORING OPERATIONS CONTINUE</span>
-  <span class="ticker-dot">◆</span>
-  <span>REMY BARNABY BUMBLEBOTTOM COMPLETES FINAL MAZE TRIAL — SNACK RECOVERY EXCELLENT</span>
-  <span class="ticker-dot">◆</span>
-</div>
-  </div>
-</div>
-
-<!-- MAIN LAYOUT -->
-<div class="news-layout">
-
-  <!-- FEED -->
-  <div class="news-feed">
-
-    <!-- FEATURED -->
-    <div class="feed-section">
-      <div class="feed-section-header">
-        <div class="feed-section-title">Featured Coverage</div>
-        <div class="feed-count">International Press</div>
+      <div class="nav-status">
+        <div class="status-dot"></div>
+        <div>Mission Upcoming<span id="launch-countdown" class="launch-countdown"></span></div>
       </div>
+    </nav>
 
-      <div class="news-featured">
-        <div class="featured-img">
-          <div class="fi-bg fi-1"></div>
-          <img src="images/KSA President Hackpovi.png">
+    <header class="page-header page-header--news">
+      <div class="page-kicker">KSA Communications — Global Press</div>
+      <h1>News & Intel</h1>
+      <p class="page-desc">
+        Mission updates, launch coverage, and security monitoring from across the spacefaring world as Kacentina
+        prepares for the KMM Valdoria lunar mission.
+      </p>
+    </header>
+
+    <!-- TICKER -->
+    <div class="ticker-band">
+      <div class="ticker-label">⚡ LIVE FEED</div>
+      <div style="overflow: hidden; flex: 1">
+        <div class="ticker-scroll">
+          <span>KMM VALDORIA LAUNCH — FRIDAY, JUNE 26 — FINAL READINESS CHECKS UNDERWAY</span>
+          <span class="ticker-dot">◆</span>
+          <span>C7 NETWORK — ONLINE — GLOBAL COMMUNICATIONS STABLE</span>
+          <span class="ticker-dot">◆</span>
+          <span>SCHLOEMER LUNAR MAPPING DATA — CHEESE DEPOSIT MODELS UNDER FINAL REVIEW</span>
+          <span class="ticker-dot">◆</span>
+          <span>HAZELIA PRESIDENT JIBBERSON REPORTEDLY DEMANDS “MOON RESPONSE PLAN”</span>
+          <span class="ticker-dot">◆</span>
+          <span>KSS KACENTINA — CREWED MONITORING OPERATIONS CONTINUE</span>
+          <span class="ticker-dot">◆</span>
+          <span>REMY BARNABY BUMBLEBOTTOM COMPLETES FINAL MAZE TRIAL — SNACK RECOVERY EXCELLENT</span>
+          <span class="ticker-dot">◆</span>
         </div>
-        <div class="featured-body">
-          <div class="news-source">Orbital Tribune International — Global Desk</div>
-            <div class="news-headline"><a href="articles/presidenthackpovi.html">President Hackpovi addresses KSA before Historic June 26 Lunar Launch</a></div>
-            <p class="news-excerpt">
-              Final preparations are underway for the KMM Valdoria, Kacentina’s first crewed mission to the Moon. Launching Friday, June 26, the mission will confirm the Schloemer Lunar Mapping findings that shocked the world: the Moon may contain massive harvestable cheese deposits at a time when Earth’s cheese supply has collapsed. The Valdoria crew will collect samples, test landing conditions, and determine whether a future lunar base can safely begin mining operations next year.
-            </p>
-            <div class="news-meta">
-              <span class="news-tag">Featured</span>
-              <span>June 20, 2026 · 8 min read</span>
+      </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="news-layout">
+      <!-- FEED -->
+      <div class="news-feed">
+        <!-- FEATURED -->
+        <div class="feed-section">
+          <div class="feed-section-header">
+            <div class="feed-section-title">Featured Coverage</div>
+            <div class="feed-count">International Press</div>
+          </div>
+
+          <div class="news-featured">
+            <div class="featured-img">
+              <div class="fi-bg fi-1"></div>
+              <img src="images/KSA President Hackpovi.png" />
             </div>
+            <div class="featured-body">
+              <div class="news-source">Orbital Tribune International — Global Desk</div>
+              <div class="news-headline">
+                <a href="articles/presidenthackpovi.html"
+                  >President Hackpovi addresses KSA before Historic June 26 Lunar Launch</a
+                >
+              </div>
+              <p class="news-excerpt">
+                Final preparations are underway for the KMM Valdoria, Kacentina’s first crewed mission to the Moon.
+                Launching Friday, June 26, the mission will confirm the Schloemer Lunar Mapping findings that shocked
+                the world: the Moon may contain massive harvestable cheese deposits at a time when Earth’s cheese supply
+                has collapsed. The Valdoria crew will collect samples, test landing conditions, and determine whether a
+                future lunar base can safely begin mining operations next year.
+              </p>
+              <div class="news-meta">
+                <span class="news-tag">Featured</span>
+                <span>June 20, 2026 · 8 min read</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISSION HIGHLIGHTS -->
+        <div class="feed-section">
+          <div class="feed-section-header">
+            <div class="feed-section-title">Mission Highlights</div>
+            <div class="feed-count">KSA Official & Press</div>
+          </div>
+
+          <!--Article 1-->
+          <div class="news-item">
+            <div class="news-item-icon">🚀</div>
+            <div class="news-item-content">
+              <div class="ni-source">KSA Mission Control — Official Release</div>
+              <div class="ni-headline">
+                <a href="articles/readinessphase.html">KMM Valdoria Enters Final Launch Readiness Phase</a>
+              </div>
+              <p class="ni-excerpt">
+                Flight Director Dr. Celeste Vantoon confirmed that crew systems, launch software, navigation checks, and
+                lunar sample equipment have entered final review. KSA officials report that the Valdoria remains on
+                schedule for Friday, June 26.
+              </p>
+              <div class="ni-date">June 20, 2026</div>
+            </div>
+          </div>
+
+          <!--Article 2-->
+          <div class="news-item">
+            <div class="news-item-icon">🛰️</div>
+            <div class="news-item-content">
+              <div class="ni-source">Kacentina National Broadcasting Service</div>
+              <div class="ni-headline">
+                <a href="articles/updatedcheese.html"
+                  >Schloemer Lunar Mapping Team Releases Updated Cheese Deposit Model</a
+                >
+              </div>
+              <p class="ni-excerpt">
+                New analysis of lunar mapping data shows several promising subsurface regions near the planned Valdoria
+                landing zone. Scientists caution that the findings must be confirmed in person, but one researcher
+                admitted the readings are “extremely difficult to explain unless the Moon is, somehow, very snackable.”
+              </p>
+              <div class="ni-date">June 18, 2026</div>
+            </div>
+          </div>
+
+          <!--Article 3-->
+          <div class="news-item">
+            <div class="news-item-icon">⚗️</div>
+            <div class="news-item-content">
+              <div class="ni-source">KSA Biological Research Division</div>
+              <div class="ni-headline">
+                <a href="articles/remy.html">Remy Barnaby Bumblebottom Cleared for Lunar Research Role</a>
+              </div>
+              <p class="ni-excerpt">
+                After completing his final maze trials, Remy has been cleared to support biological adaptation studies
+                during the Valdoria mission. Dr. Aura Sparkleton praised his focus, bravery, and “deep personal
+                commitment to cheese-based discovery.”
+              </p>
+              <div class="ni-date">June 16, 2026</div>
+            </div>
+          </div>
+
+          <!--Article 4-->
+          <div class="news-item">
+            <div class="news-item-icon">🌍</div>
+            <div class="news-item-content">
+              <div class="ni-source">Global Environmental Monitor</div>
+              <div class="ni-headline">
+                <a href="articles/c7network.html">C7 Network Remains Critical as Lunar Launch Approaches</a>
+              </div>
+              <p class="ni-excerpt">
+                The C7 satellite network continues to provide communications, climate monitoring, and security support
+                for KSA operations. Analysts say the system will be essential for tracking Valdoria communications
+                during the mission’s journey to the Moon.
+              </p>
+              <div class="ni-date">June 12, 2026</div>
+            </div>
+          </div>
+
+          <!--Article 5-->
+          <div class="news-item">
+            <div class="news-item-icon">🏫</div>
+            <div class="news-item-content">
+              <div class="ni-source">KSA Station Operations</div>
+              <div class="ni-headline">
+                <a href="articles/simulations.html">KSS Kacentina Supports Final Mission Simulations</a>
+              </div>
+              <p class="ni-excerpt">
+                Astronauts aboard KSS Kacentina are assisting Mission Control with long-range communications testing and
+                emergency procedure simulations. The station remains a key orbital hub for Kacentina’s expanding lunar
+                program.
+              </p>
+              <div class="ni-date">June 9, 2026</div>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-item-icon">🌙</div>
+            <div class="news-item-content">
+              <div class="ni-source">Kacentina Education Ministry — Press Office</div>
+              <div class="ni-headline">
+                <a href="articles/students.html">Students Nationwide Follow Valdoria Mission Countdown</a>
+              </div>
+              <p class="ni-excerpt">
+                Classrooms across Kacentina are tracking the Valdoria launch as part of a national STEM initiative.
+                Lesson topics include rocketry, lunar geology, food security, and why “the Moon is made of cheese” is
+                suddenly a scientific statement requiring footnotes.
+              </p>
+              <div class="ni-date">June 5, 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security SECTION -->
+        <div class="hazelia-section">
+          <div class="feed-section-header">
+            <div class="feed-section-title" style="color: #ff4444">Security Watch</div>
+            <div
+              class="feed-count"
+              style="color: #ff4444; border-color: rgba(204, 26, 26, 0.3); background: rgba(204, 26, 26, 0.08)"
+            >
+              Intelligence Monitoring
+            </div>
+          </div>
+
+          <!--Security Article 1-->
+          <div class="hazelia-item">
+            <div class="hazelia-icon">⚠️</div>
+            <div class="news-item-content">
+              <div class="hi-source">
+                Defense Intelligence Review — Hazelia Desk <span class="hi-label">Analysis</span>
+              </div>
+              <div class="hi-headline">
+                <a href="articles/hazelialunar.html"
+                  >Hazelia Accelerates Lunar Program After Kacentina’s Valdoria Announcement</a
+                >
+              </div>
+              <p class="hi-excerpt">
+                Regional analysts report that President Jibberson has ordered an emergency review of Hazelia’s space
+                program following Kacentina’s rapid progress toward the Moon. State media insists Hazelia is “not
+                behind,” though several officials were reportedly seen leaving a strategy meeting looking deeply
+                inconvenienced by physics.
+              </p>
+              <div class="hi-date">June 19, 2026</div>
+            </div>
+          </div>
+
+          <!--Security Article 2-->
+          <div class="hazelia-item">
+            <div class="hazelia-icon">🔭</div>
+            <div class="news-item-content">
+              <div class="hi-source">Orbital Security Bulletin <span class="hi-label">Monitoring</span></div>
+              <div class="hi-headline">
+                <a href="articles/unidsatellite.html"
+                  >Unidentified Satellite Masking Activity Detected Near Lunar Observation Pathways</a
+                >
+              </div>
+              <p class="hi-excerpt">
+                KSA tracking teams have detected unusual signal-blocking patterns that may be designed to hide satellite
+                movement from standard observation systems. Officials have not blamed any nation publicly, but Hazelia’s
+                recent interest in “visibility reduction technology” has drawn attention.
+              </p>
+              <div class="hi-date">June 17, 2026</div>
+            </div>
+          </div>
+
+          <!--Security Article 3-->
+          <div class="hazelia-item">
+            <div class="hazelia-icon">🛸</div>
+            <div class="news-item-content">
+              <div class="hi-source">Neutral Press Agency — Ollijam Bureau <span class="hi-label">Regional</span></div>
+              <div class="hi-headline">
+                <a href="articles/ollieorbit.html">Ollijam Announces New Orbital Resource Survey Program</a>
+              </div>
+              <p class="hi-excerpt">
+                The Republic of Ollijam has announced plans to expand its orbital survey capabilities, claiming the
+                program is focused on “peaceful resource awareness.” KSA analysts note that several nations are now
+                racing to understand lunar resource maps after the Schloemer cheese discovery.
+              </p>
+              <div class="hi-date">June 14, 2026</div>
+            </div>
+          </div>
+
+          <!--Security Article 4-->
+          <div class="hazelia-item">
+            <div class="hazelia-icon">🔬</div>
+            <div class="news-item-content">
+              <div class="hi-source">International Observer Weekly <span class="hi-label">Investigation</span></div>
+              <div class="hi-headline">
+                <a href="articles/quietquill.html">Quillantis Quietly Expands Space Communications Research</a>
+              </div>
+              <p class="hi-excerpt">
+                Quillantis officials deny involvement in any lunar competition, but new funding records show increased
+                investment in encrypted space communications and long-range satellite relay systems. Security experts
+                say the timing is “interesting,” which is intelligence language for “everyone is watching this very
+                closely.”
+              </p>
+              <div class="hi-date">June 10, 2026</div>
+            </div>
+          </div>
+        </div>
+        <!-- /hazelia-section -->
+      </div>
+      <!-- /feed -->
+
+      <!-- SIDEBAR -->
+      <div class="news-sidebar">
+        <div class="sidebar-widget">
+          <div class="sw-title">Mission Status Board</div>
+          <div class="status-board">
+            <div class="sb-item">
+              <span class="sb-label">KMM Valdoria</span>
+              <span class="sb-value sv-orange">Launch June 26</span>
+            </div>
+            <div class="sb-item">
+              <span class="sb-label">Valdoria Crew</span>
+              <span class="sb-value sv-green">Ready</span>
+            </div>
+            <div class="sb-item">
+              <span class="sb-label">C7 Network</span>
+              <span class="sb-value sv-green">Online</span>
+            </div>
+            <div class="sb-item">
+              <span class="sb-label">KSS Kacentina</span>
+              <span class="sb-value sv-green">Operational</span>
+            </div>
+            <div class="sb-item">
+              <span class="sb-label">Schloemer Data</span>
+              <span class="sb-value sv-green">Verified</span>
+            </div>
+            <div class="sb-item">
+              <span class="sb-label">Remy Trials</span>
+              <span class="sb-value sv-green">Complete</span>
+            </div>
+            <div class="sb-item">
+              <span class="sb-label">Des Kakpovi Base</span>
+              <span class="sb-value sv-orange">Planning</span>
+            </div>
+            <div class="sb-item">
+              <span class="sb-label">Security Watch</span>
+              <span class="sb-value" style="color: #ff4444">Elevated</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sw-title">Leading Headlines</div>
+          <div class="mini-news">
+            <div class="mn-item">
+              <div class="mn-source">TMZ</div>
+              <div class="mn-headline">
+                <a href="articles/lovey.html">Astronaut's Mom Sparks KSA Panic</a>
+              </div>
+              <div class="mn-date">May 7, 2026</div>
+            </div>
+            <div class="mn-item">
+              <div class="mn-source">Kacentina Herald</div>
+              <div class="mn-headline">
+                <a href="articles/protests.html">Animal Welfare Group Holds Protest Downtown</a>
+              </div>
+              <div class="mn-date">May 5, 2026</div>
+            </div>
+            <div class="mn-item">
+              <div class="mn-source">Cosmic Kids</div>
+              <div class="mn-headline">
+                <a href="articles/cheesy.html">The Moon Might Actually Be Cheese</a>
+              </div>
+              <div class="mn-date">May 4, 2026</div>
+            </div>
+            <div class="mn-item">
+              <div class="mn-source">World Foods</div>
+              <div class="mn-headline">
+                <a href="articles/freakout.html">Food Chain Freakout! The Global Cheese Shortage</a>
+              </div>
+              <div class="mn-date">May 1, 2026</div>
+            </div>
+            <div class="mn-item">
+              <div class="mn-source">Tech Daily</div>
+              <div class="mn-headline">
+                <a href="articles/robopet.html">Will Robo Replace Fido? Robot Animals in Development</a>
+              </div>
+              <div class="mn-date">April 30, 2026</div>
+            </div>
+            <div class="mn-item">
+              <div class="mn-source">Animal Rights</div>
+              <div class="mn-headline">
+                <a href="articles/ratrights.html"
+                  >Do Rats Have Rights? The Rat Heading to the Moon Could Be Going Against His Will</a
+                >
+              </div>
+              <div class="mn-date">April 21, 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sw-title" style="color: #ff4444">Security Intelligence</div>
+          <div class="hazelia-watch-card">
+            <div class="hw-label">⚠ Hazelia Activity</div>
+            <p class="hw-text">
+              President Jibberson reportedly ordered accelerated lunar planning after Kacentina confirmed the Valdoria
+              launch window.
+            </p>
+            <img src="images/KSA Angry Jibberson.png" />
+            <div class="hw-date">Updated: June 19, 2026</div>
+          </div>
+          <div class="hazelia-watch-card">
+            <div class="hw-label">🛰 Orbital Masking</div>
+            <p class="hw-text">
+              Unusual satellite blocking patterns detected near lunar observation routes. KSA security teams continue
+              monitoring.
+            </p>
+            <img src="images/KSA Jibberson Tinfoil.png" />
+            <div class="hw-date">Updated: June 17, 2026</div>
+          </div>
+          <div class="hazelia-watch-card">
+            <div class="hw-label">🌐 Rival Programs</div>
+            <p class="hw-text">
+              Ollijam and Quillantis have both expanded space research funding since the Schloemer lunar cheese
+              discovery.
+            </p>
+            <img src="images/KSA Quillantis.png" />
+            <div class="hw-date">Updated: June 14, 2026</div>
+          </div>
         </div>
       </div>
+      <!-- /sidebar -->
     </div>
+    <!-- /news-layout -->
 
-    <!-- MISSION HIGHLIGHTS -->
-    <div class="feed-section">
-      <div class="feed-section-header">
-        <div class="feed-section-title">Mission Highlights</div>
-        <div class="feed-count">KSA Official & Press</div>
-      </div>
+    <footer>
+      <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="crew.html">Crew</a></li>
+        <li><a href="missions.html">Missions</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
+    </footer>
 
-      <!--Article 1-->
-      <div class="news-item">
-        <div class="news-item-icon">🚀</div>
-        <div class="news-item-content">
-          <div class="ni-source">KSA Mission Control — Official Release</div>
-          <div class="ni-headline"><a href="articles/readinessphase.html">KMM Valdoria Enters Final Launch Readiness Phase</a></div>
-          <p class="ni-excerpt">Flight Director Dr. Celeste Vantoon confirmed that crew systems, launch software, navigation checks, and lunar sample equipment have entered final review. KSA officials report that the Valdoria remains on schedule for Friday, June 26.</p>
-          <div class="ni-date">June 20, 2026</div>
-        </div>
-      </div>
-
-      <!--Article 2-->
-      <div class="news-item">
-        <div class="news-item-icon">🛰️</div>
-        <div class="news-item-content">
-          <div class="ni-source">Kacentina National Broadcasting Service</div>
-          <div class="ni-headline"><a href="articles/updatedcheese.html">Schloemer Lunar Mapping Team Releases Updated Cheese Deposit Model</a></div>
-          <p class="ni-excerpt">New analysis of lunar mapping data shows several promising subsurface regions near the planned Valdoria landing zone. Scientists caution that the findings must be confirmed in person, but one researcher admitted the readings are “extremely difficult to explain unless the Moon is, somehow, very snackable.”</p>
-          <div class="ni-date">June 18, 2026</div>
-        </div>
-      </div>
-
-      <!--Article 3-->
-      <div class="news-item">
-        <div class="news-item-icon">⚗️</div>
-        <div class="news-item-content">
-          <div class="ni-source">KSA Biological Research Division</div>
-          <div class="ni-headline"><a href="articles/remy.html">Remy Barnaby Bumblebottom Cleared for Lunar Research Role</a></div>
-          <p class="ni-excerpt">After completing his final maze trials, Remy has been cleared to support biological adaptation studies during the Valdoria mission. Dr. Aura Sparkleton praised his focus, bravery, and “deep personal commitment to cheese-based discovery.”</p>
-          <div class="ni-date">June 16, 2026</div>
-        </div>
-      </div>
-
-      <!--Article 4-->
-      <div class="news-item">
-        <div class="news-item-icon">🌍</div>
-        <div class="news-item-content">
-          <div class="ni-source">Global Environmental Monitor</div>
-          <div class="ni-headline"><a href="articles/c7network.html">C7 Network Remains Critical as Lunar Launch Approaches</a></div>
-          <p class="ni-excerpt">The C7 satellite network continues to provide communications, climate monitoring, and security support for KSA operations. Analysts say the system will be essential for tracking Valdoria communications during the mission’s journey to the Moon.</p>
-          <div class="ni-date">June 12, 2026</div>
-        </div>
-      </div>
-
-      <!--Article 5-->
-      <div class="news-item">
-        <div class="news-item-icon">🏫</div>
-        <div class="news-item-content">
-          <div class="ni-source">KSA Station Operations</div>
-          <div class="ni-headline"><a href="articles/simulations.html">KSS Kacentina Supports Final Mission Simulations</a></div>
-          <p class="ni-excerpt">Astronauts aboard KSS Kacentina are assisting Mission Control with long-range communications testing and emergency procedure simulations. The station remains a key orbital hub for Kacentina’s expanding lunar program.</p>
-          <div class="ni-date">June 9, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-item-icon">🌙</div>
-        <div class="news-item-content">
-          <div class="ni-source">Kacentina Education Ministry — Press Office</div>
-          <div class="ni-headline"><a href="articles/students.html">Students Nationwide Follow Valdoria Mission Countdown</a></div>
-          <p class="ni-excerpt">Classrooms across Kacentina are tracking the Valdoria launch as part of a national STEM initiative. Lesson topics include rocketry, lunar geology, food security, and why “the Moon is made of cheese” is suddenly a scientific statement requiring footnotes.</p>
-          <div class="ni-date">June 5, 2026</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Security SECTION -->
-    <div class="hazelia-section">
-      <div class="feed-section-header">
-        <div class="feed-section-title" style="color:#ff4444;">Security Watch</div>
-        <div class="feed-count" style="color:#ff4444;border-color:rgba(204,26,26,0.3);background:rgba(204,26,26,0.08);">Intelligence Monitoring</div>
-      </div>
-
-      <!--Security Article 1-->
-      <div class="hazelia-item">
-        <div class="hazelia-icon">⚠️</div>
-        <div class="news-item-content">
-          <div class="hi-source">Defense Intelligence Review — Hazelia Desk <span class="hi-label">Analysis</span></div>
-          <div class="hi-headline"><a href="articles/hazelialunar.html">Hazelia Accelerates Lunar Program After Kacentina’s Valdoria Announcement</a></div>
-          <p class="hi-excerpt">Regional analysts report that President Jibberson has ordered an emergency review of Hazelia’s space program following Kacentina’s rapid progress toward the Moon. State media insists Hazelia is “not behind,” though several officials were reportedly seen leaving a strategy meeting looking deeply inconvenienced by physics.</p>
-          <div class="hi-date">June 19, 2026</div>
-        </div>
-      </div>
-
-      <!--Security Article 2-->
-      <div class="hazelia-item">
-        <div class="hazelia-icon">🔭</div>
-        <div class="news-item-content">
-          <div class="hi-source">Orbital Security Bulletin <span class="hi-label">Monitoring</span></div>
-          <div class="hi-headline"><a href="articles/unidsatellite.html">Unidentified Satellite Masking Activity Detected Near Lunar Observation Pathways</a></div>
-          <p class="hi-excerpt">KSA tracking teams have detected unusual signal-blocking patterns that may be designed to hide satellite movement from standard observation systems. Officials have not blamed any nation publicly, but Hazelia’s recent interest in “visibility reduction technology” has drawn attention.</p>
-          <div class="hi-date">June 17, 2026</div>
-        </div>
-      </div>
-
-      <!--Security Article 3-->
-      <div class="hazelia-item">
-        <div class="hazelia-icon">🛸</div>
-        <div class="news-item-content">
-          <div class="hi-source">Neutral Press Agency — Ollijam Bureau <span class="hi-label">Regional</span></div>
-          <div class="hi-headline"><a href="articles/ollieorbit.html">Ollijam Announces New Orbital Resource Survey Program</a></div>
-          <p class="hi-excerpt">The Republic of Ollijam has announced plans to expand its orbital survey capabilities, claiming the program is focused on “peaceful resource awareness.” KSA analysts note that several nations are now racing to understand lunar resource maps after the Schloemer cheese discovery.</p>
-          <div class="hi-date">June 14, 2026</div>
-        </div>
-      </div>
-
-      <!--Security Article 4-->
-      <div class="hazelia-item">
-        <div class="hazelia-icon">🔬</div>
-        <div class="news-item-content">
-          <div class="hi-source">International Observer Weekly <span class="hi-label">Investigation</span></div>
-          <div class="hi-headline"><a href="articles/quietquill.html">Quillantis Quietly Expands Space Communications Research</a></div>
-          <p class="hi-excerpt">Quillantis officials deny involvement in any lunar competition, but new funding records show increased investment in encrypted space communications and long-range satellite relay systems. Security experts say the timing is “interesting,” which is intelligence language for “everyone is watching this very closely.”</p>
-          <div class="hi-date">June 10, 2026</div>
-      </div>
-    </div>
-
-    </div><!-- /hazelia-section -->
-
-  </div><!-- /feed -->
-
-  <!-- SIDEBAR -->
-  <div class="news-sidebar">
-
-    <div class="sidebar-widget">
-      <div class="sw-title">Mission Status Board</div>
-        <div class="status-board">
-          <div class="sb-item">
-            <span class="sb-label">KMM Valdoria</span>
-            <span class="sb-value sv-orange">Launch June 26</span>
-          </div>
-          <div class="sb-item">
-            <span class="sb-label">Valdoria Crew</span>
-            <span class="sb-value sv-green">Ready</span>
-          </div>
-          <div class="sb-item">
-            <span class="sb-label">C7 Network</span>
-            <span class="sb-value sv-green">Online</span>
-          </div>
-          <div class="sb-item">
-            <span class="sb-label">KSS Kacentina</span>
-            <span class="sb-value sv-green">Operational</span>
-          </div>
-          <div class="sb-item">
-            <span class="sb-label">Schloemer Data</span>
-            <span class="sb-value sv-green">Verified</span>
-          </div>
-          <div class="sb-item">
-            <span class="sb-label">Remy Trials</span>
-            <span class="sb-value sv-green">Complete</span>
-          </div>
-          <div class="sb-item">
-            <span class="sb-label">Des Kakpovi Base</span>
-            <span class="sb-value sv-orange">Planning</span>
-          </div>
-          <div class="sb-item">
-            <span class="sb-label">Security Watch</span>
-            <span class="sb-value" style="color:#ff4444;">Elevated</span>
-          </div>
-        </div>
-    </div>
-
-    <div class="sidebar-widget">
-      <div class="sw-title">Leading Headlines</div>
-      <div class="mini-news">
-        <div class="mn-item">
-          <div class="mn-source">TMZ</div>
-          <div class="mn-headline"><a href="articles/lovey.html">Astronaut's Mom Sparks KSA Panic</a></div>
-          <div class="mn-date">May 7, 2026</div>
-        </div>
-        <div class="mn-item">
-          <div class="mn-source">Kacentina Herald</div>
-          <div class="mn-headline"><a href="articles/protests.html">Animal Welfare Group Holds Protest Downtown</a></div>
-          <div class="mn-date">May 5, 2026</div>
-        </div>
-        <div class="mn-item">
-          <div class="mn-source">Cosmic Kids</div>
-          <div class="mn-headline"><a href="articles/cheesy.html">The Moon Might Actually Be Cheese</a></div>
-          <div class="mn-date">May 4, 2026</div>
-        </div>
-        <div class="mn-item">
-          <div class="mn-source">World Foods</div>
-          <div class="mn-headline"><a href="articles/freakout.html">Food Chain Freakout! The Global Cheese Shortage</a></div>
-          <div class="mn-date">May 1, 2026</div>
-        </div>
-        <div class="mn-item">
-          <div class="mn-source">Tech Daily</div>
-          <div class="mn-headline"><a href="articles/robopet.html">Will Robo Replace Fido? Robot Animals in Development</a></div>
-          <div class="mn-date">April 30, 2026</div>
-        </div>
-        <div class="mn-item">
-          <div class="mn-source">Animal Rights</div>
-          <div class="mn-headline"><a href="articles/ratrights.html">Do Rats Have Rights? The Rat Heading to the Moon Could Be Going Against His Will</a></div>
-          <div class="mn-date">April 21, 2026</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sidebar-widget">
-      <div class="sw-title" style="color:#ff4444;">Security Intelligence</div>
-        <div class="hazelia-watch-card">
-          <div class="hw-label">⚠ Hazelia Activity</div>
-          <p class="hw-text">President Jibberson reportedly ordered accelerated lunar planning after Kacentina confirmed the Valdoria launch window.</p>
-          <img src="images/KSA Angry Jibberson.png">
-          <div class="hw-date">Updated: June 19, 2026</div>
-        </div>
-      <div class="hazelia-watch-card">
-        <div class="hw-label">🛰 Orbital Masking</div>
-        <p class="hw-text">Unusual satellite blocking patterns detected near lunar observation routes. KSA security teams continue monitoring.</p>
-        <img src="images/KSA Jibberson Tinfoil.png">
-        <div class="hw-date">Updated: June 17, 2026</div>
-      </div>
-      <div class="hazelia-watch-card">
-        <div class="hw-label">🌐 Rival Programs</div>
-        <p class="hw-text">Ollijam and Quillantis have both expanded space research funding since the Schloemer lunar cheese discovery.</p>
-        <img src="images/KSA Quillantis.png">
-        <div class="hw-date">Updated: June 14, 2026</div>
-      </div>
-    </div>
-
-  </div><!-- /sidebar -->
-
-</div><!-- /news-layout -->
-
-<footer>
-  <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
-  <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="crew.html">Crew</a></li>
-    <li><a href="missions.html">Missions</a></li>
-    <li><a href="news.html">News</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
-</footer>
-
-<script src="countdown.js"></script>
-</body>
+    <script src="countdown.js"></script>
+  </body>
 </html>

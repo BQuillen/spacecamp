@@ -1,326 +1,373 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KSA — Kacentina Space Administration</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-emblem">
-      <img src="images/KSA Logo.png" alt="KSA Logo">
-    </div>
-  </a>
-
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="crew.html">Kacentina Staff</a>
-      <ul class="nav-dropdown-menu">
-        <li><a href="crew.html">Crew</a></li>
-        <li><a href="employees.html">Employees</a></li>
-      </ul>
-    </li>
-    <li><a href="missions.html">Missions</a></li>
-    <li><a href="news.html">News</a></li>
-  </ul>
-
-  <div class="nav-status">
-    <div class="status-dot"></div>
-    <div>Mission Upcoming<span id="launch-countdown" class="launch-countdown"></span></div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <canvas id="starfield"></canvas>
-  <div class="hero-bg"></div>
-
-  <div class="hero-content">
-    <div class="hero-kicker">Mission Control — Kacentina Space Administration</div>
-    <h1>Beyond the <em>Horizon.</em></h1>
-    <p class="hero-desc">
-      Kacentina reaches toward the stars — not for conquest, but for knowledge. Our space program is a testament to what a united nation can achieve through science, courage, and the boundless human desire to explore.
-    </p>
-    <div class="hero-cta">
-      <a href="missions.html" class="btn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Our Missions
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KSA — Kacentina Space Administration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-emblem">
+          <img src="images/KSA Logo.png" alt="KSA Logo" />
+        </div>
       </a>
-      <a href="crew.html" class="btn-ghost">Meet the Crew</a>
-    </div>
-  </div>
 
-  <div class="hero-image-panel">
-    <div class="hero-img-placeholder">
-      <div class="hero-scan-line"></div>
-      <div class="launch-graphic">
-        <!-- Rocket SVG -->
-        <svg viewBox="0 -55 200 375" xmlns="http://www.w3.org/2000/svg">
-          <!-- Rocket body -->
-          <ellipse cx="100" cy="120" rx="28" ry="90" fill="#1a2a6c" stroke="#ff6a00" stroke-width="1.5"/>
-          <!-- Nose cone -->
-          <path d="M77 70 Q100 -20 123 70" fill="#ff6a00" stroke="#ff8c00" stroke-width="1"/>
-          <!-- Window -->
-          <circle cx="100" cy="110" r="14" fill="#0a0f2e" stroke="#ff6a00" stroke-width="2"/>
-          <circle cx="100" cy="110" r="8" fill="#1a3a7c" opacity="0.8"/>
-          <circle cx="96" cy="106" r="2" fill="rgba(255,255,255,0.4)"/>
-          <!-- Fins left -->
-          <path d="M72 180 L45 230 L72 210 Z" fill="#ff6a00" opacity="0.8"/>
-          <!-- Fins right -->
-          <path d="M128 180 L155 230 L128 210 Z" fill="#ff6a00" opacity="0.8"/>
-          <!-- Engine nozzle -->
-          <rect x="84" y="205" width="32" height="15" rx="4" fill="#0d1840" stroke="#ff6a00" stroke-width="1"/>
-          <!-- Flames — outer glow -->
-          <ellipse cx="100" cy="260" rx="18" ry="35" fill="url(#flameGrad)" opacity="0.85">
-            <animate attributeName="ry" values="35;28;38;30;35" dur="0.45s" repeatCount="indefinite"/>
-            <animate attributeName="rx" values="18;22;16;20;18" dur="0.45s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.85;0.6;0.9;0.7;0.85" dur="0.45s" repeatCount="indefinite"/>
-          </ellipse>
-          <!-- Flames — mid layer -->
-          <ellipse cx="100" cy="263" rx="11" ry="24" fill="url(#flameMid)" opacity="0.9">
-            <animate attributeName="ry" values="24;30;20;28;24" dur="0.3s" repeatCount="indefinite"/>
-            <animate attributeName="rx" values="11;8;13;9;11" dur="0.3s" repeatCount="indefinite"/>
-            <animate attributeName="cx" values="100;99;101;100;100" dur="0.3s" repeatCount="indefinite"/>
-          </ellipse>
-          <!-- Flames — hot core -->
-          <ellipse cx="100" cy="258" rx="6" ry="14" fill="url(#flameCore)" opacity="0.95">
-            <animate attributeName="ry" values="14;18;11;16;14" dur="0.18s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.95;0.7;1;0.8;0.95" dur="0.18s" repeatCount="indefinite"/>
-          </ellipse>
-          <!-- Detail lines -->
-          <line x1="78" y1="130" x2="122" y2="130" stroke="rgba(255,106,0,0.3)" stroke-width="1"/>
-          <line x1="78" y1="150" x2="122" y2="150" stroke="rgba(255,106,0,0.3)" stroke-width="1"/>
-          <line x1="80" y1="170" x2="120" y2="170" stroke="rgba(255,106,0,0.3)" stroke-width="1"/>
-          <!-- KSA badge -->
-          <text x="100" y="88" text-anchor="middle" fill="#ff6a00" font-size="7" font-family="Orbitron, monospace" font-weight="700">KSA</text>
-          <defs>
-            <radialGradient id="flameGrad" cx="50%" cy="20%" r="80%">
-              <stop offset="0%" stop-color="#ff8c00"/>
-              <stop offset="60%" stop-color="#ff6a00" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="transparent"/>
-            </radialGradient>
-            <radialGradient id="flameMid" cx="50%" cy="20%" r="80%">
-              <stop offset="0%" stop-color="#ffaa00"/>
-              <stop offset="50%" stop-color="#ff6a00" stop-opacity="0.85"/>
-              <stop offset="100%" stop-color="transparent"/>
-            </radialGradient>
-            <radialGradient id="flameCore" cx="50%" cy="20%" r="80%">
-              <stop offset="0%" stop-color="#fff7e0"/>
-              <stop offset="40%" stop-color="#ffcc44" stop-opacity="0.8"/>
-              <stop offset="100%" stop-color="transparent"/>
-            </radialGradient>
-          </defs>
-        </svg>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="crew.html">Kacentina Staff</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="crew.html">Crew</a></li>
+            <li><a href="employees.html">Employees</a></li>
+          </ul>
+        </li>
+        <li><a href="missions.html">Missions</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+
+      <div class="nav-status">
+        <div class="status-dot"></div>
+        <div>Mission Upcoming<span id="launch-countdown" class="launch-countdown"></span></div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="starfield"></canvas>
+      <div class="hero-bg"></div>
+
+      <div class="hero-content">
+        <div class="hero-kicker">Mission Control — Kacentina Space Administration</div>
+        <h1>Beyond the <em>Horizon.</em></h1>
+        <p class="hero-desc">
+          Kacentina reaches toward the stars — not for conquest, but for knowledge. Our space program is a testament to
+          what a united nation can achieve through science, courage, and the boundless human desire to explore.
+        </p>
+        <div class="hero-cta">
+          <a href="missions.html" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+            Our Missions
+          </a>
+          <a href="crew.html" class="btn-ghost">Meet the Crew</a>
+        </div>
+      </div>
+
+      <div class="hero-image-panel">
+        <div class="hero-img-placeholder">
+          <div class="hero-scan-line"></div>
+          <div class="launch-graphic">
+            <!-- Rocket SVG -->
+            <svg viewBox="0 -55 200 375" xmlns="http://www.w3.org/2000/svg">
+              <!-- Rocket body -->
+              <ellipse cx="100" cy="120" rx="28" ry="90" fill="#1a2a6c" stroke="#ff6a00" stroke-width="1.5" />
+              <!-- Nose cone -->
+              <path d="M77 70 Q100 -20 123 70" fill="#ff6a00" stroke="#ff8c00" stroke-width="1" />
+              <!-- Window -->
+              <circle cx="100" cy="110" r="14" fill="#0a0f2e" stroke="#ff6a00" stroke-width="2" />
+              <circle cx="100" cy="110" r="8" fill="#1a3a7c" opacity="0.8" />
+              <circle cx="96" cy="106" r="2" fill="rgba(255,255,255,0.4)" />
+              <!-- Fins left -->
+              <path d="M72 180 L45 230 L72 210 Z" fill="#ff6a00" opacity="0.8" />
+              <!-- Fins right -->
+              <path d="M128 180 L155 230 L128 210 Z" fill="#ff6a00" opacity="0.8" />
+              <!-- Engine nozzle -->
+              <rect x="84" y="205" width="32" height="15" rx="4" fill="#0d1840" stroke="#ff6a00" stroke-width="1" />
+              <!-- Flames — outer glow -->
+              <ellipse cx="100" cy="260" rx="18" ry="35" fill="url(#flameGrad)" opacity="0.85">
+                <animate attributeName="ry" values="35;28;38;30;35" dur="0.45s" repeatCount="indefinite" />
+                <animate attributeName="rx" values="18;22;16;20;18" dur="0.45s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.85;0.6;0.9;0.7;0.85" dur="0.45s" repeatCount="indefinite" />
+              </ellipse>
+              <!-- Flames — mid layer -->
+              <ellipse cx="100" cy="263" rx="11" ry="24" fill="url(#flameMid)" opacity="0.9">
+                <animate attributeName="ry" values="24;30;20;28;24" dur="0.3s" repeatCount="indefinite" />
+                <animate attributeName="rx" values="11;8;13;9;11" dur="0.3s" repeatCount="indefinite" />
+                <animate attributeName="cx" values="100;99;101;100;100" dur="0.3s" repeatCount="indefinite" />
+              </ellipse>
+              <!-- Flames — hot core -->
+              <ellipse cx="100" cy="258" rx="6" ry="14" fill="url(#flameCore)" opacity="0.95">
+                <animate attributeName="ry" values="14;18;11;16;14" dur="0.18s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.95;0.7;1;0.8;0.95" dur="0.18s" repeatCount="indefinite" />
+              </ellipse>
+              <!-- Detail lines -->
+              <line x1="78" y1="130" x2="122" y2="130" stroke="rgba(255,106,0,0.3)" stroke-width="1" />
+              <line x1="78" y1="150" x2="122" y2="150" stroke="rgba(255,106,0,0.3)" stroke-width="1" />
+              <line x1="80" y1="170" x2="120" y2="170" stroke="rgba(255,106,0,0.3)" stroke-width="1" />
+              <!-- KSA badge -->
+              <text
+                x="100"
+                y="88"
+                text-anchor="middle"
+                fill="#ff6a00"
+                font-size="7"
+                font-family="Orbitron, monospace"
+                font-weight="700"
+              >
+                KSA
+              </text>
+              <defs>
+                <radialGradient id="flameGrad" cx="50%" cy="20%" r="80%">
+                  <stop offset="0%" stop-color="#ff8c00" />
+                  <stop offset="60%" stop-color="#ff6a00" stop-opacity="0.7" />
+                  <stop offset="100%" stop-color="transparent" />
+                </radialGradient>
+                <radialGradient id="flameMid" cx="50%" cy="20%" r="80%">
+                  <stop offset="0%" stop-color="#ffaa00" />
+                  <stop offset="50%" stop-color="#ff6a00" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="transparent" />
+                </radialGradient>
+                <radialGradient id="flameCore" cx="50%" cy="20%" r="80%">
+                  <stop offset="0%" stop-color="#fff7e0" />
+                  <stop offset="40%" stop-color="#ffcc44" stop-opacity="0.8" />
+                  <stop offset="100%" stop-color="transparent" />
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="hero-overlay-text">
+          KSA MISSION BASE / <br />
+          VALDORIA LAUNCH COMPLEX<br />
+          EST. 2011 — KACENTINA REPUBLIC<br />
+          38.04110 N, -84.48903 W
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE BAND -->
+    <section class="quote-band">
+      <blockquote>
+        "We look up not because we are restless, but because we are <span>ready</span> — ready to carry the hopes of
+        every Kacentinan into the infinite."
+      </blockquote>
+      <p class="quote-attr">— Director Gregory Schloemer, KSA Inaugural Address, 2012</p>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-band">
+      <div class="stat-item">
+        <span class="stat-value">41</span>
+        <span class="stat-label">Missions Launched</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">11</span>
+        <span class="stat-label">Active Crew Members</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">3</span>
+        <span class="stat-label">Combined Years in Orbit</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">11</span>
+        <span class="stat-label">Satellites Deployed</span>
       </div>
     </div>
-    <div class="hero-overlay-text">
-      KSA MISSION BASE / <br>
-      VALDORIA LAUNCH COMPLEX<br>
-      EST. 2011 — KACENTINA REPUBLIC<br>
-      38.04110 N, -84.48903 W
-    </div>
-  </div>
-</section>
 
-<!-- QUOTE BAND -->
-<section class="quote-band">
-  <blockquote>
-    "We look up not because we are restless, but because we are <span>ready</span> — ready to carry the hopes of every Kacentinan into the infinite."
-  </blockquote>
-  <p class="quote-attr">— Director Gregory Schloemer, KSA Inaugural Address, 2012</p>
-</section>
-
-<!-- STATS -->
-<div class="stats-band">
-  <div class="stat-item">
-    <span class="stat-value">41</span>
-    <span class="stat-label">Missions Launched</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-value">11</span>
-    <span class="stat-label">Active Crew Members</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-value">3</span>
-    <span class="stat-label">Combined Years in Orbit</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-value">11</span>
-    <span class="stat-label">Satellites Deployed</span>
-  </div>
-</div>
-
-<!-- GALLERY -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-label">// Visual Log</div>
-    <h2>Mission Gallery</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <div class="gallery-placeholder gp-1">
-        <a href="meetthecrew.html" target="_blank"><img src="images/group ksa.png"></a>
-        <div class="gallery-label">KMM Valdoria - Meet the Crew</div>
+    <!-- GALLERY -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-label">// Visual Log</div>
+        <h2>Mission Gallery</h2>
+        <div class="section-line"></div>
       </div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder gp-2">
-        <img src="images/KSA Orbital View.png">
-        <div class="gallery-label">ORBITAL VIEW — KACENTINA</div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-1">
+            <a href="meetthecrew.html" target="_blank"><img src="images/group ksa.png" /></a>
+            <div class="gallery-label">KMM Valdoria - Meet the Crew</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-2">
+            <img src="images/KSA Orbital View.png" />
+            <div class="gallery-label">ORBITAL VIEW — KACENTINA</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-3">
+            <img src="images/KSA KSS Kacentina.png" />
+            <div class="gallery-label">KSS STATION APPROACH</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-4">
+            <img src="images/KSA Lunar Survey.png" />
+            <div class="gallery-label">LUNAR SURVEY — MISSION SCHLOEMER</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-5">
+            <img src="images/KSA C7 Network Deployment.png" />
+            <div class="gallery-label">C7 NETWORK DEPLOY</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder gp-3">
-        <img src="images/KSA KSS Kacentina.png">
-        <div class="gallery-label">KSS STATION APPROACH</div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="highlights">
+      <div class="section-header">
+        <div class="section-label">// Program Overview</div>
+        <h2>Program Highlights</h2>
+        <div class="section-line"></div>
       </div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder gp-4">
-        <img src="images/KSA Lunar Survey.png">
-        <div class="gallery-label">LUNAR SURVEY — MISSION SCHLOEMER</div>
+
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="card-number">01</div>
+          <div class="card-title">KMM Valdoria Crew</div>
+          <p class="card-body">
+            The astronauts of the KMM Valdoria mission represent Kacentina’s boldest step yet toward lunar exploration.
+            Pilots, engineers, scientists, and mission specialists are preparing to travel farther than any Kacentinan
+            crew in history to confirm the Moon’s mysterious cheese deposits.
+          </p>
+        </div>
+
+        <div class="highlight-card">
+          <div class="card-number">02</div>
+          <div class="card-title">The Lunar Cheese Discovery</div>
+          <p class="card-body">
+            What started as a routine search for water ice became the greatest resource discovery in human history. KSA
+            lunar scans revealed massive underground deposits of harvestable lunar cheese during a worldwide cheese
+            shortage that threatened global food production.
+          </p>
+        </div>
+
+        <div class="highlight-card">
+          <div class="card-number">03</div>
+          <div class="card-title">C7 Orbital Network</div>
+          <p class="card-body">
+            The C7 satellite constellation provides global communications, environmental monitoring, and planetary
+            security systems for millions of citizens. The network allows Kacentina to monitor storms, coastlines,
+            climate activity, and critical infrastructure from orbit.
+          </p>
+        </div>
+
+        <div class="highlight-card">
+          <div class="card-number">04</div>
+          <div class="card-title">KSS Kacentina Station</div>
+          <p class="card-body">
+            Orbiting high above Earth, the KSS Kacentina serves as the nation’s permanent space station and operational
+            hub for future lunar missions. Astronauts aboard the station conduct long-duration research, test deep-space
+            systems, and prepare for humanity’s next giant leap.
+          </p>
+        </div>
+
+        <div class="highlight-card">
+          <div class="card-number">05</div>
+          <div class="card-title">Remy Research Initiative</div>
+          <p class="card-body">
+            Led by Dr. Aura Sparkleton, the KSA Biological Research Division studies how living organisms adapt to
+            deep-space travel. Their most famous test subject, Remy Barnaby Bumblebottom, will become the first research
+            rat to participate in a lunar mission.
+          </p>
+        </div>
+
+        <div class="highlight-card">
+          <div class="card-number">06</div>
+          <div class="card-title">Des Kakpovi Lunar Base</div>
+          <p class="card-body">
+            Planned for next year, the Des Kakpovi Lunar Base will establish humanity’s first permanent cheese-mining
+            facility on the Moon. The base will support scientific research, long-term habitation, and the transport of
+            lunar resources back to Earth.
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder gp-5">
-        <img src="images/KSA C7 Network Deployment.png">
-        <div class="gallery-label">C7 NETWORK DEPLOY</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- HIGHLIGHTS -->
-<section class="highlights">
-  <div class="section-header">
-    <div class="section-label">// Program Overview</div>
-    <h2>Program Highlights</h2>
-    <div class="section-line"></div>
-  </div>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="crew.html">Crew</a></li>
+        <li><a href="missions.html">Missions</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
+    </footer>
 
-  <div class="highlights-grid">
-    <div class="highlight-card">
-      <div class="card-number">01</div>
-      <div class="card-title">KMM Valdoria Crew</div>
-      <p class="card-body">The astronauts of the KMM Valdoria mission represent Kacentina’s boldest step yet toward lunar exploration. Pilots, engineers, scientists, and mission specialists are preparing to travel farther than any Kacentinan crew in history to confirm the Moon’s mysterious cheese deposits.</p>
-    </div>
+    <script src="countdown.js"></script>
+    <script>
+      // Starfield
+      ;(function () {
+        const canvas = document.getElementById('starfield')
+        const ctx = canvas.getContext('2d')
+        const hero = canvas.closest('.hero')
+        let stars = []
+        function resize() {
+          canvas.width = hero.offsetWidth
+          canvas.height = hero.offsetHeight
+          stars = Array.from({ length: 160 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.4 + 0.3,
+            o: Math.random() * 0.7 + 0.2,
+            speed: Math.random() * 0.015 + 0.005,
+          }))
+        }
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height)
+          stars.forEach((s) => {
+            s.o += s.speed * (Math.random() > 0.5 ? 1 : -1)
+            s.o = Math.max(0.1, Math.min(0.9, s.o))
+            ctx.beginPath()
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
+            ctx.fillStyle = `rgba(255,255,255,${s.o})`
+            ctx.fill()
+          })
+          requestAnimationFrame(draw)
+        }
+        new ResizeObserver(resize).observe(hero)
+        window.addEventListener('load', resize)
+        resize()
+        draw()
+      })()
 
-    <div class="highlight-card">
-      <div class="card-number">02</div>
-      <div class="card-title">The Lunar Cheese Discovery</div>
-      <p class="card-body">What started as a routine search for water ice became the greatest resource discovery in human history. KSA lunar scans revealed massive underground deposits of harvestable lunar cheese during a worldwide cheese shortage that threatened global food production.</p>
-    </div>
-
-    <div class="highlight-card">
-      <div class="card-number">03</div>
-      <div class="card-title">C7 Orbital Network</div>
-      <p class="card-body">The C7 satellite constellation provides global communications, environmental monitoring, and planetary security systems for millions of citizens. The network allows Kacentina to monitor storms, coastlines, climate activity, and critical infrastructure from orbit.</p>
-    </div>
-
-    <div class="highlight-card">
-      <div class="card-number">04</div>
-      <div class="card-title">KSS Kacentina Station</div>
-      <p class="card-body">Orbiting high above Earth, the KSS Kacentina serves as the nation’s permanent space station and operational hub for future lunar missions. Astronauts aboard the station conduct long-duration research, test deep-space systems, and prepare for humanity’s next giant leap.</p>
-    </div>
-
-    <div class="highlight-card">
-      <div class="card-number">05</div>
-      <div class="card-title">Remy Research Initiative</div>
-      <p class="card-body">Led by Dr. Aura Sparkleton, the KSA Biological Research Division studies how living organisms adapt to deep-space travel. Their most famous test subject, Remy Barnaby Bumblebottom, will become the first research rat to participate in a lunar mission.</p>
-    </div>
-
-    <div class="highlight-card">
-      <div class="card-number">06</div>
-      <div class="card-title">Des Kakpovi Lunar Base</div>
-      <p class="card-body">Planned for next year, the Des Kakpovi Lunar Base will establish humanity’s first permanent cheese-mining facility on the Moon. The base will support scientific research, long-term habitation, and the transport of lunar resources back to Earth.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">KSA — KACENTINA SPACE ADMINISTRATION</div>
-  <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="crew.html">Crew</a></li>
-    <li><a href="missions.html">Missions</a></li>
-    <li><a href="news.html">News</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 Kacentina Republic. All rights reserved.</div>
-</footer>
-
-<script src="countdown.js"></script>
-<script>
-// Starfield
-(function() {
-  const canvas = document.getElementById('starfield');
-  const ctx = canvas.getContext('2d');
-  const hero = canvas.closest('.hero');
-  let stars = [];
-  function resize() {
-    canvas.width = hero.offsetWidth;
-    canvas.height = hero.offsetHeight;
-    stars = Array.from({ length: 160 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.4 + 0.3,
-      o: Math.random() * 0.7 + 0.2,
-      speed: Math.random() * 0.015 + 0.005
-    }));
-  }
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    stars.forEach(s => {
-      s.o += s.speed * (Math.random() > 0.5 ? 1 : -1);
-      s.o = Math.max(0.1, Math.min(0.9, s.o));
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${s.o})`;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  new ResizeObserver(resize).observe(hero);
-  window.addEventListener('load', resize);
-  resize();
-  draw();
-})();
-
-// Stat counter
-(function() {
-  const stats = document.querySelectorAll('.stat-value');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseInt(el.textContent, 10);
-      if (isNaN(target)) return;
-      observer.unobserve(el);
-      let start = 0;
-      const duration = 1200;
-      const startTime = performance.now();
-      function step(now) {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(ease * target);
-        if (progress < 1) { requestAnimationFrame(step); }
-        else { el.textContent = target; el.classList.add('counted'); }
-      }
-      requestAnimationFrame(step);
-    });
-  }, { threshold: 0.5 });
-  stats.forEach(s => observer.observe(s));
-})();
-</script>
-</body>
+      // Stat counter
+      ;(function () {
+        const stats = document.querySelectorAll('.stat-value')
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return
+              const el = entry.target
+              const target = parseInt(el.textContent, 10)
+              if (isNaN(target)) return
+              observer.unobserve(el)
+              let start = 0
+              const duration = 1200
+              const startTime = performance.now()
+              function step(now) {
+                const elapsed = now - startTime
+                const progress = Math.min(elapsed / duration, 1)
+                const ease = 1 - Math.pow(1 - progress, 3)
+                el.textContent = Math.round(ease * target)
+                if (progress < 1) {
+                  requestAnimationFrame(step)
+                } else {
+                  el.textContent = target
+                  el.classList.add('counted')
+                }
+              }
+              requestAnimationFrame(step)
+            })
+          },
+          { threshold: 0.5 }
+        )
+        stats.forEach((s) => observer.observe(s))
+      })()
+    </script>
+  </body>
 </html>

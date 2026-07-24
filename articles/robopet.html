@@ -1,68 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robo Pets</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css">
-</head>
-<body class="article-page">
-
-<!-- NAV -->
-<nav>
-  <a href="../index.html" class="nav-logo">
-    <div class="nav-emblem">
-      <img src="../images/KSA Logo.png" alt="KSA Logo">
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="../index.html">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="../crew.html">Kacentina Staff</a>
-      <ul class="nav-dropdown-menu">
-        <li><a href="../crew.html">Crew</a></li>
-        <li><a href="../employees.html">Employees</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robo Pets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="article-page">
+    <!-- NAV -->
+    <nav>
+      <a href="../index.html" class="nav-logo">
+        <div class="nav-emblem">
+          <img src="../images/KSA Logo.png" alt="KSA Logo" />
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="../crew.html">Kacentina Staff</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../crew.html">Crew</a></li>
+            <li><a href="../employees.html">Employees</a></li>
+          </ul>
+        </li>
+        <li><a href="../missions.html">Missions</a></li>
+        <li><a href="../news.html" class="active">News</a></li>
       </ul>
-    </li>
-    <li><a href="../missions.html">Missions</a></li>
-    <li><a href="../news.html" class="active">News</a></li>
-  </ul>
-  <div class="nav-status"><div class="status-dot"></div>Mission Upcoming</div>
-</nav>
+      <div class="nav-status">
+        <div class="status-dot"></div>
+        Mission Upcoming
+      </div>
+    </nav>
 
-<!-- IMAGE VIEWER -->
-<div style="max-width:900px; margin:2rem auto; padding:0 1.5rem;">
+    <!-- IMAGE VIEWER -->
+    <div style="max-width: 900px; margin: 2rem auto; padding: 0 1.5rem">
+      <a
+        href="../news.html"
+        style="
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: var(--accent);
+          font-family: 'Orbitron', monospace;
+          font-size: 0.75rem;
+          letter-spacing: 0.08em;
+          text-decoration: none;
+          margin-bottom: 1.5rem;
+        "
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        Back to News Feed
+      </a>
 
-  <a href="../news.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-family:'Orbitron',monospace;font-size:0.75rem;letter-spacing:0.08em;text-decoration:none;margin-bottom:1.5rem;">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Back to News Feed
-  </a>
+      <img
+        id="robopet-img"
+        src="../images/robotpets.png"
+        alt="Robo Pets"
+        style="
+          width: 100%;
+          height: calc(100vh - 70px);
+          object-fit: contain;
+          display: block;
+          cursor: zoom-in;
+          transition: opacity 0.2s;
+        "
+      />
 
-  <img id="robopet-img" src="../images/robotpets.png" alt="Robo Pets" style="width:100%;height:calc(100vh - 70px);object-fit:contain;display:block;cursor:zoom-in;transition:opacity 0.2s;">
+      <!-- Lightbox -->
+      <div
+        id="robopet-lightbox"
+        style="
+          display: none;
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          background: rgba(0, 0, 0, 0.92);
+          cursor: zoom-out;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <img
+          src="../images/robotpets.png"
+          alt="Robo Pets"
+          style="max-width: 95vw; max-height: 95vh; object-fit: contain; box-shadow: 0 0 60px rgba(255, 106, 0, 0.3)"
+        />
+        <div
+          style="
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+          "
+        >
+          ESC / CLICK TO CLOSE
+        </div>
+      </div>
 
-  <!-- Lightbox -->
-  <div id="robopet-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);cursor:zoom-out;align-items:center;justify-content:center;">
-    <img src="../images/robotpets.png" alt="Robo Pets" style="max-width:95vw;max-height:95vh;object-fit:contain;box-shadow:0 0 60px rgba(255,106,0,0.3);">
-    <div style="position:absolute;top:1.2rem;right:1.5rem;color:rgba(255,255,255,0.5);font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.15em;">ESC / CLICK TO CLOSE</div>
-  </div>
-
-  <script>
-    const img = document.getElementById('robopet-img');
-    const lb  = document.getElementById('robopet-lightbox');
-    img.addEventListener('click', () => {
-      lb.style.display = 'flex';
-    });
-    lb.addEventListener('click', () => {
-      lb.style.display = 'none';
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') lb.style.display = 'none';
-    });
-  </script>
-
-</div>
-
-</body>
+      <script>
+        const img = document.getElementById('robopet-img')
+        const lb = document.getElementById('robopet-lightbox')
+        img.addEventListener('click', () => {
+          lb.style.display = 'flex'
+        })
+        lb.addEventListener('click', () => {
+          lb.style.display = 'none'
+        })
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') lb.style.display = 'none'
+        })
+      </script>
+    </div>
+  </body>
 </html>
